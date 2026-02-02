@@ -538,15 +538,15 @@ function HeroSection() {
               </div>
             </div>
 
-            {/* Floating badge */}
-            <div className="absolute -bottom-4 -right-4 lg:-bottom-6 lg:-right-6 bg-white rounded-2xl p-4 shadow-xl">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#4A9BA8] to-[#2E7BBF] rounded-full flex items-center justify-center">
-                  <ShieldIcon className="w-6 h-6 text-white" />
+            {/* IATA Badge - below stats card */}
+            <div className="mt-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4">
+              <div className="flex items-center justify-center gap-3">
+                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                  <ShieldIcon className="w-5 h-5 text-[#2E7BBF]" />
                 </div>
                 <div>
-                  <div className="font-bold text-slate-900">IATA Certified</div>
-                  <div className="text-xs text-slate-500">CNS - An IATA Company</div>
+                  <div className="font-semibold text-white">IATA Certified</div>
+                  <div className="text-xs text-white/70">CNS - An IATA Company</div>
                 </div>
               </div>
             </div>

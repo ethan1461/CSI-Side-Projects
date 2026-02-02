@@ -6,10 +6,10 @@ import Image from "next/image";
 // CSI Logo Component
 const CSILogo = ({ className = "h-12" }: { className?: string }) => (
   <Image
-    src="/logo.svg"
+    src="/logo.png"
     alt="Cargo Sales International"
-    width={120}
-    height={48}
+    width={150}
+    height={60}
     className={className}
     priority
   />

@@ -1,28 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  /* Primary Colors - Navy Blue for Trust & Aviation */
-  --primary-900: #0c1929;
-  --primary-800: #0f2744;
-  --primary-700: #14365e;
-  --primary-600: #1a4a82;
-  --primary-500: #2563eb;
-  --primary-400: #4f8af7;
-  --primary-300: #7cb0ff;
-  --primary-200: #b3d4ff;
-  --primary-100: #dbeafe;
+  /* CSI Brand Colors - From Logo */
+  --csi-teal: #4A9BA8;
+  --csi-teal-dark: #3A8592;
+  --csi-teal-light: #6BB5C0;
+  --csi-blue: #2E7BBF;
+  --csi-blue-dark: #1E5A8F;
+  --csi-blue-light: #4A95D9;
 
-  /* Sky Blue Accent - Aviation Theme */
-  --sky-500: #0ea5e9;
-  --sky-400: #38bdf8;
-  --sky-300: #7dd3fc;
-  --sky-200: #bae6fd;
-  --sky-100: #e0f2fe;
-
-  /* Gold/Amber Accent - Premium Feel */
-  --gold-500: #f59e0b;
-  --gold-400: #fbbf24;
-  --gold-300: #fcd34d;
+  /* Extended palette */
+  --primary-900: #0c2940;
+  --primary-800: #1E5A8F;
+  --primary-700: #2E7BBF;
+  --primary-600: #3A8592;
+  --primary-500: #4A9BA8;
+  --primary-400: #6BB5C0;
+  --primary-300: #8DCAD3;
+  --primary-200: #B5DEE5;
+  --primary-100: #E0F2F5;
 
   /* Neutrals */
   --slate-900: #0f172a;
@@ -43,10 +39,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary: var(--primary-600);
-  --color-primary-dark: var(--primary-800);
-  --color-sky: var(--sky-500);
-  --color-gold: var(--gold-500);
+  --color-primary: var(--csi-teal);
+  --color-primary-dark: var(--csi-blue-dark);
+  --color-accent: var(--csi-blue);
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
 }
@@ -109,20 +104,14 @@ body {
   }
 }
 
-@keyframes plane-fly {
-  0% {
-    transform: translateX(-100%) translateY(50px) rotate(-5deg);
+@keyframes count-up {
+  from {
     opacity: 0;
+    transform: scale(0.5);
   }
-  10% {
+  to {
     opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(100vw) translateY(-50px) rotate(-5deg);
-    opacity: 0;
+    transform: scale(1);
   }
 }
 
@@ -142,17 +131,17 @@ body {
   animation: slide-in-right 0.6s ease-out forwards;
 }
 
-.animate-plane-fly {
-  animation: plane-fly 15s linear infinite;
+.animate-count-up {
+  animation: count-up 0.8s ease-out forwards;
 }
 
-/* Gradient backgrounds */
+/* Gradient backgrounds - CSI Brand */
 .gradient-hero {
-  background: linear-gradient(135deg, var(--primary-900) 0%, var(--primary-700) 50%, var(--primary-600) 100%);
+  background: linear-gradient(135deg, #0c2940 0%, #1E5A8F 50%, #2E7BBF 100%);
 }
 
 .gradient-cta {
-  background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-600) 100%);
+  background: linear-gradient(135deg, #3A8592 0%, #4A9BA8 100%);
 }
 
 .gradient-card {
@@ -176,12 +165,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--slate-400);
+  background: var(--csi-teal);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--slate-500);
+  background: var(--csi-teal-dark);
 }
 
 /* Selection color */

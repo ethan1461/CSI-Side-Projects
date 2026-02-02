@@ -1,0 +1,6 @@
+<svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left wing (teal) -->
+  <path d="M0 60 Q30 20, 90 35 Q100 38, 95 50 Q85 70, 40 75 Q10 78, 0 60Z" fill="#4A9BA8"/>
+  <!-- Right wing (blue) -->
+  <path d="M105 30 Q130 15, 180 25 Q200 30, 195 45 Q185 60, 140 55 Q110 52, 105 30Z" fill="#2E7BBF"/>
+</svg>

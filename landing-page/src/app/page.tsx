@@ -305,20 +305,20 @@ function Navigation() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0c2940]/95 backdrop-blur-md shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top bar with contact info */}
-        <div className="hidden lg:flex justify-end items-center py-2 text-sm border-b border-slate-100">
+        <div className="hidden lg:flex justify-end items-center py-2 text-sm border-b border-white/10">
           <a
             href="tel:+18662872583"
-            className="flex items-center gap-2 text-slate-600 hover:text-[#4A9BA8] transition-colors mr-6"
+            className="flex items-center gap-2 text-white/80 hover:text-[#6BB5C0] transition-colors mr-6"
           >
             <PhoneIcon className="w-4 h-4" />
             +1 (866) 287-2583
           </a>
           <a
             href="mailto:bookings@cargosalesintl.com"
-            className="flex items-center gap-2 text-slate-600 hover:text-[#4A9BA8] transition-colors"
+            className="flex items-center gap-2 text-white/80 hover:text-[#6BB5C0] transition-colors"
           >
             <MailIcon className="w-4 h-4" />
             bookings@cargosalesintl.com
@@ -330,10 +330,10 @@ function Navigation() {
           <a href="#" className="flex items-center gap-3">
             <CSILogo className="h-10 w-auto" />
             <div className="hidden sm:flex flex-col">
-              <span className="font-bold text-lg text-[#2E7BBF] leading-tight">
+              <span className="font-bold text-lg text-white leading-tight">
                 Cargo Sales International
               </span>
-              <span className="text-xs text-slate-500 leading-tight">
+              <span className="text-xs text-white/60 leading-tight">
                 Mortuary Transport Since 2000
               </span>
             </div>
@@ -345,7 +345,7 @@ function Navigation() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-slate-600 hover:text-[#4A9BA8] font-medium transition-colors"
+                className="text-white/80 hover:text-[#6BB5C0] font-medium transition-colors"
               >
                 {link.label}
               </a>
@@ -369,38 +369,38 @@ function Navigation() {
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
-              <CloseIcon className="w-6 h-6 text-slate-700" />
+              <CloseIcon className="w-6 h-6 text-white" />
             ) : (
-              <MenuIcon className="w-6 h-6 text-slate-700" />
+              <MenuIcon className="w-6 h-6 text-white" />
             )}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-slate-100">
+          <div className="md:hidden py-4 border-t border-white/10">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-slate-600 hover:text-[#4A9BA8] font-medium py-2"
+                  className="text-white/80 hover:text-[#6BB5C0] font-medium py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
                 </a>
               ))}
-              <div className="pt-4 border-t border-slate-100 space-y-2">
+              <div className="pt-4 border-t border-white/10 space-y-2">
                 <a
                   href="tel:+18662872583"
-                  className="flex items-center gap-2 text-slate-600"
+                  className="flex items-center gap-2 text-white/80"
                 >
                   <PhoneIcon className="w-4 h-4" />
                   +1 (866) 287-2583
                 </a>
                 <a
                   href="mailto:bookings@cargosalesintl.com"
-                  className="flex items-center gap-2 text-slate-600"
+                  className="flex items-center gap-2 text-white/80"
                 >
                   <MailIcon className="w-4 h-4" />
                   bookings@cargosalesintl.com

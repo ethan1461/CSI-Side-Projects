@@ -1,0 +1,103 @@
+======================================================================
+CSI CARGO DASHBOARD - DATA COLLECTION GUIDE
+======================================================================
+
+Instructions for CFO:
+----------------------------------------------------------------------
+1. Open each template file
+2. Export data from QuickBooks/OMS matching the column headers
+3. Paste the data below the example row
+4. Delete the example row
+5. Save as the filename WITHOUT '_template' (e.g., 'financial_transactions.xlsx')
+6. Place saved files in the data/input/ folder
+
+----------------------------------------------------------------------
+FILE: financial_transactions.xlsx
+----------------------------------------------------------------------
+
+REQUIRED COLUMNS (must have data):
+  - transaction_id
+  - transaction_date
+  - transaction_type
+  - category
+  - amount
+
+OPTIONAL COLUMNS (nice to have):
+  - subcategory
+  - description
+  - customer_name
+  - vendor_name
+  - payment_status
+  - due_date
+
+----------------------------------------------------------------------
+FILE: cost_classifications.xlsx
+----------------------------------------------------------------------
+
+REQUIRED COLUMNS (must have data):
+  - expense_category
+  - cost_type
+
+OPTIONAL COLUMNS (nice to have):
+  - cost_group
+  - notes
+
+----------------------------------------------------------------------
+FILE: booking_log.xlsx
+----------------------------------------------------------------------
+
+REQUIRED COLUMNS (must have data):
+  - booking_id
+  - booking_date
+  - customer_name
+  - total_revenue
+
+OPTIONAL COLUMNS (nice to have):
+  - ship_date
+  - customer_type
+  - origin_city
+  - origin_state
+  - destination_city
+  - destination_state_country
+  - route_type
+  - airline
+  - shipment_type
+  - published_rate
+  - csi_cost
+  - gross_margin
+  - intl_paperwork_fee
+  - other_fees
+  - was_rebooked
+  - rebooking_cost
+  - agent_name
+
+----------------------------------------------------------------------
+FILE: ar_aging.xlsx
+----------------------------------------------------------------------
+
+REQUIRED COLUMNS (must have data):
+  - customer_name
+  - invoice_number
+  - amount
+
+OPTIONAL COLUMNS (nice to have):
+  - invoice_date
+  - due_date
+  - days_outstanding
+  - aging_bucket
+
+----------------------------------------------------------------------
+FILE: ap_aging.xlsx
+----------------------------------------------------------------------
+
+REQUIRED COLUMNS (must have data):
+  - vendor_name
+  - bill_number
+  - amount
+
+OPTIONAL COLUMNS (nice to have):
+  - bill_date
+  - due_date
+  - days_outstanding
+  - aging_bucket
+

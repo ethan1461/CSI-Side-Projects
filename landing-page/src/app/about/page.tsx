@@ -43,7 +43,7 @@ export default function AboutPage() {
                 top niche assistance and expertise.
               </p>
               <p className="text-slate-600 mb-8">
-                We serve our multi-cultured clientele with a wide range of shipping services
+                We help funeral homes better serve their families with a wide range of shipping services
                 custom fit to your needs. You can use our services with NO booking fees &
                 at NO additional costs!
               </p>

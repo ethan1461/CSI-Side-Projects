@@ -328,8 +328,8 @@ export function Footer() {
             </div>
             <p className="text-slate-400 mb-6 max-w-md">
               With more than 24 years of logistics experience dedicated to the
-              funeral care industry. We serve our multi-cultured clients with a
-              wide range of shipping services.
+              funeral care industry. We help funeral homes better serve their families
+              with a wide range of shipping services.
             </p>
             <div className="space-y-2">
               <a href="tel:+18662872583" className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors">

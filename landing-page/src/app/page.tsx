@@ -118,8 +118,8 @@ function HeroSection() {
                 mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
-              Let Cargo Sales International do the work, leaving you more time
-              to take care of your clients. We are at your service 24/7.
+              Let Cargo Sales International handle the logistics, so you can focus
+              on what matters most - caring for your families. Available 24/7.
             </p>
 
             {/* CTA Buttons */}

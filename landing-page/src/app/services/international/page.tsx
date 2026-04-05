@@ -59,19 +59,19 @@ const regions = [
 const services = [
   {
     title: "Customs Clearance",
-    description: "Expert handling of all customs procedures and international regulations.",
+    description: "We navigate complex customs procedures and international regulations - you just make one call.",
   },
   {
     title: "Consular Documentation",
-    description: "Translations, apostilles, and legalization for consular clearance.",
+    description: "Translations, apostilles, legalization - we handle all consular requirements so you don't have to.",
   },
   {
     title: "Strategic Airline Alliances",
-    description: "Partnerships with major airlines for optimal routing and pricing.",
+    description: "Our 50+ airline partnerships mean optimal routing and pricing without you shopping around.",
   },
   {
     title: "Real-Time Tracking",
-    description: "Monitor your shipment status throughout the entire journey.",
+    description: "Stay informed without chasing updates - we keep you posted throughout the journey.",
   },
 ];
 
@@ -97,8 +97,8 @@ export default function InternationalServicesPage() {
             International <span className="text-[#2E7BBF]">Shipping</span>
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Worldwide shipping services with strategic airline alliances for optimal routing
-            at competitive prices.
+            Consulates, translations, customs, regulations - we handle it all. You focus on
+            your families, we&apos;ll handle the complexity of international shipping.
           </p>
         </div>
       </section>
@@ -109,6 +109,18 @@ export default function InternationalServicesPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Left - Info */}
             <div>
+              {/* Key Value Proposition */}
+              <div className="bg-[#E0F2F5] rounded-xl p-6 mb-8 border-l-4 border-[#2E7BBF]">
+                <h3 className="font-bold text-[#0c2940] text-lg mb-2">
+                  You Don&apos;t Need to Be an Expert - We Are
+                </h3>
+                <p className="text-slate-600">
+                  International shipping involves consulates, translations, apostilles, customs
+                  regulations, and complex logistics. <strong>That&apos;s our specialty, not yours.</strong> Focus
+                  on caring for your families while we handle the complexity.
+                </p>
+              </div>
+
               <h2 className="text-3xl font-bold text-[#0c2940] mb-6">
                 Global Reach, Local Expertise
               </h2>
@@ -118,10 +130,10 @@ export default function InternationalServicesPage() {
                 enable us to offer the best routing at the most affordable prices.
               </p>
               <p className="text-slate-600 mb-8">
-                Our multilingual team (English, Spanish, Portuguese, French, and Creole) serves
-                our multi-cultured clientele with expertise and care. We handle all aspects of
-                international shipping including customs clearance, consular documentation, and
-                real-time coordination.
+                Our multilingual team (English, Spanish, Portuguese, French, and Creole) helps
+                funeral homes better serve their families with expertise and care. We handle all
+                aspects of international shipping including customs clearance, consular documentation,
+                and real-time coordination - so you don&apos;t have to.
               </p>
 
               {/* Services List */}

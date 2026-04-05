@@ -182,7 +182,7 @@ export default function DomesticServicesPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href="/book"
               className="bg-white text-[#0c2940] px-8 py-4 rounded-full font-bold hover:shadow-xl transition-all"
             >
               Request Service

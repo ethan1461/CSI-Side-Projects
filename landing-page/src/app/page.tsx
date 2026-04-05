@@ -129,7 +129,7 @@ function HeroSection() {
               }`}
             >
               <Link
-                href="/contact"
+                href="/book"
                 className="group relative bg-[#2E7BBF] text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg shadow-[#2E7BBF]/30 hover:bg-[#1E5A8F] hover:shadow-xl hover:shadow-[#2E7BBF]/40 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -421,7 +421,7 @@ function CTASection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href="/book"
               className="group bg-[#2E7BBF] text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg shadow-[#2E7BBF]/30 hover:bg-[#1E5A8F] hover:shadow-xl transition-all flex items-center justify-center gap-2"
             >
               Book a Shipment Now

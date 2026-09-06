@@ -1,0 +1,34 @@
+# --- PII containment (CLAUDE.md §7.2) ---
+# Raw shipment exports may contain decedent names, family contacts, and
+# death certificate data. They are never committed. Work from data/derived/.
+data/raw/**
+!data/raw/.gitkeep
+
+# Tabular data anywhere outside data/derived/ is assumed to be an unvetted
+# export. Move it to data/raw/ (ignored) or data/derived/ (reviewed) instead.
+/*.csv
+/*.tsv
+/*.xlsx
+/*.xlsm
+context/**/*.csv
+context/**/*.xlsx
+
+# --- Secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+service-account*.json
+
+# --- Noise ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.DS_Store
+node_modules/
+.ruff_cache/
+.pytest_cache/

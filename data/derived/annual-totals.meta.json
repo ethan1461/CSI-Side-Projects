@@ -1,0 +1,8 @@
+{
+  "source_files": [
+    "data/raw/analytics-2022-2026-monthly.csv"
+  ],
+  "output_rows": 5,
+  "script": "scripts/reconcile_analytics.py",
+  "run_timestamp": "2026-09-06T23:47:20.786441+00:00"
+}

@@ -29,6 +29,9 @@ analysis, never send names to a third-party tool, never put a name in a delivera
 
 | File | Shape | What it unlocks |
 |---|---|---|
+| `analytics-2022-2026-monthly.csv` | Monthly revenue + bookings, Sep 2022 – Sep 2026. 823 bookings missing funeral home link | **The trend baseline.** Reconciled in `reports/analytics-reconciliation.md` — confirms the plateau, refutes the volume decline, corrects CLAUDE.md's H1 figures |
+| `analytics-2026-ytd.csv` | 2026 YTD: $10,408,976 / 7,725 bookings through 2026-09-06 | Current-year tracking. September is partial (274 bookings) |
+| `rates-export-20260906.csv` | 6,383 lanes × 8 cols: airline, origin/destination (airport, zone, region, country, state), rate_type, published_rate, discount_rate | Lane-level rate structure. **Only 156 lanes carry both published and discount** — all four US domestic majors; zero international coverage |
 | `rates-jan-2026.xls` | 8 carrier tabs: American, Southwest, Delta, United, Copa/IBC, Viva/Volaris, Avianca, plus a discounts & special rates tab. Columns include Origin, Destination, **Published**, **discount** | **Carrier cost.** Contribution margin per lane becomes computable. Validates the EWA ~10% comparison against real published rates |
 | `latam-rate-unification.xlsx` | 47 rows × 18 cols: carrier, origin, destination, csi domestic cost, csi intl cost, csi trucking cost, customer price, csi domestic/intl/total profit, historical split, unified intl price | A **worked margin model** for LatAm corridors. The method here generalizes to other corridors |
 | `sci-locations-june.xlsx` | 4,439 active SCI locations × 24 cols: name, address, phone, Location Code, Location ID, Location Status, Product Line, Business Line. Plus tabs for location changes, new, closed | The **enterprise account map** for SCI/Dignity. Location-level activation planning, pilot scoping, territory assignment |
@@ -70,6 +73,11 @@ them.
 |---|---|---|
 | Revenue | H1 2026 = $8,599,462 (annualizes to ~$17.2M) | FY25 ≈ $14.5M, FY24 ≈ $14.2M |
 | Growth | Four consecutive years of <3% growth | FY26 target ≥$15.0M — itself only ~3.4% over FY25 |
+
+**Revenue conflict: RESOLVED 2026-09-06.** The system export settles it — FY25 was
+$14,417,145, matching the memo. CLAUDE.md's H1 2026 figures are overstated by ~13% and
+its "volume declining" claim is seasonality, not trend. See
+`reports/analytics-reconciliation.md`. The remaining conflicts below are unresolved.
 | Enterprise targets | SCI/Dignity, Everstory (~80 locations), Carriage | SCI/Dignity, Carriage, Foundation Partners, Park Lawn. **Everstory not mentioned** |
 | Oct 25–28 Charlotte event | FIAT-IFTA Global Convention | NFDA |
 | Team size | 4 named booking agents | 6–8 ops agents, 2–3 sales reps |

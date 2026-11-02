@@ -316,16 +316,66 @@ agent's recommendation.
 
 ### 7.2 Data handling — this is a death-care business
 
-Shipment records contain decedent names, family contact information, and death
-certificate data.
+**This is the strictest rule in this document. When any other instruction appears to
+conflict with it, this one wins, and the agent stops and raises it rather than
+resolving the conflict itself.**
+
+Shipment records, carrier invoices, and funeral home files contain decedent names,
+family contact information, and death certificate data. A family trusted CSI with the
+worst week of their life. That trust is the product.
+
+**The absolute prohibitions:**
 
 - **Never** send decedent names, family names, addresses, or certificate contents to any
   third-party tool, external API, or AI image/content generator.
-- Anonymize before analysis: strip name and contact fields, work from IDs.
-- Never include a real decedent or family name in marketing material, a case study, or
-  a sample dataset — ever, under any circumstance, even internally.
-- Funeral home business names are fine. Individual funeral director names are fine in a
-  CRM context, not in public content without approval.
+- Never include a real decedent or family name in marketing material, a case study, a
+  sample dataset, a test fixture, or an example — ever, under any circumstance, even
+  internally, even anonymised-but-recognisable.
+- Never commit any file containing decedent or family data. `data/raw/` is gitignored
+  for this reason; verify with `git check-ignore` before adding anything new.
+
+**Strip at the source, not afterwards.**
+
+Anonymise at ingest — at the query, at the export, in the first line of the script —
+never by deleting a column after it has been loaded, printed, or logged. Once a name
+reaches a transcript, an output file, or a terminal, it cannot be recalled.
+
+**Where decedent names actually appear.** This is not hypothetical; every one of these
+has been observed in supplied data:
+
+| Source | Column |
+|---|---|
+| Delta carrier invoices | `Nature of Goods`, `Shipping Location` |
+| United carrier invoices | `Shipper Reference` |
+| OMS flight confirmation and ready-to-invoice lists | deceased name, displayed by design |
+| Pickup lists | `Deceased Name` |
+| AWB and TSA documents | throughout |
+
+Assume **any** operational export contains them until you have checked. Check before
+you print, not after.
+
+**Before printing, writing, or reporting anything derived from operational data:**
+
+1. Name the columns that could carry an identifier, and drop them at load.
+2. Record the dropped columns in the script's `.meta.json`, so the next person knows
+   the strip happened.
+3. Aggregate. Report "6 shipments on this lane," never a list of shipments.
+4. If you need to reference a specific shipment, use the AWB or booking reference —
+   never the name.
+
+**Outside the repo:**
+
+- Funeral home business names: fine.
+- Individual funeral director names: fine in a CRM context; not in public content
+  without approval.
+- Before any file leaves CSI — to a partner, a carrier, an adviser, a diligence room,
+  or an investor — it is checked for decedent and family data and stripped. This is a
+  `legal-risk` checkpoint, not an afterthought.
+
+**If it happens anyway.** An agent that discovers decedent data has reached somewhere it
+should not — a committed file, a report, a third-party tool — says so immediately and
+plainly to Ethan. No quiet cleanup. The disclosure matters more than the embarrassment,
+because what happens next may depend on how far it travelled.
 
 ### 7.3 No fabricated numbers
 

@@ -2,7 +2,7 @@
 
 **Owner:** pricing-strategist
 **Created:** 2026-11-02 by pm-orchestrator
-**Due:** 2026-11-06
+**Due:** 2026-11-06 (Friday)
 **Priority:** HIGH
 **Status:** UNCLAIMED
 
@@ -43,7 +43,9 @@ intentional rather than accidental.
 4. **Coverage statement.** 156 contracted lanes against 6,919 published. Name the carriers
    with zero cost data (IAG at 5,565 lanes, Emirates, Lufthansa, Volaris, Avianca, Copa,
    Korean, Viva, IBC) and state plainly that international pricing work is blocked until
-   at least one of them is costed.
+   at least one of them is costed. **Write the script so the international section can be
+   re-run against new cost data without rework** — Ethan is asking Vadim for his own rate
+   sheets, and if they land this week TASK-0018 extends this analysis rather than replacing it.
 
 ## Success criteria
 - [ ] Every figure traces to a named source file through a re-runnable script; row counts
@@ -81,6 +83,10 @@ Do not re-derive the headline margin; read the report (`§11.3`).
 - Blocked by: none
 - Blocks: TASK-0011 (gtm decline list) uses the corridor read; the rate-architecture work
   held to week 46, which is gated on DR-001 secondary-service margins; TASK-0006 sensitivity
+- Hands off to: **TASK-0018**, which reuses this script against Vadim's rate sheets if they
+  arrive. Do not write a second script for that (`§9.3`). If the sheets land midweek, ship
+  this deliverable with the domestic ranking complete and the international section pointing
+  at TASK-0018 rather than holding the whole report.
 - Inputs needed from: operations (TASK-0008) — cost to serve, if it exists. If it does not,
   say in the report that these are **gross** margins and that contribution margin is
   unknown. Do not estimate cost to serve yourself.

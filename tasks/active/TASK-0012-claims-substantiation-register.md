@@ -2,7 +2,7 @@
 
 **Owner:** legal-risk
 **Created:** 2026-11-02 by pm-orchestrator
-**Due:** 2026-11-06
+**Due:** 2026-11-05 (Thursday)
 **Priority:** CRITICAL
 **Status:** UNCLAIMED
 

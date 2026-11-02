@@ -2,7 +2,7 @@
 
 **Owner:** product
 **Created:** 2026-11-02 by pm-orchestrator
-**Due:** 2026-11-05
+**Due:** 2026-11-04 (Wednesday)
 **Priority:** CRITICAL
 **Status:** UNCLAIMED
 
@@ -25,13 +25,29 @@ partial ones.
 `reports/freightflow-agreement-review.md §1.2` (the scope test to apply before any ask leaves
 the building, and item S3, which flags this exact export as contractually ambiguous).
 
-**Read the Vadim note before you write a line of the engineering ask.** It makes a claim that
-may shrink this task substantially: the Flight Confirmation List, Ready to Invoice List and
-Collect Shipments pages already display booking-level detail, so **one of them may already
-export** — in which case nobody has to build anything and the ask becomes a permission
-request. Check that possibility first and say in the ask whether it was ruled out. Under
-`§9.6` the cheapest version of an ask that still unblocks the decision is the correct one, and
-under the FreightFlow agreement new work is a Change Order with a cost attached.
+**Corrected 2026-11-02, and the correction makes this task bigger.** An earlier version of
+this task said the booking-level data might already sit behind an export button on the Flight
+Confirmation, Ready to Invoice or Collect Shipments pages, so the ask might shrink to a
+permission request. **Ethan has confirmed none of those pages has export functionality.**
+The booking-level export is a genuine build — **a Change Order with a cost attached, not a
+permission grant** — and nothing in the Vadim conversation can shrink it.
+
+Two consequences you must design around:
+
+- **The ask cannot be made cheap, so it has to be made worth it.** A Change Order is money and
+  the developer is not obliged to agree (`reports/freightflow-agreement-review.md §1.1`, and
+  §2.4 of the agreement expects change orders to carry "further financial renumeration").
+  Every Change Order item has to justify its cost against what it unblocks, or it gets
+  declined and we have burned the one shot `§9.6` gives us this cycle.
+- **Sort every item onto the right side of the contract line, and say which side you put it
+  on.** Three buckets: an **Error Response Request** (something in Exhibit A or the
+  Specifications that fails to work as documented — free, and CSI designates the severity), a
+  draw on the **included 40 hours a month of Support Services** (maintenance, rate-card
+  technical help, security, training), or a **Change Order** (new report, new field, new
+  integration, new export — chargeable, and needs a signed agreement). Apply the test in
+  `reports/freightflow-agreement-review.md §1.2` and record your reasoning per item. Where the
+  agreement is genuinely ambiguous — and §1.3 item **S3 flags this exact export as ambiguous** —
+  say so rather than asserting a side.
 
 ## Line to the metric
 Enabling metric — decision latency. Then everything else: without booking-level data the
@@ -54,10 +70,28 @@ Two files.
    query, not removed afterwards** (`§7.2`). Name the columns to exclude.
 
 2. `reports/pending-approval/engineering-ask-2026-45.md` — the batched ask, ready for Ethan
-   to send. Every item ranked, and for each: **is it a bug or a feature** (`§9.6`), what it
-   unblocks and for how many agents, which bucket of the FreightFlow agreement it falls in
-   per the `§1.2` test (Error Response / included Support Services / ambiguous / Change
-   Order), and the smallest version that still unblocks the decision.
+   to send, and **the authoritative version**: `reports/pending-approval/data-access-request.md`
+   is superseded in part and carries a correction block saying so. Every item ranked, and for
+   each: **is it a bug or a feature** (`§9.6`), what it unblocks and for how many agents,
+   **which contract bucket it falls in and why** (Error Response / 40-hour Support bucket /
+   ambiguous / Change Order), and the smallest version that still unblocks the decision.
+
+   The items, with what Ethan has already decided:
+   - **The three rate-data defects** (duplicate rows violating the documented uniqueness key,
+     empty `shipment_rate_type`, conflicting published rates on 133 lanes) — go as **Error
+     Response Requests**, in contract scope, with CSI designating severity.
+   - **The nightly export job to Drive** — the **one feature ask**. This is where the
+     booking-level export lives.
+   - **International contracted rates** — stays on this ask. Neither Ethan nor Vadim holds that
+     access; Kyri and Alex do. (Vadim's own rate sheets are being requested separately and in
+     parallel — see TASK-0018. That path does not remove this one, because sheets are a
+     snapshot and the system is the source.)
+   - **Whether the OMS captures booking duration at all** — a new item, moved here from
+     operations. CSI is starting to be able to track it and nobody is sure it exists yet;
+     whether the system captures it is an engineering question, not an ops one.
+   - **The read-only Postgres reporting role — dropped.** Decided; do not include it. The
+     FreightFlow agreement makes it a Change Order and trading the easy win to win that
+     argument is a bad trade.
 
 Also update `context/DATA-INVENTORY.md`: it is stale in two places — it still flags a
 five-gateway conflict that `context/brain/company-facts.md` has resolved (eight is
@@ -70,11 +104,21 @@ canonical), and it lists `analytics-2022-2026-monthly.csv`, which is no longer i
 - [ ] Bugs are separated from features, and the three data defects in
       `reports/carrier-margin-resolved.md` are presented as Error Response Requests with
       CSI's own severity designation (`reports/freightflow-agreement-review.md §1.2` item 1)
+- [ ] **Every item names its contract bucket and the reasoning.** Error Response, 40-hour
+      Support bucket, ambiguous, or Change Order — no item is unsorted
+- [ ] **Every Change Order item carries a justification against what it unblocks**, because a
+      Change Order costs money and can be declined. An item that cannot be justified is cut
+      from the ask rather than left in to be refused
+- [ ] The read-only Postgres role does **not** appear
+- [ ] States that no export button exists on Flight Confirmation, Ready to Invoice or Collect
+      Shipments, so nobody re-litigates it next cycle
 - [ ] Every item is tagged with its FreightFlow scope bucket, and anything ambiguous or
       Change Order-shaped is flagged as a cost or goodwill risk before it is sent, not after
 - [ ] The spec is precise enough that an engineer could build it without a follow-up call
 - [ ] PII exclusion is a stated requirement at the query level, with named columns
-- [ ] A **manual fallback** is named for the top item, in case engineering declines
+- [ ] A **manual fallback** is named for the top item, in case engineering declines or the
+      Change Order is not agreed. This now matters more than it did: there is no permission
+      path to fall back on
 - [ ] `context/DATA-INVENTORY.md` corrected
 - [ ] Passes the quality bar in `CLAUDE.md §8`
 
@@ -82,6 +126,12 @@ canonical), and it lists `analytics-2022-2026-monthly.csv`, which is no longer i
 **Never attempt to reach the OMS** (`§5`). Manual exports only, placed in `data/raw/` by a
 human.
 **Do not contact Kyri or Alex.** Agents draft; Ethan sends (`§9.6`, `§7.1`).
+**`legal-risk` owns the scope question.** Where an item might exceed the agreement, that is
+flagged before the ask is sent, not after (`§9.6`). Route the ambiguous items to the
+orchestrator for a `legal-risk` read rather than deciding the contract question yourself.
+**Do not draft Change Order language.** Agents never draft or suggest terms that could read as
+an offer, a commitment or an agreement to agree (`§7.5`). You are writing a request for work,
+not an instrument.
 `§9.6` first principle: ask a colleague before asking engineering. If Vadim, Susej or Kim
 could answer something on your list — what a field means, which rate applies, how a workflow
 runs — move it out of the engineering ask and into a colleague question.
@@ -89,12 +139,11 @@ Do not expand the ask to be comprehensive. A longer ask is a worse ask.
 `data/raw/` is read-only to agents.
 
 ## Dependencies
-- Blocked by: none, but **sequenced behind the Vadim conversation** if Ethan has it first.
-  Vadim's answer on how booking agents actually pick a route could reorder this entire ask —
-  if the desk works from experience rather than the rate table, cleaning the rate table drops
-  in priority and capturing the institutional knowledge rises. Check the task log for Ethan's
-  readout before finalizing the ranking; if it hasn't landed by Wednesday, rank without it and
-  say so.
+- Blocked by: none. **The Vadim conversation no longer gates or shrinks this.** It can still
+  reorder the *ranking* of one item: if Vadim says the booking desk prices from experience
+  rather than the rate table, the 133 conflicting rows drop down the queue and capturing the
+  desk's institutional knowledge rises. Check the log before finalizing the ranking; if his
+  answer hasn't landed by Wednesday, rank without it and say so.
 - Blocks: TASK-0002's instrumentation spec may add a quote-log item; weeks 46+ churn, CAC,
   account value, corridor mix and cohort work; volume weighting for TASK-0005 and TASK-0006
 - Inputs needed from: data-analyst (TASK-0002) — the quote-log spec, if it lands by Wednesday.
@@ -108,7 +157,12 @@ sends it. Anything that might exceed the FreightFlow agreement's scope is flagge
 
 ## Log
 - 2026-11-02 — Created. This is the one thing that must be true by Friday
-  (`reports/weekly/2026-45-plan.md §7`). Due Thursday, not Friday, so there is a day to fix
-  it if the ask is not good enough.
+  (`reports/weekly/2026-45-plan.md §7`). Due Wednesday, not Friday, so there is time to fix it
+  if the ask is not good enough.
+- 2026-11-02 — **Premise corrected by Ethan, and the task got harder.** The export buttons do
+  not exist; the booking-level export is a Change Order build with a cost, not a permission
+  request. Added: the contract-bucket sorting requirement, the Change Order justification
+  requirement, the booking-duration capture question moved in from operations, and the explicit
+  removal of the read-only Postgres role. The Vadim conversation no longer shrinks this ask.
 
 ## Outcome

@@ -2,7 +2,7 @@
 
 **Owner:** sales-lead
 **Created:** 2026-11-02 by pm-orchestrator
-**Due:** 2026-11-05
+**Due:** 2026-11-05 (Thursday)
 **Priority:** HIGH
 **Status:** UNCLAIMED
 

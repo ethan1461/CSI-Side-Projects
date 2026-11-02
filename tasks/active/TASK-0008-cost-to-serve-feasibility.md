@@ -2,7 +2,7 @@
 
 **Owner:** operations
 **Created:** 2026-11-02 by pm-orchestrator
-**Due:** 2026-11-06
+**Due:** 2026-11-06 (Friday)
 **Priority:** HIGH
 **Status:** UNCLAIMED
 
@@ -30,13 +30,18 @@ volume growth turns into margin growth rather than headcount growth.
 `reports/cost-to-serve-feasibility.md`:
 
 1. **The answer, first line.** Does any system record agent time per booking? Yes / No /
-   Partially, with what was checked.
-2. **What the OMS plausibly already holds.** Booking creation and submission timestamps,
-   status transitions, rework and correction flags, cancellation and rebooking markers. Read
-   `context/oms-requirements.md` and `context/oms-tech-specs.md`. Turnaround time is already a
-   Bookings Director KR measured from request received to airline submission
-   (`context/okrs-2026-master.md`) — if that is being measured, part of cost to serve already
-   exists and the task is to surface it, not to build it.
+   Partially / **referred to engineering**, with what was checked.
+2. **What the OMS plausibly already holds — but note this half is not yours to settle.**
+   Ethan has confirmed that **whether the system captures booking duration is a Kyri/Alex
+   question, not an operations one.** CSI is starting to be able to track it and nobody is sure
+   it exists yet. So: read `context/oms-requirements.md` and `context/oms-tech-specs.md`, state
+   what the documentation implies, and then **route the system-capture question to the
+   orchestrator for TASK-0003's engineering ask** rather than trying to answer it or asking
+   Vadim. Turnaround time is already a Bookings Director KR measured from request received to
+   airline submission (`context/okrs-2026-master.md`) — say whether that implies the timestamps
+   exist, and let the ask confirm it.
+   **What remains genuinely yours:** how the work actually runs, where the time goes by booking
+   type, what rework looks like, and whether a sample is feasible at all on a 24/7 desk.
 3. **The two-week time sample design**, if instrumentation is absent. **A version of this ask
    is already drafted** — `reports/pending-approval/vadim-data-request.md` item 4 puts the
    *time* question to Vadim and deliberately routes the *labour-cost* question to Donald.
@@ -66,7 +71,11 @@ volume growth turns into margin growth rather than headcount growth.
       a cost per booking, not one inferred from public salary data. Time and cost are asked
       separately and are never multiplied together without Donald (`§9.6`)
 - [ ] Any engineering requirement is routed to the orchestrator for TASK-0003's batch, not
-      raised separately (`§9.6`)
+      raised separately (`§9.6`) — **including the system-capture question, which is now
+      explicitly an engineering item and not yours to answer or to put to Vadim**
+- [ ] The three asks stay separated and correctly addressed: **system capture → Kyri/Alex via
+      TASK-0003; how long work takes and how the desk runs → Vadim, Kim, Susej; what an hour
+      costs → Donald** (`§9.6`)
 - [ ] Passes the quality bar in `CLAUDE.md §8`
 
 ## Constraints
@@ -90,10 +99,12 @@ Any plan that assumes booking staff absorb new manual work fails silently. That 
 this one — hold your own design to it.
 
 ## Dependencies
-- Blocked by: none
+- Blocked by: none. Partly **referred onward** — the system-capture half moves to TASK-0003.
 - Blocks: TASK-0005 (gross vs. contribution margin); TASK-0006 (the unmeasured valuation
-  term); the week-46 rate architecture; finance's adjusted P&L
-- Inputs needed from: none this week. Kim and Susej answer after Ethan sends.
+  term); TASK-0016 (whether contribution margin is computable or aspirational); the week-46
+  rate architecture; finance's adjusted P&L
+- Inputs needed from: none this week. Kim and Susej answer after Ethan sends; the engineering
+  half answers through TASK-0003.
 
 ## Approval gate
 No real-world action. The questionnaire is staged for Ethan. Note separately for the risk
@@ -105,5 +116,9 @@ not start it in this task.
 ## Log
 - 2026-11-02 — Created. The valuable answer here may well be "it does not exist." Say that
   first and spend the task on the cheapest way to change it.
+- 2026-11-02 — **Scope corrected by Ethan.** Whether the OMS captures booking duration is a
+  Kyri/Alex question and has moved to TASK-0003's engineering ask. This task keeps the
+  operational half: how the work runs, where time goes by booking type, rework, and whether a
+  sample is feasible on a 24/7 desk. Do not put the system question to Vadim.
 
 ## Outcome

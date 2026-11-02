@@ -549,6 +549,23 @@ project, and it binds every agent.
    `templates/data-request-template.md`; Ethan sends it. Owners and open requests:
    `context/brain/data-owners.md`.
 
+   **"We don't have that" is never a finished sentence.** Ethan's standing instruction:
+   always be thinking about how CSI could get the data. An agent that reports something
+   is unmeasurable and stops there has done half the job. Every blocked analysis ends
+   with:
+
+   - **Who would have it** — a named person, system, or external source. Kyri and Alex
+     for anything the OMS could capture but doesn't; Vadim for how the desk actually
+     works; Donald for anything financial or labour-cost; Susej and Kim for operational
+     detail; a public source for market and demographic data.
+   - **What the smallest version looks like** — a two-week sample, one lane, fifty
+     records. Cheap and partial beats thorough and hypothetical.
+   - **What it would unblock**, so the ask can be ranked against others.
+
+   This applies especially where the answer is "the system doesn't track that." That is
+   not a permanent fact about CSI — it is a feature request, and it belongs in the
+   Monday engineering ask (`§10`).
+
    **Anything touching labour cost goes to Donald.** Ethan's rule, 2026-11-02. Agent
    wages, salary, contractor rates, fully-loaded cost per hour, headcount cost,
    commission — all of it routes through Donald, never through Vadim or the bookings
@@ -560,23 +577,32 @@ project, and it binds every agent.
    figure itself. Ask each for their half; never ask one for the other's, and never
    combine them into a single number without Donald's input.
 
-   **Engineering asks are rationed.** Kyri and Alex work under the FreightFlow
-   Software Development and Support Agreement (`data/raw/freightflow-agreement.pdf`),
-   which has defined scope. **Not every ask gets met, and asks that fall outside that
-   scope cost CSI money or goodwill or both.** So before routing anything to them:
+   **Engineering asks are batched and ranked — but not self-censored.** Kyri and Alex
+   work under the FreightFlow Software Development and Support Agreement
+   (`data/raw/freightflow-agreement.pdf`). **Ethan's instruction, 2026-11-02: they are
+   loose about what counts as a Change Order versus what they will simply enable. So
+   flag what CSI wants and let them classify it.** An agent that quietly drops a useful
+   ask because it guessed the ask was out of scope has made a contract judgment it is
+   not entitled to make, and has cost CSI something for nothing.
 
    - **Ask a colleague first.** Cheryl, Vadim, Susej and Kim can answer most questions
      about how the business actually works — what a field means, which rate applies,
-     how a workflow runs — faster and at no cost. Engineering is the last resort, not
-     the first.
+     how a workflow runs — faster and at no cost. Engineering is the last resort for
+     *questions*. It is the right destination for *system capability*.
    - **Batch.** Asks go to Ethan in a prioritized list, not one at a time as agents
-     think of them. The orchestrator holds the queue.
-   - **Rank honestly.** Every engineering ask states what it unblocks and for whom. An
-     ask that unblocks one analysis loses to one that unblocks five agents.
-   - **Separate bugs from features.** A defect in something already built is a
-     different conversation from new work. Say which it is.
-   - **legal-risk owns the scope question.** When an ask might exceed the agreement,
-     that is flagged before it is sent, not after.
+     think of them. The orchestrator holds the queue and sends one document a week.
+   - **Rank honestly.** Every ask states what it unblocks and for whom. An ask that
+     unblocks one analysis loses to one that unblocks five agents. Ranking is how CSI
+     signals priority when not everything can be built.
+   - **Separate bugs from features,** and say which you believe it is — a defect in
+     something already built is a different conversation from new work. **But state it
+     as CSI's read, not as a ruling.** They decide.
+   - **legal-risk tracks, it does not gatekeep.** It records how each ask was
+     classified and what it cost, so CSI builds a picture of where the scope line
+     actually sits in practice. It flags an ask before sending only when the ask itself
+     carries legal exposure — not merely because it might be chargeable.
+
+   **Never drop an ask to avoid an awkward conversation.** Rank it low and send it.
 7. **Negative results are results.** "We instrumented this and it does not move the
    number" is a finding worth reporting, and it is how budget gets freed.
 
@@ -688,11 +714,38 @@ Agents learn from each other or the swarm is just nine people in nine rooms.
 ### Weekly cadence
 
 - **Monday** — orchestrator reviews last week, reads all reports, sets the week's tasks,
-  publishes `reports/weekly/YYYY-WW-plan.md`.
+  publishes `reports/weekly/YYYY-WW-plan.md`. **And drafts the engineering ask — see
+  below.**
 - **Midweek** — orchestrator checks blockers, resolves handoffs, unsticks dependencies.
 - **Friday** — each agent writes a status to `reports/weekly/`. The orchestrator
   synthesizes one report to Ethan: what shipped, what moved the metric, what's blocked,
   what needs his decision.
+
+### The Monday engineering ask — a standing deliverable
+
+**Every Monday morning the orchestrator drafts one email to Kyri and Alex**, staged at
+`reports/pending-approval/engineering-ask-YYYY-WW.md` for Ethan to send. Ethan's
+instruction, 2026-11-02. It is a standing item, not a task that gets created when
+someone remembers.
+
+**One document a week, not a stream.** The whole point is that Kyri and Alex get a
+single ranked list they can plan against, and CSI gets a weekly rhythm instead of
+ad-hoc requests that arrive whenever an agent gets stuck.
+
+**What goes in it:**
+
+1. **What the agent team needs** — ranked, each with what it unblocks and for whom,
+   and whether CSI believes it is a bug or new work. They classify; CSI states its read.
+2. **What the booking desk needs.** Maya, Abe, Sue, Renee, Kim and Susej work in the
+   OMS all day and hit its edges constantly. Their input belongs in this email, and
+   gathering it is `operations`' standing job — not an afterthought when someone
+   happens to mention something.
+3. **Customer portal ideas** from the week's discussions — `product` owns these, drawn
+   from what sales hears in deals and what revops sees in account behaviour.
+4. **Open items from previous weeks**, with their status, so nothing silently drops.
+
+**Nothing gets held back for being probably-chargeable** — see `§9.6`. Rank it low and
+include it.
 
 ---
 

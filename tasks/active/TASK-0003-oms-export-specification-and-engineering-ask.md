@@ -21,9 +21,17 @@ partial ones.
 **Most of the input already exists in writing — synthesize, do not re-collect.** Read:
 `reports/analytics-reconciliation.md` ("Still missing", ranked), `reports/carrier-margin-resolved.md`
 ("Data defects found — for Kyri and Alex", three items), `reports/pending-approval/data-access-request.md`
-(a drafted five-item note), and `reports/freightflow-agreement-review.md §1.2` (the scope
-test to apply before any ask leaves the building, and item S3, which flags this exact export
-as contractually ambiguous).
+(a drafted five-item note), `reports/pending-approval/vadim-data-request.md`, and
+`reports/freightflow-agreement-review.md §1.2` (the scope test to apply before any ask leaves
+the building, and item S3, which flags this exact export as contractually ambiguous).
+
+**Read the Vadim note before you write a line of the engineering ask.** It makes a claim that
+may shrink this task substantially: the Flight Confirmation List, Ready to Invoice List and
+Collect Shipments pages already display booking-level detail, so **one of them may already
+export** — in which case nobody has to build anything and the ask becomes a permission
+request. Check that possibility first and say in the ask whether it was ruled out. Under
+`§9.6` the cheapest version of an ask that still unblocks the decision is the correct one, and
+under the FreightFlow agreement new work is a Change Order with a cost attached.
 
 ## Line to the metric
 Enabling metric — decision latency. Then everything else: without booking-level data the
@@ -33,7 +41,8 @@ the valuation in TASK-0006 has to be built on rate-card margin unweighted by vol
 ## Deliverable
 Two files.
 
-1. `context/oms-export-spec.md` — the technical specification. One row per booking. Field
+1. `reports/oms-export-spec.md` — the technical specification (this path, not
+   `context/`, so it matches what the product agent already points at). One row per booking. Field
    list with name, type, grain, and **what it unblocks and for whom** on every field, so
    nothing is in there because it might be nice. At minimum: booking ID, booking date,
    landed date, shipping funeral home ID, receiving funeral home, origin gateway,
@@ -80,7 +89,12 @@ Do not expand the ask to be comprehensive. A longer ask is a worse ask.
 `data/raw/` is read-only to agents.
 
 ## Dependencies
-- Blocked by: none. Every input is already written down.
+- Blocked by: none, but **sequenced behind the Vadim conversation** if Ethan has it first.
+  Vadim's answer on how booking agents actually pick a route could reorder this entire ask —
+  if the desk works from experience rather than the rate table, cleaning the rate table drops
+  in priority and capturing the institutional knowledge rises. Check the task log for Ethan's
+  readout before finalizing the ranking; if it hasn't landed by Wednesday, rank without it and
+  say so.
 - Blocks: TASK-0002's instrumentation spec may add a quote-log item; weeks 46+ churn, CAC,
   account value, corridor mix and cohort work; volume weighting for TASK-0005 and TASK-0006
 - Inputs needed from: data-analyst (TASK-0002) — the quote-log spec, if it lands by Wednesday.

@@ -549,6 +549,17 @@ project, and it binds every agent.
    `templates/data-request-template.md`; Ethan sends it. Owners and open requests:
    `context/brain/data-owners.md`.
 
+   **Anything touching labour cost goes to Donald.** Ethan's rule, 2026-11-02. Agent
+   wages, salary, contractor rates, fully-loaded cost per hour, headcount cost,
+   commission — all of it routes through Donald, never through Vadim or the bookings
+   directors, and never inferred from public salary data.
+
+   The split that matters for **cost to serve**, which several agents need:
+   **Vadim owns how long a booking takes** (hours per booking type — an operational
+   question about his team). **Donald owns what an hour costs** and therefore the cost
+   figure itself. Ask each for their half; never ask one for the other's, and never
+   combine them into a single number without Donald's input.
+
    **Engineering asks are rationed.** Kyri and Alex work under the FreightFlow
    Software Development and Support Agreement (`data/raw/freightflow-agreement.pdf`),
    which has defined scope. **Not every ask gets met, and asks that fall outside that
@@ -619,11 +630,32 @@ tasks/
 
 **Hard rule: no agent has more than 5 open tasks in `tasks/active/` at once.** If the
 orchestrator wants to assign a sixth, something must move to `done/` or the new task
-goes to `backlog/`. This is a constraint on the orchestrator, not a suggestion.
+goes to `backlog/`. This is a constraint on the orchestrator, not a suggestion. An
+agent with nine tasks does nine mediocre things.
 
-**Second hard rule: no more than 15 tasks open across the whole team.** Nine agents at
-five tasks each is 45 concurrent workstreams and no coherent program. The orchestrator
-runs a focused team, not a busy one.
+**The team-wide cap of 15 was lifted by Ethan on 2026-11-02. All fourteen agents may
+be active.** The original cap existed partly on cost grounds; CSI is on a Claude Max
+subscription, so agent work consumes rate limits rather than dollars, and the
+arithmetic no longer argues for holding agents back.
+
+**What still constrains the orchestrator, and it is not money:**
+
+- **Coherence.** Fourteen agents producing fourteen reports a week means nobody reads
+  them, findings contradict each other, and the orchestrator spends its cycle
+  synthesizing instead of deciding. Activate an agent because there is a real question
+  in its lane this week — not to look thorough.
+- **Rate limits.** Heavy parallel work can exhaust the account's shared usage limits,
+  which stops *Ethan's* own sessions too, not just agents. Spread heavy tasks across
+  the week rather than firing everything Monday morning.
+- **Dependencies.** Several agents are blocked on data that does not exist yet
+  (`§4.3`). Starting an agent that will spend its session discovering it cannot
+  proceed is worse than leaving it dormant and saying so.
+- **Ethan's attention.** Every finding that needs a decision becomes a queue item for
+  one person. Fourteen agents can generate more decisions per week than any principal
+  can make well.
+
+Judge the roster on whether each active agent is producing something that changes what
+CSI does — not on how many are running.
 
 Task file schema is in `templates/task-template.md`. Agents update the `Status` field and
 append to the `Log` section as they work. They never edit the `Objective`, `Success

@@ -6,6 +6,15 @@
 
 ---
 
+> **Update, same day — there is a second failure mode, and it is worse.**
+> This report covers carrier choice that **leaks margin at an unchanged customer price**
+> (MIA→GUA: both carriers $1,450 to the funeral home). Vadim then sent a live IAD→POS
+> quote at **over $3,000** on a lane where the system holds a through rate at **$1,545** —
+> the customer quoted roughly double, which attacks `CLAUDE.md §1` differentiator #1
+> rather than margin. **`reports/quote-integrity-iad-pos.md` covers it**, and the §5
+> boundary below applies there in full and with more force: he named an individual agent,
+> and that name appears in no report, dataset or output.
+
 ## The answer
 
 **On lanes where two carriers both serve the route, which one an agent picks is a margin decision that nobody is managing, nothing is measuring, and the customer cannot see.** The COO has been giving verbal guidance for a long time; some agents follow it, some book by habit, and there is no record of which happened on any shipment.

@@ -7,6 +7,16 @@ owner: PM orchestrator
 
 Newest first. One line per merged change: date, file, what changed, who approved.
 
+- 2026-11-01 — Full backfill of 38 claude.ai Project chats (Feb–Oct 2026) into the brain:
+  company-facts, learnings-and-principles, ways-of-working, open-questions (questions
+  #9–#31 added; new "Conflicts awaiting Ethan's ruling" C1–C16), 00-INDEX; initiatives
+  updated (federal-contracting, international-partners, nfda-2026) and created
+  (customer-portal, oms-build, sales-team, google-ads, website-rebuild, aws, acquisitions,
+  trade-shows, quarterly-shipping-report, hubspot-hygiene, white-glove-hnw,
+  corporate-savings-calculator); new people, accounts-and-pipeline, deliverables-index,
+  sources. Conflicts listed in open-questions for Ethan's ruling.
+  Approved: Ethan (requested the backfill).
+
 - 2026-11-01 — data-owners: Donald confirmed as owner of secondary-service data; he
   prefers a conversation over email and wants to stay looped in. DR-001 converted to a
   meeting agenda (secondary-service margins, new sales team, dynamic pricing).

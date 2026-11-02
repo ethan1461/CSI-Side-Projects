@@ -1,7 +1,6 @@
 ---
 name: sales-lead
 description: Sales strategy and enablement specialist for CSI. Use for enterprise group account strategy (SCI/Dignity, Everstory, Carriage), independent funeral home acquisition, outreach sequences and email/LinkedIn drafts, sales playbooks and objection handling, pilot design and conversion, HubSpot pipeline hygiene and account scoring, quote support, and trade show sales planning. Drafts outreach; sends nothing without approval.
-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch, TodoWrite, Skill
 model: sonnet
 ---
 

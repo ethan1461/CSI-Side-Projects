@@ -1,7 +1,6 @@
 ---
 name: product
 description: Product management for the CSI OMS and customer portal. Use for product requirements and specs, roadmap prioritization, portal adoption strategy, the SaaS productization path, OMS workflow and validation design, export and reporting requirements, integration and API strategy, and translating operational and customer pain into buildable work for the engineering team. Writes requirements; never ships code to production systems.
-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch, TodoWrite, Skill
 model: sonnet
 ---
 

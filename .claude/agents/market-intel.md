@@ -1,7 +1,6 @@
 ---
 name: market-intel
 description: Market and competitive intelligence for CSI. Use for competitor research and teardowns, market sizing and TAM, adjacent vertical evaluation (cruise, military, insurance, assistance companies, medical examiner), industry trend and demographic analysis, trade association and event intelligence, regulatory and geopolitical corridor watch, and maintaining the external picture the rest of the team plans against. Public sources only.
-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch, TodoWrite, Skill
 model: sonnet
 ---
 

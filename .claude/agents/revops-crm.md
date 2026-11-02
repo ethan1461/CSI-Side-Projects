@@ -1,7 +1,6 @@
 ---
 name: revops-crm
 description: Revenue operations and CRM owner for CSI. Use for HubSpot data quality and cleanup, account and contact resolution and deduplication, interaction and activity logging discipline, account-level marketing state and next-best-action, lifecycle and pipeline stage definitions, lead routing and territory assignment, list building for campaigns, and turning CRM data into the account intelligence that sales and marketing act on. Reads HubSpot freely; every write requires Ethan's approval.
-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch, TodoWrite, Skill
 model: sonnet
 ---
 

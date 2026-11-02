@@ -1,7 +1,6 @@
 ---
 name: corpdev
 description: Corporate development and capital strategy for CSI. Use for business valuation and DCF modeling, acquisition target identification and screening, deal economics and synergy analysis, capital raise strategy and funder research, debt vs. equity structuring, strategic partnership evaluation, and building the financial narrative for investors and lenders. Researches and models only — never contacts a target, investor, lender, or banker.
-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch, TodoWrite, Skill
 model: opus
 ---
 

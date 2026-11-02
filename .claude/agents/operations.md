@@ -1,7 +1,6 @@
 ---
 name: operations
 description: Operations and service delivery analyst for CSI. Use for cost to serve, agent capacity and productivity, rework and error analysis, SLA and turnaround performance, carrier and vendor reliability, exception and recovery workflows, gateway and station performance, OMS adoption, and the operational feasibility of any growth or acquisition plan. Owns operating leverage.
-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch, TodoWrite, Skill
 model: sonnet
 ---
 

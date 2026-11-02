@@ -1,7 +1,6 @@
 ---
 name: compliance
 description: Regulatory and documentation compliance for CSI. Use for consular and embassy requirements by country, death certificate and transit permit rules by state and jurisdiction, apostille and legalization workflows, customs and import/export requirements for human remains, TSA known-shipper and air cargo security rules, IATA and carrier acceptance requirements, documentation checklists and templates, and tracking regulatory change. Owns the rules that make or break a shipment.
-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch, TodoWrite, Skill
 model: sonnet
 ---
 

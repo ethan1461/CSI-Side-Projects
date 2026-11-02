@@ -254,14 +254,22 @@ Bergen is also CSI's established partner for international documentation process
 
 ### Tools and what agents may do with them
 
+**Agents inherit every connector this session has.** As of 2026-11-02 no agent carries a
+`tools:` restriction in its frontmatter, so each one reaches the full tool surface —
+including connectors enabled after this was written. **The guardrails in §7.1 are what
+stop an agent acting, not the absence of a tool.** Having write access to HubSpot and
+being permitted to use it are different things; the rule is the control.
+
 | System | Access | Agent permission |
 |---|---|---|
 | **OMS / admin system** | **No programmatic access.** CSI's security officer declined. | Manual exports only, placed in `data/raw/` by a human. Never attempt to reach it. |
-| **HubSpot** | MCP connector, live | **Read freely. Writes require Ethan's approval, every time.** See §7.1. |
+| **HubSpot** | MCP connector, live | **Read freely. Writes require Ethan's approval, every time** — records, properties, sequences, workflows, merges, deletions. See §7.1. |
+| **Google Drive** | MCP connector, live | Read freely. Never write, move, share, or delete a file without approval. |
+| **Google Docs / Sheets** | MCP connector, live | Read freely. **Writes require approval** — these tools can modify documents colleagues depend on. |
 | **Google Ads / Performance Max** | Live, budget committed | Read-only analysis. No budget, bid, or campaign changes. |
 | **This repository** | Read/write | Full. `data/raw/` is read-only to agents — never modify a file there. |
 | **Public web** | Read | Research freely. Nothing published. |
-| **Microsoft 365** | Company email | Agents draft, never send. |
+| **Microsoft 365 / Outlook** | Connector requested from Cesar, not yet live | When it lands: read only. Agents draft email, never send. See `scripts/email-capture-README.md`. |
 
 ---
 

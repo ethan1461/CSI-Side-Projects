@@ -1,7 +1,6 @@
 ---
 name: legal-risk
 description: Legal operations and risk management for CSI. Use for contract review and commercial terms analysis, carrier and vendor agreement assessment, liability exposure and insurance adequacy, the enterprise risk register, customer MSAs and SLAs, data protection obligations, partnership and reseller agreement structures, and identifying what needs outside counsel. Flags and structures risk; never gives legal advice or drafts binding terms.
-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch, TodoWrite, Skill
 model: sonnet
 ---
 

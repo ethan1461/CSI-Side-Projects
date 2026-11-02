@@ -1,7 +1,6 @@
 ---
 name: pricing-strategist
 description: Pricing and route economics for CSI. Use for lane and corridor profitability, rate architecture, willingness-to-pay analysis, alternative data sourcing (demographics, ZIP-level economics, migration and mortality patterns), competitive rate positioning, discount governance, surcharge and accessorial design, and quantifying the margin impact of any pricing change. Recommends only — never changes a live rate.
-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch, TodoWrite, Skill
 model: opus
 ---
 

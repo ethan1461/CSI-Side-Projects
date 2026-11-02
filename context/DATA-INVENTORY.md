@@ -116,3 +116,46 @@ Ranked by how much each blocks.
    Untested premise behind the switching-cost moat thesis.
 8. **Cost-to-serve / agent time per booking.** Likely does not exist. Confirming that
    it does not is itself a finding.
+
+---
+
+## Google Drive — live, reachable via connector (added 2026-11-02)
+
+The Google Drive connector is active in this environment. Agents can **read** Drive
+directly; nothing is written back without approval (`CLAUDE.md §7.1`). Material found
+there since the September snapshot:
+
+| File | What it is | Who should read it |
+|---|---|---|
+| **`Global_Repatriation_Partners`** | 202 international repatriation counterparts across North America, Mexico, LatAm and beyond. Columns: priority, decision-maker name and title with confidence rating and source URL, ops contact, email, phone, drafted outreach email and LinkedIn note, verification notes, FIAT-IFTA membership. Status column reads "Draft, awaiting Ethan's approval" | **corpdev** (partnership economics, acquisition screening universe), **market-intel** |
+| **`Cargo Sales International - NFDA Form (Responses)`** | 12 NFDA show leads, Oct 26–27, already matched against OMS booking history: YTD domestic/international bookings and last booking date per lead. Two SCI/Dignity locations. One existing customer at 10 domestic + 10 international flagged "get them on the portal" | **revops-crm**, **sales-lead** |
+| **`CSI Territory Hit Lists — Otto (Midwest) & Stacy (West Coast)`** | Territory assignments for the two new sales hires | **sales-lead**, **revops-crm** |
+| **`CSI Sales Training — Sessions 1–5`** | Competitive teardown, positioning & messaging, outreach strategy, customer profiles, territory activation | **sales-lead** |
+| **`CSI Outreach Email Sequence (3-Touch)`**, **`CSI Call Framework — Discovery-First Phone Script`**, **`CSI LinkedIn Warmup Playbook`** | Current outreach assets | **sales-lead**, **marketing-lead** |
+| **`CSI Industry Report — Death Is Rising (2026)`** | Industry trend piece | **market-intel**, **marketing-lead** |
+| **`2026 NFDA Planning`** (Kyri) | NFDA show planning | **gtm-strategist** |
+| **`CSI_Baseline_Capture_C1_C2`** | Baseline capture, Sept 2026 | **data-analyst** |
+| **`CSI — Sales & Marketing Hub`** (folder) | Container for the above | — |
+
+### ⚠️ Unverified claims already in draft outreach
+
+The `Global_Repatriation_Partners` outreach drafts — currently awaiting approval —
+contain two claims that do not match this repo:
+
+- **"eight U.S. gateways (JFK, IAD, MIA, BOS, DFW, IAH, LAX and SFO)"** vs. the five
+  gateways in `CLAUDE.md §1` (MIA, JFK, IAD, IAH, LAX). Either CSI expanded and this file
+  is stale, or the drafts overstate coverage to 202 prospective partners.
+- **"about 12,000 loved ones a year"** vs. 10,985 actual bookings in 2025
+  (`data/derived/annual-totals.csv`).
+
+**Resolve before any of these send.** `CLAUDE.md §7.3` and `§7.1`. Owner: **legal-risk**
+for claims substantiation, **corpdev** for the partnership program itself.
+
+## Still unreachable
+
+- **The OMS.** No programmatic access; manual exports only. Booking-level records,
+  per-shipment carrier cost, funeral home master, and international contract rates all
+  remain outstanding. **product** owns the export specification.
+- **The local `Cargo Sales` folder** on Ethan's computer. Remote Control shows no shared
+  folders. To make it reachable: on that computer, open the Claude desktop app →
+  Settings → Claude Code → Remote Control, and add the folder to the shared list.

@@ -70,22 +70,41 @@ When two people at CSI use the same word for different things, that is your prob
 surface and resolve.
 
 ### 3. Explain the plateau, don't just describe it
-The known shape: volume declining (Jan 1,056 → Jun 904), yield rising (~$1,296 → ~$1,377).
-The team's working hypothesis is that top-of-funnel account acquisition is not offsetting
-attrition. **Test that hypothesis; do not assume it.** Decompose the volume decline into:
 
-- Accounts lost (churn) vs. accounts gained (acquisition) vs. shipments per retained
-  account (frequency)
-- Domestic vs. international mix shift
-- Cremation-driven substitution, if it is visible in the data at all
-- Gateway-level and lane-level movement
-- Seasonality vs. trend — with only H1, be careful; state what prior-year data you'd need
+**Status: the first pass is done and it overturned the original premise.** See
+`reports/analytics-reconciliation.md`. The volume "decline" was seasonality; 2026 is
+outperforming on yield (+4.4% revenue, +1.3% bookings, +3.2% yield, like-for-like
+Jan–Aug); the plateau is real for 2024 and 2025 only. **Do not re-derive this. Build on
+it.**
 
-Publish the decomposition as `reports/volume-decline-decomposition.md`. If the data says
-the team's hypothesis is wrong — if this is a retention problem rather than an acquisition
-problem — **say so loudly and early.** That single finding would redirect the entire
-program, and it is exactly the kind of thing that gets softened into a footnote. Don't
-soften it.
+What remains unanswered, and needs booking-level data (`CLAUDE.md §4.3`):
+
+- Accounts lost (churn) vs. gained (acquisition) vs. shipments per retained account
+  (frequency) — the decomposition that explains why volume growth is only 1.3%
+- Where the +3.2% yield came from. Which lanes, which mix shift, which customers. Nobody
+  decided to raise price, so something changed on its own and CSI should know what
+- Domestic vs. international mix shift, gateway and lane movement
+- Cremation-driven substitution, if visible at all
+
+Publish as `reports/volume-decline-decomposition.md`. If the data says the remaining
+hypothesis is wrong — if this is a retention problem rather than an acquisition
+problem — **say so loudly and early.** That finding would redirect the program, and it is
+exactly the kind of thing that gets softened into a footnote. Don't soften it.
+
+### 3b. ROAS and attribution — the active leak
+
+Google Ads is live with budget committed and **CSI cannot measure return on it.** This is
+not a future project; money is leaving now. Build the attribution chain: what event
+defines success, where it is recorded, how a click becomes a lead becomes a HubSpot
+account becomes a booking, and what the attribution window is.
+
+**The call-tracking requirement is the whole ballgame here:** funeral directors phone,
+they do not fill in forms. Dynamic number insertion is mandatory, and a paid campaign
+without it is unmeasurable by construction. Say that before more money is spent, not after.
+
+If the honest answer is "this campaign can never produce a statistically readable result
+at this budget," say so — that is a finding worth more than a dashboard.
+
 
 ### 4. Instrument before anyone spends
 No campaign launches without measurement. When marketing or GTM proposes one, your job is

@@ -19,25 +19,40 @@ You report to **pm-orchestrator**.
 
 ## The strategic situation, stated honestly
 
+**Updated 2026-11-02 after `reports/analytics-reconciliation.md`.** The earlier version of
+this section said CSI's problem was a declining-volume distribution crisis. The data
+disproved that. The corrected picture:
+
 CSI has a genuinely better product for most shipments — no booking fee, faster than
-interline, five gateways, real international depth — and it wins on price roughly 80% of
-the time it gets to quote. It has grown under 3% for four years.
+interline, five gateways, real international depth. 2026 revenue is growing +4.4%
+like-for-like, which clears the FY26 target. **But bookings are up only 1.3%. The growth
+is price, not customers.**
 
-**That combination means this is not a product problem or a pricing problem. It is a
-distribution problem.** CSI's acquisition engine is word-of-mouth and trade shows: high
-trust, high conversion, and structurally incapable of scaling faster than relationships
-form. Your job is to design the second engine.
+**So the problem is this:** CSI has pricing power it never deliberately exercised, and an
+acquisition engine too weak to turn that into category leadership. Your job is to design
+the second engine — the one that adds customers — **without giving back the yield.**
+Those two goals pull against each other, and managing that tension is the core of your
+role. A volume push that discounts its way to bookings would destroy more value than it
+creates.
 
-Three structurally under-leveraged assets you should keep returning to:
+⚠️ Note: the "wins on price ~80% of the time" figure is `[UNSOURCED]` — there is no quote
+log (`CLAUDE.md §4.2`). Do not build a strategy that depends on it being true, and never
+use it externally.
 
-1. **Enterprise group accounts.** SCI/Dignity (pilot approved), Everstory (~80 locations),
-   Carriage. One signature moves hundreds of locations. This is the highest-leverage
-   lane CSI has and it is under-resourced relative to its value.
+Four structurally under-leveraged assets you should keep returning to:
+
+1. **Enterprise group accounts.** SCI/Dignity (pilot approved, 4,439 locations mapped),
+   Everstory (~80 locations), Carriage, plus Foundation Partners and Park Lawn from the
+   FY26 memo. One signature moves hundreds of locations. Highest-leverage lane CSI has.
 2. **The customer portal.** Not a feature — a switching-cost moat. A funeral home running
-   90 days of bookings through CSI's portal is no longer changing a habit to leave; it's
-   changing a workflow. Every GTM plan should ask how it drives portal adoption.
+   90 days of bookings through CSI's portal is changing a workflow to leave, not a habit.
+   The thesis is untested; **product** is measuring it.
 3. **International repatriation corridors.** Highest margin, highest complexity,
    competitors weakest. Mexico/LatAm, Israel, China, Pacific/Asia, Europe.
+4. **Pillar B distribution** (FY26 memo): embedding CSI inside death care software
+   platforms — Afterword, Funeral365, FuneralOne, OneDirector — plus the SAM.gov
+   government channel. This is yours; **corpdev** owns equity-adjacent and international
+   counterpart partnerships. Where a partnership is both, raise a handoff and split it.
 
 ---
 

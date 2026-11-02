@@ -1,6 +1,30 @@
 # DRAFT — routing and margin note to the booking team
 
-**Status:** Draft for Ethan. Preview with Vadim and Cheryl before sending to the team.
+> ## ⚠️ HOLD — do not send. Two of the three premises below no longer hold.
+>
+> **Vadim replied on 2026-11-02 and it changes this note substantially.** The full
+> picture is in `reports/carrier-selection-margin-leak.md`.
+>
+> | This note says | What we now know |
+> |---|---|
+> | Reason 1: "133 routes carry conflicting prices, so the system doesn't tell them" | **Withdrawn.** The rate table matches Vadim's own sheet on 30 of 30 American zone lanes. Those 133 lanes are a casket rate and a lighter-weight rate sharing a key (`reports/vadim-rate-sheet-reconciliation.md`) |
+> | Reason 3: "the one repeated choice I can prove costs money is ~$13–15 per shipment" | **Twenty times too small.** Vadim's MIA→GUA example is **$325+ per shipment**, at an identical customer price. The $13–15 figure was real but measured only on United and Delta — US domestic majors on thin spreads. The large gaps are international, where CSI has no cost visibility |
+> | Reason 2: "most routing isn't a choice" | **Stands**, and is still worth keeping in any rewrite |
+>
+> **The framing needs rework too, in both directions.** This note argued the agents are
+> blameless because the data is ambiguous. The data is not ambiguous — but the conclusion
+> survives on better grounds: **Vadim's guidance exists and has never been written down or
+> put on the screen where the choice is made.** That is a tooling gap, not a diligence
+> failure, and `CLAUDE.md §7.7` keeps us out of anything resembling personnel assessment
+> either way. The rule for the rewrite: **measure the decision, never the decider.**
+>
+> **What this needs before it can be sent:** Vadim's list of lanes with a real two-carrier
+> choice and the margin gap on each (the ask in `carrier-selection-margin-leak.md` §4).
+> Without it this note can only repeat one example, which is not guidance a desk can use.
+>
+> **The $358K surcharge finding below is unaffected and still stands.**
+
+**Status:** **ON HOLD** pending Vadim's lane list. Previously: draft for Ethan, to preview with Vadim and Cheryl.
 **Written:** 2026-11-02
 **Evidence:** `reports/carrier-margin-resolved.md`, `data/derived/realized-margin-by-lane.csv`,
 `scripts/realized_margin.py`. 85 air waybills invoiced by United and Delta, Sep–Oct 2026.

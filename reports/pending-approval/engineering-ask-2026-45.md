@@ -13,7 +13,13 @@
 
 **Three checks before you send, about 15 minutes, colleague first (`§9.6`):**
 1. **Click the Funeral Home Records bulk CSV export** in the admin tools (or ask Susej). It is documented and unverified; your 2026-11-02 confirmation covered the three list pages only. If it works and has the EA-45-03 fields, the item shrinks to "who runs it". Keep it in the list as a closed item; do not delete it.
-2. ~~**Vadim's question 1**~~ — **resolved 2026-11-02 by his August rate sheet.** The desk's sheet and the OMS published table agree on 30 of 30 American zone lanes, to the cent. The "133 conflicting prices" were a casket rate and a lighter-weight rate sharing a key. EA-45-10 is rewritten as a question and EA-45-09 no longer asks them to enforce the documented key — which, as written, would have deleted the lighter-weight rates. Full working: `reports/vadim-rate-sheet-reconciliation.md`.
+2. ~~**Vadim's question 1**~~ — **answered 2026-11-02, and it moved two items off this list.** His rate sheet showed the OMS published table agrees with the desk's sheet on 30 of 30 American zone lanes, so the "133 conflicting prices" were a casket rate and a lighter-weight rate sharing a key (`reports/vadim-rate-sheet-reconciliation.md`). His reply then added the thing that changes this ask:
+
+   > "I am not 100 percent sure why there are so many rates in system for the lanes where you are seeing multiples. **I believe Donald is in charge of inputting that data.**"
+
+   **So EA-45-05 and EA-45-09 go to Donald first, not to Kyri and Alex.** `§9.6` is explicit: ask the colleague before engineering. Sending an Error Response Request for rows a colleague enters by hand would be wrong on the facts and would spend credibility we need for the export items. **Both are struck from Part 1** and moved to the DR-001 conversation; they return as engineering items only if Donald says the system is doing it.
+
+   **One item replaces them, and it is better than both: EA-45-12, margin rank at carrier selection.** Vadim's reply documents a margin leak with a tooling fix. Item IDs are permanent, so the new item takes the next number rather than reusing a struck one. Full working: `reports/carrier-selection-margin-leak.md`. **On the evidence this is the most valuable item in the ask, and I have ranked it third** — behind the two export items it depends on for measurement.
 3. **The security officer.** The nightly job is the first scheduled data flow out of the OMS since the officer declined agent access. It is not agent access: it is a PII-stripped export into a CSI-owned folder. But they should hear it from you before they hear it from Kyri. Your call.
 
 **Decisions that are yours:**
@@ -81,7 +87,7 @@ This is the first of a weekly note: one list, ranked, so you can plan against it
 
 - For each item we say whether we think it is a **bug** (something documented that doesn't behave as documented) or a **feature** (something new), and where we think it sits against the agreement: an Error Response Request, the included monthly support hours, or new work. **Those are our reads, not rulings. You classify.** Where we weren't sure, we say so.
 - If you would treat any item as chargeable, or it would take the month past the included hours, please tell us **before you start**, with your estimate, and I will reply in writing. This note is a request. It is not a Change Order and not an instruction to begin chargeable work.
-- The ranking is by how much each item unblocks per unit of effort. If you can't do everything, rank is our priority signal. **If you can only do three things: EA-45-01, EA-45-04 (a written answer; nothing built) and EA-45-05.**
+- The ranking is by how much each item unblocks per unit of effort. If you can't do everything, rank is our priority signal. **If you can only do three things: EA-45-01, EA-45-02 and EA-45-12.**
 - Nobody is asking for access to the OMS, read or write. Every item is "produce this output" or "tell us this".
 - So we don't repeat ourselves: **there is no export function on the Flight Confirmation List, Ready to Invoice List or Collect Shipments.** These are not "switch on the button" requests.
 - **Decedent and family data.** Every export is built from a named column list at the query. Nothing is stripped afterwards. The excluded columns are named in spec §4.2, and if you know of any we have missed, please add them.
@@ -95,20 +101,25 @@ This is the first of a weekly note: one list, ranked, so you can plan against it
 | Rank | ID | Item | Our read: type | Our read: contract | Unblocks |
 |---|---|---|---|---|---|
 | 1 | EA-45-01 | Cohort extract: four columns, full history, run once | Feature, very small | Ambiguous: a one-off data pull | Six working streams; every account metric |
-| 2 | EA-45-02 | Booking-level file, nightly (weekly is fine) to a Drive folder | Feature | **Ambiguous:** the agreement lists export capabilities, and doesn't name this one. We aren't asserting a side | Ten working streams; portal adoption |
-| 3 | EA-45-03 | Funeral home master (try the existing bulk CSV first) | Existing capability; new fields if missing | Self-serve if the export works; small new fields if not | Five |
-| 4 | EA-45-04 | Does the OMS capture booking duration? Six questions | A question; a feature only if the answer is no | A question, no deliverable. If capture is absent: new work | Five, plus the desk's own turnaround measure |
-| 5 | EA-45-05 | `shipment_rate_type` blank on all 6,919 published rows | **Bug** | **Error Response Request, Level 3** | Four |
+| 2 | EA-45-02 | Booking-level file, nightly (weekly is fine) to a Drive folder | Feature | **Ambiguous:** the agreement lists export capabilities, and doesn't name this one. We aren't asserting a side | Ten working streams; portal adoption. **Also the only way to size the margin leak in EA-45-12** |
+| 3 | EA-45-12 | **Show margin rank when an agent picks a carrier** | Feature | New work | A margin decision made ~11,000 times a year with no guidance on screen |
+| 4 | EA-45-03 | Funeral home master (try the existing bulk CSV first) | Existing capability; new fields if missing | Self-serve if the export works; small new fields if not | Five |
+| 5 | EA-45-04 | Does the OMS capture booking duration? Six questions | A question; a feature only if the answer is no | A question, no deliverable. If capture is absent: new work | Five, plus the desk's own turnaround measure |
 | 6 | EA-45-06 | Carrier invoice lines from the Airline Invoice Audit | Feature | Ambiguous: an audit export, or new | Four |
-| 7 | EA-45-07 | Contracted rates for the 15 carriers that have none | A question first, then data | Ambiguous: international rate-card help (support hours), or an export | Four, plus a company OKR |
+| 7 | EA-45-07 | Contracted rates for the 15 carriers that have none | A question first, then data | Ambiguous: international rate-card help (support hours), or an export | Four, plus a company OKR. **Avianca and Volaris are the worked example in EA-45-12** |
 | 8 | EA-45-08 | Are quotes stored, and linked to the booking they become? | A question; a feature if no | A question. Capture or export if absent: new work | Two to four |
-| 9 | EA-45-09 | The documented uniqueness key looks wrong; text sits in numeric columns | **Bug (the documentation, and 5 text cells)** | **Error Response Request, Level 3** | Three |
-| 10 | EA-45-10 | Confirm our reading: the 133 "conflicting" lanes are two products in one key | **Question, not a bug** | A question. The fix, if any, is EA-45-05 | Folds into EA-45-05 |
-| 11 | EA-45-11 | Funeral home required before a booking can be invoiced | Feature | New work | Three |
+| 9 | EA-45-10 | Does the quote tool or portal read the multi-row rate lanes, and how does it choose? | **Question, not a bug** | A question | Quote integrity |
+| 10 | EA-45-11 | Funeral home required before a booking can be invoiced | Feature | New work | Three |
+| — | ~~EA-45-05~~ | ~~`shipment_rate_type` blank on all published rows~~ | **Struck — goes to Donald, who inputs this data** | — | Returns here only if Donald says the system is doing it |
+| — | ~~EA-45-09~~ | ~~The documented uniqueness key looks wrong~~ | **Struck — same reason.** The *Rates Reference* correction stays ours to request later | — | Same |
 
-**Why this order.** Per unit of effort, and from the team's written requirements. The two questions (4 and 8) sit high because answering them costs an hour and shapes everything after. The bugs sit at 5 and 9 because they unblock fewer analyses than the exports, not because they matter less: if you agree they are errors, we would expect them fixed in the ordinary course whatever their rank.
+**Why this order.** Per unit of effort, and from the team's written requirements. The two pure questions (5 and 8) sit high because answering them costs an hour and shapes everything after. EA-45-12 sits third despite being the most valuable, because the two export items above it are what let us measure whether it worked.
 
-**One change since we started drafting.** We had ranked a tenth item as a Level 2 bug — 133 lanes with conflicting prices. We then reconciled the rate table against the sheet the booking desk prices from, and it matches to the cent. **There is no price conflict.** EA-45-10 is now a question confirming that, and the only real defect in the rate data is EA-45-05. We would rather tell you that than have you spend a day on it.
+**Two changes since we started drafting, both of which made this list shorter.**
+
+We had three rate-table defects on here, including a Level 2 bug — 133 lanes with "conflicting prices". We then reconciled the rate table against the sheet the booking desk prices from. **It matches on 30 of 30 American zone lanes, to the cent.** There is no price conflict; those lanes are a casket rate and a lighter-weight rate sharing a key because `shipment_rate_type` is blank. And Vadim tells us Donald enters that data by hand, so **the remaining two rate items are a conversation with Donald, not work for you.** All three are struck. We would rather tell you that than have you spend a day on it.
+
+What replaced them is EA-45-12, which came out of the same conversation and is worth more than all three were.
 
 ---
 
@@ -132,6 +143,16 @@ This is the first of a weekly note: one list, ranked, so you can plan against it
 **Contract note.** The agreement lists export capabilities and a reporting-ready database among the deliverables; it also names five specific queries and doesn't name this one, and a scheduled job is new. We aren't asserting a side.
 **Manual fallback if this isn't agreed:** Spec §12. It is partial, and we'd rather have the file.
 
+#### EA-45-12 — Show margin rank when an agent picks a carrier
+
+**Type:** feature. **Contract (our read):** new work. We expect this is a Change Order and we are asking for an estimate, not for you to start.
+**The problem, in our COO's words.** On lanes where two carriers both serve the route, which one gets picked is a margin decision with nothing on screen to guide it. Vadim has been giving verbal guidance for years; some agents follow it, some book from habit. His example: **MIA→GUA earns $375 on Avianca and over $700 on Volaris.** His own rate sheet prices both at **$1,450 to the funeral home** — so the customer's price, service and routing are identical, and the entire $325+ is margin we hand back for nothing. We do not know how often this happens; we cannot, because the carrier chosen is not in any export we have.
+**What we would like.** At the point an agent selects a carrier, show the available options ranked by CSI margin, with the gap in dollars. Not a block, not a warning, not a forced choice — the agent must always be able to override for schedule, capacity, embargo or a customer request, and routing quality has to win when it conflicts. Just the number on the screen at the moment of the decision.
+**Smallest version, and we would take this happily.** A static margin rank per lane, from a table we maintain, displayed read-only. No live rate maths, no logic, no integration. If that is a day's work it is the best-value day in this list.
+**What it needs from us first.** The margin ranking itself, which we do not yet have for most international lanes — that is EA-45-07. So this item can be designed now and populated later, and we are not asking you to wait on us to start thinking about it.
+**Why it is ranked third and not first.** EA-45-01 and EA-45-02 are how we would know whether this worked. Shipping a nudge we cannot measure is how CSI spent a year of marketing budget it could not account for, and we are not doing that again.
+**Boundary we are setting on ourselves, so you do not have to worry about it.** This is about the decision, not the person making it. **No export we ask for carries agent identity** — that exclusion is already written into the export spec (§4.2) and it is not negotiable from our side. We are not building a way to rank staff.
+
 #### EA-45-03 — Funeral home master
 
 **Type:** existing capability first; new fields if missing. **Contract (our read):** self-serve if the existing export works; small new fields if not.
@@ -153,14 +174,13 @@ This is the first of a weekly note: one list, ranked, so you can plan against it
 **Smallest version.** A written answer. Nothing built.
 **If stored:** it joins EA-45-02. **If not:** two stamped fields written by actions agents already take. Nobody is asked to type anything. This is about the process, by booking type; no agent identifier appears in any export.
 
-#### EA-45-05 — `shipment_rate_type` is blank on every published rate
+#### ~~EA-45-05 — `shipment_rate_type` is blank on every published rate~~ — STRUCK
 
-**Type:** bug. **Contract (our read):** Error Response Request. **Severity (CSI designates): Level 3.**
-**Observed.** 2026-11-02, in `rates-published-20261102.csv`. We hadn't checked earlier exports.
-**What.** `shipment_rate_type` is empty on all 6,919 published rows. The contracted export fills it (all `Casket`). We can't tell a casket rate from a cremated-remains rate in the published table, and they are different prices on the same lane.
-**Impact.** It is why only 33 of 129 matched lanes were usable for margin; populating it takes that to roughly 129. Four streams: pricing, corporate development, finance, analytics.
-**If it can't be fixed:** if the field doesn't exist on published rows at all, please tell us. We know that makes it a different conversation.
-**Fixed when.** It is populated on every published row, or you tell us why it can't be.
+**Not an ask this week.** `shipment_rate_type` is empty on all 6,919 published rows while the contracted export fills it, which means a casket rate and a cremated-remains rate can't be told apart. We had this as a Level 3 Error Response Request.
+
+**Vadim tells us Donald enters this data.** So this is a conversation with Donald before it is anything for you. If he tells us the system is dropping or refusing the field, it comes back as an Error Response Request with his answer attached. We would rather ask him first than open a defect against you for a blank column a colleague may simply not be filling in.
+
+**One question does survive, and it is a design question rather than a defect:** does the published rate table have a place for a rate type at all, or is `shipment_rate_type` only on contracted rows? If it has nowhere to live, that is new work and we would rank it. A one-line answer is enough.
 
 #### EA-45-06 — Carrier invoice lines (Airline Invoice Audit)
 
@@ -185,9 +205,10 @@ This is the first of a weekly note: one list, ranked, so you can plan against it
 **Why.** We can't compute a quote-to-booking rate or test any pricing hypothesis without one. Two streams have written dependencies (analytics, pricing); sales and go-to-market want it too.
 **Smallest version.** A written answer. Our analytics team will refine the field list next week.
 
-#### EA-45-09 — The uniqueness key is violated, and text sits in numeric columns
+#### ~~EA-45-09 — The documented uniqueness key looks wrong~~ — STRUCK
 
-**Type:** bug. **Contract (our read):** Error Response Request. **Severity (CSI designates): Level 3.**
+**Not an ask this week, for the same reason as EA-45-05: Donald enters this data.** Kept below because the findings stand and we will raise the *Rates Reference* correction once we have talked to him.
+
 **Observed.** 2026-11-02, `rates-published-20261102.csv`; not checked earlier.
 **What.** The Rates Reference says `airline + origin_type + origin + destination_type + destination + rate_type` is unique and that imports block duplicates. **181 keys appear more than once (482 numeric rows).** Having since reconciled the table against the desk's own rate sheet (EA-45-10), we think **the documented key is simply incomplete and the data is fine**: 133 of those 181 are a casket rate and a lighter-weight rate sharing a key because `shipment_rate_type` is blank. That leaves **48 exact repeats** — same key, same price — which look like genuine duplicate rows, and 5 rows carrying text in numeric columns.
 **Questions.** (1) Should the documented key include `shipment_rate_type`? We think yes, and that the Rates Reference is what needs correcting. (2) Is the constraint enforced by the database or only by the bulk importer? (If only the importer, rows added through the UI or carried from the legacy system would bypass it.) (3) Separately, `published_rate` is text on 5 rows ("varies per city") and `discount_rate` is text on 5 ("take $35 off pub" four times, "equal to pub" once), all American — these should be numeric or modelled properly.
@@ -197,11 +218,15 @@ This is the first of a weekly note: one list, ranked, so you can plan against it
 
 #### EA-45-10 — The 133 "conflicting" lanes: please confirm our reading
 
-**Type:** a question, not a bug. **Contract (our read):** a question; the fix, if one is needed, is EA-45-05.
+**Type:** a question, not a bug. **Contract (our read):** a question. The data fix, if one is needed, is Donald's (struck EA-45-05); the one thing that may be yours is the selection logic below.
 **An earlier draft of this note called these conflicting prices and asked you which row wins. We withdraw that.** We have since reconciled the published table against the rate sheet the booking desk actually prices from, and we think the table is correct.
 **What we found.** On 133 keys the same airline, origin, destination and rate type carry different prices — but the ratio between them is **always between 2.0x and 4.3x** (median 2.8x), which is a product difference, not a pricing error. On American's zone lanes the higher rate matches the desk's sheet on **30 of 30 lanes, to the cent**, including the five Puerto Rico lanes at $980.00. The lower rows cluster tightly by distance band ($207.19 short, $217.81 medium, $239.06 transcontinental) in a way a casket rate does not.
-**Our reading.** These are a casket rate and a lighter-weight rate (cremated remains, or infant) sharing one key because `shipment_rate_type` is blank — exactly the field in EA-45-05. **So EA-45-05 is the whole fix, and EA-45-09 is a documentation correction.** Confidence high on the pattern, medium on which product the lower rate is, because the label is the thing that's missing.
-**What we'd still like to know.** (1) Are we right that the lower rows are cremated-remains or infant rates? (2) **Does the quote tool or the customer portal read these rows, and if so how does it choose?** That is the one part of the original question that still matters: if a selection runs without the rate-type label, it could pick the wrong product's price. We have no evidence it does.
+**Our reading.** These are a casket rate and a lighter-weight rate (cremated remains, or infant) sharing one key because `shipment_rate_type` is blank. Filling that field is the whole fix, and Vadim tells us that is Donald's data entry rather than your code. Confidence high on the pattern, medium on which product the lower rate is, because the label is the thing that's missing.
+
+**So one question is left for you, and it has become more pointed rather than less.** Vadim says that when rates look wrong, "the better ones either remember the correct rate or check rate sheet to clarify. **Sometimes people just send out whatever is in system, right or wrong.**" So these rows do sometimes reach a funeral home as a quoted price.
+
+**(1) Does the quote tool or the customer portal read these multi-row lanes, and if so how does it pick a row?** Without a rate-type label there is nothing in the data to select on. If the answer is "the first" or "the lowest", a casket shipment could be quoted at roughly a third of the correct price. We have no evidence that happens — we ask because we cannot see the selection logic and the downside is asymmetric.
+**(2)** Secondary: are we right that the lower rows are cremated-remains or infant rates?
 **Method, if useful:** `scripts/reconcile_vadim_sheet.py` in our repo; outputs attached as `published-rate-collisions.csv`.
 **What we do.** We decide which row is correct and send you the keep/retire list. We do not ask you to pick a price.
 **Severity rationale.** Level 2: a defect the desk currently works around, with a possible customer-facing consequence we can't rule out. Not Level 1: nothing we know of stops operations.

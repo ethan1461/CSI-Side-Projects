@@ -8,6 +8,16 @@ yours to fetch.** The five come first because agents are idle until they land.
 
 ---
 
+## Before anything else: one email to Vadim
+
+**Ask him for the lane list.** He wrote that MIA→GUA earns $375 on Avianca and over $700 on Volaris. His own rate sheet prices both at **$1,450 to the funeral home** — identical. So that $325+ is pure margin, handed back for nothing, invisible to the customer.
+
+He clearly carries more of these in his head. **Ask for his top 10 lanes where two carriers both work, and the margin gap on each.** One email, no system work, and it is worth more this week than anything else currently queued — it converts a single anecdote into a ranked target list.
+
+Detail: `reports/carrier-selection-margin-leak.md`.
+
+---
+
 ## The five that unblock other people
 
 Everything here is short. Each one has an agent or a colleague waiting on the other side.
@@ -40,9 +50,10 @@ From `reports/weekly/2026-45-plan.md` §8. None has moved.
 1. **Approve the Week 45 OKRs** — and **KR3.1's bookings number is deliberately blank.** CSI has never set a monthly bookings target. I will not invent one; it has to be your number.
 2. ~~Talk to Vadim before the engineering ask goes out~~ — **done, you sent it.**
 3. **Send the engineering ask** (`reports/pending-approval/engineering-ask-2026-45.md`) — 11 ranked items, nothing dropped. **Drop item 5 from the old draft** (the read-only Postgres role); the FreightFlow agreement makes it a Change Order and trading the easy win to win that argument is a bad trade. Do items 1, 3 and 4 above first. **Due Wednesday.**
-4. **DR-001 with Donald** — add to it: marketing spend by channel by month, the ~$358K/yr surcharge question, loaded cost per agent hour, **and a QuickBooks sales-by-customer summary by month from Jan 2024** (customer totals only, no line detail or memos). That last one is new, and it is worth asking whatever Kyri and Alex say — it gives account value and revenue churn at monthly grain while the booking export is still being argued about.
+4. **DR-001 with Donald** — add to it: marketing spend by channel by month, the ~$358K/yr surcharge question, loaded cost per agent hour, **a QuickBooks sales-by-customer summary by month from Jan 2024** (customer totals only, no line detail or memos), **and now the rate table itself.** Vadim says *"I believe Donald is in charge of inputting that data"* — which moved two items off the engineering ask. For Donald: why do some lanes carry multiple rate rows; is the blank `shipment_rate_type` something he can fill; and can he confirm the Avianca/Volaris margin figures, since he owns margin analytics.
 5. **Approve the pricing reframe** — price to complexity and cost to serve, never to who the customer is.
 6. **Hold or release the 202 partner outreach drafts** — I recommend **hold.** They say "about 12,000 loved ones a year"; actual 2025 bookings were 10,985. That is an overstatement of ~9% in writing to partners.
+6b. **The booking-team routing note is now on hold, and I did that without asking.** Vadim's reply knocked out two of its three premises — the "conflicting prices" reason was withdrawn yesterday, and its headline figure of $13–15 per shipment is twenty times too small. Sending it as drafted would have put a number in front of the desk we already knew was wrong. It needs his lane list before it can say anything a desk can act on. Say the word if you want it out sooner regardless.
 7. **Three rulings:** C10 (years in business), **C12 (HubSpot or spreadsheets as the CRM of record)**, and open questions #1 / #25 (DNS cutover, GA4). C12 is the one that matters most — `revops-crm`'s view is "HubSpot, effective on a named date, with a sheet-to-HubSpot sync in the interim," and it recommends you rule *after* the cleanup runs, not before.
 8. **Approve two brain proposals** — Donald surcharge priority; Kyri is a contractor, not CTO. A third landed overnight (the C16 attribution gap reconciliation), so it is three now.
 

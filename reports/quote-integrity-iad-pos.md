@@ -49,11 +49,23 @@ A 170 kg casket, BWI→POS, flying 11/15. The options the table can offer:
 
 **The only price in the system that can actually be computed for this shipment is $2,932.50.**
 
-The quote went out at **$3,100 without pickup, $3,400 with**, routed BWI–MIA on American then MIA–POS on Amerijet. That sits just above the one computable option and is consistent with American's domestic leg ($631.88) plus Amerijet ($2,050) plus handling.
+The quote went out at **$3,150 without pickup, $3,450 with** (pickup is $300), routed BWI–MIA on American then MIA–POS on Amerijet. That sits just above the one computable option, and reconciles either way: American's domestic leg ($631.88) plus Amerijet ($2,050) is $2,681.88 before handling.
 
 **Read that way, the quote is defensible.** Faced with a heavy shipment and three flat rates whose weight terms are missing, routing to carriers with an explicit airport-pair or per-kilo price is a reasonable thing to do. It may even be the *conservative* thing — quoting $1,545 and then discovering the flat rate covered 100 kg would mean eating the overage or going back to a funeral director with a higher number.
 
-**I cannot say the agent was wrong. Neither can Vadim, and neither can the system.**
+### And the quote names two more constraints no rate table holds
+
+CSI's own standard quote language, printed at the top of this document:
+
+> *"Please note there is no guarantee that any of these airlines will have space available at the time of booking. All quotes are subject to space availability and **the shipper's known shipper status with the respective airlines**."*
+
+So there are **three** legitimate reasons an agent might route via Miami, and the rate data can see none of them:
+
+1. **Weight** — 170 kg against flat rates with no stated weight allowance.
+2. **Space** — a 170 kg casket on a named date (11/15). Direct capacity to Port of Spain may simply not exist that day.
+3. **Known-shipper status** — a TSA matter that varies by carrier. If CSI isn't a known shipper with a given airline on that lane, that carrier is not an option at any price.
+
+**I cannot say the agent was wrong. Neither can Vadim, and neither can the system.** Three separate constraints could each independently justify this routing, and not one of them is recorded anywhere we can query.
 
 ---
 
@@ -99,6 +111,14 @@ Whether to go back to a customer is yours (`§7.1` keeps agents away from custom
 1. **Fill the three weight columns.** Until then, every flat rate in the system is unquotable for heavy shipments, and 1,171 rates are affected. **This is new and it belongs in the engineering ask.**
 2. **Then** the comparison guardrail, and the margin ranking (EA-45-12).
 
+### One design change, and it is the best idea to come out of this
+
+The guardrail should **ask the agent why** when they pass over a cheaper option — one click: *no space* / *not known shipper* / *weight* / *routing or timing* / *customer asked* / *other*.
+
+Not as a compliance check. **Because it manufactures the dataset that does not exist.** Right now nobody can tell a wrong routing from a correct one, which is the whole reason this case is unresolvable and the whole reason the margin leak can't be sized. Capture the reason at the moment of the decision and within a month CSI knows how often the cheap carrier is genuinely unavailable versus how often it was simply missed — on every lane, not just the ones Vadim remembers.
+
+That turns one build into two outcomes: the nudge, and the measurement that says whether the nudge worked. It also protects the agents, because a routing with a recorded reason is a decision on the record rather than something to be second-guessed later from a rate table that couldn't see the constraint.
+
 **Important: this defect is probably not the rate-entry question we moved to Donald.** `shipment_rate_type` being blank looks like data entry. But `included_weight`, `weight_unit` **and** `flat_overage_surcharge` all empty on 100% of rows — three columns that exist in the export schema and are never once populated — looks more like an export dropping fields than a person forgetting them 6,919 times. **That is a question for Kyri and Alex, and a fair one to ask as a possible defect.**
 
 ---
@@ -115,7 +135,7 @@ The quote names the booking agent and it names the deceased.
 
 ## 7. For Ethan
 
-1. **Make the call in §3 before anything else.** Ten minutes, and it decides whether this is a bug, a training point, or an apology owed.
+1. **Make the call in §3 before anything else.** Ten minutes, and it decides whether this is a bug, a training point, or an apology owed. **Ask about space on 11/15 as well as price** — if there was no capacity for 170 kg direct to Port of Spain that day, the routing was correct and the case is closed.
 2. **Hold the IAD/BWI example out of any staffing conversation until that call is made.** Not because the broader concern is wrong, but because this instance is unproven and currently leans toward the agent being reasonable.
 3. **The missing weight columns go to Kyri and Alex** — see §5. If the engineering ask has gone, this is a short follow-up and a strong one: three schema columns, never populated, that make 1,171 flat rates unquotable.
 4. **Yesterday's MIA→GUA finding is unaffected.** Both carriers priced at $1,450, same weight, same shipment — no weight ambiguity in that comparison. That one still stands.

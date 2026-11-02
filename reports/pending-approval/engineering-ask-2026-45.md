@@ -240,6 +240,8 @@ What replaced them is EA-45-12, which came out of the same conversation and is w
 - Related: when an agent prices an airport-to-airport lane whose best rate is held at **region** level — American and United both price US → Caribbean as a flat rate — does the system surface that automatically, or does the agent need to know the destination resolves to that region?
 
 **Our read:** likely a bug, and if so a material one — but we're genuinely unsure, which is why it's a question. It also blocks something we want to build (EA-45-12): we can't warn an agent that a routing looks expensive when we can't compute what the alternative costs.
+
+**And one addition to EA-45-12 that came out of the same case.** When an agent passes over a cheaper carrier, we'd like the system to capture **why** — one click from a short list: no space / not a known shipper on that lane / weight / routing or timing / customer request / other. Our own quote template already warns customers that space and known-shipper status govern, and neither is recorded anywhere we can query, so today we cannot tell a correct routing from a mistaken one on any booking. That single field would tell us, and it would do more for this than the warning itself.
 **Method, if useful:** `scripts/reconcile_vadim_sheet.py` in our repo; outputs attached as `published-rate-collisions.csv`.
 **What we do.** We decide which row is correct and send you the keep/retire list. We do not ask you to pick a price.
 **Severity rationale.** Level 2: a defect the desk currently works around, with a possible customer-facing consequence we can't rule out. Not Level 1: nothing we know of stops operations.

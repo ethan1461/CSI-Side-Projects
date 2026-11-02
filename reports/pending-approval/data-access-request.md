@@ -7,6 +7,30 @@
 
 ---
 
+> ## ⚠️ SUPERSEDED IN PART — read this before using anything below
+>
+> **Three premises in this draft are wrong.** Corrected by Ethan 2026-11-02. `product`
+> is producing the authoritative version as TASK-0003
+> (`reports/pending-approval/engineering-ask-2026-45.md`). Use that one. This file is
+> kept for the clause research and the framing notes, not as the ask.
+>
+> | This draft says | Actually true |
+> |---|---|
+> | Booking-level detail may already export from Flight Confirmation / Ready to Invoice / Collect Shipments, so the ask might be a permission request | **None of those pages has export functionality.** The booking-level export is a genuine build — a Change Order, not a permission |
+> | International contracted rates may be a permission Vadim can grant | **Neither Ethan nor Vadim holds that access. Kyri and Alex do.** It stays on this ask. Separately, Vadim holds the current rate sheets themselves — that request went to him directly |
+> | Booking duration data may be an operations question | **Whether the system captures it is a Kyri/Alex question.** CSI is starting to be able to track it; nobody is sure it exists yet |
+>
+> **Also decided:** per the Week 45 plan §8, **drop item 5** (the read-only Postgres role).
+> The FreightFlow agreement makes it a Change Order, and trading the easy win to win that
+> argument is a bad trade. Items 1–3 go as Error Response Requests inside contract scope;
+> the **nightly export is the one feature ask**.
+>
+> **Knock-on for the plan:** the engineering ask can no longer shrink. It is larger and
+> more certain than when the plan was written, which makes the Friday test — one
+> prioritized ask leaving the building — matter more, not less.
+
+---
+
 ## Context for Ethan (delete before sending)
 
 This asks for three things, deliberately ordered cheapest-to-hardest so the easy wins

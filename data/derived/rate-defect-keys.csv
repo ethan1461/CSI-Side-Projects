@@ -1,0 +1,182 @@
+airline,origin_type,origin,destination_type,destination,rate_type,row_count,distinct_prices,prices_seen,min_price,max_price,max_over_min,defect_class
+Aeromexico,airport,ORD,airport,AGU,flat,3,3,875.0|470.0|1200.0,470.0,1200.0,2.55,conflict
+Aeromexico,airport,ORD,airport,BJX,flat,3,3,1200.0|470.0|875.0,470.0,1200.0,2.55,conflict
+Aeromexico,airport,ORD,airport,BOG,flat,3,3,470.0|975.0|1420.0,470.0,1420.0,3.02,conflict
+Aeromexico,airport,ORD,airport,CUN,flat,3,3,1200.0|470.0|875.0,470.0,1200.0,2.55,conflict
+Aeromexico,airport,ORD,airport,CUU,flat,3,3,875.0|1200.0|470.0,470.0,1200.0,2.55,conflict
+Aeromexico,airport,ORD,airport,EZE,flat,3,3,1420.0|470.0|975.0,470.0,1420.0,3.02,conflict
+Aeromexico,airport,ORD,airport,GDL,flat,3,3,875.0|1200.0|470.0,470.0,1200.0,2.55,conflict
+Aeromexico,airport,ORD,airport,GRU,flat,3,3,470.0|975.0|1420.0,470.0,1420.0,3.02,conflict
+Aeromexico,airport,ORD,airport,GUA,flat,3,3,470.0|975.0|1420.0,470.0,1420.0,3.02,conflict
+Aeromexico,airport,ORD,airport,HMO,flat,3,3,1200.0|875.0|470.0,470.0,1200.0,2.55,conflict
+Aeromexico,airport,ORD,airport,MEX,flat,3,3,1150.0|470.0|875.0,470.0,1150.0,2.45,conflict
+Aeromexico,airport,ORD,airport,MID,flat,3,3,875.0|470.0|1200.0,470.0,1200.0,2.55,conflict
+Aeromexico,airport,ORD,airport,MTY,flat,3,3,1200.0|470.0|875.0,470.0,1200.0,2.55,conflict
+Aeromexico,airport,ORD,airport,MZT,flat,3,3,1200.0|470.0|875.0,470.0,1200.0,2.55,conflict
+Aeromexico,airport,ORD,airport,OAX,flat,3,3,1200.0|470.0|875.0,470.0,1200.0,2.55,conflict
+Aeromexico,airport,ORD,airport,PTY,flat,3,3,975.0|470.0|1420.0,470.0,1420.0,3.02,conflict
+Aeromexico,airport,ORD,airport,PVR,flat,3,3,875.0|470.0|1200.0,470.0,1200.0,2.55,conflict
+Aeromexico,airport,ORD,airport,SAL,flat,3,3,1420.0|470.0|975.0,470.0,1420.0,3.02,conflict
+Aeromexico,airport,ORD,airport,SCL,flat,3,3,1420.0|470.0|975.0,470.0,1420.0,3.02,conflict
+Aeromexico,airport,ORD,airport,SJD,flat,3,3,1200.0|470.0|875.0,470.0,1200.0,2.55,conflict
+Aeromexico,airport,ORD,airport,SJO,flat,3,3,975.0|1420.0|470.0,470.0,1420.0,3.02,conflict
+Aeromexico,airport,ORD,airport,TGZ,flat,3,3,875.0|470.0|1200.0,470.0,1200.0,2.55,conflict
+Aeromexico,airport,ORD,airport,TIJ,flat,3,3,875.0|470.0|1200.0,470.0,1200.0,2.55,conflict
+Aeromexico,airport,ORD,airport,VER,flat,3,3,1200.0|875.0|470.0,470.0,1200.0,2.55,conflict
+American Airlines,country,US,airport,GDL,flat,2,2,1545.0|772.50,772.5,1545.0,2.0,conflict
+American Airlines,country,US,airport,KIN,flat,2,2,1545.0|772.50,772.5,1545.0,2.0,conflict
+American Airlines,country,US,airport,MBJ,flat,2,2,1545.0|772.50,772.5,1545.0,2.0,conflict
+American Airlines,country,US,airport,MEX,flat,2,2,1545.0|772.50,772.5,1545.0,2.0,conflict
+American Airlines,country,US,airport,PAP,flat,2,2,772.50|1545.0,772.5,1545.0,2.0,conflict
+American Airlines,country,US,airport,SDQ,flat,2,2,1670.0|835.00,835.0,1670.0,2.0,conflict
+American Airlines,country,US,airport,STI,flat,2,2,1670.0|835.00,835.0,1670.0,2.0,conflict
+American Airlines,country,US,country,DO,flat,2,2,1670.0|835.00,835.0,1670.0,2.0,conflict
+American Airlines,country,US,country,MX,flat,2,2,1545.0|772.50,772.5,1545.0,2.0,conflict
+American Airlines,country,US,region,Caribbean,flat,2,2,772.50|1545.0,772.5,1545.0,2.0,conflict
+American Airlines,country,US,region,Central America,flat,2,2,1775.0|887.50,887.5,1775.0,2.0,conflict
+American Airlines,country,US,region,Europe,flat,2,2,3430.0|1715.00,1715.0,3430.0,2.0,conflict
+American Airlines,country,US,region,South America,flat,2,2,1197.50|2395.0,1197.5,2395.0,2.0,conflict
+American Airlines,state,HI,state,HI,flat,2,1,244.38|244.38,244.38,244.38,1.0,exact_repeat
+American Airlines,state,HI,state,PR,flat,2,1,281.56|281.56,281.56,281.56,1.0,exact_repeat
+American Airlines,state,HI,zone,Central,flat,3,2,281.56|281.56|varies per city,281.56,281.56,1.0,non_numeric
+American Airlines,state,HI,zone,Northeast,flat,3,2,281.56|281.56|varies per city,281.56,281.56,1.0,non_numeric
+American Airlines,state,HI,zone,Southeast,flat,3,2,varies per city|281.56|281.56,281.56,281.56,1.0,non_numeric
+American Airlines,state,HI,zone,Southern Middle,flat,3,2,varies per city|281.56|281.56,281.56,281.56,1.0,non_numeric
+American Airlines,state,HI,zone,West,flat,3,2,281.56|281.56|varies per city,281.56,281.56,1.0,non_numeric
+American Airlines,state,PR,state,HI,flat,2,1,265.62|265.62,265.62,265.62,1.0,exact_repeat
+American Airlines,state,PR,state,PR,flat,2,1,228.44|228.44,228.44,228.44,1.0,exact_repeat
+American Airlines,state,PR,zone,Central,flat,2,1,249.69|249.69,249.69,249.69,1.0,exact_repeat
+American Airlines,state,PR,zone,Northeast,flat,2,1,249.69|249.69,249.69,249.69,1.0,exact_repeat
+American Airlines,state,PR,zone,Southeast,flat,2,1,249.69|249.69,249.69,249.69,1.0,exact_repeat
+American Airlines,state,PR,zone,Southern Middle,flat,2,1,249.69|249.69,249.69,249.69,1.0,exact_repeat
+American Airlines,state,PR,zone,West,flat,2,1,249.69|249.69,249.69,249.69,1.0,exact_repeat
+American Airlines,zone,Central,state,HI,flat,2,1,233.75|233.75,233.75,233.75,1.0,exact_repeat
+American Airlines,zone,Central,state,PR,flat,3,2,980.0|228.44|228.44,228.44,980.0,4.29,conflict
+American Airlines,zone,Central,zone,Central,flat,3,2,207.19|207.19|637.19,207.19,637.19,3.08,conflict
+American Airlines,zone,Central,zone,Northeast,flat,3,2,732.81|207.19|207.19,207.19,732.81,3.54,conflict
+American Airlines,zone,Central,zone,Southeast,flat,3,2,207.19|663.76|207.19,207.19,663.76,3.2,conflict
+American Airlines,zone,Central,zone,Southern Middle,flat,3,2,207.19|207.19|653.13,207.19,653.13,3.15,conflict
+American Airlines,zone,Central,zone,West,flat,3,2,738.13|217.81|217.81,217.81,738.13,3.39,conflict
+American Airlines,zone,Northeast,state,HI,flat,2,1,233.75|233.75,233.75,233.75,1.0,exact_repeat
+American Airlines,zone,Northeast,state,PR,flat,3,2,228.44|228.44|980.0,228.44,980.0,4.29,conflict
+American Airlines,zone,Northeast,zone,Central,flat,3,2,207.19|207.19|759.38,207.19,759.38,3.67,conflict
+American Airlines,zone,Northeast,zone,Northeast,flat,3,2,600.01|207.19|207.19,207.19,600.01,2.9,conflict
+American Airlines,zone,Northeast,zone,Southeast,flat,3,2,631.88|207.19|207.19,207.19,631.88,3.05,conflict
+American Airlines,zone,Northeast,zone,Southern Middle,flat,3,2,748.76|207.19|207.19,207.19,748.76,3.61,conflict
+American Airlines,zone,Northeast,zone,West,flat,3,2,945.32|239.06|239.06,239.06,945.32,3.95,conflict
+American Airlines,zone,Southeast,state,HI,flat,2,1,233.75|233.75,233.75,233.75,1.0,exact_repeat
+American Airlines,zone,Southeast,state,PR,flat,3,2,228.44|228.44|980.0,228.44,980.0,4.29,conflict
+American Airlines,zone,Southeast,zone,Central,flat,3,2,663.76|207.19|207.19,207.19,663.76,3.2,conflict
+American Airlines,zone,Southeast,zone,Northeast,flat,3,2,207.19|631.88|207.19,207.19,631.88,3.05,conflict
+American Airlines,zone,Southeast,zone,Southeast,flat,3,2,207.19|600.01|207.19,207.19,600.01,2.9,conflict
+American Airlines,zone,Southeast,zone,Southern Middle,flat,3,2,663.76|207.19|207.19,207.19,663.76,3.2,conflict
+American Airlines,zone,Southeast,zone,West,flat,3,2,913.44|239.06|239.06,239.06,913.44,3.82,conflict
+American Airlines,zone,Southern Middle,state,HI,flat,2,1,233.75|233.75,233.75,233.75,1.0,exact_repeat
+American Airlines,zone,Southern Middle,state,PR,flat,3,2,228.44|228.44|980.0,228.44,980.0,4.29,conflict
+American Airlines,zone,Southern Middle,zone,Central,flat,3,2,637.19|207.19|207.19,207.19,637.19,3.08,conflict
+American Airlines,zone,Southern Middle,zone,Northeast,flat,3,2,207.19|754.07|207.19,207.19,754.07,3.64,conflict
+American Airlines,zone,Southern Middle,zone,Southeast,flat,3,2,663.76|207.19|207.19,207.19,663.76,3.2,conflict
+American Airlines,zone,Southern Middle,zone,Southern Middle,flat,3,2,637.19|207.19|207.19,207.19,637.19,3.08,conflict
+American Airlines,zone,Southern Middle,zone,West,flat,3,2,748.76|217.81|217.81,217.81,748.76,3.44,conflict
+American Airlines,zone,West,state,HI,flat,2,1,233.75|233.75,233.75,233.75,1.0,exact_repeat
+American Airlines,zone,West,state,PR,flat,3,2,228.44|228.44|980.0,228.44,980.0,4.29,conflict
+American Airlines,zone,West,zone,Central,flat,3,2,754.07|217.81|217.81,217.81,754.07,3.46,conflict
+American Airlines,zone,West,zone,Northeast,flat,3,2,239.06|950.63|239.06,239.06,950.63,3.98,conflict
+American Airlines,zone,West,zone,Southeast,flat,3,2,929.38|239.06|239.06,239.06,929.38,3.89,conflict
+American Airlines,zone,West,zone,Southern Middle,flat,3,2,754.07|217.81|217.81,217.81,754.07,3.46,conflict
+American Airlines,zone,West,zone,West,flat,3,2,207.19|615.94|207.19,207.19,615.94,2.97,conflict
+Delta Airlines,zone,AK,zone,CE,flat,2,1,374.0|374.0,374.0,374.0,1.0,exact_repeat
+Delta Airlines,zone,AK,zone,HW,flat,2,1,405.88|405.88,405.88,405.88,1.0,exact_repeat
+Delta Airlines,zone,AK,zone,NE,flat,2,1,388.88|388.88,388.88,388.88,1.0,exact_repeat
+Delta Airlines,zone,AK,zone,PR,flat,2,1,473.88|473.88,473.88,473.88,1.0,exact_repeat
+Delta Airlines,zone,AK,zone,SE,flat,2,1,382.5|382.5,382.5,382.5,1.0,exact_repeat
+Delta Airlines,zone,AK,zone,WE,flat,2,1,304.94|304.94,304.94,304.94,1.0,exact_repeat
+Delta Airlines,zone,CE,zone,AK,flat,2,1,366.56|366.56,366.56,366.56,1.0,exact_repeat
+Delta Airlines,zone,CE,zone,CE,flat,3,2,624.06|279.44|279.44,279.44,624.06,2.23,conflict
+Delta Airlines,zone,CE,zone,HW,flat,2,1,406.94|406.94,406.94,406.94,1.0,exact_repeat
+Delta Airlines,zone,CE,zone,NE,flat,3,2,697.38|306.0|306.0,306.0,697.38,2.28,conflict
+Delta Airlines,zone,CE,zone,PR,flat,2,1,366.56|366.56,366.56,366.56,1.0,exact_repeat
+Delta Airlines,zone,CE,zone,SE,flat,3,2,296.44|641.06|296.44,296.44,641.06,2.16,conflict
+Delta Airlines,zone,CE,zone,WE,flat,3,2,704.81|306.0|306.0,306.0,704.81,2.3,conflict
+Delta Airlines,zone,HW,zone,AK,flat,2,1,412.25|412.25,412.25,412.25,1.0,exact_repeat
+Delta Airlines,zone,HW,zone,CE,flat,2,1,405.88|405.88,405.88,405.88,1.0,exact_repeat
+Delta Airlines,zone,HW,zone,NE,flat,2,1,440.94|440.94,440.94,440.94,1.0,exact_repeat
+Delta Airlines,zone,HW,zone,PR,flat,2,1,604.56|604.56,604.56,604.56,1.0,exact_repeat
+Delta Airlines,zone,HW,zone,SE,flat,2,1,432.44|432.44,432.44,432.44,1.0,exact_repeat
+Delta Airlines,zone,HW,zone,WE,flat,2,1,333.62|333.62,333.62,333.62,1.0,exact_repeat
+Delta Airlines,zone,NE,zone,AK,flat,2,1,384.62|384.62,384.62,384.62,1.0,exact_repeat
+Delta Airlines,zone,NE,zone,CE,flat,3,2,298.56|298.56|710.13,298.56,710.13,2.38,conflict
+Delta Airlines,zone,NE,zone,HW,flat,2,1,442.0|442.0,442.0,442.0,1.0,exact_repeat
+Delta Airlines,zone,NE,zone,NE,flat,3,2,274.12|274.12|566.69,274.12,566.69,2.07,conflict
+Delta Airlines,zone,NE,zone,PR,flat,3,2,374.0|850|374.0,374.0,850.0,2.27,conflict
+Delta Airlines,zone,NE,zone,SE,flat,3,2,598.56|283.69|283.69,283.69,598.56,2.11,conflict
+Delta Airlines,zone,NE,zone,WE,flat,3,2,883.31|348.5|348.5,348.5,883.31,2.53,conflict
+Delta Airlines,zone,PR,zone,AK,flat,2,1,486.62|486.62,486.62,486.62,1.0,exact_repeat
+Delta Airlines,zone,PR,zone,CE,flat,2,1,345.31|345.31,345.31,345.31,1.0,exact_repeat
+Delta Airlines,zone,PR,zone,HW,flat,2,1,608.81|608.81,608.81,608.81,1.0,exact_repeat
+Delta Airlines,zone,PR,zone,NE,flat,2,1,340.0|340.0,340.0,340.0,1.0,exact_repeat
+Delta Airlines,zone,PR,zone,SE,flat,2,1,334.69|334.69,334.69,334.69,1.0,exact_repeat
+Delta Airlines,zone,PR,zone,WE,flat,2,1,355.94|355.94,355.94,355.94,1.0,exact_repeat
+Delta Airlines,zone,SE,zone,AK,flat,2,1,396.31|396.31,396.31,396.31,1.0,exact_repeat
+Delta Airlines,zone,SE,zone,CE,flat,3,2,286.88|286.88|650.63,286.88,650.63,2.27,conflict
+Delta Airlines,zone,SE,zone,HW,flat,2,1,442.0|442.0,442.0,442.0,1.0,exact_repeat
+Delta Airlines,zone,SE,zone,NE,flat,3,2,274.12|274.12|612.38,274.12,612.38,2.23,conflict
+Delta Airlines,zone,SE,zone,PR,flat,2,1,374.0|374.0,374.0,374.0,1.0,exact_repeat
+Delta Airlines,zone,SE,zone,SE,flat,3,2,283.69|283.69|600.69,283.69,600.69,2.12,conflict
+Delta Airlines,zone,SE,zone,WE,flat,3,2,845.06|335.75|335.75,335.75,845.06,2.52,conflict
+Delta Airlines,zone,WE,zone,AK,flat,2,1,299.62|299.62,299.62,299.62,1.0,exact_repeat
+Delta Airlines,zone,WE,zone,CE,flat,3,2,306.0|306.0|710.13,306.0,710.13,2.32,conflict
+Delta Airlines,zone,WE,zone,HW,flat,2,1,334.69|334.69,334.69,334.69,1.0,exact_repeat
+Delta Airlines,zone,WE,zone,NE,flat,3,2,878|348.5|348.5,348.5,878.0,2.52,conflict
+Delta Airlines,zone,WE,zone,PR,flat,2,1,361.25|361.25,361.25,361.25,1.0,exact_repeat
+Delta Airlines,zone,WE,zone,SE,flat,3,2,839.75|346.38|346.38,346.38,839.75,2.42,conflict
+Delta Airlines,zone,WE,zone,WE,flat,3,2,573.06|267.75|267.75,267.75,573.06,2.14,conflict
+Southwest Airlines,zone,1,zone,1,flat,3,2,244.38|244.38|653.44,244.38,653.44,2.67,conflict
+Southwest Airlines,zone,1,zone,2,flat,3,2,276.25|276.25|791.56,276.25,791.56,2.87,conflict
+Southwest Airlines,zone,1,zone,3,flat,3,3,276.25|228.44|674.69,228.44,674.69,2.95,conflict
+Southwest Airlines,zone,1,zone,4,flat,3,2,276.25|276.25|791.56,276.25,791.56,2.87,conflict
+Southwest Airlines,zone,1,zone,5,flat,3,2,276.25|276.25|791.56,276.25,791.56,2.87,conflict
+Southwest Airlines,zone,1,zone,6,flat,3,2,940.31|308.12|308.12,308.12,940.31,3.05,conflict
+Southwest Airlines,zone,1,zone,7,flat,3,2,940.31|308.12|308.12,308.12,940.31,3.05,conflict
+Southwest Airlines,zone,2,zone,1,flat,3,2,276.25|276.25|791.56,276.25,791.56,2.87,conflict
+Southwest Airlines,zone,2,zone,2,flat,3,2,244.38|244.38|674.69,244.38,674.69,2.76,conflict
+Southwest Airlines,zone,2,zone,3,flat,3,3,255.0|228.44|706.56,228.44,706.56,3.09,conflict
+Southwest Airlines,zone,2,zone,4,flat,3,2,244.38|244.38|685.31,244.38,685.31,2.8,conflict
+Southwest Airlines,zone,2,zone,5,flat,3,2,244.38|674.69|244.38,244.38,674.69,2.76,conflict
+Southwest Airlines,zone,2,zone,6,flat,3,2,770.31|276.25|276.25,276.25,770.31,2.79,conflict
+Southwest Airlines,zone,2,zone,7,flat,3,2,770.31|276.25|276.25,276.25,770.31,2.79,conflict
+Southwest Airlines,zone,3,zone,1,flat,3,2,674.69|244.38|244.38,244.38,674.69,2.76,conflict
+Southwest Airlines,zone,3,zone,2,flat,3,2,255.0|255.0|706.56,255.0,706.56,2.77,conflict
+Southwest Airlines,zone,3,zone,3,flat,3,3,653.44|217.81|244.38,217.81,653.44,3.0,conflict
+Southwest Airlines,zone,3,zone,4,flat,3,2,706.56|255.0|255.0,255.0,706.56,2.77,conflict
+Southwest Airlines,zone,3,zone,5,flat,3,2,255.0|255.0|706.56,255.0,706.56,2.77,conflict
+Southwest Airlines,zone,3,zone,6,flat,3,2,940.31|308.12|308.12,308.12,940.31,3.05,conflict
+Southwest Airlines,zone,3,zone,7,flat,3,2,940.31|308.12|308.12,308.12,940.31,3.05,conflict
+Southwest Airlines,zone,4,zone,1,flat,3,2,276.25|276.25|791.56,276.25,791.56,2.87,conflict
+Southwest Airlines,zone,4,zone,2,flat,3,2,685.31|244.38|244.38,244.38,685.31,2.8,conflict
+Southwest Airlines,zone,4,zone,3,flat,3,3,706.56|228.44|255.0,228.44,706.56,3.09,conflict
+Southwest Airlines,zone,4,zone,4,flat,3,2,244.38|244.38|674.69,244.38,674.69,2.76,conflict
+Southwest Airlines,zone,4,zone,5,flat,3,2,685.31|244.38|244.38,244.38,685.31,2.8,conflict
+Southwest Airlines,zone,4,zone,6,flat,3,2,770.31|276.25|276.25,276.25,770.31,2.79,conflict
+Southwest Airlines,zone,4,zone,7,flat,3,2,770.31|276.25|276.25,276.25,770.31,2.79,conflict
+Southwest Airlines,zone,5,zone,1,flat,3,2,276.25|276.25|791.56,276.25,791.56,2.87,conflict
+Southwest Airlines,zone,5,zone,2,flat,3,2,244.38|244.38|674.69,244.38,674.69,2.76,conflict
+Southwest Airlines,zone,5,zone,3,flat,3,3,255.0|228.44|706.56,228.44,706.56,3.09,conflict
+Southwest Airlines,zone,5,zone,4,flat,3,2,244.38|244.38|685.31,244.38,685.31,2.8,conflict
+Southwest Airlines,zone,5,zone,5,flat,3,2,244.38|244.38|674.69,244.38,674.69,2.76,conflict
+Southwest Airlines,zone,5,zone,6,flat,3,2,770.31|276.25|276.25,276.25,770.31,2.79,conflict
+Southwest Airlines,zone,5,zone,7,flat,3,2,770.31|276.25|276.25,276.25,770.31,2.79,conflict
+Southwest Airlines,zone,6,zone,1,flat,3,2,940.31|308.12|308.12,308.12,940.31,3.05,conflict
+Southwest Airlines,zone,6,zone,2,flat,3,2,770.31|276.25|276.25,276.25,770.31,2.79,conflict
+Southwest Airlines,zone,6,zone,3,flat,3,3,308.12|281.56|940.31,281.56,940.31,3.34,conflict
+Southwest Airlines,zone,6,zone,4,flat,3,2,770.31|276.25|276.25,276.25,770.31,2.79,conflict
+Southwest Airlines,zone,6,zone,5,flat,3,2,770.31|276.25|276.25,276.25,770.31,2.79,conflict
+Southwest Airlines,zone,6,zone,6,flat,3,2,653.44|244.38|244.38,244.38,653.44,2.67,conflict
+Southwest Airlines,zone,6,zone,7,flat,3,2,653.44|244.38|244.38,244.38,653.44,2.67,conflict
+Southwest Airlines,zone,7,zone,1,flat,3,2,940.31|308.12|308.12,308.12,940.31,3.05,conflict
+Southwest Airlines,zone,7,zone,2,flat,3,2,276.25|276.25|770.31,276.25,770.31,2.79,conflict
+Southwest Airlines,zone,7,zone,3,flat,3,3,940.31|281.56|308.12,281.56,940.31,3.34,conflict
+Southwest Airlines,zone,7,zone,4,flat,3,2,770.31|276.25|276.25,276.25,770.31,2.79,conflict
+Southwest Airlines,zone,7,zone,5,flat,3,2,276.25|276.25|770.31,276.25,770.31,2.79,conflict
+Southwest Airlines,zone,7,zone,6,flat,3,2,653.44|244.38|244.38,244.38,653.44,2.67,conflict
+Southwest Airlines,zone,7,zone,7,flat,3,2,653.44|244.38|244.38,244.38,653.44,2.67,conflict

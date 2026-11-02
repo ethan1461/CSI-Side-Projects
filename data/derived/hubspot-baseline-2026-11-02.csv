@@ -1,0 +1,46 @@
+metric_id,object,defect_class,count,universe,pct,query_id,confidence
+M01,COMPANY,company records that exist,0,,,Q01,high
+M02,CONTACT,contact records that exist,3574,,,Q02,high
+M03,DEAL,deal records that exist,1,,,Q03,high
+M04,CONTACT,contacts with no company association,3574,3574,100.00,Q05,high
+M05,CONTACT,contacts with no owner,3553,3574,99.41,Q06,high
+M06,CONTACT,contacts at lifecycle stage lead,3574,3574,100.00,Q07,high
+M07,CONTACT,contacts at lifecycle stage customer,0,3574,0.00,Q07,high
+M08,CONTACT,contacts with empty lead status,3542,3574,99.10,Q08,high
+M09,CONTACT,contacts with no free-text company name,1510,3574,42.25,Q09,high
+M10,CONTACT,contacts with empty funeral_home_name,3549,3574,99.30,Q10,high
+M11,CONTACT,contacts with empty funeral_home,3574,3574,100.00,Q11,high
+M12,CONTACT,contacts with no email,433,3574,12.12,Q12,high
+M13,CONTACT,contacts with no phone,2887,3574,80.78,Q13,high
+M14,CONTACT,contacts with neither email nor phone,433,3574,12.12,Q29,high
+M15,CONTACT,contacts with no state,1311,3574,36.68,Q14,high
+M16,CONTACT,contacts with original traffic source OFFLINE (no origin recorded),3140,3574,87.86,Q16,high
+M17,CONTACT,contacts with record source IMPORT,2330,3574,65.19,Q15,high
+M18,CONTACT,contacts with record source CONVERSATIONS,807,3574,22.58,Q15,high
+M19,CONTACT,contacts with record source FORM,427,3574,11.95,Q15,high
+M20,CONTACT,contacts with no logged activity ever,2742,3574,76.72,Q17,high
+M21,CONTACT,contacts with no logged activity in 12 months,3569,3574,99.86,Q19,high
+M22,CONTACT,contacts with no logged activity in 24 months,3559,3574,99.58,Q20,high
+M23,CONTACT,contacts never contacted (no logged outreach),3546,3574,99.22,Q18,high
+M24,CONTACT,contacts sharing a raw phone string (floor),205,3574,5.74,Q23,medium
+M25,CONTACT,distinct raw phone strings shared by 2+ contacts (floor),76,,,Q23,medium
+M26,CONTACT,contacts with exact-duplicate email,0,3574,0.00,Q23b,high
+M27,CONTACT,contacts on freemail domains (floor list of 14 domains),1117,3574,31.25,Q26,high
+M28,CONTACT,contacts that are marketing contacts,0,3574,0.00,Q27,high
+M29,CONTACT,contacts non-marketing,3314,3574,92.73,Q27,high
+M30,CONTACT,contacts marketing status unset,260,3574,7.27,Q27,high
+M31,CONTACT,non-funeral-home contacts in 5 identified domains (floor),93,3574,2.60,Q24,medium
+M32,CONTACT,enterprise-group contacts in 5 identified domains (floor),248,3574,6.94,Q24,medium
+M33,CONTACT,partner-tier contacts NMS+Bergen (floor),18,3574,0.50,Q45,high
+M34,CONTACT,contacts with merge history,0,3574,0.00,Q35,high
+M35,CONTACT,pre-existing contacts modified since 2026-05-03 (upper bound),153,3574,4.28,Q36-Q37,medium
+M36,CONTACT,account-creation tier A: company text + business domain,1062,3574,29.72,Q32-Q33,high
+M37,CONTACT,account-creation tier B: business domain only,962,3574,26.92,Q32-Q33,high
+M38,CONTACT,account-creation tier C: company text only (freemail or no email),1002,3574,28.04,Q32-Q33,high
+M39,CONTACT,account-creation tier D: nothing to resolve from (human list),548,3574,15.33,Q32-Q33,high
+M40,CONTACT,FORM-sourced contacts missing funeral_home_name,417,427,97.66,Q40,high
+M41,CONTACT,FORM-sourced since 2026-01-01 missing funeral_home_name,164,,,Q41,high
+M42,DEAL,deals not in Closed Won/Lost,1,1,100.00,Q28,high
+M43,OWNER,distinct owner records in portal,10,,,owners,high
+M44,OWNER,owner records inactive,6,10,60.00,owners,high
+M45,OWNER,sales hires (Otto/Stacy) or Jeff Shafer present as owners,0,3,0.00,owners,high

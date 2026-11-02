@@ -1,7 +1,7 @@
 # Data inventory
 
-**Last updated:** 2026-09-06
-**Source:** Ethan's local `Cargo Sales` folder (one-time export, 345 files).
+**Last updated:** 2026-11-02 (product, TASK-0003: current `data/raw/` contents, gateway conflict closed, Missing list updated)
+**Source:** Ethan's local `Cargo Sales` folder (one-time export, 345 files, 2026-09-06), plus the exports placed in `data/raw/` on 2026-11-02.
 
 What the team has, what each file unlocks, and what is still missing. Every agent
 should read this before claiming a number is unavailable — and before assuming one
@@ -17,8 +17,11 @@ placed in `data/raw/` by a human. Treat the OMS as an offline source, not a quer
 one.
 
 Consequence: **no shipment-level data exists in this repo.** See [Missing](#missing)
-below — this is the single largest gap and it blocks the reconciliation and
-volume-decomposition work described in `CLAUDE.md §9`.
+below — this is the single largest gap. It blocks churn vs. acquisition vs. frequency,
+lane volume, corridor mix, account value, CAC and cohort work. **The route is a build,
+not a permission:** Ethan confirmed 2026-11-02 that the Flight Confirmation List, Ready to
+Invoice List and Collect Shipments pages have no export function. Specified in
+`reports/oms-export-spec.md`; requested in `reports/pending-approval/engineering-ask-2026-45.md`.
 
 ---
 
@@ -26,6 +29,24 @@ volume-decomposition work described in `CLAUDE.md §9`.
 
 Contains personal contact data. `CLAUDE.md §7.2` applies in full: anonymize before
 analysis, never send names to a third-party tool, never put a name in a deliverable.
+
+### Present in `data/raw/` on 2026-11-02
+
+| File | Shape | What it unlocks, and the caveat |
+|---|---|---|
+| `analytics-nov-daily-20261102.csv` | Header totals (revenue $150,742.43, 115 bookings, 0 missing revenue, 0 missing funeral home link) and daily `Period, Year, Revenue, Bookings` rows for Nov 2025 and Nov 2026 | Aggregate only. **`Period` is a flight or service date, not a creation date:** 2026 rows run to Nov 13, eleven days past the pull (`context/metric-definitions.md` M-02). The tie-out reference for any booking-level file |
+| `rates-published-20261102.csv` | 6,919 rows × 12 cols, 19 carriers. **`shipment_rate_type` blank on all rows.** 181 duplicated keys (487 rows); 133 carry conflicting prices, all `flat`; text in 5 `published_rate` and 5 `discount_rate` cells | Supersedes `rates-export-20260906.csv`. Defect list: `data/derived/rate-defect-keys.csv` (`scripts/rate_defects.py`) |
+| `rates-contracted-20261102.csv` | 157 data rows × 14 cols, four carriers (American, Delta, Southwest, United), all typed `Casket`; `effective_as_of` blank on 153 | The cost side (M-07). Reports cite 156 lanes; the file has 157 data rows and the difference is not traced. **15 carriers with 6,441 published lanes have no contracted row** |
+| `rates-special-20261102.csv` | Customer-specific rates (27 per `reports/carrier-margin-resolved.md`) × 16 cols, including `funeral_home_id` and `funeral_home_group_id` | Partner pricing (National Mortuary Shipping, Bergen) is deliberate, not leakage. Proves the OMS holds a funeral home group hierarchy |
+| `carrier-invoices/` | `UA-278010.csv`, `UA-287331.csv` (also as `.xls`), `DL-6890376.xlsx`, `SOA-2026-10-26.xlsx` | Realized margin (M-08) via `scripts/realized_margin.py`. **Decedent names appear in United `Shipper Reference` and Delta `Nature of Goods` and `Shipping Location`; `Customer` is dropped as a precaution.** Strip at load. The `SOA` file has not been analysed |
+| `freightflow-agreement.pdf` | 46 pages | The contract. Read in `reports/freightflow-agreement-review.md` |
+
+### Received 2026-09-06 — **not present in this checkout's `data/raw/` on 2026-11-02**
+
+`data/raw/` is gitignored, so absence here does not prove the files are gone from
+Ethan's machine; it does mean no agent can re-read them. Derived outputs from the first
+file remain in `data/derived/` (`annual-totals.csv`, `monthly-by-year.csv`). The
+HubSpot row is a live system, not a file.
 
 | File | Shape | What it unlocks |
 |---|---|---|
@@ -37,6 +58,7 @@ analysis, never send names to a third-party tool, never put a name in a delivera
 | `sci-locations-june.xlsx` | 4,439 active SCI locations × 24 cols: name, address, phone, Location Code, Location ID, Location Status, Product Line, Business Line. Plus tabs for location changes, new, closed | The **enterprise account map** for SCI/Dignity. Location-level activation planning, pilot scoping, territory assignment |
 | `hitlist-2026.xlsx` | Sheet1: 22 SCI premier locations with contact names, priority, outreach status. California tab: 167 funeral homes with contact, title, email, date contacted, notes | The active target list. Note this is **~189 accounts, not the 878** referenced in `CLAUDE.md §6` |
 | `hubspot-contacts-2026-04-19.xlsx` | 3,416 contacts × 10 cols: Record ID, name, email, email domain, IP city/state, phone | Contact-level CRM export. **Contacts, not accounts** — no company, deal, or shipment association |
+| **HubSpot live portal (MCP, read at run time)** — baseline `data/derived/hubspot-baseline-2026-11-02.csv`, report `reports/hubspot-defect-baseline.md` | 3,574 contacts, **0 companies**, 1 deal, 1 ticket (2026-11-02). 99.4% unowned, 100% lifecycle "lead", 80.8% no phone, no OMS key property | Supersedes the 3,416-row April export for counts. Added by revops-crm, TASK-0009. Still missing: person-level duplicate pairs (needs a contact export in `data/raw/`) and the OMS funeral-home list for the crosswalk |
 | `crm-dump-3.xlsx` | 24 rows: Account, City, Contact_Name, Phone, Email, Status_Hint | Small manual dump |
 | `crm-dump-claude-1.xlsx` | 433 rows: name, email, email domain, phone, city, state | Larger manual dump |
 | `state-shows-2026.xlsx` | 81 rows: State, Association, Convention Dates, Priority?, City, Registration Link, Notes | Trade show calendar with priority flags. Feeds the show-as-campaign work |
@@ -99,23 +121,45 @@ Ranked by how much each blocks.
 
 1. **Shipment-level records.** One row per shipment, with booking date, shipping
    funeral home, origin gateway, destination, domestic/international flag, carrier,
-   revenue, status. Ideally FY2024–FY2026. Nothing in this repo contains it. Blocks:
-   volume-decline decomposition, churn vs. acquisition vs. frequency, active-account
-   definition, lane volume, and every margin figure that needs volume as well as rate.
-   **Requires a manual OMS export.**
+   revenue, status. Nothing in this repo contains it. Blocks: churn vs. acquisition vs.
+   frequency (the volume decomposition `CLAUDE.md §2` leaves open), active-account
+   definition, lane volume, corridor mix, account value, CAC, and every margin figure
+   that needs volume as well as rate. **Requires a build, not a permission** (no export
+   function exists on Flight Confirmation, Ready to Invoice or Collect Shipments, per
+   Ethan 2026-11-02). Specified in `reports/oms-export-spec.md`; requested as EA-45-01
+   (four-column cohort extract) and EA-45-02 (full file, nightly to Drive) in
+   `reports/pending-approval/engineering-ask-2026-45.md`. Staged for Ethan; not sent.
 2. **Legacy-system extract** for the OMS reconciliation described in `CLAUDE.md §6`.
 3. **Marketing spend by channel by month** for the ~$20K. Blocks CAC by channel.
 4. **Quote log** (quotes issued vs. booked). The "wins on price ~80% of the time"
    claim in `CLAUDE.md §2` has no source in this repo. Ethan has confirmed no quote
    log exists, so this figure should be labeled `[UNSOURCED]` wherever it appears and
-   never used externally.
+   never used externally. The OMS specification does describe saved quotes and the
+   portal has quote requests; whether they are stored in a queryable form is
+   EA-45-08, a question to Kyri and Alex.
 5. **The 878-account HubSpot workbook.** What arrived is ~189 accounts plus a
    contact-level export. May be retrievable from HubSpot directly.
 6. **Mid-year report.** Referenced by Ethan, not present in the export.
 7. **Portal adoption data** — accounts onboarded, bookings through portal vs. phone.
-   Untested premise behind the switching-cost moat thesis.
+   Untested premise behind the switching-cost moat thesis. Specified as a per-booking
+   flag (`created_via_portal`) and portal columns on the funeral home master
+   (EA-45-02, -03); event-level logging is PO-45-01.
 8. **Cost-to-serve / agent time per booking.** Likely does not exist. Confirming that
-   it does not is itself a finding.
+   it does not is itself a finding. Whether the OMS captures booking duration is a
+   Kyri and Alex question (EA-45-04), not an operations one; how long work takes is
+   Vadim, Kim and Susej; what an hour costs is Donald.
+9. **Contracted (cost) rates for 15 carriers.** 6,441 published lanes belong to carriers
+   with no contracted row: IAG 5,565, Emirates Sky Cargo 552, Aeromexico 88, Air India
+   57, Philippines Airlines 57, Lufthansa 53, Amerijet 24, Volaris 10, Avianca 8, Swiss
+   Air 8, Korean Air 7, Copa 6, Viva Aerobus 4, IBC Airways 1, El Al 1. Six of these
+   (Aeromexico, Air India, Philippines, Swiss Air, Amerijet, El Al) are not named in
+   `CLAUDE.md §4.3`. Two routes: Vadim's rate sheets (TASK-0018, a snapshot) and the
+   system (EA-45-07).
+10. **OMS funeral home master and a join key.** HubSpot has no OMS key and no company
+    records, so no CRM account joins to booking history. EA-45-03; try the documented
+    bulk CSV first.
+11. **Per-shipment carrier cost across carriers.** Today two carriers' hand-delivered
+    invoices (about 85 AWBs). The Airline Invoice Audit would cover all (EA-45-06).
 
 ---
 
@@ -140,22 +184,28 @@ there since the September snapshot:
 ### ⚠️ Unverified claims already in draft outreach
 
 The `Global_Repatriation_Partners` outreach drafts — currently awaiting approval —
-contain two claims that do not match this repo:
+contained two claims that did not match this repo. One is closed, one is open:
 
-- **"eight U.S. gateways (JFK, IAD, MIA, BOS, DFW, IAH, LAX and SFO)"** vs. the five
-  gateways in `CLAUDE.md §1` (MIA, JFK, IAD, IAH, LAX). Either CSI expanded and this file
-  is stale, or the drafts overstate coverage to 202 prospective partners.
+- ~~**"eight U.S. gateways (JFK, IAD, MIA, BOS, DFW, IAH, LAX and SFO)"** vs. five
+  gateways.~~ **RESOLVED.** Eight is canonical (Ethan, October 2026;
+  `context/brain/company-facts.md`). The drafts are correct on this point; any
+  5- or 6-gateway mention in older material is the stale one. Gateways differ in
+  capability (pickup is MIA, IAH and LAX only), so a flat "eight gateways" claim still
+  needs each gateway's own capabilities stated.
 - **"about 12,000 loved ones a year"** vs. 10,985 actual bookings in 2025
-  (`data/derived/annual-totals.csv`).
+  (`data/derived/annual-totals.csv`). **Still open.** Held pending the claims register
+  (TASK-0012).
 
-**Resolve before any of these send.** `CLAUDE.md §7.3` and `§7.1`. Owner: **legal-risk**
-for claims substantiation, **corpdev** for the partnership program itself.
+**Resolve the open claim before any of these send.** `CLAUDE.md §7.3` and `§7.1`. Owner:
+**legal-risk** for claims substantiation, **corpdev** for the partnership program itself.
 
 ## Still unreachable
 
 - **The OMS.** No programmatic access; manual exports only. Booking-level records,
   per-shipment carrier cost, funeral home master, and international contract rates all
-  remain outstanding. **product** owns the export specification.
+  remain outstanding. **product** owns the export specification
+  (`reports/oms-export-spec.md`) and the standing Monday ask
+  (`reports/pending-approval/engineering-ask-2026-45.md`, staged for Ethan).
 - **The local `Cargo Sales` folder** on Ethan's computer. Remote Control shows no shared
   folders. To make it reachable: on that computer, open the Claude desktop app →
   Settings → Claude Code → Remote Control, and add the folder to the shared list.

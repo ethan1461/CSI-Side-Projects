@@ -4,7 +4,7 @@
 **Created:** 2026-11-02 by pm-orchestrator
 **Due:** 2026-11-04 (Wednesday)
 **Priority:** HIGH
-**Status:** UNCLAIMED
+**Status:** DONE — awaiting PM acceptance (deliverable written 2026-11-02; no HubSpot record was written)
 
 ## Objective
 Two new salespeople are going to market against a CRM everyone agrees is dirty and nobody has

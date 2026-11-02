@@ -1,0 +1,40 @@
+{
+  "source_files": [
+    "data/raw/rates-published-20261102.csv"
+  ],
+  "output_rows": 181,
+  "key_columns": [
+    "airline",
+    "origin_type",
+    "origin",
+    "destination_type",
+    "destination",
+    "rate_type"
+  ],
+  "columns_read": [
+    "airline",
+    "origin_type",
+    "origin",
+    "destination_type",
+    "destination",
+    "rate_type",
+    "published_rate",
+    "discount_rate",
+    "shipment_rate_type"
+  ],
+  "pii_columns_dropped": [],
+  "pii_note": "Rate tables carry airline, lane and price only; no decedent or family fields.",
+  "summary": {
+    "published_rows": 6919,
+    "shipment_rate_type_blank": 6919,
+    "duplicate_keys": 181,
+    "rows_in_duplicate_keys": 487,
+    "conflicting_keys": 133,
+    "exact_repeat_keys": 43,
+    "non_numeric_keys": 5,
+    "non_numeric_published_rate_rows": 5,
+    "non_numeric_discount_rate_rows": 5
+  },
+  "script": "scripts/rate_defects.py",
+  "run_timestamp": "2026-11-02T04:56:17.923346+00:00"
+}

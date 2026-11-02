@@ -1,0 +1,12 @@
+{
+  "source_files": [],
+  "source_system": "HubSpot portal 43703912 (CargoSales Intl), read through the MCP connector tools query_crm_data, search_crm_objects, search_owners, discover_hubspot_schema",
+  "snapshot_date": "2026-11-02",
+  "output_rows": 45,
+  "script": "none - connector queries only; the exact SQL for every query_id is in reports/hubspot-defect-baseline.md Appendix A",
+  "rerun_instruction": "Re-run each query_id from Appendix A through query_crm_data and compare to the count column. Compare percentages as well as counts: the universe grows daily.",
+  "columns_dropped_at_source": "None loaded. Only aggregates (COUNT/GROUP BY) were requested. One search_crm_objects call returned 18 partner-domain contact rows with name fields; no names are carried into any derived file or report.",
+  "pii_check": "This file contains counts only. No names, emails, phone numbers, or decedent/family data.",
+  "owner": "revops-crm",
+  "task": "TASK-0009"
+}

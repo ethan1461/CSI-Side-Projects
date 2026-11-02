@@ -167,7 +167,8 @@ inherits these three lists and must respect the distinction.
 - Seasonality profile, Jan peak / Jun trough — same source
 - 823 bookings missing funeral home attribution across full history (59 in 2026)
 - FY26 plan of record — `context/fy26-growth-plan-memo.md`
-- Rate structure across 6,383 lanes — `data/raw/rates-export-20260906.csv`
+- Rate structure across 6,919 published lanes — `data/raw/rates-published-20261102.csv` (the
+  earlier 6,383-lane figure came from the superseded 2026-09-06 export)
 
 ### 4.2 Assumed (believed, not verified — label `[ASSUMPTION]` when used)
 
@@ -188,8 +189,11 @@ inherits these three lists and must respect the distinction.
   1–3% figure in `reports/analytics-reconciliation.md` Finding 4 was wrong. Agents may
   now quote margin **with the limits in that report attached**: it is rate-card margin,
   unweighted by volume, excludes cost to serve, and covers only the four US domestic
-  majors. Still unknown: cost for IAG, Emirates, Lufthansa, Volaris, Avianca, Copa,
-  Korean, Viva and IBC — 6,700+ lanes with no cost data.
+  majors. Still unknown: **cost for 15 carriers covering 6,441 of the 6,919 published
+  lanes** (verified against the 2026-11-02 exports) — IAG 5,565, Emirates 552, Aeromexico
+  88, Air India 57, Philippines 57, Lufthansa 53, Amerijet 24, Volaris 10, Avianca 8,
+  Swiss 8, Korean 7, Copa 6, Viva 4, El Al 1, IBC 1. **93% of the lane book has no cost
+  side.** An earlier version of this line named only nine carriers.
 - **Shipment-level records.** The analytics export is monthly aggregate only. Churn vs.
   acquisition vs. frequency, lane volume, corridor mix, and account-level anything are
   all blocked on a booking-level export.

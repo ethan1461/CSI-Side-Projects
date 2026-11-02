@@ -5,22 +5,32 @@ one message per week at most). **All drafts. Ethan sends every one** (`§7.1`).
 
 Each file opens with a "Notes for Ethan" block to delete before sending.
 
-| # | File | To | Send | The one thing it asks for |
-|---|---|---|---|---|
-| 1 | `01-vadim.md` | Vadim (COO) | **Today, first** | His top 10 lanes where two carriers both work, and the margin gap on each |
-| 2 | `02-donald.md` | Donald (Finance) | Today | An agenda, not a data pull — he prefers to talk first. Leads with the ~$33/shipment surcharge |
-| 3 | `03-arty.md` | Arty (accountant) | Today, ahead of this week's meeting | Cash or accrual basis; what assurance level exists; how carrier cost is booked; entity structure |
-| 4 | `04-kyri-alex.md` | Kyri, Alex | **Wednesday, after Donald** | Pointer only. The email is `../engineering-ask-2026-45.md` |
+**All four go out this afternoon or tonight** (Ethan, 2026-11-02).
+
+| # | File | To | The one thing it asks for |
+|---|---|---|---|
+| 1 | `01-vadim.md` | Vadim (COO) | His top 10 lanes where two carriers both work, and the margin gap on each |
+| 2 | `02-donald.md` | Donald (Finance) | An agenda, not a data pull — he prefers to talk first. Leads with the ~$33/shipment surcharge |
+| 3 | `03-arty.md` | Arty (accountant) | Cash or accrual basis; what assurance level exists; how carrier cost is booked; entity structure |
+| 4 | `04-kyri-alex.md` | Kyri, Alex | Cover note only. The email is `../engineering-ask-2026-45.md` |
 
 ## Why this order
 
 **Vadim first** because the lane list is the highest-return question open anywhere in the
 program and he is warm right now, having just written a long and candid reply.
 
-**Kyri and Alex last** because two items were struck from their ask this morning on
-Vadim's word that Donald enters the rate data. If Donald contradicts that, the items come
-back — and revising their list twice in a week is the ad-hoc pattern the weekly rhythm
-exists to replace.
+**Kyri and Alex last** so the three internal answers are already in flight when they read
+it. This file previously held their ask until Wednesday, on the reasoning that Donald
+might contradict Vadim about who enters rate data. **Ethan overruled that and he was
+right:** today is Monday, so tonight is on-cadence for the standing Monday ask, and Part 4
+of that format exists so struck items can return in a later week without reading as
+ad-hoc. The hold would have cost two days on the three highest-value items.
+
+**One edit followed from sending early.** The ask named Donald, in the body, as the person
+who enters the rate data. Vadim hedged ("I *believe* Donald is in charge") and Donald has
+not been asked. Naming a colleague to an outside vendor as responsible for a defect, on an
+unconfirmed belief, before he can answer, should not go in writing — so the sent text now
+reads "maintained on our side" throughout. Donald's name stays in the internal notes.
 
 ## Decisions inside these drafts that are Ethan's
 

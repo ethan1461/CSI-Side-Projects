@@ -2,46 +2,59 @@
 
 **Built:** Monday 2026-11-02. Companion to `reports/weekly/ethan-todo-2026-11-03.md` (tomorrow's list).
 
-**The shape:** 35 minutes of sending, 25 minutes of clicking, **95 minutes of actual
-thinking on the one question nobody can answer for you**, 15 minutes to close out.
+**Revised** after Ethan: all four emails go out this afternoon or tonight, not tomorrow.
+**He is right and my Wednesday hold on Kyri and Alex was over-cautious** — today is
+Monday, so tonight is on-cadence for the standing Monday ask, and Part 4 of that format
+exists precisely so struck items can return in a later week without it reading as
+ad-hoc. Holding would have cost two days on the three highest-value items to avoid an
+outcome the format already handles.
 
-The first two blocks are deliberately front-loaded and mechanical. They unblock four
-colleagues and three agents, and they're the kind of work that expands to fill whatever
-time you give it — so they get a box and a clock.
+**The shape:** 10 minutes of clicking that must happen *before* the emails, 40 minutes of
+sending, 15 minutes of the rest of the clicking, **95 minutes of actual thinking on the
+one question nobody can answer for you**, 10 minutes to close out.
 
 ---
 
-## Block 1 · 0:00–0:35 · Send three emails
+## Block 0 · 0:00–0:10 · Two clicks that change what you send
 
-All four are drafted in `reports/pending-approval/emails-2026-11-02/`. Read, cut the
-"Notes for Ethan" block at the top of each, send.
+Do these first — one of them changes the Kyri/Alex email.
+
+- [ ] **Click the Funeral Home Records bulk CSV export** in the admin tools. Documented but never verified. **If it works and carries the EA-45-03 fields, edit that item to "this works — who runs it, and how often?" before sending.** If it doesn't, send as written. Either way it stays in the list.
+- [ ] **Decide on the security officer.** The nightly export is the first scheduled data flow out of the OMS since they declined agent access. It is not agent access — it's a PII-stripped file into a CSI-owned Drive folder — but they should hear it from you, not from Kyri. Doesn't block sending.
+
+---
+
+## Block 1 · 0:10–0:50 · Send all four
+
+All drafted in `reports/pending-approval/emails-2026-11-02/`. Read, cut the "Notes for
+Ethan" block at the top of each, send.
 
 | Order | To | Why this order | Your decision in it |
 |---|---|---|---|
 | 1 | **Vadim** (`01-vadim.md`) | The lane list is the highest-return ask open anywhere in the program, and he's warm right now | Whether to quote his own $375/$700 back to him before Donald confirms it. Cut that paragraph if not — the ask works without it |
-| 2 | **Donald** (`02-donald.md`) | Sets the agenda for next week. He prefers to talk first, so this is a short note, not a data request | None, but **don't lead with "$358,000" in the room.** Lead with "every one of 77 shipments." The pattern is solid; the annual figure is an extrapolation and he'll be right to push |
-| 3 | **Arty** (`03-arty.md`) | Meeting is this week, and four of its questions gate the valuation work | **Whether to tell him you're exploring a raise.** One sentence, marked optional in the draft. Real decision — it's a confidence, and the questions all stand without it |
+| 2 | **Donald** (`02-donald.md`) | Sets next week's agenda. He prefers to talk first, so it's a short note, not a data request | None in the draft. But **in the room, don't lead with "$358,000."** Lead with "every one of 77 shipments." The pattern is solid; the annual figure is an extrapolation and he'll be right to push |
+| 3 | **Arty** (`03-arty.md`) | Meeting is this week, and four of its questions gate the valuation work | **Whether to tell him you're exploring a raise.** One sentence, marked optional. A real call — it's a confidence, and every question stands without it |
+| 4 | **Kyri and Alex** (`04-kyri-alex.md`) | Goes last so the three internal answers are already in flight when they read it | Covered in Block 0 |
 
-**Not today: Kyri and Alex** (`04-kyri-alex.md`). The ask is ready but two items were
-struck this morning on Vadim's word that Donald enters the rate data. If Donald says
-otherwise they come back, and revising that list twice in one week is the exact pattern
-the weekly rhythm exists to kill. **Wednesday, after Donald.**
+**One edit I made because this now goes out before Donald replies.** The ask told Kyri and
+Alex, in the body, that *Donald* enters the rate data and two items were therefore his.
+Vadim hedged — "I *believe* Donald is in charge" — and nobody has asked Donald yet.
+Naming a colleague to an outside vendor as responsible for a defect, on an unconfirmed
+belief, before he can answer, isn't something to put in writing. Every mention in the sent
+text now reads **"maintained on our side."** Same message, no name attached to a defect.
+Donald's name stays in the internal notes you delete.
 
 ---
 
-## Block 2 · 0:35–1:00 · Five clicks that unblock three agents
+## Block 2 · 0:50–1:05 · Three clicks that unblock three agents
 
-None of these needs thought. All five are blocking work that is otherwise idle.
-
-- [ ] **Provision Otto and Stacy as HubSpot users** (and Jeff if he'll own records). 3,553 of 3,574 contacts have no owner and ownership can't be assigned to non-users. **This is the hard blocker on the highest-value CRM fix.**
+- [ ] **Provision Otto and Stacy as HubSpot users** (and Jeff if he'll own records). 3,553 of 3,574 contacts have no owner and ownership can't be assigned to non-users. **The hard blocker on the highest-value CRM fix.**
 - [ ] **Export all contacts from HubSpot** to `data/raw/` — Record ID, first, last, email, domain, phone, company, state, record source, create date. *Or* just read the number on Contacts → Actions → Manage duplicates and tell me. Duplicate volume can't be sized through the connector at all.
-- [ ] **Click the Funeral Home Records bulk CSV export** in the admin tools. If it works, an item drops out of Wednesday's engineering ask.
-- [ ] **Which saved view or list was the "58"?** Closes the C16 attribution gap.
-- [ ] **What was the 2023 bulk import of 2,283 contacts?** It's the lead source for 64% of the database.
+- [ ] **Two questions only you can answer:** which saved view was the "58" (closes the C16 attribution gap), and what was the 2023 bulk import of 2,283 contacts (the lead source for 64% of the database).
 
 ---
 
-## Block 3 · 1:00–2:35 · The question only you can answer
+## Block 3 · 1:05–2:40 · The question only you can answer
 
 **Put the phone away for this one.** Everything above is execution. This is the thing the
 whole team is currently guessing at.
@@ -107,7 +120,7 @@ approving OKRs with a made-up number in them.**
 
 ---
 
-## Block 4 · 2:35–2:50 · Close out the cheap rulings
+## Block 4 · 2:40–2:50 · Close out the cheap rulings
 
 Fast calls, no analysis needed. Each is blocking something small.
 

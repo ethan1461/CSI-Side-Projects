@@ -73,9 +73,10 @@ loved ones a year**, domestically and internationally.
 funeral home cannot access, plus fees on complex international documentation. The
 service *appears* free to the customer.
 
-⚠️ **The size of that back-end margin is an open question, and it is the single most
-important unresolved fact in this document.** See §4.3. Do not quote a carrier
-discount percentage until it is resolved.
+Gross margin on contracted lanes is ~**35% domestic** and ~**41% international**
+(`reports/carrier-margin-resolved.md`, 2026-11-02). Quote it only with that report's
+limits attached — it is rate-card margin, unweighted by volume, and excludes cost to
+serve. Cost data still does not exist for most international carriers.
 
 ---
 
@@ -173,15 +174,15 @@ inherits these three lists and must respect the distinction.
 
 ### 4.3 Unknown and blocking
 
-- **⚠️ The real carrier margin.** Of 6,383 rate lanes, only 156 carry both a published
-  and a discounted rate — Southwest, American, United, Delta — and the spread on those
-  averages **1.0–2.9%**, not the 30–60% previously claimed. International coverage is
-  **zero**: all 5,565 IAG lanes, 552 Emirates, plus Lufthansa, Volaris, Avianca, Copa,
-  Korean, Viva and IBC carry published rates only. Either domestic margin genuinely is
-  ~2% and the real margin lives entirely in international, or `discount_rate` means
-  something other than CSI's cost. **This gates every pricing decision, the entire
-  valuation, and any domestic-acquisition play.** Owner: Donald / Vadim. Until it is
-  resolved, no agent quotes a margin percentage anywhere.
+- ~~**The real carrier margin.**~~ **RESOLVED 2026-11-02** — moved to §4.1. See
+  `reports/carrier-margin-resolved.md`. Gross margin is ~**35% domestic**, ~**41%
+  international** on contracted lanes. `discount_rate` is a second *customer* price, not
+  CSI's cost; the cost side is `contracted_rate`, first exported 2026-11-02. The earlier
+  1–3% figure in `reports/analytics-reconciliation.md` Finding 4 was wrong. Agents may
+  now quote margin **with the limits in that report attached**: it is rate-card margin,
+  unweighted by volume, excludes cost to serve, and covers only the four US domestic
+  majors. Still unknown: cost for IAG, Emirates, Lufthansa, Volaris, Avianca, Copa,
+  Korean, Viva and IBC — 6,700+ lanes with no cost data.
 - **Shipment-level records.** The analytics export is monthly aggregate only. Churn vs.
   acquisition vs. frequency, lane volume, corridor mix, and account-level anything are
   all blocked on a booking-level export.

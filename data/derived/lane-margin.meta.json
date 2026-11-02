@@ -1,0 +1,9 @@
+{
+  "source_files": [
+    "data/raw/rates-published-20261102.csv",
+    "data/raw/rates-contracted-20261102.csv"
+  ],
+  "output_rows": 129,
+  "script": "scripts/resolve_margin.py",
+  "run_timestamp": "2026-11-02T03:00:37.108248+00:00"
+}

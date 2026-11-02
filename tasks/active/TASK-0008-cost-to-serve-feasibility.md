@@ -45,9 +45,13 @@ volume growth turns into margin growth rather than headcount growth.
    and the total cost in agent minutes. It must be answerable by Kim and Susej as an **async
    questionnaire, not a meeting** — that is their stated preference
    (`context/brain/data-owners.md`).
-4. **The rebooking leak.** The question for Kim and Susej, precise enough that one answer
-   quantifies it: cancellations per month, how many CSI rebooks at its own cost, and the
-   typical cost of a rebooking.
+4. **The rebooking leak, split correctly.** `§9.6`: **Vadim owns how long a booking takes;
+   Donald owns what an hour costs.** So two separate asks, never merged:
+   - *To Vadim / Kim / Susej:* cancellations per month, how many CSI rebooks at its own cost,
+     and how much agent time a rebooking adds versus a clean booking.
+   - *To Donald:* the fully-loaded cost per agent hour.
+   **Do not produce a single dollar figure for the leak without Donald's half.** Hours ×
+   an inferred wage is exactly the number `§9.6` forbids.
 5. **The feasibility verdict on the ops constraint.** CSI runs 24/7/365 on 6–8 booking
    agents. State plainly whether your own sample design adds manual work the desk can absorb,
    and if it cannot, say so and shrink it.
@@ -58,11 +62,21 @@ volume growth turns into margin growth rather than headcount growth.
 - [ ] The Kim/Susej ask is an async questionnaire of at most one page
 - [ ] **No cost-to-serve figure is estimated.** If it is not measured, the report says
       unknown and says exactly what would resolve it and how cheaply (`§8`)
+- [ ] **No labour-cost figure appears anywhere** — not a wage, not a loaded hourly rate, not
+      a cost per booking, not one inferred from public salary data. Time and cost are asked
+      separately and are never multiplied together without Donald (`§9.6`)
 - [ ] Any engineering requirement is routed to the orchestrator for TASK-0003's batch, not
       raised separately (`§9.6`)
 - [ ] Passes the quality bar in `CLAUDE.md §8`
 
 ## Constraints
+**`§9.6` — anything touching labour cost goes to Donald, never Vadim or the bookings
+directors, and never inferred from public salary data.** Agent wages, contractor rates,
+loaded cost per hour, headcount cost and commission are all his. **Vadim owns how long a
+booking takes; Donald owns what an hour costs.** Ask each for their half. Never ask one for
+the other's, and never combine them into one number without Donald's input. This task's
+title says "cost to serve" but most of what you can actually get this week is the **time**
+half — be precise about which half each figure is.
 **Ask a colleague before asking engineering** (`§9.6`). Vadim, Kim and Susej can answer most
 of this faster and at no cost. Engineering is the last resort.
 **Agents do not contact colleagues.** Draft the questionnaire from

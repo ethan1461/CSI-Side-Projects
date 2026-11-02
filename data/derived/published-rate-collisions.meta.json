@@ -1,0 +1,11 @@
+{
+  "source_files": [
+    "data/raw/rates-published-20261102.csv"
+  ],
+  "row_count": 181,
+  "script": "scripts/reconcile_vadim_sheet.py",
+  "script_version": "1.0",
+  "run_timestamp": "2026-11-02T17:30:27.012724+00:00",
+  "pii_columns_dropped": "none read; both inputs are rate data only (\u00a77.2)",
+  "note": "Key combos with more than one published row. A wide high/low ratio means two products share one key because shipment_rate_type is blank \u2014 not a price conflict to adjudicate."
+}

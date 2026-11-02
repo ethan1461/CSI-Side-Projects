@@ -13,11 +13,11 @@
 
 **Three checks before you send, about 15 minutes, colleague first (`§9.6`):**
 1. **Click the Funeral Home Records bulk CSV export** in the admin tools (or ask Susej). It is documented and unverified; your 2026-11-02 confirmation covered the three list pages only. If it works and has the EA-45-03 fields, the item shrinks to "who runs it". Keep it in the list as a closed item; do not delete it.
-2. **Vadim's question 1** (how the desk picks between conflicting rates). If his answer has landed it can only reorder EA-45-10: priced from experience, move it down; priced from the table, move it up and ask whether the quote tool or portal reads those rows. If it has not landed, send as ranked; the note already says one input is outstanding.
+2. ~~**Vadim's question 1**~~ — **resolved 2026-11-02 by his August rate sheet.** The desk's sheet and the OMS published table agree on 30 of 30 American zone lanes, to the cent. The "133 conflicting prices" were a casket rate and a lighter-weight rate sharing a key. EA-45-10 is rewritten as a question and EA-45-09 no longer asks them to enforce the documented key — which, as written, would have deleted the lighter-weight rates. Full working: `reports/vadim-rate-sheet-reconciliation.md`.
 3. **The security officer.** The nightly job is the first scheduled data flow out of the OMS since the officer declined agent access. It is not agent access: it is a PII-stripped export into a CSI-owned folder. But they should hear it from you before they hear it from Kyri. Your call.
 
 **Decisions that are yours:**
-- **Severity (Ex. B §3.2(b): CSI designates).** My recommendations are in the note. EA-45-10 at Level 2, because a 2x to 4x spread on 133 lanes is not rounding; EA-45-05 and -09 at Level 3 because the desk is unaffected. I did not recommend Level 1 for anything: it means business-critical, nothing here is, and over-designating spends credibility you will want the day something is. If you want a response clock on EA-45-05, designate Level 2 and say it blocks all lane-margin work. That is true, but it is not the same thing as a workaround.
+- **Severity (Ex. B §3.2(b): CSI designates).** EA-45-05 and -09 at Level 3; the desk is unaffected by either. **EA-45-10 no longer carries a severity** — Vadim's rate sheet showed it is not a defect, and it is now a question (see "What changed" below). I did not recommend Level 1 for anything: it means business-critical, nothing here is, and over-designating spends credibility you will want the day something is. If you want a response clock on EA-45-05, designate Level 2 and say it blocks all lane-margin work. That is true, but it is not the same thing as a workaround.
 - **Whether Kyri and Alex see our read on the bucket.** The note shows it (one line per item), as `§9.6` and the brief direct. If you would rather they classify cold, delete the "Our read: contract" column. The reasoning below stays internal either way.
 - **Hours.** Support Services run from the Initial Deliverables Acceptance Date: up to 40 hours a month included, more only if Developer chooses to do it, and then billed (`reports/freightflow-agreement-review.md §1.1`). Anything they call chargeable, or that would push the month past 40, should wait for your written yes (§1.2 item 6). Start a CSI-side tally now. Acceptance status is unknown (`context/brain/open-questions.md` #30); if the OMS was never accepted, these items may sit inside the fixed-fee build and the labels below are conservative.
 - **Whether to tell them `created_via_portal` is also an independent check on portal revenue.** I have not. It is a legitimate adoption measure and a legitimate reconciliation input for Donald (tests D1 and D2 in §2.5 of the contract review). Donald reconciling to CSI's invoices proceeds either way. Counsel before any dispute notice (§2.6), and this ask is not that.
@@ -86,7 +86,7 @@ This is the first of a weekly note: one list, ranked, so you can plan against it
 - So we don't repeat ourselves: **there is no export function on the Flight Confirmation List, Ready to Invoice List or Collect Shipments.** These are not "switch on the button" requests.
 - **Decedent and family data.** Every export is built from a named column list at the query. Nothing is stripped afterwards. The excluded columns are named in spec §4.2, and if you know of any we have missed, please add them.
 
-**Attached:** `oms-export-spec.md` (field-level detail) and `rate-defect-keys.csv` (the 181 duplicated keys, with every price seen).
+**Attached:** `oms-export-spec.md` (field-level detail) and `published-rate-collisions.csv` (the 181 repeated keys, with every price seen and our reading of each).
 
 ---
 
@@ -102,11 +102,13 @@ This is the first of a weekly note: one list, ranked, so you can plan against it
 | 6 | EA-45-06 | Carrier invoice lines from the Airline Invoice Audit | Feature | Ambiguous: an audit export, or new | Four |
 | 7 | EA-45-07 | Contracted rates for the 15 carriers that have none | A question first, then data | Ambiguous: international rate-card help (support hours), or an export | Four, plus a company OKR |
 | 8 | EA-45-08 | Are quotes stored, and linked to the booking they become? | A question; a feature if no | A question. Capture or export if absent: new work | Two to four |
-| 9 | EA-45-09 | The uniqueness key is violated; text sits in numeric columns | **Bug** | **Error Response Request, Level 3** | Three |
-| 10 | EA-45-10 | 133 lanes carry conflicting published prices | **Bug** | **Error Response Request, Level 2** | Three, and possible quote integrity |
+| 9 | EA-45-09 | The documented uniqueness key looks wrong; text sits in numeric columns | **Bug (the documentation, and 5 text cells)** | **Error Response Request, Level 3** | Three |
+| 10 | EA-45-10 | Confirm our reading: the 133 "conflicting" lanes are two products in one key | **Question, not a bug** | A question. The fix, if any, is EA-45-05 | Folds into EA-45-05 |
 | 11 | EA-45-11 | Funeral home required before a booking can be invoiced | Feature | New work | Three |
 
-**Why this order.** Per unit of effort, and from the team's written requirements. The two questions (4 and 8) sit high because answering them costs an hour and shapes everything after. The three bugs sit at 5, 9 and 10 because they unblock fewer analyses than the exports, not because they matter less: if you agree they are errors, we would expect them fixed in the ordinary course whatever their rank. One input is still outstanding (how the desk picks between conflicting rates); it may reorder EA-45-10 and nothing else.
+**Why this order.** Per unit of effort, and from the team's written requirements. The two questions (4 and 8) sit high because answering them costs an hour and shapes everything after. The bugs sit at 5 and 9 because they unblock fewer analyses than the exports, not because they matter less: if you agree they are errors, we would expect them fixed in the ordinary course whatever their rank.
+
+**One change since we started drafting.** We had ranked a tenth item as a Level 2 bug — 133 lanes with conflicting prices. We then reconciled the rate table against the sheet the booking desk prices from, and it matches to the cent. **There is no price conflict.** EA-45-10 is now a question confirming that, and the only real defect in the rate data is EA-45-05. We would rather tell you that than have you spend a day on it.
 
 ---
 
@@ -187,17 +189,20 @@ This is the first of a weekly note: one list, ranked, so you can plan against it
 
 **Type:** bug. **Contract (our read):** Error Response Request. **Severity (CSI designates): Level 3.**
 **Observed.** 2026-11-02, `rates-published-20261102.csv`; not checked earlier.
-**What.** The Rates Reference says `airline + origin_type + origin + destination_type + destination + rate_type` is unique and that imports block duplicates. **181 keys appear more than once (487 rows).** 43 are exact repeats, 133 carry different prices (EA-45-10), 5 carry text. By airline: American 62, Southwest 49, Delta 46, Aeromexico 24. Separately, `published_rate` is text on 5 rows ("varies per city") and `discount_rate` is text on 5 ("take $35 off pub" four times, "equal to pub" once), all American.
-**Questions.** Is the uniqueness constraint enforced by the database, or only by the bulk importer? (If only the importer, rows added through the UI or brought from the legacy system would bypass it.) Is the key as documented the real key, or should it include `shipment_rate_type`?
-**Fixed when.** Re-running `scripts/rate_defects.py` on the next export reports zero duplicate keys, or any remainder is explained by a documented key; and the numeric columns are numeric.
-**Scope note.** We can edit rates in bulk ourselves. The ask is to enforce the key and tell us the answers above, not to do our data entry.
+**What.** The Rates Reference says `airline + origin_type + origin + destination_type + destination + rate_type` is unique and that imports block duplicates. **181 keys appear more than once (482 numeric rows).** Having since reconciled the table against the desk's own rate sheet (EA-45-10), we think **the documented key is simply incomplete and the data is fine**: 133 of those 181 are a casket rate and a lighter-weight rate sharing a key because `shipment_rate_type` is blank. That leaves **48 exact repeats** — same key, same price — which look like genuine duplicate rows, and 5 rows carrying text in numeric columns.
+**Questions.** (1) Should the documented key include `shipment_rate_type`? We think yes, and that the Rates Reference is what needs correcting. (2) Is the constraint enforced by the database or only by the bulk importer? (If only the importer, rows added through the UI or carried from the legacy system would bypass it.) (3) Separately, `published_rate` is text on 5 rows ("varies per city") and `discount_rate` is text on 5 ("take $35 off pub" four times, "equal to pub" once), all American — these should be numeric or modelled properly.
+**Please do not enforce the key as currently documented.** On our reading it would collapse a casket rate and a lighter-weight rate into one row and lose the second. The fix we want is the label (EA-45-05), then the key definition.
+**Fixed when.** The Rates Reference states the real key; the 48 exact repeats are resolved or explained; the numeric columns are numeric.
+**Scope note.** We can edit rates in bulk ourselves. The ask is the key definition and the answers above, not our data entry.
 
-#### EA-45-10 — 133 lanes carry conflicting published prices
+#### EA-45-10 — The 133 "conflicting" lanes: please confirm our reading
 
-**Type:** bug. **Contract (our read):** Error Response Request. **Severity (CSI designates): Level 2.**
-**Observed.** 2026-11-02, as above.
-**What.** On 133 keys the same airline, origin, destination and rate type appear with different published prices. **All 133 are `flat` rates and 120 differ by more than 2x** (median 2.8x, maximum 4.3x). Southwest 49, American 43, Aeromexico 24, Delta 17. Example: American, zone West to zone West, flat: $207.19, $615.94, $207.19. The list is attached.
-**Questions.** (1) When a booking prices against a lane with more than one row, **which row wins?** (2) **Does the quote tool or the customer portal read these rows?** If so, a funeral home could be shown a price two to four times off, and we would want to know today. (3) Could these be casket and cremated-remains rows that differ only by the blank field in EA-45-05? If so, EA-45-05, -09 and -10 are one fix.
+**Type:** a question, not a bug. **Contract (our read):** a question; the fix, if one is needed, is EA-45-05.
+**An earlier draft of this note called these conflicting prices and asked you which row wins. We withdraw that.** We have since reconciled the published table against the rate sheet the booking desk actually prices from, and we think the table is correct.
+**What we found.** On 133 keys the same airline, origin, destination and rate type carry different prices — but the ratio between them is **always between 2.0x and 4.3x** (median 2.8x), which is a product difference, not a pricing error. On American's zone lanes the higher rate matches the desk's sheet on **30 of 30 lanes, to the cent**, including the five Puerto Rico lanes at $980.00. The lower rows cluster tightly by distance band ($207.19 short, $217.81 medium, $239.06 transcontinental) in a way a casket rate does not.
+**Our reading.** These are a casket rate and a lighter-weight rate (cremated remains, or infant) sharing one key because `shipment_rate_type` is blank — exactly the field in EA-45-05. **So EA-45-05 is the whole fix, and EA-45-09 is a documentation correction.** Confidence high on the pattern, medium on which product the lower rate is, because the label is the thing that's missing.
+**What we'd still like to know.** (1) Are we right that the lower rows are cremated-remains or infant rates? (2) **Does the quote tool or the customer portal read these rows, and if so how does it choose?** That is the one part of the original question that still matters: if a selection runs without the rate-type label, it could pick the wrong product's price. We have no evidence it does.
+**Method, if useful:** `scripts/reconcile_vadim_sheet.py` in our repo; outputs attached as `published-rate-collisions.csv`.
 **What we do.** We decide which row is correct and send you the keep/retire list. We do not ask you to pick a price.
 **Severity rationale.** Level 2: a defect the desk currently works around, with a possible customer-facing consequence we can't rule out. Not Level 1: nothing we know of stops operations.
 

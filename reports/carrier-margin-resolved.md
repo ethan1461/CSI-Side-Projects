@@ -94,13 +94,17 @@ report. The rule stands reinforced, not weakened.
 Three concrete export/data problems surfaced by this analysis. `product` should fold them
 into the export specification.
 
-1. **Duplicate rows violate the documented uniqueness key.** The *Rates Reference* states
-   that `airline + origin_type + origin + destination_type + destination + rate_type` is
-   unique and that the importer blocks duplicates. In the live export, **181 key
-   combinations appear more than once (487 rows), and 133 of those carry conflicting
-   published rates.** The system is either not enforcing the constraint or the data
-   predates it. Until fixed, pricing analysis cannot tell which rate a booking would
-   actually use.
+1. ~~**Duplicate rows violate the documented uniqueness key.**~~ **SUPERSEDED 2026-11-02 —
+   see `reports/vadim-rate-sheet-reconciliation.md`.** This item claimed 133 lanes carry
+   *conflicting* published rates. They do not. Reconciled against the rate sheet the
+   booking desk prices from (`data/raw/vadim-rate-sheet-20260813.xls`), the OMS published
+   table matches on **30 of 30 American zone lanes, to the cent**. The 133 are a casket
+   rate and a lighter-weight rate sharing one key because `shipment_rate_type` is blank
+   — every high/low ratio falls between 2.0x and 4.3x, with nothing in between. So the
+   defect is item 2 below and nothing else; what remains here is **48 exact duplicate
+   rows** (same key, same price) and a uniqueness key in the *Rates Reference* that is
+   missing `shipment_rate_type`. **The claim that pricing analysis "cannot tell which rate
+   a booking would actually use" was wrong** and should not be repeated.
 2. **`shipment_rate_type` is empty on all 6,919 published rows**, while contracted rates
    are all typed `Casket`. Casket and cremated-remains rates cannot be told apart, which
    is why 96 of 129 matched lanes were ambiguous and the headline rests on only 33.

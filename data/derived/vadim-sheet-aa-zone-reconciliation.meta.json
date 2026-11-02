@@ -1,0 +1,12 @@
+{
+  "source_files": [
+    "data/raw/vadim-rate-sheet-20260813.xls",
+    "data/raw/rates-published-20261102.csv"
+  ],
+  "row_count": 30,
+  "script": "scripts/reconcile_vadim_sheet.py",
+  "script_version": "1.0",
+  "run_timestamp": "2026-11-02T17:30:26.988841+00:00",
+  "pii_columns_dropped": "none read; both inputs are rate data only (\u00a77.2)",
+  "note": "Each AA zone pair: the desk's sheet price vs the OMS high and low rate."
+}

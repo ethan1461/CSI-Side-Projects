@@ -1,0 +1,31 @@
+origin,destination,sheet_published,oms_rows,oms_high,oms_low,high_matches_sheet,high_low_ratio
+Northeast,PR,980.0,3,980.0,228.44,True,4.29
+Southeast,PR,980.0,3,980.0,228.44,True,4.29
+Central,PR,980.0,3,980.0,228.44,True,4.29
+Southern Middle,PR,980.0,3,980.0,228.44,True,4.29
+West,PR,980.0,3,980.0,228.44,True,4.29
+Northeast,Northeast,600.01,3,600.01,207.19,True,2.896
+Northeast,Southeast,631.88,3,631.88,207.19,True,3.05
+Northeast,Central,759.38,3,759.38,207.19,True,3.665
+Northeast,Southern Middle,748.76,3,748.76,207.19,True,3.614
+Northeast,West,945.32,3,945.32,239.06,True,3.954
+Southeast,Northeast,631.88,3,631.88,207.19,True,3.05
+Southeast,Southeast,600.01,3,600.01,207.19,True,2.896
+Southeast,Central,663.76,3,663.76,207.19,True,3.204
+Southeast,Southern Middle,663.76,3,663.76,207.19,True,3.204
+Southeast,West,913.44,3,913.44,239.06,True,3.821
+Central,Northeast,732.81,3,732.81,207.19,True,3.537
+Central,Southeast,663.76,3,663.76,207.19,True,3.204
+Central,Central,637.19,3,637.19,207.19,True,3.075
+Central,Southern Middle,653.13,3,653.13,207.19,True,3.152
+Central,West,738.13,3,738.13,217.81,True,3.389
+Southern Middle,Northeast,754.07,3,754.07,207.19,True,3.64
+Southern Middle,Southeast,663.76,3,663.76,207.19,True,3.204
+Southern Middle,Central,637.19,3,637.19,207.19,True,3.075
+Southern Middle,Southern Middle,637.19,3,637.19,207.19,True,3.075
+Southern Middle,West,748.76,3,748.76,217.81,True,3.438
+West,Northeast,950.63,3,950.63,239.06,True,3.977
+West,Southeast,929.38,3,929.38,239.06,True,3.888
+West,Central,754.07,3,754.07,217.81,True,3.462
+West,Southern Middle,754.07,3,754.07,217.81,True,3.462
+West,West,615.94,3,615.94,207.19,True,2.973

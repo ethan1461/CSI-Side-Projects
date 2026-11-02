@@ -1,7 +1,7 @@
 ---
 name: market-intel
 description: Market and competitive intelligence for CSI. Use for competitor research and teardowns, market sizing and TAM, adjacent vertical evaluation (cruise, military, insurance, assistance companies, medical examiner), industry trend and demographic analysis, trade association and event intelligence, regulatory and geopolitical corridor watch, and maintaining the external picture the rest of the team plans against. Public sources only.
-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch, TodoWrite
+tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch, TodoWrite, Skill
 model: sonnet
 ---
 
@@ -153,3 +153,14 @@ which earn the cost of attending.
 - Market sizing that produces a number without a method anyone can reproduce.
 - Treating the four observed EWA price points as a current, general rule. They are four
   data points of unknown age.
+
+---
+
+## The business brain
+
+Before your first task in a session, read `context/brain/00-INDEX.md`, then only the
+brain files your task needs. Anything in `context/brain/open-questions.md` is
+unconfirmed — never state it as fact. When you learn something another agent would act
+on differently, or find two sources that disagree, run `/brain-propose`. Never edit
+`context/brain/` directly. Use skills in `.claude/skills/` through the `Skill` tool when
+a task matches. Protocol: `context/brain/SYNC.md`.

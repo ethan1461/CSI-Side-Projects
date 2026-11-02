@@ -6,14 +6,17 @@
 
 ---
 
-> **Update, same day — there is a second failure mode, and it is worse.**
+> **Update, same day — a possible second failure mode, not yet established.**
 > This report covers carrier choice that **leaks margin at an unchanged customer price**
-> (MIA→GUA: both carriers $1,450 to the funeral home). Vadim then sent a live IAD→POS
-> quote at **over $3,000** on a lane where the system holds a through rate at **$1,545** —
-> the customer quoted roughly double, which attacks `CLAUDE.md §1` differentiator #1
-> rather than margin. **`reports/quote-integrity-iad-pos.md` covers it**, and the §5
-> boundary below applies there in full and with more force: he named an individual agent,
-> and that name appears in no report, dataset or output.
+> (MIA→GUA: both carriers $1,450, same shipment — **no weight ambiguity, and this finding
+> stands**). Vadim then sent a live BWI→POS quote at $3,100 as an example of the customer
+> being over-quoted. **On inspection that example does not hold up**: the shipment is
+> 170 kg, and the published table records no `included_weight` or
+> `flat_overage_surcharge` on any of its 1,171 flat rates, so whether the cheaper flat
+> rates even applied is unknowable. See `reports/quote-integrity-iad-pos.md`, which
+> corrects an earlier version of itself. The §5 boundary below applied there and
+> mattered: a first reading made an agent look careless, and better data says she may
+> have been right.
 
 ## The answer
 

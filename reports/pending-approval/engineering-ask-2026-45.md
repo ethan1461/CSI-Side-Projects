@@ -228,15 +228,18 @@ What replaced them is EA-45-12, which came out of the same conversation and is w
 **(1) Does the quote tool or the customer portal read these multi-row lanes, and if so how does it pick a row?** Without a rate-type label there is nothing in the data to select on. If the answer is "the first" or "the lowest", a casket shipment could be quoted at roughly a third of the correct price. We have no evidence that happens — we ask because we cannot see the selection logic and the downside is asymmetric.
 **(2)** Secondary: are we right that the lower rows are cremated-remains or infant rates?
 
-**(3) Added 2026-11-02, and of the three this is the one I'd most like answered.** *(If this note has already gone out, send this as a short follow-up rather than holding it — it's a yes/no and it decides what we do next.)*
+**(3) Added 2026-11-02 evening. This is now the one I'd most like answered, and it's a bigger deal than the two above.** *(If this note has already gone out, please send it as a short follow-up rather than holding it to next week.)*
 
-Several of our best international rates are held at **region level** — American and United both price US → Caribbean as a flat rate, for instance — while the lane an agent is actually working is airport to airport, like IAD → POS.
+**Three columns in the published rates export are empty on all 6,919 rows: `included_weight`, `weight_unit` and `flat_overage_surcharge`.** (`shipment_rate_type` makes four, but that one we think is ours.)
 
-**When an agent prices IAD → POS, does the system automatically surface those region-level through rates, or does the agent have to know that POS resolves to region "Caribbean" and go looking?**
+**This makes every flat rate in the table unquotable for a heavy shipment, and there are 1,171 of them.** A rate of $1,545 covering an unstated weight, with an unstated overage charge, isn't a price anyone can quote from. We found it working a real 170 kg casket where the only number in the system that could actually be computed was a per-kilo rate — the flat alternatives couldn't be evaluated at all.
 
-We ask because a quote went out last week on that lane at over $3,000, built as a two-carrier routing via Miami, when the table holds American at **$1,545** and United at **$1,650** for the same journey. We don't yet know whether those two rates were on the screen and not taken, or never shown. **If the resolution doesn't reach them automatically, that's a defect and we'd want to raise it properly.** If it does, the problem is ours and we'll handle it on our side.
+**Our questions:**
+- Do these fields hold values in the system, and is the export dropping them? Three schema columns never populated once across 6,919 rows looks more like an export issue than data entry, which is why we're asking you rather than handling it internally like the other rate items.
+- If they're genuinely empty in the database, is there somewhere else the weight allowance and overage terms live?
+- Related: when an agent prices an airport-to-airport lane whose best rate is held at **region** level — American and United both price US → Caribbean as a flat rate — does the system surface that automatically, or does the agent need to know the destination resolves to that region?
 
-No blame attaches to this either way and we're not asking you to look at anyone's work — just at how the rate resolution behaves on an airport-to-airport lane whose best rate is held at region level.
+**Our read:** likely a bug, and if so a material one — but we're genuinely unsure, which is why it's a question. It also blocks something we want to build (EA-45-12): we can't warn an agent that a routing looks expensive when we can't compute what the alternative costs.
 **Method, if useful:** `scripts/reconcile_vadim_sheet.py` in our repo; outputs attached as `published-rate-collisions.csv`.
 **What we do.** We decide which row is correct and send you the keep/retire list. We do not ask you to pick a price.
 **Severity rationale.** Level 2: a defect the desk currently works around, with a possible customer-facing consequence we can't rule out. Not Level 1: nothing we know of stops operations.

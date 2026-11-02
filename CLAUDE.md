@@ -263,9 +263,9 @@ being permitted to use it are different things; the rule is the control.
 | System | Access | Agent permission |
 |---|---|---|
 | **OMS / admin system** | **No programmatic access.** CSI's security officer declined. | Manual exports only, placed in `data/raw/` by a human. Never attempt to reach it. |
-| **HubSpot** | MCP connector, live | **Read freely. Writes require Ethan's approval, every time** — records, properties, sequences, workflows, merges, deletions. See §7.1. |
-| **Google Drive** | MCP connector, live | Read freely. Never write, move, share, or delete a file without approval. |
-| **Google Docs / Sheets** | MCP connector, live | Read freely. **Writes require approval** — these tools can modify documents colleagues depend on. |
+| **HubSpot** | MCP connector, live | Read freely. **Write freely to records** — companies, contacts, deals, properties, notes, activities, lists. **`revops-crm` is the only agent that writes;** others propose through it. Sequences, workflows with send steps, and marketing email are **approval-gated** — they reach a customer. Bulk merges and deletions over 25 records go to Ethan. See §7.1. |
+| **Google Drive** | MCP connector, live | Read freely. Create and update files freely. **Sharing and permission changes are approval-gated** — they change who can see CSI data. Never delete without approval. |
+| **Google Docs / Sheets** | MCP connector, live | Read freely. Create and update freely. Prefer a new document over overwriting one a colleague depends on. |
 | **Google Ads / Performance Max** | Live, budget committed | Read-only analysis. No budget, bid, or campaign changes. |
 | **This repository** | Read/write | Full. `data/raw/` is read-only to agents — never modify a file there. |
 | **Public web** | Read | Research freely. Nothing published. |
@@ -298,25 +298,53 @@ being permitted to use it are different things; the rule is the control.
 
 The dividing line: **core research is free; everything else reports first.**
 
+**Revised 2026-11-02 by Ethan.** Agents may now write to CSI's internal systems of
+record without asking. The line is no longer read-versus-write — **it is whether the
+action reaches a customer, a partner, the public, or CSI's money.**
+
 **Free — no approval needed:**
 - Reading anything in this repo, including `data/raw/`
-- Reading from HubSpot, Google Ads, or any connected system
+- Reading from HubSpot, Google Ads, Drive, Docs, Sheets, or any connected system
 - Public web research, competitor research, market sizing
 - Writing analysis, models, drafts, and recommendations into the repo
 - Writing handoffs and task logs
+- **Creating and updating HubSpot records** — companies, contacts, deals, properties,
+  notes, logged activities, associations, lifecycle stages, owners, lists
+- **Creating and updating Google Docs, Sheets and Drive files** that the team uses
+  internally
 
-**Requires explicit written approval from Ethan in the live session, every time:**
+**Still requires explicit written approval from Ethan, every time:**
 - Publishing or scheduling any social post, ad, blog, or website change
 - Sending any email or LinkedIn message to a real prospect, customer, or partner
+- **Anything in HubSpot that puts a message in front of a person** — enrolling a
+  contact in a sequence, activating or editing a workflow with a send step,
+  publishing or sending a marketing email, or any automation that fires outbound
+  on its own. The API makes these look like ordinary writes. They are not.
+- **Changing who can see a file** — Drive sharing, permissions, link settings
 - Spending money, changing budgets, or activating or modifying a paid campaign
-- **Writing to or modifying any HubSpot record, sequence, property, or workflow** —
-  including bulk cleanup, merges, and deletions
 - Any outbound communication naming SCI, Dignity, Everstory, Carriage, Foundation
   Partners, Park Lawn, an acquisition target, or a named individual
 - Any pricing claim, savings figure, or competitive comparison shown externally
 - **Any change to live pricing, rate cards, or quoted rates**
 - **Any contact with an acquisition target, investor, lender, or banker**
 - Deleting or overwriting any file in `data/` or `reports/`
+
+**Destructive and bulk operations — not gated, but disciplined.** Merging duplicates,
+mass property updates, and deletions are writes Ethan has approved in principle. They
+are also the ones that destroy 23 years of commercial history when they go wrong, and
+most are not reversible through the API. So:
+
+- **Log before you write.** Every bulk operation produces a record in `reports/` first:
+  which records, current value, new value, how many. Write the log, then execute.
+- **Prefer create over overwrite.** New doc, new sheet, new property. Overwriting
+  something a colleague depends on is the failure mode that costs trust fastest.
+- **Deletions and merges above 25 records come to Ethan.** Not because he'll object,
+  but because a merge that silently ran on the wrong 400 contacts is unrecoverable and
+  nobody would notice for weeks.
+- **Spot-check after.** Read back a sample and record it in the log. A write nobody
+  verified is a write nobody can defend.
+- **One agent writes to HubSpot: `revops-crm`.** Others propose through it. Fourteen
+  agents writing to the same CRM is how a CRM becomes untrustworthy again.
 
 Staged-but-unapproved work goes in `reports/pending-approval/` with a one-page brief:
 what it is, what it costs, what it claims, what happens if the claim is wrong, and the

@@ -17,5 +17,4 @@ When Ethan answers one, the PM files the answer as a proposal and removes it her
 | 4 | Portal build status — piloting or generally available? | Every "use the portal" message depends on it. Mid-year report left this blank. | 2026-07-26 |
 | 5 | Are SCI/Dignity, Everstory, and Carriage statuses unchanged since September? | Enterprise plays are the highest-leverage work. | 2026-11-01 |
 | 6 | Which older partner drafts still say CSI clears inbound customs itself? | Conflicts with the export-only rule in `company-facts.md`. | 2026-11-01 |
-| 7 | Revenue model: Ethan said CSI earns on secondary services; `reports/carrier-margin-resolved.md` shows ~35–41% gross margin on the rate spread. Which describes the business? | Pricing, valuation, sales narrative, and partner copy all depend on it. | 2026-11-02 |
 | 8 | Are Otto and Stacy the "two new sales hires" in `CLAUDE.md` §5? | Sales agents need to know who they are enabling. | 2026-11-01 |

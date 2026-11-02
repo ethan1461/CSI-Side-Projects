@@ -7,6 +7,11 @@ owner: PM orchestrator
 
 Newest first. One line per merged change: date, file, what changed, who approved.
 
+- 2026-11-01 — company-facts: revenue model resolved as two streams (rate spread +
+  secondary-service fees; fee margins unknown). open-questions #7 closed. New
+  data-owners.md and "ask colleagues for data" rule in ways-of-working; first data
+  request (DR-001, secondary-service margins) drafted. Approved: Ethan.
+
 - 2026-11-01 — Initial brain export from the claude.ai Project. Adds company-facts
   (corrections: 8 gateways, export-only handling, published-rate pricing model),
   learnings, ways-of-working, three initiatives, open questions, sync protocol.

@@ -17,6 +17,11 @@ source: Ethan's statements in the claude.ai Project
 - CSO to-do lists stay tightly scoped to near-term, owned actions. No strategic framing
   items or long-horizon plays on them.
 
+## Getting data
+
+- **Data the team needs, we ask our colleagues for** (Ethan, 2026-11-01). Agents draft
+  the request; Ethan sends it. Owners and open requests: `data-owners.md`.
+
 ## Approval gates
 
 - Nothing publishes, sends, spends, or writes to HubSpot without Ethan's sign-off.

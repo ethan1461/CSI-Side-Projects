@@ -73,16 +73,17 @@ progress. Details: `context/brain/company-facts.md`.
 4. **International depth** — consulate work, apostilles, customs. Competitors underperform here.
 5. **Tenure and 24/7 live humans.**
 
-**The business model:** margin is earned on the back end through carrier rates the
-funeral home cannot access, plus fees on complex international documentation. The
-service *appears* free to the customer.
+**The business model (confirmed by Ethan, 2026-11-01) has two streams:** (1) the spread
+between the published rate the funeral home pays and CSI's contracted carrier rate, and
+(2) fees for secondary services — consulate support, pickup and drop-off, and other
+ancillary charges. The service *appears* free to the customer.
 
 Gross margin on contracted lanes is ~**35% domestic** and ~**41% international**
 (`reports/carrier-margin-resolved.md`, 2026-11-02). Quote it only with that report's
 limits attached — it is rate-card margin, unweighted by volume, and excludes cost to
 serve. Cost data still does not exist for most international carriers.
-Ethan has described the model as revenue from secondary services; that conflicts with
-this margin data and is open in `context/brain/open-questions.md` #7.
+Margins on the secondary-service fees are **unknown** and have been requested
+(`context/brain/data-owners.md`). Do not estimate them.
 
 ---
 
@@ -425,7 +426,11 @@ project, and it binds every agent.
 5. **Alternative data is in scope.** Demographic trends, ZIP-level economics, migration
    and diaspora patterns, mortality statistics, carrier schedule data, competitor
    footprint. Subject to §7.6.
-6. **Negative results are results.** "We instrumented this and it does not move the
+6. **Missing data is a request, not a dead end.** Whatever data the team needs, we ask
+   the colleague who owns it. Agents draft the request from
+   `templates/data-request-template.md`; Ethan sends it. Owners and open requests:
+   `context/brain/data-owners.md`.
+7. **Negative results are results.** "We instrumented this and it does not move the
    number" is a finding worth reporting, and it is how budget gets freed.
 
 ---

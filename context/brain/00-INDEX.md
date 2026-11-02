@@ -20,6 +20,7 @@ before starting work. `CLAUDE.md` stays short and points here.
 | `ways-of-working.md` | Any task that produces a draft, file, or recommendation for Ethan. |
 | `initiatives/*.md` | When the task touches that initiative. |
 | `SYNC.md` | When you learn something the brain should know, or when you're the PM running the weekly cycle. |
+| `data-owners.md` | Before saying a number is unavailable, and before estimating around a gap. |
 | `open-questions.md` | Before stating anything as current. If it is listed here, it is unconfirmed. |
 | `changelog.md` | At the start of each weekly cycle (PM), to see what changed. |
 

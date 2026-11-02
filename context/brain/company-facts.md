@@ -37,15 +37,17 @@ Items marked **CORRECTION** contradict older material and must win.
 
 ## Pricing and business model
 
-- Funeral homes pay the **published airline rate with nothing added** — no booking fee.
-- **Margin (data, 2026-11-02):** ~35% gross on contracted domestic lanes, ~41%
-  international — the spread between published and contracted carrier rates. Quote only
-  with the limits in `reports/carrier-margin-resolved.md` (rate-card margin, unweighted
-  by volume, excludes cost to serve, no cost data for most international carriers).
-- **Open conflict:** in October 2026 Ethan described CSI as earning on secondary services
-  (consulate support, pickup/drop-off) rather than on the rate. The margin data says the
-  rate spread is the main engine. Until Ethan rules (`open-questions.md` #7), agents cite
-  the data and never describe the revenue model externally.
+CSI earns in **two ways** (confirmed by Ethan, 2026-11-01):
+
+1. **The rate spread.** Funeral homes pay the published airline rate with nothing added
+   and no booking fee; CSI's cost is the lower contracted rate. Measured gross margin:
+   ~35% domestic, ~41% international on contracted lanes. Quote only with the limits in
+   `reports/carrier-margin-resolved.md` (rate-card margin, unweighted by volume,
+   excludes cost to serve, no cost data for most international carriers).
+2. **Fees for secondary services** — consulate support, pickup and drop-off, and other
+   ancillary charges. **Margins on these are unknown.** Requested from the data owner
+   (`data-owners.md`, request #1). Until it arrives, no agent estimates them.
+
 - Not a call center; named people on call 24/7/365.
 - Working relationships with every major airline — the largest airline network in the
   space.

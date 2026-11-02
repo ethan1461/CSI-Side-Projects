@@ -33,9 +33,18 @@ Customer-specific negotiated rates, against the same contracted cost:
 | Bergen Funeral Service (FL and NJ) | 2 | 34.1% |
 | National Mortuary Shipping | 26 (20 costed) | 22.3% |
 
-National Mortuary Shipping is a **competitor buying capacity from CSI** at a 22% margin —
-materially below the 35% book rate. That is a real commercial relationship nobody has
-characterized, and it belongs in both the pricing review and the valuation narrative.
+**Corrected 2026-11-02:** an earlier version of this report described National Mortuary
+Shipping as "a competitor buying capacity below book rate." That framing was wrong.
+
+**NMS and Bergen are among CSI's largest partners and largest customers** — strategic
+allies that CSI actively seeks to do more business with, and a stated top priority. The
+22% margin on NMS volume is **deliberate partner pricing, not leakage.** See
+`CLAUDE.md §5 — Strategic alliances`. No agent should propose closing that gap as a
+margin-recovery measure.
+
+What the number is genuinely useful for: it quantifies the economics of the alliance, so
+partner volume can be valued properly in the DCF and so any future restructuring of the
+relationship starts from a real baseline rather than a guess.
 
 ## Correcting the September finding
 

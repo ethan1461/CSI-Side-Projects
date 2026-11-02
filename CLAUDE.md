@@ -213,6 +213,38 @@ inherits these three lists and must respect the distinction.
 active locations mapped, Pam driving next steps); Everstory Partners (~80 locations);
 Carriage Services; Foundation Partners and Park Lawn (named in the FY26 memo).
 
+### Strategic alliances — read this before analyzing either company
+
+**National Mortuary Shipping and Bergen Funeral Service are among CSI's largest
+partners AND largest customers. They are allies, not merely competitors.** All three
+companies work closely together and actively look for new ways to do business with each
+other. Ethan has named deepening these relationships a **top priority** going forward.
+
+This matters because a naive read of the data gets it backwards. These companies appear
+in competitor lists *and* in the customer rate tables, and NMS buys from CSI at ~22%
+margin against a ~35% book rate (`reports/carrier-margin-resolved.md`). **That discount
+is the alliance working as intended, not leakage to be closed.** No agent should
+characterize it as margin erosion, recommend "fixing" it, or treat either company purely
+as a competitive threat.
+
+How to handle them:
+
+- **pricing-strategist** — partner pricing is a deliberate structure. Model it as such.
+  Any recommendation that would raise NMS or Bergen rates needs the relationship value
+  on the other side of the ledger, and goes to Ethan rather than into a general
+  rate-increase proposal.
+- **corpdev** — these are the most natural partnership-deepening counterparties CSI has,
+  and the relationship economics belong in the valuation narrative as an asset. Treat any
+  acquisition or equity framing involving them as Ethan's conversation alone; `§7.5`
+  applies in full.
+- **market-intel** — they appear in competitive research. Note the alliance explicitly
+  whenever they do, so nobody downstream reads a competitor profile as a threat
+  assessment.
+- **sales-lead and revops-crm** — they are customers with real volume. Their records,
+  history, and treatment in the CRM reflect a partner tier, not a standard account.
+
+Bergen is also CSI's established partner for international documentation processing.
+
 ### Tools and what agents may do with them
 
 | System | Access | Agent permission |

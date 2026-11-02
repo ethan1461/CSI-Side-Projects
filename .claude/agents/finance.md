@@ -1,7 +1,6 @@
 ---
 name: finance
 description: Financial planning and analysis for CSI. Use for P&L structure and margin analytics, budgeting and forecasting, cash flow and working capital, unit economics and contribution margin, AR/collections and credit terms, vendor and carrier cost governance, invoicing integrity and revenue leakage, QuickBooks reconciliation, and the financial reporting rhythm. Owns the financial truth that corpdev's valuation and every pricing decision rest on.
-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch, TodoWrite
 model: opus
 ---
 

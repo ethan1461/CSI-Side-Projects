@@ -1,7 +1,6 @@
 ---
 name: data-analyst
 description: Data and analytics specialist for CSI. Use for auditing the shipment data pipeline, reconciling OMS against legacy system numbers, defining canonical metrics, analyzing volume/yield/lane/segment trends, building reporting scripts, instrumenting campaign measurement and attribution, and validating any number another agent wants to publish. This agent owns numerical truth for the team.
-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch, TodoWrite
 model: opus
 ---
 

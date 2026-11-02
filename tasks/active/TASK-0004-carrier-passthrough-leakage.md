@@ -43,6 +43,10 @@ multiple is a material move in enterprise value, and it is margin that requires 
 
 ## Success criteria
 - [ ] Verdict in the first line
+- [ ] **If the verdict is "cannot determine," that is not where the report ends** (`§9.6`).
+      Name who would have it (Donald for the invoicing policy, Kyri/Alex if the OMS would need
+      to capture it), the smallest version that would settle it — fifty invoices, one carrier,
+      one month — and what it would unblock. "We don't have that" is never a finished sentence
 - [ ] Re-runnable script in `scripts/`, output and `.meta.json` in `data/derived/`, row
       counts in and out logged
 - [ ] Extrapolated figures labeled `[ESTIMATE]` with the method and volume assumption shown

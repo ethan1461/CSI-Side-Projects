@@ -54,7 +54,12 @@ handoff rather than inventing one.
 
 ## Success criteria
 - [ ] Every metric has a formula, not a description
-- [ ] Every metric is marked computable / blocked, and blocked ones name the blocker
+- [ ] Every metric is marked computable / blocked, and **every blocked one carries the full
+      `§9.6` follow-through: who would have the data, the smallest version that would unblock it
+      (a two-week sample, one lane, fifty records), and what it would unblock.** A metric marked
+      "blocked" with no route out is half the job. Where the answer is "the system doesn't track
+      that," it becomes a feature request for the Monday engineering ask, routed to the
+      orchestrator — not a permanent fact about CSI
 - [ ] The gross-vs-contribution margin distinction is unmistakable, because conflating them is
       the single likeliest error across this week's reports
 - [ ] Definitions already settled elsewhere are **adopted, not re-derived** — the CRO

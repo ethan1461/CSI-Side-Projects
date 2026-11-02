@@ -32,22 +32,36 @@ permission request. **Ethan has confirmed none of those pages has export functio
 The booking-level export is a genuine build — **a Change Order with a cost attached, not a
 permission grant** — and nothing in the Vadim conversation can shrink it.
 
-Two consequences you must design around:
+**Superseded again, 2026-11-02 — and this one reverses an instruction I gave you.** `§9.6` was
+rewritten. An earlier version of this task told you to justify each chargeable item "or cut it
+from the ask." **Delete that idea. Do not drop any ask.**
 
-- **The ask cannot be made cheap, so it has to be made worth it.** A Change Order is money and
-  the developer is not obliged to agree (`reports/freightflow-agreement-review.md §1.1`, and
-  §2.4 of the agreement expects change orders to carry "further financial renumeration").
-  Every Change Order item has to justify its cost against what it unblocks, or it gets
-  declined and we have burned the one shot `§9.6` gives us this cycle.
-- **Sort every item onto the right side of the contract line, and say which side you put it
-  on.** Three buckets: an **Error Response Request** (something in Exhibit A or the
-  Specifications that fails to work as documented — free, and CSI designates the severity), a
-  draw on the **included 40 hours a month of Support Services** (maintenance, rate-card
-  technical help, security, training), or a **Change Order** (new report, new field, new
-  integration, new export — chargeable, and needs a signed agreement). Apply the test in
-  `reports/freightflow-agreement-review.md §1.2` and record your reasoning per item. Where the
-  agreement is genuinely ambiguous — and §1.3 item **S3 flags this exact export as ambiguous** —
-  say so rather than asserting a side.
+Ethan's instruction: Kyri and Alex are **loose** about what counts as a Change Order versus
+what they will simply enable, so CSI's job is to flag what it wants and let them classify it.
+An agent that quietly drops a useful ask because it guessed the ask was chargeable has made a
+contract judgment it is not entitled to make, and has cost CSI something for nothing.
+
+So:
+
+- **Never drop an ask to avoid an awkward conversation. Rank it low and send it.** If you think
+  something is probably a Change Order, that is a reason to rank it honestly, not to omit it.
+  The ranking is how CSI signals priority when not everything can be built.
+- **Still sort every item onto the contract line — but as CSI's read, not as a ruling and not
+  as a filter.** Three buckets: an **Error Response Request** (something in Exhibit A or the
+  Specifications that fails to work as documented — CSI designates the severity), a draw on the
+  **included 40 hours a month of Support Services** (maintenance, rate-card technical help,
+  security, training), or **new work** (new report, field, integration or export). Apply the
+  test in `reports/freightflow-agreement-review.md §1.2`, record your reasoning per item, and
+  say plainly that **they decide**. Where the agreement is genuinely ambiguous — and §1.3 item
+  **S3 flags this exact export as ambiguous** — say so rather than asserting a side.
+- **`legal-risk` tracks; it does not gatekeep.** It records how each ask was classified and
+  what it cost, so CSI builds a real picture of where the scope line sits in practice. It flags
+  an ask before sending **only when the ask itself carries legal exposure** — not merely
+  because it might be chargeable. Do not route items to it for cost screening.
+
+What survives from the earlier correction: the export is a genuine build, so the ask is larger
+and more certain than first planned, and **the manual fallback matters** because there is no
+permission path to retreat to.
 
 ## Line to the metric
 Enabling metric — decision latency. Then everything else: without booking-level data the
@@ -72,9 +86,20 @@ Two files.
 2. `reports/pending-approval/engineering-ask-2026-45.md` — the batched ask, ready for Ethan
    to send, and **the authoritative version**: `reports/pending-approval/data-access-request.md`
    is superseded in part and carries a correction block saying so. Every item ranked, and for
-   each: **is it a bug or a feature** (`§9.6`), what it unblocks and for how many agents,
-   **which contract bucket it falls in and why** (Error Response / 40-hour Support bucket /
-   ambiguous / Change Order), and the smallest version that still unblocks the decision.
+   each: **is it a bug or a feature** (CSI's read, `§9.6`), what it unblocks and for how many
+   agents, **which contract bucket CSI believes it falls in and why**, and the smallest version
+   that still unblocks the decision.
+
+   **This is now a standing Monday deliverable, not a one-off** (`§10` — "The Monday
+   engineering ask"). Build it in the four-part structure it will keep every week, so week 46
+   inherits a format rather than reinventing one:
+
+   | Part | This week |
+   |---|---|
+   | 1. What the agent team needs | Full. The items below |
+   | 2. What the booking desk needs | **Empty this week, and say so with the reason** — the capture mechanism is being built in TASK-0019 and the desk has not been asked yet. Do not invent desk input on their behalf |
+   | 3. Customer portal ideas | Thin. Whatever `sales-lead` (0010) and `revops-crm` (0009) have surfaced by Tuesday. You own this section from week 46 |
+   | 4. Open items from prior weeks | None — this is the first. Set up the table so status carries forward and nothing silently drops |
 
    The items, with what Ethan has already decided:
    - **The three rate-data defects** (duplicate rows violating the documented uniqueness key,
@@ -104,11 +129,12 @@ canonical), and it lists `analytics-2022-2026-monthly.csv`, which is no longer i
 - [ ] Bugs are separated from features, and the three data defects in
       `reports/carrier-margin-resolved.md` are presented as Error Response Requests with
       CSI's own severity designation (`reports/freightflow-agreement-review.md §1.2` item 1)
-- [ ] **Every item names its contract bucket and the reasoning.** Error Response, 40-hour
-      Support bucket, ambiguous, or Change Order — no item is unsorted
-- [ ] **Every Change Order item carries a justification against what it unblocks**, because a
-      Change Order costs money and can be declined. An item that cannot be justified is cut
-      from the ask rather than left in to be refused
+- [ ] **Every item names its contract bucket and the reasoning, stated as CSI's read and not
+      as a ruling.** No item is unsorted, and the document says explicitly that Kyri and Alex
+      classify
+- [ ] **No ask was dropped.** Every item the team wants is present, ranked. If you believed
+      something was probably chargeable, it appears low in the ranking rather than not at all —
+      and the log records anything you were tempted to cut, so the judgment is visible
 - [ ] The read-only Postgres role does **not** appear
 - [ ] States that no export button exists on Flight Confirmation, Ready to Invoice or Collect
       Shipments, so nobody re-litigates it next cycle
@@ -126,12 +152,15 @@ canonical), and it lists `analytics-2022-2026-monthly.csv`, which is no longer i
 **Never attempt to reach the OMS** (`§5`). Manual exports only, placed in `data/raw/` by a
 human.
 **Do not contact Kyri or Alex.** Agents draft; Ethan sends (`§9.6`, `§7.1`).
-**`legal-risk` owns the scope question.** Where an item might exceed the agreement, that is
-flagged before the ask is sent, not after (`§9.6`). Route the ambiguous items to the
-orchestrator for a `legal-risk` read rather than deciding the contract question yourself.
+**`legal-risk` tracks, it does not gatekeep** (`§9.6`, rewritten 2026-11-02). Route an item to
+the orchestrator for a `legal-risk` read **only if the ask itself carries legal exposure** —
+not because it might be chargeable. Chargeability is Kyri and Alex's call, not a reason to
+delay or filter.
 **Do not draft Change Order language.** Agents never draft or suggest terms that could read as
 an offer, a commitment or an agreement to agree (`§7.5`). You are writing a request for work,
 not an instrument.
+**"We don't have that" is never a finished sentence** (`§9.6`). Anything the OMS could capture
+but doesn't is a feature request for this ask, not a permanent fact about CSI.
 `§9.6` first principle: ask a colleague before asking engineering. If Vadim, Susej or Kim
 could answer something on your list — what a field means, which rate applies, how a workflow
 runs — move it out of the engineering ask and into a colleague question.
@@ -161,8 +190,13 @@ sends it. Anything that might exceed the FreightFlow agreement's scope is flagge
   if the ask is not good enough.
 - 2026-11-02 — **Premise corrected by Ethan, and the task got harder.** The export buttons do
   not exist; the booking-level export is a Change Order build with a cost, not a permission
-  request. Added: the contract-bucket sorting requirement, the Change Order justification
-  requirement, the booking-duration capture question moved in from operations, and the explicit
-  removal of the read-only Postgres role. The Vadim conversation no longer shrinks this ask.
+  request. Added: the contract-bucket sorting requirement, the booking-duration capture question
+  moved in from operations, and the explicit removal of the read-only Postgres role. The Vadim
+  conversation no longer shrinks this ask.
+- 2026-11-02 — **`§9.6` rewritten; my own instruction reversed.** I had told you to justify
+  chargeable items "or cut them from the ask." That was wrong and it is withdrawn: never drop
+  an ask, rank it low and send it. Kyri and Alex classify; CSI states its read. `legal-risk`
+  records outcomes rather than screening for cost. Also: this ask is now a **standing Monday
+  deliverable** with a four-part structure, so build the format to be reused.
 
 ## Outcome

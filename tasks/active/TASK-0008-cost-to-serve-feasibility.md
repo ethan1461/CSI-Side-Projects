@@ -42,10 +42,11 @@ volume growth turns into margin growth rather than headcount growth.
    exist, and let the ask confirm it.
    **What remains genuinely yours:** how the work actually runs, where the time goes by booking
    type, what rework looks like, and whether a sample is feasible at all on a 24/7 desk.
-3. **The two-week time sample design**, if instrumentation is absent. **A version of this ask
-   is already drafted** — `reports/pending-approval/vadim-data-request.md` item 4 puts the
-   *time* question to Vadim and deliberately routes the *labour-cost* question to Donald.
-   Do not duplicate it; sharpen it. Specify: which booking
+3. **The two-week time sample design**, if instrumentation is absent. Note that
+   `reports/pending-approval/vadim-data-request.md` has been **rewritten down to two items**
+   and the duration question is no longer in it — it moved to the engineering ask. So this
+   design is yours to write from scratch, and the only question left for Vadim is how the desk
+   actually works. Specify: which booking
    types, how an agent records time without adding meaningful work, the sample size needed,
    and the total cost in agent minutes. It must be answerable by Kim and Susej as an **async
    questionnaire, not a meeting** — that is their stated preference
@@ -64,7 +65,10 @@ volume growth turns into margin growth rather than headcount growth.
 ## Success criteria
 - [ ] Verdict in the first line, not the conclusion
 - [ ] The sample design states its cost in agent minutes per booking and total
-- [ ] The Kim/Susej ask is an async questionnaire of at most one page
+- [ ] The Kim/Susej ask is an async questionnaire, and it is **one message carrying both this
+      task's questions and TASK-0019's desk-friction section** — two pages total, not two
+      separate notes. `§9.6` caps asks to the same colleague at one message a week, and they
+      prefer async questionnaires to meetings
 - [ ] **No cost-to-serve figure is estimated.** If it is not measured, the report says
       unknown and says exactly what would resolve it and how cheaply (`§8`)
 - [ ] **No labour-cost figure appears anywhere** — not a wage, not a loaded hourly rate, not

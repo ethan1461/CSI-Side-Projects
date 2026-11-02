@@ -1,9 +1,16 @@
 /**
- * CSI — Forwarded Thread Capture
+ * CSI — Forwarded Thread Capture  [GMAIL ONLY — NOT THE CSI EMAIL SOLUTION]
+ *
+ * ⚠️ SCOPE: CSI runs on Microsoft 365 / Outlook. This script works on Gmail only,
+ * so it does NOT solve company-email capture. See scripts/email-capture-README.md
+ * for the recommendation (wait for the Microsoft connector) and for why
+ * auto-forwarding Outlook mail to a personal Gmail account is the wrong bridge.
+ *
+ * It stays in the repo because ethan1461@gmail.com owns the Drive folders and
+ * receives Drive shares, so there may be threads there worth capturing.
  *
  * Saves Gmail threads you label into a Google Drive folder as plain text, so the
- * CSI agent team can read them. Solves the "set up a mailbox I can forward to"
- * problem without a mailbox: you forward or label a thread, this picks it up.
+ * CSI agent team can read them.
  *
  * HOW TO INSTALL (about five minutes, once)
  *

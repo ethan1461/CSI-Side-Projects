@@ -34,8 +34,8 @@ Owners marked *likely* are the team's best guess; the first request to them conf
 
 | Data | Owner | Notes |
 |---|---|---|
-| Margin analytics, lane profitability, cost to serve | Donald (Finance) | `CLAUDE.md` §5 |
-| Revenue and margin on secondary services (consulate support, pickup/drop-off, other ancillary fees) | Donald — *likely* | Ethan to confirm the route |
+| Margin analytics, lane profitability, cost to serve | Donald (Finance) | `CLAUDE.md` §5. **Prefers to talk first, then shares** — propose a conversation, not an email. Keep him looped in on how his numbers are used. |
+| Revenue and margin on secondary services (consulate support, pickup/drop-off, other ancillary fees) | Donald | Confirmed by Ethan, 2026-11-01 |
 | Marketing spend by channel by month | Donald — *likely* | Blocks CAC and ROAS |
 | International carrier costs (IAG, Emirates, Lufthansa, etc.) | Donald / Vadim | `CLAUDE.md` §4.3 |
 | Shipment-level OMS export | Alex (builds exports), Kyri (OMS) | Biggest single gap |
@@ -47,4 +47,4 @@ Owners marked *likely* are the team's best guess; the first request to them conf
 
 | # | Ask | Owner | Unblocks | Drafted | Status |
 |---|---|---|---|---|---|
-| 1 | Revenue and gross margin on secondary services, by fee type, FY2025 and 2026 YTD | Donald — *likely* | Full revenue model; pricing and valuation work | 2026-11-01 | Draft in `reports/pending-approval/data-requests/` — awaiting Ethan |
+| 1 | Revenue and gross margin on secondary services, by fee type, FY2025 and 2026 YTD | Donald | Full revenue model; pricing and valuation work | 2026-11-01 | Meeting next week (main agenda item); Ethan texting Donald 2026-11-02 |

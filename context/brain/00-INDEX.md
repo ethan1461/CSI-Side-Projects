@@ -18,10 +18,14 @@ before starting work. `CLAUDE.md` stays short and points here.
 | `company-facts.md` | Always. Canonical facts and the corrections to older material. |
 | `learnings-and-principles.md` | Any strategy, GTM, marketing, or sales task. |
 | `ways-of-working.md` | Any task that produces a draft, file, or recommendation for Ethan. |
-| `initiatives/*.md` | When the task touches that initiative. |
+| `people.md` | Before naming anyone's role or reporting line, or addressing someone in a draft. Disputed titles point to the conflicts list. |
+| `accounts-and-pipeline.md` | Any task touching an enterprise group, prospect, partner, competitor, or vendor. |
+| `deliverables-index.md` | Before producing any deliverable — it may already exist — and before reusing old copy (check "Stale material in circulation"). |
+| `initiatives/*.md` | When the task touches that initiative: customer-portal, oms-build, sales-team, google-ads, website-rebuild, aws, acquisitions, trade-shows, nfda-2026, international-partners, federal-contracting, quarterly-shipping-report, hubspot-hygiene, white-glove-hnw, corporate-savings-calculator. |
+| `sources.md` | When you need to trace a `[chat-id, date]` source tag back to its claude.ai chat. |
 | `SYNC.md` | When you learn something the brain should know, or when you're the PM running the weekly cycle. |
 | `data-owners.md` | Before saying a number is unavailable, and before estimating around a gap. |
-| `open-questions.md` | Before stating anything as current. If it is listed here, it is unconfirmed. |
+| `open-questions.md` | Before stating anything as current. If it is listed here, it is unconfirmed. Includes "Conflicts awaiting Ethan's ruling" (C1–C16). |
 | `changelog.md` | At the start of each weekly cycle (PM), to see what changed. |
 
 Performance numbers do not live here. They live in `CLAUDE.md` §2 and

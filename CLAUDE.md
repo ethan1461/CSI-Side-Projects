@@ -462,6 +462,24 @@ project, and it binds every agent.
    the colleague who owns it. Agents draft the request from
    `templates/data-request-template.md`; Ethan sends it. Owners and open requests:
    `context/brain/data-owners.md`.
+
+   **Engineering asks are rationed.** Kyri and Alex work under the FreightFlow
+   Software Development and Support Agreement (`data/raw/freightflow-agreement.pdf`),
+   which has defined scope. **Not every ask gets met, and asks that fall outside that
+   scope cost CSI money or goodwill or both.** So before routing anything to them:
+
+   - **Ask a colleague first.** Cheryl, Vadim, Susej and Kim can answer most questions
+     about how the business actually works — what a field means, which rate applies,
+     how a workflow runs — faster and at no cost. Engineering is the last resort, not
+     the first.
+   - **Batch.** Asks go to Ethan in a prioritized list, not one at a time as agents
+     think of them. The orchestrator holds the queue.
+   - **Rank honestly.** Every engineering ask states what it unblocks and for whom. An
+     ask that unblocks one analysis loses to one that unblocks five agents.
+   - **Separate bugs from features.** A defect in something already built is a
+     different conversation from new work. Say which it is.
+   - **legal-risk owns the scope question.** When an ask might exceed the agreement,
+     that is flagged before it is sent, not after.
 7. **Negative results are results.** "We instrumented this and it does not move the
    number" is a finding worth reporting, and it is how budget gets freed.
 

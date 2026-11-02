@@ -1,0 +1,16 @@
+{
+  "source_files": [
+    "data/raw/carrier-invoices/UA-278010.csv",
+    "data/raw/carrier-invoices/UA-287331.csv",
+    "data/raw/carrier-invoices/DL-6890376.xlsx"
+  ],
+  "output_rows": 47,
+  "pii_columns_dropped": [
+    "Shipper Reference",
+    "Nature of Goods",
+    "Shipping Location",
+    "Customer"
+  ],
+  "script": "scripts/realized_margin.py",
+  "run_timestamp": "2026-11-02T03:31:34.202297+00:00"
+}

@@ -1,3 +1,8 @@
+> **⚠️ ARCHIVED — DO NOT CITE.** Superseded by `CLAUDE.md` and `context/brain/` (Nov 2026).
+> Known wrong: the gateway count (8, not 5) and any volume-decline framing. Margin figures
+> are superseded by `reports/carrier-margin-resolved.md` (2026-11-02). Kept for history only. Agents may read it for
+> background but must verify every fact against the brain before using it.
+
 # Cargo Sales International (CSI) — Complete Business Context
 
 **Last Updated:** February 2, 2026  

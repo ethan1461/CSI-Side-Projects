@@ -127,3 +127,22 @@ is explicitly instructed to test it rather than assume it, and to say so loudly 
 decomposition shows this is actually a **retention** problem. If that comes back, most of
 the GTM and marketing plan should be rebuilt around it. Watch for that finding in the
 first two weeks; it's the one result that would redirect the whole program.
+
+---
+
+## The business brain (added Nov 2026)
+
+`context/brain/` is the team's shared knowledge, exported from Ethan's claude.ai Project
+and kept in sync by protocol. Start at `context/brain/00-INDEX.md`; the sync protocol is
+`context/brain/SYNC.md`.
+
+| Command | When |
+|---|---|
+| `/wire-connectors` | Once — connect HubSpot and Drive, read access for agents, every write gated |
+| `/brain-propose` | Any agent, whenever it learns something durable or finds a conflict |
+| `/brain-review` | Monday — lint plus one approval list for Ethan |
+| `/brain-merge` | After Ethan approves, or after a new Project export lands in `_inbox/` |
+| `/brain-digest` | Friday — what Ethan pulls back into his claude.ai Project |
+
+`python3 scripts/brain_lint.py` checks the brain is wired, current, and free of facts
+the team has already corrected. Tests: `python3 -m pytest tests/`.

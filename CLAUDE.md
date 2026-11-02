@@ -50,13 +50,17 @@ human remains air transportation and logistics broker. Our customers are **funer
 directors and funeral home groups**, never end consumers. We move roughly **11,000
 loved ones a year**, domestically and internationally.
 
-**Gateways:** MIA (HQ), JFK, IAD, IAH, LAX. ORD pickup capability is in progress.
+**Gateways (8, canonical — confirmed by Ethan Oct 2026):** JFK, IAD, MIA (HQ), BOS, DFW, IAH,
+LAX, SFO. Treat any 5- or 6-gateway mention in older material as stale. ORD pickup is in
+progress. Details: `context/brain/company-facts.md`.
 
 **What we actually do:**
-- Book air transport for human remains across five gateways, with routing and pricing options
+- Book air transport for human remains across eight gateways, with routing and pricing options
 - Pickup service to funeral homes in MIA, IAH, LAX (ORD pending)
 - Ship-ins, ship-outs, known-shipper requests
-- Customs clearance for international inbound at MIA, LAX, JFK
+- **Physical handling is export-only.** CSI handles remains leaving the U.S. For inbound,
+  a licensed customs partner from CSI's network clears at the arrival gateway, then CSI runs
+  the domestic onward leg. Never claim CSI clears inbound customs itself.
 - Consulate and consular documentation, apostilles, international paperwork
 - 24/7/365 live, named agent coverage — not a call center, not a ticketing queue
 
@@ -65,18 +69,21 @@ loved ones a year**, domestically and internationally.
    airline direct; everything else is included. This is the single strongest cold-outreach hook.
 2. **We do not use airline interline departments.** Interline typically takes 3+ days
    to confirm and prices at the highest tariff. We confirm faster and cheaper.
-3. **Five-gateway routing flexibility** — multiple options per shipment, not one.
+3. **Eight-gateway routing flexibility** — multiple options per shipment, not one.
 4. **International depth** — consulate work, apostilles, customs. Competitors underperform here.
 5. **Tenure and 24/7 live humans.**
 
-**The business model:** margin is earned on the back end through carrier rates the
-funeral home cannot access, plus fees on complex international documentation. The
-service *appears* free to the customer.
+**The business model (confirmed by Ethan, 2026-11-01) has two streams:** (1) the spread
+between the published rate the funeral home pays and CSI's contracted carrier rate, and
+(2) fees for secondary services — consulate support, pickup and drop-off, and other
+ancillary charges. The service *appears* free to the customer.
 
 Gross margin on contracted lanes is ~**35% domestic** and ~**41% international**
 (`reports/carrier-margin-resolved.md`, 2026-11-02). Quote it only with that report's
 limits attached — it is rate-card margin, unweighted by volume, and excludes cost to
 serve. Cost data still does not exist for most international carriers.
+Margins on the secondary-service fees are **unknown** and have been requested
+(`context/brain/data-owners.md`). Do not estimate them.
 
 ---
 
@@ -262,6 +269,8 @@ Bergen is also CSI's established partner for international documentation process
 
 - **`data/raw/`** — manual exports. **Gitignored** and read-only. Contains contact PII.
 - **`data/derived/`** — everything generated. Each output carries a `.meta.json`.
+- **`context/brain/`** — the business brain: canonical facts, learnings, ways of working,
+  initiatives, open questions. Start at `context/brain/00-INDEX.md`. See §12.
 - **`context/`** — orienting documents loaded into agent sessions. Start with
   `context/DATA-INVENTORY.md`, which records what exists, what it unlocks, and what is
   missing.
@@ -449,7 +458,11 @@ project, and it binds every agent.
 5. **Alternative data is in scope.** Demographic trends, ZIP-level economics, migration
    and diaspora patterns, mortality statistics, carrier schedule data, competitor
    footprint. Subject to §7.6.
-6. **Negative results are results.** "We instrumented this and it does not move the
+6. **Missing data is a request, not a dead end.** Whatever data the team needs, we ask
+   the colleague who owns it. Agents draft the request from
+   `templates/data-request-template.md`; Ethan sends it. Owners and open requests:
+   `context/brain/data-owners.md`.
+7. **Negative results are results.** "We instrumented this and it does not move the
    number" is a finding worth reporting, and it is how budget gets freed.
 
 ---
@@ -582,3 +595,25 @@ Most of this roster should be dormant most of the time, activated when there is 
 question in its lane. A standing weekly cycle across fourteen agents is the single most
 expensive mistake available here — and it would also produce fourteen reports nobody
 reads, which is the worse half of the problem.
+
+---
+
+## 12. The business brain and how it stays in sync
+
+`CLAUDE.md` holds the rules. **`context/brain/` holds what CSI knows** — canonical facts,
+learnings, ways of working, initiatives, and open questions — exported from Ethan's
+claude.ai Project and maintained here. Full protocol: `context/brain/SYNC.md`.
+
+- **Read** `context/brain/00-INDEX.md` before your first task in a session, then only
+  the brain files your task needs.
+- **Anything in `context/brain/open-questions.md` is unconfirmed.** Never state it as fact.
+- **Never edit brain files directly.** If you learn something the brain should know, or
+  find two sources that disagree, file a proposal with `/brain-propose`. The orchestrator
+  batches proposals into Monday's plan; Ethan approves; then they merge.
+- **Live data is never copied into the brain.** HubSpot, Google Ads, Drive, and OMS
+  exports are read at run time. The brain stores definitions, decisions, and pointers.
+- **Skills live in `.claude/skills/`.** Use them through the `Skill` tool when a task
+  matches (for example, `quarterly-shipping-report` for any shipping-trends publication).
+- `python3 scripts/brain_lint.py` checks for stale facts, broken references, and agents
+  that aren't wired to the brain. The orchestrator runs it every Monday.
+

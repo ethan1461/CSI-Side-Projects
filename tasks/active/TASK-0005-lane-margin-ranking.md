@@ -6,6 +6,20 @@
 **Priority:** HIGH
 **Status:** UNCLAIMED
 
+> ## ⚠️ AMENDED 2026-11-03 — the lever moved
+> **This task assumed the lever was what CSI charges. It isn't.**
+> Vadim, 2026-11-02: on MIA→GUA CSI earns $375 on Avianca and **over $700 on Volaris** — and
+> his own rate sheet prices **both at $1,450 to the funeral home.** Identical customer price;
+> the whole gap is carrier cost. See `reports/carrier-selection-margin-leak.md`.
+> **Reframe: rank lanes by the margin spread between carriers that both serve them, not by
+> lane profitability in isolation.** The output CSI needs is "on this lane, prefer this
+> carrier, worth $X" — which feeds engineering ask EA-45-12.
+> **Also withdrawn:** the "133 lanes carry conflicting prices" premise. They are a casket rate
+> and a lighter-weight rate sharing a key (`reports/vadim-rate-sheet-reconciliation.md`). Do
+> not rebuild on it.
+> **Still blocked on cost data for 15 carriers / 6,441 lanes**, so start from Vadim's lane
+> list when it lands rather than from the rate table.
+
 ## Objective
 CSI's gross margin is now measured — ~35% domestic, ~41% international on contracted lanes
 (`reports/carrier-margin-resolved.md`). That is a headline, not a decision. What nobody has

@@ -6,6 +6,19 @@
 **Priority:** CRITICAL
 **Status:** UNCLAIMED
 
+> ## ⚠️ AMENDED 2026-11-03 — resequenced behind the account layer
+> **Do not start this before TASK-0020.** Kyri delivered the OMS funeral home table on
+> 2026-11-03 — 18,876 records with booking history, discount flags, group membership and the
+> OMS's own duplicate flags. Cleaning HubSpot without it would mean normalising records by
+> hand that the OMS can populate correctly, then doing it again.
+> **What changed:** the account layer, lifecycle stages and state normalisation are now
+> TASK-0020's, sourced from the OMS rather than inferred. **What remains here:** duplicate
+> resolution, the `csi_lead_source` property, phone and contact enrichment, and owner
+> assignment once `sales-lead` defines territories.
+> **Otto and Stacy are provisioned** (Ethan, 2026-11-03), so ownership is assignable.
+> **The 2023 bulk import of 2,283 contacts has no known origin** — Ethan was asked and does
+> not know. Label them `2023 bulk import, origin unknown`. Do not guess.
+
 ## Objective
 Ethan wants the database cleaned, not a proposal to clean it. `CLAUDE.md §7.1` permits record
 writes freely and `revops-crm` is the agent that makes them. Two reps are selling against this

@@ -6,6 +6,19 @@
 **Priority:** CRITICAL
 **Status:** UNCLAIMED
 
+> ## ⚠️ AMENDED 2026-11-03 — gated, and the inputs changed
+> **Do not produce a valuation range until the basis of accounting is known.** Whether CSI's
+> books are cash or accrual, what assurance level exists, and how carrier cost is booked are
+> all unconfirmed. Those questions went to Arty, CSI's accountant, on 2026-11-03. **A
+> valuation built on unreconciled numbers is worse than none** (`§7.3`) — it gets quoted in
+> a room where its assumptions are invisible.
+> **Start with TASK-0023** (capital routes and target longlist), which Ethan has named a core
+> priority and which needs none of the gated inputs.
+> **Two facts to build around when this does start:** customer concentration is **31.3% in
+> the top 10 accounts** (partner-channel per `§5`, but a lender will still price it), and a
+> **sale of CSI auto-terminates the FreightFlow agreement** that maintains the OMS
+> (`reports/freightflow-agreement-review.md §14.3`).
+
 ## Objective
 Capital is Priority 1 by Ethan's explicit instruction. Nobody has ever put a defensible
 number on what CSI is worth.

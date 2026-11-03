@@ -41,3 +41,6 @@ Send EA-45-03 as written. Items 1 and 2 are cheap to adjust next week.
 ## PM decision
 
 <Routed / rejected / merged, with a one-line reason. Filled by pm-orchestrator.>
+
+---
+**ROUTED 2026-11-03 by pm-orchestrator.** Items absorbed into the 2026-11-03 reset: TASK-0003/0009/0016 closed to `tasks/done/`; new TASK-0020 to 0023 created; TASK-0001/0005/0006/0013/0018 amended; suggestions logged in `tasks/backlog/BACKLOG.md`. Colleague questions were sent in the 2026-11-02 email package. Upstream fact corrections applied to `CLAUDE.md §4.1` and `§4.3`.

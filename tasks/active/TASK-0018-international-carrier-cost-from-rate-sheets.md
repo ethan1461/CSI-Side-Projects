@@ -6,6 +6,19 @@
 **Priority:** HIGH
 **Status:** BLOCKED — do not start until the files exist
 
+> ## ⚠️ AMENDED 2026-11-03 — unblocked, but not in the way this task assumed
+> **Vadim's rate sheet arrived (`data/raw/vadim-rate-sheet-20260813.xls`). It is not cost data.**
+> Every price column is a *customer* price — the tabs are headed PUBLISHED and Discount. This
+> is the same trap that produced the September margin error. **§4.3 is unchanged.**
+> It does add sell-side prices for Copa, IBC, Viva, Volaris and Avianca — but those five are
+> **29 of the 6,441 uncosted lanes**, and **IAG and Emirates, 95% of the gap, are not in the
+> workbook at all.**
+> **Revised scope:** extract the partner pricing structure it *does* document — NMS at $20–95
+> off published across 24 Delta lanes, **Bergen at $2,300 on USA→Europe against $3,430
+> published**, and the 17-account discount roster. Per `§5` model that as deliberate
+> structure, not leakage. Full read: `reports/vadim-rate-sheet-reconciliation.md`.
+> **Status: UNBLOCKED for the partner-pricing half. Still blocked for cost.**
+
 ## Objective
 International is the half of CSI's book with the better measured margin (~41% vs ~35%) and
 **no cost visibility at all**: IAG alone carries 5,565 published lanes with no contracted

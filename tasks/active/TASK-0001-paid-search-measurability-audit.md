@@ -6,6 +6,18 @@
 **Priority:** CRITICAL
 **Status:** UNCLAIMED
 
+> ## ⚠️ AMENDED 2026-11-03 — mostly answered, scope narrowed
+> **This task was written before the Google Ads exports arrived. Most of it is now done.**
+> `reports/google-ads-should-we-pull-back.md` established that 368 of 391 PMax conversions
+> came from YouTube carrying a fabricated $200 value, that HubSpot shows no contact lift
+> whatsoever across the nine-week ad window, and that the real figure is 78 search leads at
+> $32.63. Ethan has removed the $200 value and paused PMax.
+> **The measurement design and the 78-lead check have moved to TASK-0022 (`marketing-lead`),
+> whose number it is.** What remains here for `data-analyst`: **independently verify the
+> HubSpot no-lift finding** before it is relied on — it is the load-bearing claim and it was
+> produced in the main session, not by the agent that owns numerical truth. Challenge it if
+> it does not hold (`§10`, challenge across lanes).
+
 ## Objective
 Google Ads and Performance Max are live with budget committed and ROAS is unmeasurable
 (`CLAUDE.md §3.6`). CSI has already spent roughly a year of marketing budget it cannot

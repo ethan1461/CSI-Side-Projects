@@ -1,0 +1,23 @@
+{
+  "_readme": "Export allowlists for scripts/safe_export.py. A profile is a deliberate decision about what may leave CSI (CLAUDE.md §7.2). Adding a column here is a data-protection decision, not a convenience. Never add a column carrying decedent or family data; the tool refuses anyway, but the refusal is the backstop, not the control.",
+  "rates_published": {
+    "description": "Published rate card. Commercial terms only, no shipment or person data.",
+    "owner": "pricing-strategist",
+    "allow": ["airline","origin_type","origin","destination_type","destination","rate_type","published_rate","discount_rate","shipment_rate_type","included_weight","weight_unit","flat_overage_surcharge"]
+  },
+  "funeral_homes_business": {
+    "description": "Funeral home accounts as businesses. Business identity and booking counts only. Excludes email and phone so the file is safe for an adviser or diligence room; use funeral_homes_internal for CRM work.",
+    "owner": "revops-crm",
+    "allow": ["funeral_home_id","name","city","state","country","country_code","zip","is_shipper","is_discount_eligible","funeral_home_group","directory_status","booking_count","first_booking_date","last_booking_date","likely_duplicate","duplicate_group_id"]
+  },
+  "funeral_homes_internal": {
+    "description": "As above plus business contact details. Internal and partner use only. NOT for a diligence room.",
+    "owner": "revops-crm",
+    "allow": ["funeral_home_id","name","address","city","state","country","country_code","zip","phone","email","is_shipper","is_discount_eligible","funeral_home_group","directory_status","booking_count","first_booking_date","last_booking_date","likely_duplicate","duplicate_group_id"]
+  },
+  "analytics_monthly": {
+    "description": "Aggregate monthly performance. Safe for lenders and advisers.",
+    "owner": "data-analyst",
+    "allow": ["Period","Revenue","Bookings","Average Revenue Per Booking","Bookings Missing Revenue","Bookings Missing Funeral Home"]
+  }
+}

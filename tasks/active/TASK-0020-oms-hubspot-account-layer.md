@@ -99,3 +99,4 @@ batch over 25, stage a brief in `reports/pending-approval/` and stop.
 
 ## Outcome
 - 2026-11-03 (revops-crm) — Matching built and run (`scripts/match_oms_hubspot.py`): contacts high 251 / medium 71 / low 377 / none 2,876. Company plan: 2,567 in scope, 2,305 create, 262 hold as duplicates. **BLOCKED on Company creation:** no `funeral_home_id` property exists on Company and the HubSpot connector cannot create properties or set read-only. Zero HubSpot writes made. Needs admin to create properties (list in `reports/account-layer-build.md`). Status: BLOCKED.
+- 2026-11-03 (revops-crm, session 2) — `funeral_home_id` exists on Company; uniqueness setting not verifiable via connector; eight other properties still missing. Stopped before any write. Pilot prepared in `reports/account-layer-pilot-log.md`. Waiting on Ethan: confirm unique-values tick; confirm partner IDs; decide on 90 extra never-booked homes. Status: BLOCKED (one confirmation).

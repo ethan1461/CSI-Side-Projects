@@ -10,6 +10,15 @@ Script: `scripts/match_oms_hubspot.py` · Outputs: `data/derived/oms-hubspot-mat
 3. **Contact-side match rate is low, and that is expected.** 322 of 3,575 contacts (9.0%) match at high or medium confidence. The account layer is therefore built from OMS booking history, not from contacts.
 4. **Company build size once unblocked:** 2,567 OMS records in scope, 2,305 safe to create and 262 held back as probable duplicates.
 
+## Update 2026-11-03 (second session): preflight done, still zero writes
+
+- `funeral_home_id` now exists on Company (string). **"Require unique values" cannot be verified through the connector**, so I did not write. Ethan to confirm the tick; then the pilot in `reports/account-layer-pilot-log.md` runs unchanged.
+- The other eight planned properties are still missing. Not worked around.
+- HubSpot Companies today: 0. Contacts: 3,575.
+- **Enrichment file (`data/derived/hubspot-contact-enrichment.csv`) reviewed.** 650 contacts carry a `funeral_home_id` (IDs are stored as floats such as `2061.0`; normalised on load). They map to 416 distinct OMS homes. Of the 650: 474 high-confidence and 31 medium point at a `create`-tier Company and are associable. **123 point at never-booked OMS homes that are not in the 2,305 plan** (81 high, 42 medium; 90 distinct homes). **22 point at `hold_duplicate` records** and stay unassociated until the OMS owner picks the surviving ID.
+- Challenge on weak passes: P8b (90 contacts, low) and P9 (225, review) carry no `funeral_home_id`, so they cannot join a Company and I will create nothing from them. Not used. The 903 `likely_not_a_funeral_home` are excluded and no Company is created for them.
+- Decision for Ethan: the 90 never-booked homes with a matched contact are outside the 2,305 you named. Creating them as `lead` Companies would let their 123 contacts associate. I will not add them unless you say so.
+
 ## Match rates (HubSpot contact to OMS funeral home)
 
 | Band | Contacts | % of 3,575 | Basis |

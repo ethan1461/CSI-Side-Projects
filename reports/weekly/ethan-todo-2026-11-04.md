@@ -19,20 +19,23 @@
 
 **One call, ten minutes, and it settles an open question about a live quote.**
 
+**This ask got narrower overnight.** Ethan ran the lookup himself and the system clearly displays **American at $1,545** and **United at $1,650** for that exact shipment — plus a **$2,100 bundled rate with trucking included**. Identical at 200 kg, so the flat rates don't move with weight. **The information was on the agent's screen.** Price is no longer the open question.
+
 **What to ask her to find out, from American and United:**
 
-> For a **170 kg casket, BWI → Port of Spain, flying 11/15** — what would the rate be, and **was there space available on that date?**
+> For **BWI → Port of Spain on 11/15, a 170 kg casket** — (a) **did you have space that day?** (b) **is CSI a known shipper with you on that lane?** and (c) **would you have honoured the $1,545 flat rate at 170 kg**, or does that rate carry a weight cap?
 
-**Why it needs her rather than us:** it is a carrier-relationship question, and the answer carries more weight coming from the CEO's own contacts than from a rate table we already know is incomplete.
+**Why it needs her rather than us:** it is a carrier-relationship question, and (b) in particular is something a carrier will answer candidly to the CEO and evasively to anyone else.
 
 **What hangs on the answer:**
 
 | If they say | Then |
 |---|---|
-| **~$1,545–1,650 and there was space** | The quote was genuinely around double. The missing weight columns are *why* the agent couldn't see it, and the fix is the guardrail in EA-45-12 |
-| **$2,500–3,000, or no capacity that day** | The routing was correct, the complaint doesn't hold on this example, and **a booking agent is owed a word** |
+| **Space was available and CSI is a known shipper** | Three cheaper options were on screen and a quote went out at $3,150. Vadim's concern is substantiated on this example, and the fix is the EA-45-12 guardrail |
+| **No space on 11/15, or not a known shipper on that lane** | The routing was correct, the complaint doesn't hold here, and **a booking agent is owed a word** |
+| **"$1,545 doesn't cover 170 kg"** | A separate and serious problem: the system is displaying rates it cannot honour, on 1,171 flat rates |
 
-**Important context to give her:** this is about whether the *rate table* can support a quote, not about an agent's work. Our analysis currently leans toward the routing being **defensible** — the shipment is heavy, every flat rate in the system has a blank weight allowance, and CSI's own quote template says space and known-shipper status govern. Framing it as "is our rate data good enough to quote from" will get a better conversation than framing it as a mistake.
+**Framing for her:** this is about whether the rate table can be trusted to quote from, not about an agent's work. All three answers are useful and only one of them is about a person.
 
 **The quote is live until 11/15.** If the cheaper rates do apply and the funeral home hasn't booked, there is still time to requote.
 

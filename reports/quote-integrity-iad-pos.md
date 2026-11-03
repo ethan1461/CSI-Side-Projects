@@ -6,6 +6,37 @@
 
 ---
 
+> ## UPDATE 2026-11-03 — Ethan ran the lookup himself, and it settles the central question
+>
+> He put the exact shipment into the OMS rate lookup: **BWI → POS, 11/15/2026, Casket, 170 kg.** The screen returns:
+>
+> | Carrier | Rate | Status |
+> |---|---|---|
+> | **American Airlines** | **$1,545 (flat)** | PUBLISHED |
+> | **United Airlines** | **$1,650 (flat)** | PUBLISHED |
+> | IAG | $17.25/kg | PUBLISHED |
+> | Korean Air | $6.00/kg | PUBLISHED |
+> | Southwest, Delta, Avianca, IBC, Copa, Lufthansa, Emirates, Viva, Volaris | — | **"No Casket rate"** |
+>
+> **And a Bundled Rate, which nobody had mentioned:** East Coast → MIA → IBC Airways → Caribbean, **trucking included, $2,100.00** — a pre-built all-in package for this exact journey.
+>
+> **Three things follow, and they move the analysis back toward Vadim.**
+>
+> 1. **The information was on the screen.** My §4 question — did the system surface the through rates, or did the agent have no way to find them? — is answered. It surfaced them, clearly labelled PUBLISHED, for Casket, on the right date.
+> 2. **The weight objection does not hold in practice.** Ethan ran it again at **200 kg** and the rates are **identical** — $1,545 and $1,650. The system treats flat as flat. So "the agent couldn't compute a price for a heavy shipment" is wrong: the system gave her a number, and it didn't move with weight.
+> 3. **There were three cheaper options visible, not two.** $1,545, $1,650, and a $2,100 bundle with trucking included. **The quote went out at $3,150.**
+>
+> **I over-corrected yesterday.** My first read — the information was available and wasn't used — was closer to right than the correction that followed it. The weight finding was real as a *data* defect and I was right to raise it, but I let it carry more weight than it could bear: I inferred that a blank `included_weight` made the flat rates unquotable, without checking what the system actually displays. Ethan checked in about ninety seconds. **I should have asked for that screen before writing either version.**
+>
+> **What is still genuinely open, and it is now a short list:**
+> - **Space on 11/15.** The lookup returns rates, not capacity. This is the one that could still make the routing correct.
+> - **Known-shipper status** with American on that lane.
+> - **Whether American would honour $1,545 at 170 kg on the day.** The blank `included_weight` remains a real defect — the system may be displaying a rate it cannot hold. That is worth confirming, but it is no longer a defence of the quote, because the agent saw $1,545 either way.
+>
+> **The Cheryl ask narrows accordingly** — it is now mostly about space and known-shipper status, not price. See `reports/weekly/ethan-todo-2026-11-04.md §1`.
+>
+> **Everything below this box predates the screenshots.** §1's finding on the blank weight columns still stands as a defect worth fixing. §0's self-correction is itself partly wrong, and is left in place rather than deleted so the reasoning is auditable.
+
 ## 0. What I got wrong
 
 **Earlier today I wrote that the system held a through rate of $1,545 on this lane and the customer was quoted roughly double. That is not supportable, and I should not have said it with the confidence I did.**

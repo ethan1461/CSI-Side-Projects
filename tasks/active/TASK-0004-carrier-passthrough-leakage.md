@@ -6,6 +6,41 @@
 **Priority:** CRITICAL
 **Status:** UNCLAIMED
 
+> ## ⚠️ AMENDED 2026-11-04 — the premise is wrong, and the task is rescoped
+>
+> **This task treated the ~$33-per-shipment surcharge as revenue leakage. It is not.**
+> Ethan, 2026-11-04, after checking with Donald and Vadim:
+>
+> > *"Depending on the time of the year, it's extra surcharges that get added on (we usually
+> > just let it go). At the end of the day, we are absorbing it and paying it since we've
+> > already built $X of profit into the system."*
+>
+> So it is a **deliberate absorption against margin already priced in**, not money going
+> missing. The ~$358K annual figure must not be repeated as leakage anywhere.
+>
+> **What is true and still worth having:** the absorption is real cost, it is not currently
+> visible per shipment, and nobody can say whether the margin built in actually covers it on
+> every lane. That is a **cost-to-serve** question, not a recovery question.
+>
+> **Also established 2026-11-04, and it changes who does what:**
+> - **Vadim checks the margin on every single shipment by hand**, and has his own system for
+>   reconciling airline bills. The control exists; it is manual and it sits with one person.
+> - **Kyri and Alex are already building audit tools** so he can step off that process. So
+>   the engineering need here is partly in flight — coordinate, do not duplicate.
+> - CSI **does** charge back for multiple truck runs and overweight shipments.
+> - American, Delta and United are **fixed-rate**; international carriers vary by per-kg and
+>   flat rates that move with season and demand (Vadim, 2026-11-04).
+>
+> **Rescoped objective:** establish the per-shipment cost of absorbed surcharges by lane and
+> carrier, and whether the built-in margin covers it — feeding `reports/the-25m-gap.md` and
+> the **$500 international margin floor** Ethan set on 2026-11-04. Do not frame any output as
+> recovery, leakage or money owed.
+>
+> **Blocked on:** EA-45-02 and EA-45-06 for per-shipment cost. Until then, ask Vadim what his
+> manual reconciliation already tells him — he has been doing it for years and the answer may
+> not need a build at all.
+
+
 ## Objective
 Every one of 77 United shipments examined in September–October carried roughly **$33 above
 the contracted rate** in miscellaneous and tax charges — about 4.4% of carrier cost. At

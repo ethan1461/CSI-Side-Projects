@@ -33,6 +33,13 @@ with her before sending either version.**
 - **Nothing forward-looking, no projections, nothing that reads as preparing an offering**
   (`§7.5`). Historical records only.
 
+**Arty is at Palermo Landsman & Ross** (confirmed by Ethan, 2026-11-03), **the same firm
+already producing CSI's SBA size determination.** That is one relationship, not two, and it
+changes what Thursday is worth: the size determination is **work already in flight that CSI
+is already paying for**, and with one extra question it also answers whether CSI qualifies
+for SBA lending. `corpdev` flagged this in `reports/capital-routes.md` without knowing the
+two were the same firm. Item 5 below is that question.
+
 **If the meeting runs short:** questions 1, 2 and 4. Ten minutes, and they decide whether
 the rest of the year's financial work is possible.
 
@@ -85,6 +92,15 @@ what shape they're in than during somebody else's due diligence.]*
 - **Tax returns for the last three years.**
 - **The chart of accounts**, so I can see how things are categorised before I ask about any
   of them.
+
+**5. One more, and it may be free.**
+
+I understand your firm is working on a size determination for us around federal
+contracting. **While you're in there — does the same analysis tell us whether we'd qualify
+for SBA lending?** My understanding is the size standards overlap, and if the work is
+already being done I'd rather ask now than commission it separately later. We're starting
+to look at what our financing options actually are, and that would be a useful data point
+at no extra cost.
 
 **And the question I most want your honest answer on.**
 

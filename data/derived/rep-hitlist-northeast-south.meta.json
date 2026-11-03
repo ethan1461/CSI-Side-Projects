@@ -1,0 +1,12 @@
+{
+  "source_files": [
+    "data/derived/fy27-seg1-one-time.csv",
+    "data/raw/oms-funeral-homes-20261103.csv"
+  ],
+  "row_count": 328,
+  "script": "scripts/build_rep_hitlist.py",
+  "script_version": "1.0",
+  "run_timestamp": "2026-11-03T03:41:52.973218+00:00",
+  "pii_columns_dropped": "phone excluded from the committed file; rep-facing copy with phone is written to the scratchpad only",
+  "note": "Tier A = pre-June cohort and shipper-flagged. Tier C is probably a receiving home, not a lapsed customer."
+}

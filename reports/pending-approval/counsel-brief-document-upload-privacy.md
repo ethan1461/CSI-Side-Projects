@@ -7,12 +7,15 @@
 
 ## Notes for Ethan — delete before sending
 
-**Start with the firm you already have.** `Palermo Landsman & Ross` is already engaged on
-the SBA size determination. Ask them two questions before you look anywhere else:
+**Start with Matt.** CSI's former attorney already knows the business, which is worth more
+than any cold search. Ask him two things: is this in his lane, or is it far enough into
+privacy and data protection that he'd want a specialist — and if the latter, who would he
+send you to?
 
-1. Do they have privacy and data-protection capability in-house?
-2. If not, **who would they refer you to?** A referral from existing counsel is faster and
-   better-qualified than anything you'll find cold, and it costs one email tonight.
+*(Correction, 2026-11-03: an earlier version of this note said to start with Palermo
+Landsman & Ross. **They are CSI's outside tax and CPA firm, not attorneys** —
+`context/brain/people.md` records this correctly and I did not check it. Worth asking
+separately whether Arty sits at that firm; if so, two threads are one relationship.)*
 
 **What kind of lawyer you want.** Privacy and data protection, with **sensitive-category
 data** experience — healthcare-adjacent is the closest analogue even if HIPAA turns out not

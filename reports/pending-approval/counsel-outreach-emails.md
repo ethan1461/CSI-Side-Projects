@@ -4,26 +4,34 @@
 
 ---
 
-## Email 1 — to Palermo Landsman & Ross. Send this one first.
+## Email 1 — to Matt. Send this one first.
 
-**Subject:** Privacy counsel referral — document handling question, fairly time-sensitive
+**Subject:** Privacy question, and are you taking work at the moment?
 
-Hi [name],
+Hi Matt,
 
-Quick question slightly outside what we've had you working on.
+Hope you're well — it's been a while.
 
-We're about to launch a feature in our customer portal that lets funeral homes upload the documentation international shipments require — passports, death certificates, consular paperwork. Our developers flagged, correctly, that we shouldn't launch it without a privacy lawyer looking at it first. They also pointed out that **our public website already accepts document uploads today**, and we can't currently say with confidence who can access those files or how long they're retained.
+Something's come up I'd value your read on, and I'm not sure whether it's in your lane or whether you'd point me elsewhere.
+
+We're about to launch a feature in our customer portal that lets funeral homes upload the documentation international shipments require — passports, death certificates, consular paperwork. Our developers flagged, correctly, that we shouldn't launch without a lawyer looking at it. They also pointed out something I hadn't registered: **our public website already accepts document uploads today**, and we can't currently say with confidence who can access those files, where they end up, or how long they're kept.
+
+So it's less "review our new feature" and more "we've been doing this for a while and nobody has checked."
 
 Two questions:
 
-1. **Do you have privacy and data-protection capability in-house?** We're looking for someone comfortable with sensitive-category personal data — healthcare-adjacent experience is probably the closest analogue.
-2. **If not, who would you refer us to?** I'd rather take a recommendation from you than run a cold search.
+1. **Is this something you'd take on**, or is it far enough into privacy and data protection that you'd want a specialist? Sensitive-category personal data, with a death-care wrinkle.
+2. **If it's the latter, who would you send me to?** I'd much rather have your recommendation than run a cold search.
 
-I've attached a one-page brief setting out the scope. It covers three related things we'd want handled together: the portal feature, our existing upload process, and whether our customer agreements and privacy policy actually cover this category of document.
+I've attached a one-page brief with the scope. It's three related things we'd want handled together: the portal feature, the existing upload process, and whether our customer agreements and privacy policy actually cover this category of document.
 
-We'd like to have someone engaged this week. The feature is on hold until we do, and I'd rather hold it than launch and retrofit.
+Worth saying — there's a second reason I'd like to get this right now. We're starting to think about the next few years, and some of it may involve outside parties looking at the business. Our operational records carry this data by design, which means today we couldn't share them with an adviser even if we wanted to. I'd rather solve that once, properly, than discover it at a bad moment.
 
-Thanks,
+**We'd like someone engaged this week.** The feature is on hold until we do, and I'd rather hold it than launch and retrofit.
+
+Would a call be easier? Happy to work around you.
+
+Thanks Matt,
 
 Ethan Silvey
 Chief Strategy Officer, Cargo Sales International
@@ -36,7 +44,7 @@ Chief Strategy Officer, Cargo Sales International
 
 Hi [name],
 
-[Referred by / Found you through] — hoping you can help with a defined piece of work.
+[Matt [surname] suggested I get in touch / Found you through…] — hoping you can help with a defined piece of work.
 
 Cargo Sales International is a 23-year-old air transport and logistics broker for human remains, based in Miami. Our customers are funeral homes and funeral home groups; we move around 11,000 people a year, domestically and internationally. We're not a consumer business.
 
@@ -65,6 +73,6 @@ Chief Strategy Officer, Cargo Sales International
 ## Before you hit send
 
 - **Attach the brief with its notes block removed** — everything above "## The brief" is for you, not them.
-- **Email 1 is the higher-value send.** A referral from counsel who already knows CSI beats a cold search, and it costs one email.
+- **Email 1 is the higher-value send.** Matt already knows CSI, so either he takes it or he gives you a name worth having. Either beats a cold search.
 - **Don't attach any actual document samples yet.** The brief offers redacted samples; send them only once engaged, and only redacted (`§7.2`).
 - Email 2 says "air transport of human remains" in the subject line deliberately. It filters for a firm that will engage with the subject matter rather than one that gets uncomfortable with it.

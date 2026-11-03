@@ -43,12 +43,10 @@ than one.
 open-ended hourly review. The brief is drafted and ready to send:
 `reports/pending-approval/counsel-brief-document-upload-privacy.md`.
 
-**Fastest route to a lawyer, and it costs one email tonight:** Palermo Landsman & Ross are
-already engaged on the SBA size determination. Ask whether they have privacy and
-data-protection capability, and if not, **who they would refer you to.** A referral from
-existing counsel beats a cold search. Failing that: privacy and data protection, sensitive-
-category data experience, CIPP/US credentials. You do not need a funeral-industry
-specialist and will not find one.
+**Fastest route to a lawyer, and it costs one email tonight:** Matt, CSI's former attorney.
+Either he takes it or he gives you a name worth having. Failing that: privacy and data
+protection, sensitive-category data experience, CIPP/US credentials. You do not need a
+funeral-industry specialist and will not find one.
 
 ---
 

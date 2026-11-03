@@ -42,7 +42,7 @@ with CSI. TASK-0021 is blocked on this and nothing else.
 architecture and it is not optional.** The short version:
 
 - Use the **standard Company object**, not a custom object.
-- **`funeral_home_id` must be carried on every Company record from the first one created.**
+- **`oms_funeral_home_id` must be carried on every Company record from the first one created.** (HubSpot property renamed 2026-11-03; the OMS source column is still `funeral_home_id`.)
   This is the single most important instruction in this task. A company created without the
   join key is permanently orphaned from booking history, and nobody notices until a sync is
   switched on months later and half the records don't match.
@@ -63,12 +63,12 @@ exists, leave owner unset rather than guessing.
 
 ## Success criteria
 
-- [ ] Every Company record created carries `funeral_home_id`
+- [ ] Every Company record created carries `oms_funeral_home_id` (10 of 10 so far)
 - [ ] Match rate reported by confidence band, with the unmatched remainder explained
 - [ ] Lifecycle stage set from booking history, not assumed
 - [ ] OMS-sourced properties configured read-only
 - [ ] The 17 discount-eligible accounts and the four partner-tier accounts (Bergen NJ, Bergen FL, NMS, IMS) are flagged, not treated as ordinary prospects — see `CLAUDE.md §5`
-- [ ] A ten-record pilot run, spot-checked and logged in `reports/`, **before** any bulk write
+- [x] A ten-record pilot run, spot-checked and logged in `reports/`, **before** any bulk write (2026-11-03, 10/10 pass)
 - [ ] Passes the quality bar in `CLAUDE.md §8`
 
 ## Constraints
@@ -100,3 +100,4 @@ batch over 25, stage a brief in `reports/pending-approval/` and stop.
 ## Outcome
 - 2026-11-03 (revops-crm) — Matching built and run (`scripts/match_oms_hubspot.py`): contacts high 251 / medium 71 / low 377 / none 2,876. Company plan: 2,567 in scope, 2,305 create, 262 hold as duplicates. **BLOCKED on Company creation:** no `funeral_home_id` property exists on Company and the HubSpot connector cannot create properties or set read-only. Zero HubSpot writes made. Needs admin to create properties (list in `reports/account-layer-build.md`). Status: BLOCKED.
 - 2026-11-03 (revops-crm, session 2) — `funeral_home_id` exists on Company; uniqueness setting not verifiable via connector; eight other properties still missing. Stopped before any write. Pilot prepared in `reports/account-layer-pilot-log.md`. Waiting on Ethan: confirm unique-values tick; confirm partner IDs; decide on 90 extra never-booked homes. Status: BLOCKED (one confirmation).
+- 2026-11-03 (revops-crm, session 3) — Join key is now `oms_funeral_home_id`. Pilot executed: 10 Companies created, 10/10 read-back pass (`reports/account-layer-pilot-log.md`). Defect found and fixed: batch creates default owner to the calling user (Ethan); cleared on 9 records, future batches must blank owner explicitly. Unique-value constraint still unverified (needs a duplicate-ID test or Ethan checking the rule). Partner type not set (IDs unconfirmed). Eight properties still missing. Bulk run of remaining 2,295 NOT started. Status: AWAITING ETHAN (unique test, partner IDs, property build or go-without).

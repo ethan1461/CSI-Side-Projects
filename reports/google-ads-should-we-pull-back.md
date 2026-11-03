@@ -142,6 +142,36 @@ Category demand is also genuinely growing — *"national mortuary shipping"* is 
 
 ---
 
+### What Ethan did, 2026-11-03
+
+**Removed the $200 conversion value and paused Campaign #1 entirely.** Items 1, 2 and 4 are therefore closed — pausing the campaign supersedes killing its channels, and the policy-limited asset group is moot while it is off.
+
+**One thing that went with it, so it's on the record:** Campaign #1's Google Search channel was producing **23 conversions including 15 phone-call leads at $41 each.** That was real, and pausing the whole campaign gave it up along with the YouTube spend. It is recoverable — the same search intent should be caught by Leads-Search-1 once its budget rises — but it was not nothing.
+
+**Expect the account's headline numbers to collapse.** Conversions will fall from ~446 toward ~55 and the 31x return will vanish. **That is the fiction leaving, not the campaign breaking.** The new numbers will be smaller and true.
+
+#### Budget recommendation for Leads-Search-1
+
+**$85/day, reached in two steps: $70/day now, $85/day in roughly two weeks if cost per conversion holds in the $30s.**
+
+The logic is that this is **not new money.** Campaign #1 was budgeted at $30/day and is now off. Moving it across:
+
+| | Before | After |
+|---|---|---|
+| Leads-Search-1 | $54/day | **$85/day** |
+| Campaign #1 (PMax) | $30/day | $0 |
+| **Account total** | **~$84/day** | **~$85/day** |
+
+Account spend stays flat at roughly $2,550/month. **What changes is that ~100% of it now buys search intent instead of ~60% buying YouTube.** That is a far easier conversation with Donald and Cheryl than a budget increase, because it isn't one.
+
+**Why two steps rather than straight to $85.** A Maximize Conversions campaign re-enters a learning period on a large budget change and tends to buy looser matches to spend the money. +30% ($54 → $70) is absorbed smoothly; +57% in one move is more likely to raise cost per conversion than volume.
+
+**What to watch, and the stop condition.** Cost per conversion is currently **$29–32**. If it stays in the $30s after the step to $70, go to $85. **If it drifts above ~$45, stop and hold** — that is the algorithm reaching for traffic that isn't there, and the search volume on these terms is genuinely small (the core professional terms total roughly 170 searches a month).
+
+**The hard gate: do not go beyond ~$100/day until the 78-lead check is done.** Below that, the money is immaterial and the information is worth buying. Above it, CSI would be scaling a bet nobody has verified — which is `§9.2` all over again.
+
+---
+
 ## 8. What I'd say to the original question
 
 Pulling back would save about $2,000 a month and would be the wrong move for the wrong reason.

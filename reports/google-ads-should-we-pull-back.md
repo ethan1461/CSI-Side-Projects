@@ -8,7 +8,7 @@
 
 ## The answer in three lines
 
-1. **You are not spending a ton of money.** ~$3,600 since launch, about $2,000/month, on a $14M business. **0.17% of revenue.**
+1. **You are not spending a ton of money.** **~$4,117 since launch**, about $2,000/month, on a $14M business. **~0.16% of revenue.**
 2. **Don't pull back — but cut about 60% of the spend**, and it's not the part you'd expect.
 3. **Every performance number in that account is fiction**, and it's been telling you a flattering story for two months.
 
@@ -22,9 +22,12 @@
 | September | $1,443.95 |
 | October | $2,003.31 |
 | November (to 2 Nov) | $158.09 |
-| **Total** | **~$3,605** |
+| **Billing net cost, as shown** | **$3,605.35** |
+| **Reported spend, Aug 30 – Nov 2** | **$4,117.45** |
 
-Against FY26 revenue tracking to roughly **$15.0M**, this is **0.17%**. A single international booking yields ~$1,346; the entire Google Ads programme to date costs about what CSI earns on **three shipments**.
+**Corrected 2026-11-03 by `marketing-lead`, and it was right to challenge this.** The billing screenshot's October figure carried *"Month still processing. Numbers will update soon,"* so the $3,605.35 billing total is **incomplete**. The campaign report's **$4,117.45** is the better figure, and the $512 gap is almost entirely October finishing its processing. Whichever basis is used, the conclusion is unchanged — but **Ethan or Donald should confirm which figure is net of credits.**
+
+Against FY26 revenue tracking to roughly **$15.0M**, this is **~0.16%**. A single international booking yields ~$1,346; the entire Google Ads programme to date costs about what CSI earns on **three shipments**.
 
 **So this decision should not be made out of cost anxiety.** It should be made on whether it works. `CLAUDE.md §3.6` calls this "an active, funded leak" — that framing is too strong and should be revised. It is a small pilot that has never been measured.
 
@@ -89,16 +92,16 @@ Strip out YouTube, Display, Discover and Search partners, and look at what remai
 | Source | Clicks | Conversions | Cost | Cost per lead |
 |---|---|---|---|---|
 | Campaign #1, Google Search only | 412 | 23 (incl. **15 phone calls**) | $943.86 | $41.04 |
-| Leads-Search-1 | 1,233 | 55 | $1,600.92 | $29.11 |
-| **Combined** | **1,645** | **78** | **$2,544.78** | **$32.63** |
+| Leads-Search-1 (**all devices**) | 1,233 | 55 | **$1,736.26** | $31.57 |
+| **Combined** | **1,645** | **78** | **$2,680.12** | **$34.37** |
 
-**$32.63 per lead, not $9.23.** And the 15 phone-call leads are the most credible signal in the entire account — a funeral director picking up the phone is not an accident.
+**$34.37 per lead, not $9.23.** *(Corrected from $32.63: the earlier figure used Leads-Search-1's **mobile-only** cost of $1,600.92 rather than its all-device total of $1,736.26. Caught by `marketing-lead`.)* And the 15 phone-call leads are the most credible signal in the entire account — a funeral director picking up the phone is not an accident.
 
 ### The break-even, so this stops being unmeasurable
 
 A booking yields ~**$1,346** at ~35–41% gross margin → roughly **$470–550 of contribution.**
 
-At $32.63 a lead, CSI can afford **about 14 leads per booking** and still break even.
+At $34.37 a lead, CSI can afford **about 14 leads per booking** and still break even — which on 78 leads means **5 to 6 bookings**.
 
 **So the question is no longer "what is our ROAS?" It is: do more than 1 in 14 of these leads become a booking?** That is a low bar, and it is answerable by hand — 78 leads over nine weeks is a list someone can check against the booking system in an afternoon.
 

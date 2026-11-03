@@ -4,7 +4,7 @@
 **Created:** 2026-11-03 by pm-orchestrator
 **Due:** 2026-11-10
 **Priority:** HIGH
-**Status:** UNCLAIMED
+**Status:** IN PROGRESS — Parts 1 and 2 delivered; landing-page review PARTIAL (blocked on page text); lead check awaiting named owner
 
 ## Objective
 
@@ -102,5 +102,9 @@ gated** (`§7.1`).
 
 ## Log
 - 2026-11-03 — Created. Supersedes most of TASK-0001, which is revised to point here.
+
+- 2026-11-03 — Claimed by marketing-lead. Delivered: `reports/paid-search-lead-conversion.md` (method, cost basis, first-pass match of 21 of 78 leads via `scripts/paid_search_lead_match.py`; result UNRESOLVED, recommendation HOLD), `reports/quote-attribution-spec.md` (for the week-46 engineering ask; references EA-45-02 and EA-45-08), `reports/landing-page-tone-review.md` (address-level findings only; `www.cargosalesintl.com` does not resolve from this session, so no line-level text was read). Handoffs raised: `handoffs/HANDOFF-T0022-lead-check-owner.md` (proposes Susej Roffe, alt. Kim Soto), `handoffs/HANDOFF-T0022-landing-page-text.md`. Brain proposal filed: `context/brain/_proposals/2026-11-03-google-ads-not-a-funded-leak.md`.
+- 2026-11-03 — Finding for the orchestrator: the earlier report's $1,600.92 (Leads-Search-1) and ~$3,605 total are not reproducible from the 15 exports, which give $1,736.97 and ~$4,118. Cost per lead is $32.63 (billing basis) or $34.37 (export basis). Needs Ethan or Donald to confirm which is net of credits. Also: the two trending search terms are not in the exports; only in the earlier report.
+- 2026-11-03 — Nothing in Google Ads, HubSpot or any page was changed. Success criteria status: 78 leads — owner proposed, method documented (met); result vs break-even — stated as unresolved with hold (met); spec (met); line-level review (NOT met, blocked); traceability (met, with the two exceptions above).
 
 ## Outcome

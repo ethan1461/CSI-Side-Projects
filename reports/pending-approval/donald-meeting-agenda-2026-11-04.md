@@ -16,6 +16,42 @@
 
 ---
 
+## 0 · NEW, and it goes first — counsel for the document-upload review — 8 min
+
+**Added 2026-11-03 at Ethan's request. This is now the priority item.**
+
+Alex and Kyri flagged weeks ago that the customer-portal document upload — passports,
+death certificates, consular paperwork — needs a privacy lawyer before launch. **And that
+CSI's public website already accepts document uploads today**, with the deployed
+configuration, access control and retention across server, email and backups all
+unconfirmed. So this is not a question about a future feature.
+
+**What you need from Donald:** a budget line, this week.
+
+**Frame it as one engagement covering three things, not as legal spend on a feature:**
+
+| | |
+|---|---|
+| A launch blocker | The portal feature is held until counsel rules |
+| A diligence blocker | CSI cannot send operational exports to any lender, adviser or buyer — they carry decedent and family data by design |
+| A contract review | Nobody has read the funeral home agreements for what they permit on data |
+
+**Same data, same law, same lawyer.** Three separate engagements would cost materially more
+than one.
+
+**Scope it fixed-fee**, as a written memo against seven defined questions, not an
+open-ended hourly review. The brief is drafted and ready to send:
+`reports/pending-approval/counsel-brief-document-upload-privacy.md`.
+
+**Fastest route to a lawyer, and it costs one email tonight:** Palermo Landsman & Ross are
+already engaged on the SBA size determination. Ask whether they have privacy and
+data-protection capability, and if not, **who they would refer you to.** A referral from
+existing counsel beats a cold search. Failing that: privacy and data protection, sensitive-
+category data experience, CIPP/US credentials. You do not need a funeral-industry
+specialist and will not find one.
+
+---
+
 ## 1 · Carrier invoices above contracted rate — 15 min
 
 **Your stated priority, and the only item here with real money attached today.**

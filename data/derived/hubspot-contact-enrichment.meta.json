@@ -1,0 +1,14 @@
+{
+  "source_files": [
+    "data/raw/hubspot-all-contacts-20261102.csv",
+    "data/raw/oms-funeral-homes-20261103.csv",
+    "data/raw/csi-customer-list-20261000.xls",
+    "data/raw/sci-location-report-202606.xlsx"
+  ],
+  "row_count": 3575,
+  "script": "scripts/enrich_hubspot_contacts.py",
+  "script_version": "1.0",
+  "run_timestamp": "2026-11-03T03:57:56.406327+00:00",
+  "pii_columns_dropped": "email and phone excluded from this output; operator copy with contact details goes to the scratchpad only",
+  "note": "Deterministic passes only. needs_web_lookup marks the honest residual for any LinkedIn or web research."
+}

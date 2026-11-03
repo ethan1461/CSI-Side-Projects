@@ -4,7 +4,7 @@
 **Created:** 2026-11-03 by pm-orchestrator
 **Due:** 2026-11-07
 **Priority:** CRITICAL
-**Status:** IN PROGRESS
+**Status:** BLOCKED
 
 ## Objective
 
@@ -98,3 +98,4 @@ batch over 25, stage a brief in `reports/pending-approval/` and stop.
 - 2026-11-03 — Created. Supersedes the account-layer portion of TASK-0013, which is revised to depend on this.
 
 ## Outcome
+- 2026-11-03 (revops-crm) — Matching built and run (`scripts/match_oms_hubspot.py`): contacts high 251 / medium 71 / low 377 / none 2,876. Company plan: 2,567 in scope, 2,305 create, 262 hold as duplicates. **BLOCKED on Company creation:** no `funeral_home_id` property exists on Company and the HubSpot connector cannot create properties or set read-only. Zero HubSpot writes made. Needs admin to create properties (list in `reports/account-layer-build.md`). Status: BLOCKED.

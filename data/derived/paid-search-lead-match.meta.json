@@ -1,0 +1,20 @@
+{
+  "sources": [
+    "data/raw/hubspot-all-contacts-20261102.csv",
+    "data/raw/oms-funeral-homes-20261103.csv"
+  ],
+  "rows_in_hubspot_ids": 21,
+  "rows_out": 21,
+  "dropped_columns": [
+    "First Name",
+    "Last Name",
+    "Email",
+    "Phone Number",
+    "name",
+    "address",
+    "phone",
+    "email"
+  ],
+  "script_version": "1.0",
+  "run_utc": "2026-11-03T02:47:13.427031+00:00"
+}

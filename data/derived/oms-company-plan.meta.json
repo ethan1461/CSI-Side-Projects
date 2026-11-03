@@ -1,0 +1,23 @@
+{
+  "script": "scripts/match_oms_hubspot.py",
+  "version": "1.0",
+  "run_utc": "2026-11-03T02:46:53+00:00",
+  "sources": {
+    "oms": "oms-funeral-homes-20261103.csv",
+    "oms_sha256_16": "f1c7f4a2a4588c62",
+    "hubspot": "hubspot-all-contacts-20261102.csv",
+    "hubspot_sha256_16": "94387abd1e03172f"
+  },
+  "rows_in": {
+    "oms": 18876,
+    "hubspot": 3575
+  },
+  "rows_out": 2567,
+  "columns_dropped_at_load": [
+    "email",
+    "name",
+    "phone",
+    "address (not written)"
+  ],
+  "note": "No email, person name or phone written. Business domain only."
+}

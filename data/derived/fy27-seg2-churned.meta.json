@@ -1,0 +1,17 @@
+{
+  "script": "scripts/fy27_target_lists.py",
+  "version": "1.0",
+  "run_utc": "2026-11-03T02:53:31+00:00",
+  "as_of": "2026-11-03",
+  "source": "oms-funeral-homes-20261103.csv",
+  "rows_out": 322,
+  "columns_dropped_at_load": [
+    "email",
+    "phone",
+    "address",
+    "zip",
+    "created_by",
+    "updated_by"
+  ],
+  "note": "has_phone flag only; no email, phone, address or contact person written."
+}

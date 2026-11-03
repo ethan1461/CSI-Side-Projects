@@ -123,7 +123,7 @@ Three things worth putting in front of him, and **CSI should state its read with
 1. Match the OMS funeral home records to HubSpot contacts on email domain and name. 4,450 OMS records carry an email; 3,142 HubSpot contacts do.
 2. Create Company records from the matched set, carrying `funeral_home_id`.
 3. Associate contacts to companies, and set lifecycle from booking history — **customer** if they have ever booked, **lead** if not.
-4. Hand Otto and Stacy four working lists: the **845 one-time customers**, the **412 churned**, the enterprise locations, and everything else.
+4. Hand Otto and Stacy four working lists — **but not at the headline sizes.** `sales-lead` established on 2026-11-03 that the one-time segment is **474 callable, not 845**, and churned is **322, not 412**. The difference is a record-creation change: from June 2026 the OMS began creating funeral home records at 4-5x the prior rate, with the shipper flag collapsing from ~93% to ~27% and non-US records jumping from 0.9% to 27%. **Those are receiving homes at destination, not customers who failed to return.** See `reports/fy27-target-lists.md`.
 
 **The one thing to decide before step 2:** that `funeral_home_id` is carried on every Company record from the very first one created. Everything else is recoverable. **A company record created without the join key is orphaned from booking history permanently**, and nobody notices until the sync is switched on months later and half the records won't match.
 

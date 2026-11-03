@@ -4,7 +4,7 @@
 **Created:** 2026-11-03 by pm-orchestrator
 **Due:** 2026-11-10
 **Priority:** CRITICAL
-**Status:** UNCLAIMED
+**Status:** DELIVERED — awaiting Ethan (script approval, territory ruling, OKR form); HubSpot lists staged via revops-crm handoff
 
 ## Objective
 
@@ -88,5 +88,11 @@ to `reports/pending-approval/`.
 
 ## Log
 - 2026-11-03 — Created following Ethan's FY27 decision: +5%, volume wins, all four sources.
+- 2026-11-03 — Claimed by sales-lead. Scope change per PM: lists built from OMS booking history (`oms-funeral-homes-20261103.csv`, `oms-company-plan.csv`), not HubSpot; TASK-0020 dependency relaxed (HubSpot lists remain blocked on Ethan creating properties).
+- 2026-11-03 — Built `scripts/fy27_target_lists.py` (+ tests), outputs `data/derived/fy27-seg{1..4}-*.csv`, `fy27-sample20.csv`, summary JSON. Delivered `reports/fy27-target-lists.md`.
+- 2026-11-03 — **Findings:** (1) four sources sum to ~231 base (44 to 691), not 556; (2) segment 1 is 474 callable of 844, and first-booking records stepped from ~34/month to 144-199/month in June 2026 with shipper-flagged share falling 91-97% to 22-35% while Jun-Aug bookings rose only +75 YoY: the 845 may be partly a record-creation artefact; (3) of 16,340 never-booked, 10,243 are non-US and 5,709 US callable (341 with a shipper account); (4) 69% of callable S1 sits outside Otto and Stacy territories.
+- 2026-11-03 — Staged `reports/pending-approval/sales-lead-sample20-call-script.md`. Handoffs: `HANDOFF-T0021-revops-lists.md`, `HANDOFF-T0021-june-cohort.md`. Nothing sent, nothing written to HubSpot.
+- Open: success criteria unchanged; segment 3 outreach untouched (Ethan-gated); `created_date` blank on all OMS rows.
 
 ## Outcome
+See `reports/fy27-target-lists.md`. Sources do not sum to 556 on stated assumptions; first action is the 20-call sample.

@@ -1,0 +1,21 @@
+caller,stratum,funeral_home_id,name,city,state,terr,first_booking_date,is_shipper
+Otto,"A shipper-flagged, first booked before 2026-06-01",17498,WESTCHESTER FUNERAL HOME (IL),Westchester,IL,Otto (Midwest),2025-11-25,1
+Stacy,"B shipper-flagged, first booked 2026-06-01 on",12475,Funeraria Del Angel Lincoln Heights,Los Angeles,CA,Stacy (West),2026-10-09,1
+Otto,"B shipper-flagged, first booked 2026-06-01 on",21771,Funeraria San Juan (Orlando - Simpson Rd),Kissimmee,FL,Unassigned (Northeast/South),2026-10-08,1
+Stacy,C not shipper-flagged,4722,Schwartz Brothers Jeffer Memorial Chapels,Forest Hills,NY,Unassigned (Northeast/South),2026-08-27,0
+Otto,C not shipper-flagged,12021,JOSEPH V. LEAHY FUNERAL HOME,Kingston,NY,Unassigned (Northeast/South),2026-08-24,0
+Stacy,"B shipper-flagged, first booked 2026-06-01 on",21786,Thomas Funeral Home,Trotwood,OH,Otto (Midwest),2026-10-20,1
+Otto,C not shipper-flagged,8279,FUNERARIA PORTA COELI,Bayamon,PR,Unassigned (Northeast/South),2026-10-19,0
+Stacy,C not shipper-flagged,15423,Riley's Funeral Home,Hampton,SC,Unassigned (Northeast/South),2026-08-31,0
+Otto,"B shipper-flagged, first booked 2026-06-01 on",13747,STRAWBRIDGE FAMILY CORPORATION,Cleveland,OH,Otto (Midwest),2026-06-29,1
+Stacy,C not shipper-flagged,16459,Goodwin-Sievers Funeral Home Gardner Brockman,Vincennes,IN,Otto (Midwest),2026-06-11,0
+Otto,C not shipper-flagged,7119,WILDERS FUNERAL HOME,Aulander,NC,Unassigned (Northeast/South),2026-06-16,0
+Stacy,C not shipper-flagged,16734,Colonial-Wojciechowski Funeral Home,Niles,IL,Otto (Midwest),2026-08-13,0
+Otto,C not shipper-flagged,11214,MUELLER FUNERAL HOME (MASON),Mason,OH,Otto (Midwest),2026-08-07,0
+Stacy,"B shipper-flagged, first booked 2026-06-01 on",21702,Radney Funeral Home - Mobile,Mobile,AL,Unassigned (Northeast/South),2026-08-07,1
+Otto,"B shipper-flagged, first booked 2026-06-01 on",21755,Groman Mortuary Inc.,Los Angeles,CA,Stacy (West),2026-09-17,1
+Stacy,"A shipper-flagged, first booked before 2026-06-01",21502,Legacy Funeral Home,Estill,SC,Unassigned (Northeast/South),2026-05-06,1
+Otto,"B shipper-flagged, first booked 2026-06-01 on",21688,"Krauss Funeral Home, Inc.",Franklin Square,NY,Unassigned (Northeast/South),2026-08-05,1
+Stacy,"A shipper-flagged, first booked before 2026-06-01",19366,WOODY FUNERAL HOME-PARHAM,Richmond,VA,Unassigned (Northeast/South),2026-02-04,1
+Otto,"A shipper-flagged, first booked before 2026-06-01",19888,Napier Funeral Home,Graniteville,SC,Unassigned (Northeast/South),2025-11-20,1
+Stacy,"B shipper-flagged, first booked 2026-06-01 on",21596,Vermeulen-Sajewski Funeral Home Westland,Westland,MI,Otto (Midwest),2026-06-08,1

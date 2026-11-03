@@ -1,0 +1,26 @@
+rank,account_id,name,state,bookings,share_pct,cumulative_share_pct,strategic_partner
+1,2734,Bergen Funeral Service (New Jersey),NJ,3621,6.93,6.93,yes
+2,2767,"International Mortuary Shipping, LLC",SC,2718,5.2,12.13,yes
+3,3132,Ortiz Funeral Homes (Delta Shipments Only),NY,2496,4.78,16.9,no
+4,1764,Bergen Funeral Service (Florida),FL,1673,3.2,20.1,yes
+5,2026,Gutterman-Warheit Memorial Chapel,FL,1431,2.74,22.84,no
+6,2840,"W.H. Bacon Funeral Home, Inc.",DC,1319,2.52,25.36,no
+7,1769,Beth Israel Memorial Chapel (Northstar Location #3250),FL,910,1.74,27.11,no
+8,2706,Rivera Funeral Home (Janet),NY,779,1.49,28.6,no
+9,2239,National Mortuary Shipping,OH,727,1.39,29.99,yes
+10,2341,Riverside-Stanetsky Memorial Chapels (SCI Location #4222),FL,698,1.34,31.32,no
+11,2143,Las Rosas Funeral Home (Brooklyn),NY,673,1.29,32.61,no
+12,7428,R.G. Ortiz Funeral Home (Bronx),NY,592,1.13,33.74,no
+13,1917,Emmanuel Funeral Home (Miami),FL,542,1.04,34.78,no
+14,2243,Neshama JFS LLC,FL,531,1.02,35.8,no
+15,2773,Borthwick Mortuary (SCI Location #4873),HI,492,0.94,36.74,no
+16,1871,Del Pueblo Funeral Home,TX,482,0.92,37.66,no
+17,1710,All County Funeral Home & Crematory,FL,458,0.88,38.54,no
+18,2732,Riverside Gordon Memorial Chapels (SCI Location #4128),FL,442,0.85,39.38,no
+19,2403,Sinai Mortuary (PHX),AZ,420,0.8,40.18,no
+20,2103,"Jorge Rivera Funeral Home, Inc.",NJ,419,0.8,40.99,no
+21,2810,"Atlanta Mortuary Service, Inc.",GA,399,0.76,41.75,no
+22,1817,Casper Funeral & Cremation Services (Boston),MA,378,0.72,42.47,no
+23,2471,VILLA AMERICAS FUNERAL HOME,NJ,378,0.72,43.2,no
+24,2288,"Philip D. Rinaldi Funeral Service, P.A.",MD,349,0.67,43.86,no
+25,2156,Levitt-Weinstein Memorial Chapels & Cemeteries (Northstar Location #3238),FL,347,0.66,44.53,no

@@ -1,0 +1,510 @@
+{
+  "as_of": "2026-11-03",
+  "rows_in": 18876,
+  "defects": {
+    "last_booking_after_asof": 89,
+    "last_booking_year_2060": [
+      "1710",
+      "1769",
+      "3506",
+      "2773",
+      "1816",
+      "7809",
+      "16045",
+      "1916",
+      "1917",
+      "11535",
+      "5913",
+      "12117",
+      "2026",
+      "5354",
+      "2038",
+      "16388",
+      "2767",
+      "21538",
+      "19411",
+      "2143",
+      "20801",
+      "21411",
+      "13254",
+      "2403",
+      "2408",
+      "2907",
+      "2171",
+      "9393"
+    ],
+    "first_booking_after_asof": 14,
+    "booked_but_no_first_date": [
+      "3015"
+    ]
+  },
+  "first_booking_by_month": {
+    "2025-01": {
+      "n": 40,
+      "shipper_pct": 92.5
+    },
+    "2025-02": {
+      "n": 26,
+      "shipper_pct": 92.3
+    },
+    "2025-03": {
+      "n": 23,
+      "shipper_pct": 95.7
+    },
+    "2025-04": {
+      "n": 25,
+      "shipper_pct": 100.0
+    },
+    "2025-05": {
+      "n": 32,
+      "shipper_pct": 96.9
+    },
+    "2025-06": {
+      "n": 26,
+      "shipper_pct": 96.2
+    },
+    "2025-07": {
+      "n": 19,
+      "shipper_pct": 94.7
+    },
+    "2025-08": {
+      "n": 15,
+      "shipper_pct": 93.3
+    },
+    "2025-09": {
+      "n": 19,
+      "shipper_pct": 89.5
+    },
+    "2025-10": {
+      "n": 25,
+      "shipper_pct": 84.0
+    },
+    "2025-11": {
+      "n": 26,
+      "shipper_pct": 92.3
+    },
+    "2025-12": {
+      "n": 21,
+      "shipper_pct": 95.2
+    },
+    "2026-01": {
+      "n": 34,
+      "shipper_pct": 91.2
+    },
+    "2026-02": {
+      "n": 29,
+      "shipper_pct": 93.1
+    },
+    "2026-03": {
+      "n": 32,
+      "shipper_pct": 96.9
+    },
+    "2026-04": {
+      "n": 34,
+      "shipper_pct": 91.2
+    },
+    "2026-05": {
+      "n": 39,
+      "shipper_pct": 97.4
+    },
+    "2026-06": {
+      "n": 153,
+      "shipper_pct": 32.7
+    },
+    "2026-07": {
+      "n": 199,
+      "shipper_pct": 22.1
+    },
+    "2026-08": {
+      "n": 169,
+      "shipper_pct": 22.5
+    },
+    "2026-09": {
+      "n": 162,
+      "shipper_pct": 34.6
+    },
+    "2026-10": {
+      "n": 144,
+      "shipper_pct": 24.3
+    },
+    "2026-11": {
+      "n": 18,
+      "shipper_pct": 27.8
+    }
+  },
+  "seg1_waterfall": {
+    "segment_1_as_defined": 844,
+    "minus_partners": 844,
+    "minus_enterprise_group_to_seg3": 820,
+    "minus_likely_duplicates_held": 707,
+    "minus_non_us_not_routed": 530,
+    "minus_booked_within_14_days_or_future_dated": 474,
+    "of_which_no_phone_in_oms": 2
+  },
+  "seg1_all_shipper_split": {
+    "non-shipper": 547,
+    "shipper": 297
+  },
+  "seg1_all_cohort_split": {
+    "first_booked_before_2026-06-01": 130,
+    "first_booked_2026-06-01_on": 713
+  },
+  "seg1_all_cohort_shipper_split": {
+    "pre-June|shipper": 118,
+    "pre-June|non-shipper": 12,
+    "June-on|shipper": 178,
+    "June-on|non-shipper": 535
+  },
+  "seg1_all_territory": {
+    "non-US (not routed)": 204,
+    "Unassigned (Northeast/South)": 434,
+    "Otto (Midwest)": 111,
+    "Stacy (West)": 92,
+    "no state": 3
+  },
+  "seg1_callable_territory": {
+    "Unassigned (Northeast/South)": 328,
+    "Otto (Midwest)": 84,
+    "Stacy (West)": 60,
+    "no state": 2
+  },
+  "seg1_callable_shipper_split": {
+    "shipper": 215,
+    "non-shipper": 259
+  },
+  "seg1_callable_shipper_by_territory": {
+    "Unassigned (Northeast/South)": 144,
+    "Otto (Midwest)": 39,
+    "Stacy (West)": 32
+  },
+  "seg1_nonus_countries": {
+    "do": 33,
+    "mx": 25,
+    "sv": 20,
+    "gt": 17,
+    "hn": 13,
+    "jm": 11,
+    "ec": 9,
+    "co": 5
+  },
+  "sample20": {
+    "n": 20,
+    "by_stratum": {
+      "A shipper-flagged, first booked before 2026-06-01": 4,
+      "B shipper-flagged, first booked 2026-06-01 on": 8,
+      "C not shipper-flagged": 8
+    },
+    "by_caller": {
+      "Otto": 10,
+      "Stacy": 10
+    },
+    "by_territory": {
+      "Otto (Midwest)": 7,
+      "Stacy (West)": 2,
+      "Unassigned (Northeast/South)": 11
+    }
+  },
+  "repeat_rate_by_first_booking_cohort": {
+    "2022": {
+      "homes": 438,
+      "repeat_pct": 85.4,
+      "shipper_flagged_homes": 430,
+      "shipper_repeat_pct": 86.3
+    },
+    "2023": {
+      "homes": 302,
+      "repeat_pct": 65.9,
+      "shipper_flagged_homes": 280,
+      "shipper_repeat_pct": 70.0
+    },
+    "2024": {
+      "homes": 282,
+      "repeat_pct": 60.3,
+      "shipper_flagged_homes": 265,
+      "shipper_repeat_pct": 63.4
+    },
+    "2025": {
+      "homes": 270,
+      "repeat_pct": 51.5,
+      "shipper_flagged_homes": 251,
+      "shipper_repeat_pct": 54.2
+    },
+    "2026-Q1": {
+      "homes": 83,
+      "repeat_pct": 36.1,
+      "shipper_flagged_homes": 78,
+      "shipper_repeat_pct": 38.5
+    },
+    "2026-Q2": {
+      "homes": 213,
+      "repeat_pct": 30.5,
+      "shipper_flagged_homes": 107,
+      "shipper_repeat_pct": 33.6
+    },
+    "2026-Q3": {
+      "homes": 514,
+      "repeat_pct": 16.9,
+      "shipper_flagged_homes": 129,
+      "shipper_repeat_pct": 22.5
+    },
+    "2026-Q4": {
+      "homes": 159,
+      "repeat_pct": 3.1,
+      "shipper_flagged_homes": 37,
+      "shipper_repeat_pct": 5.4
+    }
+  },
+  "bookings_per_year_low_volume_repeat_homes": {
+    "n": 470,
+    "median": 1.23,
+    "mean": 1.5,
+    "p25": 0.81,
+    "p75": 1.91
+  },
+  "seg2_waterfall": {
+    "segment_2_as_defined": 412,
+    "minus_partners_and_enterprise_groups": 377,
+    "minus_likely_duplicates": 332,
+    "minus_non_us": 322,
+    "of_which_lifetime_bookings_ge_2": 101,
+    "of_which_lifetime_bookings_ge_5": 23,
+    "of_which_no_phone": 3
+  },
+  "seg2_stats_all": {
+    "mean_lifetime": 2.3,
+    "median": 1.0,
+    "sum_lifetime_bookings": 949,
+    "max": 36
+  },
+  "seg2_last_booking_year": {
+    "2022": 76,
+    "2023": 167,
+    "2024": 169
+  },
+  "seg2_territory": {
+    "Unassigned (Northeast/South)": 228,
+    "Stacy (West)": 40,
+    "Otto (Midwest)": 51,
+    "no state": 3
+  },
+  "seg2_tiers": {
+    "2A 5+ bookings": 23,
+    "2B 2-4 bookings": 78,
+    "2C single booking (verify-only)": 221
+  },
+  "seg3_enterprise": {
+    "Carriage Services": {
+      "mapped": 3,
+      "ever_booked": 0,
+      "never_booked": 3,
+      "lifetime_bookings": 0,
+      "booked_in_last_12mo": 0,
+      "median_bookings_per_year_booked_locations": null,
+      "duplicates_flagged": 0,
+      "territory": {
+        "Unassigned (Northeast/South)": 3
+      }
+    },
+    "Foundation Partners": {
+      "mapped": 30,
+      "ever_booked": 19,
+      "never_booked": 11,
+      "lifetime_bookings": 633,
+      "booked_in_last_12mo": 13,
+      "median_bookings_per_year_booked_locations": 8.51,
+      "duplicates_flagged": 0,
+      "territory": {
+        "Stacy (West)": 29,
+        "Unassigned (Northeast/South)": 1
+      }
+    },
+    "Northstar": {
+      "mapped": 45,
+      "ever_booked": 41,
+      "never_booked": 4,
+      "lifetime_bookings": 2896,
+      "booked_in_last_12mo": 36,
+      "median_bookings_per_year_booked_locations": 6.57,
+      "duplicates_flagged": 0,
+      "territory": {
+        "Stacy (West)": 16,
+        "Unassigned (Northeast/South)": 24,
+        "Otto (Midwest)": 4,
+        "no state": 1
+      }
+    },
+    "SCI": {
+      "mapped": 242,
+      "ever_booked": 189,
+      "never_booked": 53,
+      "lifetime_bookings": 4169,
+      "booked_in_last_12mo": 138,
+      "median_bookings_per_year_booked_locations": 1.99,
+      "duplicates_flagged": 0,
+      "territory": {
+        "Stacy (West)": 61,
+        "Unassigned (Northeast/South)": 151,
+        "Otto (Midwest)": 17,
+        "no state": 11,
+        "non-US (not routed)": 2
+      }
+    }
+  },
+  "seg4_waterfall": {
+    "segment_4_as_defined": 16340,
+    "minus_enterprise_group_records": 16269,
+    "minus_likely_duplicates": 16061,
+    "minus_non_us_not_routed": 5818,
+    "of_which_no_phone": 109,
+    "us_callable_with_phone": 5709
+  },
+  "seg4_nonus_countries": {
+    "do": 1551,
+    "mx": 1336,
+    "sv": 875,
+    "hn": 693,
+    "gt": 655,
+    "ec": 547,
+    "ng": 322,
+    "ph": 298
+  },
+  "seg4_tiers": {
+    "4A shipper account, never booked": 341,
+    "4B no shipper account": 5368
+  },
+  "seg4_territory": {
+    "Unassigned (Northeast/South)": 3686,
+    "Stacy (West)": 735,
+    "Otto (Midwest)": 1284,
+    "no state": 4
+  },
+  "seg4_tier_by_territory": {
+    "4A shipper account, never booked": {
+      "Unassigned (Northeast/South)": 197,
+      "Stacy (West)": 69,
+      "Otto (Midwest)": 75
+    },
+    "4B no shipper account": {
+      "Unassigned (Northeast/South)": 3489,
+      "Stacy (West)": 666,
+      "Otto (Midwest)": 1209,
+      "no state": 4
+    }
+  },
+  "model": {
+    "assumptions": {
+      "s1_lift_shipper": [
+        0.03,
+        0.08,
+        0.15
+      ],
+      "s1_lift_nonshipper": [
+        0.0,
+        0.03,
+        0.08
+      ],
+      "s1_bookings_per_account": [
+        1.0,
+        1.5,
+        2.0
+      ],
+      "s2_react_multi": [
+        0.03,
+        0.06,
+        0.1
+      ],
+      "s2_react_single": [
+        0.0,
+        0.01,
+        0.02
+      ],
+      "s2_bookings_per_account": [
+        1.0,
+        1.5,
+        2.0
+      ],
+      "s3_sci_locations_live": [
+        25,
+        100,
+        300
+      ],
+      "s3_bookings_per_location_year": [
+        1.0,
+        2.0,
+        2.0
+      ],
+      "s3_live_fraction_of_year": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "s4a_conversion": [
+        0.05,
+        0.1,
+        0.2
+      ],
+      "s4b_worked": [
+        1000,
+        2000,
+        3000
+      ],
+      "s4b_conversion": [
+        0.005,
+        0.01,
+        0.02
+      ],
+      "s4_bookings_per_account": [
+        1.0,
+        1.5,
+        2.0
+      ]
+    },
+    "scenarios": {
+      "low": {
+        "seg1_accounts": 6.5,
+        "seg1_bookings": 6.5,
+        "seg2_accounts": 3.0,
+        "seg2_bookings": 3.0,
+        "seg3_bookings": 12.5,
+        "seg4_accounts": 22.1,
+        "seg4_bookings": 22.1,
+        "total_bookings": 44.1,
+        "gap_to_556": 511.9,
+        "sci_locations_live_needed_to_reach_556": 1049,
+        "dial_attempts_needed": 6089
+      },
+      "base": {
+        "seg1_accounts": 25.0,
+        "seg1_bookings": 37.5,
+        "seg2_accounts": 8.3,
+        "seg2_bookings": 12.4,
+        "seg3_bookings": 100.0,
+        "seg4_accounts": 54.1,
+        "seg4_bookings": 81.2,
+        "total_bookings": 231.1,
+        "gap_to_556": 324.9,
+        "sci_locations_live_needed_to_reach_556": 425,
+        "dial_attempts_needed": 9089
+      },
+      "high": {
+        "seg1_accounts": 53.0,
+        "seg1_bookings": 105.9,
+        "seg2_accounts": 14.5,
+        "seg2_bookings": 29.0,
+        "seg3_bookings": 300.0,
+        "seg4_accounts": 128.2,
+        "seg4_bookings": 256.4,
+        "total_bookings": 691.3,
+        "gap_to_556": -135.3,
+        "sci_locations_live_needed_to_reach_556": 165,
+        "dial_attempts_needed": 12089
+      }
+    },
+    "capacity_assumption": {
+      "dials_per_rep_per_day": 30,
+      "reps": 2,
+      "selling_days": 200,
+      "dial_attempts_per_year": 12000
+    }
+  }
+}

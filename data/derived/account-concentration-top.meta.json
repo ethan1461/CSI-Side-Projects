@@ -1,0 +1,27 @@
+{
+  "script": "scripts/account_concentration.py",
+  "script_version": "1.0.0",
+  "source_file": "/home/user/CSI-Side-Projects/data/raw/oms-funeral-homes-20261103.csv",
+  "rows_in": 18876,
+  "rows_out": 25,
+  "dropped_columns_at_load": [
+    "address",
+    "city",
+    "country",
+    "created_by",
+    "created_date",
+    "directory_status",
+    "duplicate_sibling_ids",
+    "email",
+    "first_booking_date",
+    "is_discount_eligible",
+    "is_shipper",
+    "phone",
+    "shipper_account_number",
+    "updated_by",
+    "zip"
+  ],
+  "privacy_note": "Identifier columns dropped at load per CLAUDE.md \u00a77.2. Funeral-home business names retained deliberately; no individual name, email, phone or street address is read.",
+  "known_limit": "booking_count sums to a figure above OMS booked-shipment history (BACKLOG B-01). Denominator unreconciled; shares are a share of this field, not of booked shipments. Not for external use until resolved.",
+  "run_timestamp_utc": "2026-11-03T02:52:06+00:00"
+}

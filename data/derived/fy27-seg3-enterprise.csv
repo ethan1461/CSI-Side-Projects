@@ -1,0 +1,321 @@
+call_rank,tier,funeral_home_id,name,city,state,country_code,terr,has_phone,funeral_home_group,booking_count,last_booking_date
+1,3 Carriage Services (Ethan-gated),4022,Emerald Coast Funeral Home (Location #0247),Fort Walton Beach,FL,us,Unassigned (Northeast/South),True,Carriage Services,0,
+2,3 Carriage Services (Ethan-gated),21677,McLaughlin Mortuary (Location #0481),Fort Walton Beach,FL,us,Unassigned (Northeast/South),True,Carriage Services,0,
+3,3 Carriage Services (Ethan-gated),21678,McLaughlin Twin Cities Funeral Home (Location #0481),Niceville,FL,us,Unassigned (Northeast/South),True,Carriage Services,0,
+4,3 Foundation Partners (Ethan-gated),10039,Romero Funeral Home (Foundation Partners - Denver),Denver,CO,us,Stacy (West),True,Foundation Partners,155,2026-11-03
+5,3 Foundation Partners (Ethan-gated),9393,The Springs Funeral Services (Foundation Partners),Colorado Springs,CO,us,Stacy (West),True,Foundation Partners,155,2060-02-02
+6,3 Foundation Partners (Ethan-gated),10424,"Edwards Memorial Center, LLC (Lakewood, WA - Foundation Partners)",Lakewood,WA,us,Stacy (West),True,Foundation Partners,61,2026-11-03
+7,3 Foundation Partners (Ethan-gated),11000,All Mortuary of Colorado (Foundation Partners),Denver,CO,us,Stacy (West),True,Foundation Partners,44,2026-06-08
+8,3 Foundation Partners (Ethan-gated),10566,Funeral Alternatives of Washington (Foundation Partners),Tumwater,WA,us,Stacy (West),True,Foundation Partners,33,2026-06-10
+9,3 Foundation Partners (Ethan-gated),7717,"Edwards Memorial Center, LLC (University Place, WA - Foundation Partners)",University Place,WA,us,Stacy (West),True,Foundation Partners,30,2026-07-27
+10,3 Foundation Partners (Ethan-gated),10964,ACCENT FUNERAL HOME (Foundation Partners),Meridian,ID,us,Stacy (West),True,Foundation Partners,29,2026-09-25
+11,3 Foundation Partners (Ethan-gated),10579,Musgrove Family Mortuary & England's Memorial Chapel (Foundation Partners),Eugene,OR,us,Stacy (West),True,Foundation Partners,26,2026-10-13
+12,3 Foundation Partners (Ethan-gated),10806,All Veterans Burial and Cremation (Foundation Partners),Denver,CO,us,Stacy (West),True,Foundation Partners,25,2026-07-02
+13,3 Foundation Partners (Ethan-gated),5951,First Call Plus of Washington - Kent (Foundation Partners),Kent,WA,us,Stacy (West),True,Foundation Partners,24,2026-08-17
+14,3 Foundation Partners (Ethan-gated),3361,Curnow Funeral  Home (Foundation Partners),Sumner,WA,us,Stacy (West),True,Foundation Partners,19,2026-08-31
+15,3 Foundation Partners (Ethan-gated),12153,Carroll-Lewellen Funeral & Cremations Services (Foundation Partners),Longmont,CO,us,Stacy (West),True,Foundation Partners,9,2024-11-29
+16,3 Foundation Partners (Ethan-gated),15201,Aspen Lakewood Mortuary (Foundation Partners),Lakewood,CO,us,Stacy (West),True,Foundation Partners,7,2026-09-16
+17,3 Foundation Partners (Ethan-gated),10870,"All-States Cremation (Wheat Ridge, CO - Foundation Partners)",Wheat Ridge,CO,us,Stacy (West),True,Foundation Partners,5,2026-10-08
+18,3 Foundation Partners (Ethan-gated),11532,Beck's Funeral Home (Foundation Partners),Edmonds,WA,us,Stacy (West),True,Foundation Partners,5,2025-04-08
+19,3 Foundation Partners (Ethan-gated),14331,Baldwin Brothers (Foundation Partners),Ormond Beach,FL,us,Unassigned (Northeast/South),True,Foundation Partners,3,2025-10-15
+20,3 Foundation Partners (Ethan-gated),14080,First Call Mortuary Service (Foundation Partners),Portland,OR,us,Stacy (West),True,Foundation Partners,1,2024-07-25
+21,3 Foundation Partners (Ethan-gated),10578,Springfield Memorial Funeral Home (Foundation Partners),Springfield,OR,us,Stacy (West),True,Foundation Partners,1,2025-09-29
+22,3 Foundation Partners (Ethan-gated),14723,Wyman Cremation and Burial Chapel (Foundation Partners),Mesa,AZ,us,Stacy (West),True,Foundation Partners,1,2024-09-19
+23,3 Foundation Partners (Ethan-gated),10571,"Autumn Funerals, Cremation & Burial (Foundation Partners)",Tigard,OR,us,Stacy (West),True,Foundation Partners,0,
+24,3 Foundation Partners (Ethan-gated),10573,Canby Funeral Chapel (Foundation Partners),Canby,OR,us,Stacy (West),True,Foundation Partners,0,
+25,3 Foundation Partners (Ethan-gated),10572,Cascade Funeral Directors & Cremation Center (Foundation Partners),Tualatin,OR,us,Stacy (West),True,Foundation Partners,0,
+26,3 Foundation Partners (Ethan-gated),10575,England's Creswell Memorial Chapel (Foundation Partners),Creswell,OR,us,Stacy (West),True,Foundation Partners,0,
+27,3 Foundation Partners (Ethan-gated),10576,Lane Memorial Funeral Home (Foundation Partners),Eugene,OR,us,Stacy (West),True,Foundation Partners,0,
+28,3 Foundation Partners (Ethan-gated),10574,Molalla Funeral Chapel (Foundation Partners),Molalla,OR,us,Stacy (West),True,Foundation Partners,0,
+29,3 Foundation Partners (Ethan-gated),10577,Murphy-Musgrove Funeral Home (Foundation Partners),Junction City,OR,us,Stacy (West),True,Foundation Partners,0,
+30,3 Foundation Partners (Ethan-gated),10581,Sunnyside Funeral & Cremation (Foundation Partners),Happy Valley,OR,us,Stacy (West),True,Foundation Partners,0,
+31,3 Foundation Partners (Ethan-gated),10582,Valley Memorial Funeral Home (Foundation Partners),Hillsboro,OR,us,Stacy (West),True,Foundation Partners,0,
+32,3 Foundation Partners (Ethan-gated),10580,West Lawn Funeral Home (Foundation Partners),Eugene,OR,us,Stacy (West),True,Foundation Partners,0,
+33,3 Foundation Partners (Ethan-gated),10583,Wilhelm's Portland Memorial Funeral Home (Foundation Partners),Portland,OR,us,Stacy (West),True,Foundation Partners,0,
+34,3 Northstar (Ethan-gated),1769,Beth Israel Memorial Chapel (Northstar Location #3250),Delray Beach,FL,us,Unassigned (Northeast/South),True,Northstar,910,2060-02-02
+35,3 Northstar (Ethan-gated),2156,Levitt-Weinstein Memorial Chapels & Cemeteries (Northstar Location #3238),North Miami Beach,FL,us,Unassigned (Northeast/South),True,Northstar,347,2026-11-03
+36,3 Northstar (Ethan-gated),2153,Levitt-Weinstein Memorial Chapels and Cemeteries (Northstar Location #3237),North Miami Beach,FL,us,Unassigned (Northeast/South),True,Northstar,226,2026-10-27
+37,3 Northstar (Ethan-gated),1947,Fort Myers Memorial Gardens Funeral Home & Cemetery (Northstar Location #4470),Fort Myers,FL,us,Unassigned (Northeast/South),True,Northstar,145,2026-11-05
+38,3 Northstar (Ethan-gated),2226,Mountain View Funeral Home (Tacoma - Northstar Location #1511),Lakewood,WA,us,Stacy (West),True,Northstar,142,2026-09-28
+39,3 Northstar (Ethan-gated),2323,"Restland Funeral Home, Cemetery & Crematory (Northstar Location #1350)",Dallas,TX,us,Unassigned (Northeast/South),True,Northstar,136,2026-11-02
+40,3 Northstar (Ethan-gated),2201,Memorial Park Funeral Home (Memphis - Northstar Location #3414),Memphis,TN,us,Unassigned (Northeast/South),True,Northstar,105,2026-11-02
+41,3 Northstar (Ethan-gated),2224,Moss Feaster Funeral Home & Cremation Services (Northstar Location #4674),Dunedin,FL,us,Unassigned (Northeast/South),True,Northstar,95,2026-08-21
+42,3 Northstar (Ethan-gated),2262,Page Theus Funeral Home and Cremation Services (Northstar Location #2282),Leesburg,FL,us,Unassigned (Northeast/South),True,Northstar,69,2026-10-27
+43,3 Northstar (Ethan-gated),1752,Banks Page Theus Funeral Home (Northstar Location #2283),Wildwood,FL,us,Unassigned (Northeast/South),True,Northstar,54,2026-09-15
+44,3 Northstar (Ethan-gated),2832,Chapel of the Chimes Funeral Home & Crematory - Hayward (Northstar Location #1820),Hayward,CA,us,Stacy (West),True,Northstar,54,2026-10-28
+45,3 Northstar (Ethan-gated),5354,Hawaiian Memorial Park Mortuary (Northstar Location #1410),Kaneohe,HI,us,Stacy (West),True,Northstar,52,2060-02-02
+46,3 Northstar (Ethan-gated),1783,Boza & Roel Funeral Home (Northstar Location #4374),Tampa,FL,us,Unassigned (Northeast/South),True,Northstar,48,2026-11-02
+47,3 Northstar (Ethan-gated),2418,Spring Hill Funeral Home & Cemetery (Northstar Location #3483),Nashville,TN,us,Unassigned (Northeast/South),True,Northstar,48,2026-11-04
+48,3 Northstar (Ethan-gated),2200,Memorial Park Funeral Home (St. Petersburg - Northstar Location #4101),Saint Petersburg,FL,us,Unassigned (Northeast/South),True,Northstar,46,2026-10-06
+49,3 Northstar (Ethan-gated),2809,Nakamura Mortuary (Northstar Location #1411),Wailuku,HI,us,Stacy (West),True,Northstar,42,2026-10-16
+50,3 Northstar (Ethan-gated),7692,Steverson Hamlin Funeral Home (Northstar Location #4829),Tavares,FL,us,Unassigned (Northeast/South),True,Northstar,42,2026-09-30
+51,3 Northstar (Ethan-gated),2007,Grace Memorial Gardens and Funeral Home (Northstar Location #4838),Hudson,FL,us,Unassigned (Northeast/South),True,Northstar,36,2026-10-28
+52,3 Northstar (Ethan-gated),2017,Greenwood Memorial Park (Northstar Location #1870),San Diego,CA,us,Stacy (West),True,Northstar,36,2026-10-13
+53,3 Northstar (Ethan-gated),1835,Clairemont Mortuary (Northstar Location #1871),San Diego,CA,us,Stacy (West),True,Northstar,31,2026-08-18
+54,3 Northstar (Ethan-gated),8314,Floral Haven Funeral Home (Northstar Location #1400),Broken Arrow,OK,us,Unassigned (Northeast/South),True,Northstar,30,2026-07-17
+55,3 Northstar (Ethan-gated),7708,Funeraria Memorial Plan Westchester (Northstar Location #4195),Miami,FL,us,Unassigned (Northeast/South),True,Northstar,25,2026-10-15
+56,3 Northstar (Ethan-gated),2372,San Jacinto Valley Mortuary (Northstar Location #1351),Houston,TX,us,Unassigned (Northeast/South),True,Northstar,23,2026-08-18
+57,3 Northstar (Ethan-gated),2264,Palm Beach Memorial Park (Northstar Location #2547),Lantana,FL,us,Unassigned (Northeast/South),True,Northstar,21,2026-04-06
+58,3 Northstar (Ethan-gated),2033,Hawaiian Memorial Park Funeral Home (Northstar Location #0226),Honolulu,HI,us,Stacy (West),True,Northstar,20,2026-01-14
+59,3 Northstar (Ethan-gated),10122,Trinity Memorial Gardens (Northstar Location #4103),Trinity,FL,us,Unassigned (Northeast/South),True,Northstar,20,2026-08-17
+60,3 Northstar (Ethan-gated),5388,Hamlin & Hilbish Funeral Directors (Northstar Location #4828),Eustis,FL,us,Unassigned (Northeast/South),True,Northstar,17,2026-09-10
+61,3 Northstar (Ethan-gated),2433,Sunset Lawn Chapel of the Chimes (Northstar Location #1830),Sacramento,CA,us,Stacy (West),True,Northstar,13,2026-06-24
+62,3 Northstar (Ethan-gated),1879,Diamond Head Mortuary & Williams Funeral Services (Northstar Location #1415),Honolulu,HI,us,Stacy (West),True,Northstar,11,2026-06-02
+63,3 Northstar (Ethan-gated),8446,Ferdinand Funeral Home (Northstar Location #4196),Miami,FL,us,Unassigned (Northeast/South),True,Northstar,11,2024-02-27
+64,3 Northstar (Ethan-gated),2407,Skyway Memorial Gardens (Northstar Location #507),Palmetto,FL,us,Unassigned (Northeast/South),True,Northstar,9,2026-10-17
+65,3 Northstar (Ethan-gated),1689,Accu-Care Cremation & Funeral Services (Northstar),Carlsbad,CA,us,Stacy (West),True,Northstar,7,2025-08-22
+66,3 Northstar (Ethan-gated),2008,Graceland Fairlawn Funeral Home (Northstar Location #1200),Decatur,IL,us,Otto (Midwest),True,Northstar,7,2026-07-13
+67,3 Northstar (Ethan-gated),11104,"Sunset Funeral, Cremation Services & Cemetery (Northstar Location #1300)",North Olmsted,OH,us,Otto (Midwest),True,Northstar,6,2026-07-11
+68,3 Northstar (Ethan-gated),3373,Chapel Of the Chimes Oakland (Northstar Location #1810),Oakland,CA,us,Stacy (West),True,Northstar,4,2026-05-05
+69,3 Northstar (Ethan-gated),21549,Accu-Care Mortuary Service and Crematory,Arlington,TX,us,Unassigned (Northeast/South),True,Northstar,2,2026-06-05
+70,3 Northstar (Ethan-gated),2406,"Skylawn Funeral Home, Memorial Park & Crematory (Northstar)",San Mateo,CA,us,Stacy (West),True,Northstar,2,2023-06-01
+71,3 Northstar (Ethan-gated),19128,Mililani Mortuary (Northstar Location #1417),Waipahu,HI,us,Stacy (West),True,Northstar,1,2025-07-27
+72,3 Northstar (Ethan-gated),5095,Moran & Goebel Funeral Home (Northstar Location #1201),Decatur,IL,us,Otto (Midwest),True,Northstar,1,2026-09-03
+73,3 Northstar (Ethan-gated),2435,Sunset Memory Garden Funeral Home and Cemetery (Northstar Location #4885),Thonotosassa,FL,us,Unassigned (Northeast/South),True,Northstar,1,2026-06-03
+74,3 Northstar (Ethan-gated),2486,Westchester Funeral Home (Northstar Location #4195),,,us,no state,False,Northstar,1,2023-08-28
+75,3 Northstar (Ethan-gated),21525,"Accu-Care Cremation & Funerals, LLC",Phoenix,AZ,us,Stacy (West),True,Northstar,0,
+76,3 Northstar (Ethan-gated),1892,Dostal Bokas Funeral Home (Northstar Location #1300),North Olmsted,OH,us,Otto (Midwest),True,Northstar,0,
+77,3 Northstar (Ethan-gated),19140,Mililani Memorial Park (Northstar Location #0417),Waipahu,HI,us,Stacy (West),True,Northstar,0,
+78,3 Northstar (Ethan-gated),19129,Mililani Mortuary Downtown (Northstar Location #1418),Honolulu,HI,us,Stacy (West),True,Northstar,0,
+79,3 SCI (Ethan-gated),2341,Riverside-Stanetsky Memorial Chapels (SCI Location #4222),Delray Beach,FL,us,Unassigned (Northeast/South),True,SCI,698,2026-11-04
+80,3 SCI (Ethan-gated),2732,Riverside Gordon Memorial Chapels (SCI Location #4128),Aventura,FL,us,Unassigned (Northeast/South),True,SCI,442,2026-10-30
+81,3 SCI (Ethan-gated),2424,Star of David Memorial Gardens Cemetery & Funeral Chapel (SCI Location #7084),North Lauderdale,FL,us,Unassigned (Northeast/South),True,SCI,337,2026-10-30
+82,3 SCI (Ethan-gated),1957,Fred Hunter's Funeral Home (SCI Location #3597),Hollywood,FL,us,Unassigned (Northeast/South),True,SCI,201,2026-11-03
+83,3 SCI (Ethan-gated),6956,I. J. Morris At Star of David (Palm Beach - SCI Location #4129),West Palm Beach,FL,us,Unassigned (Northeast/South),True,SCI,201,2026-11-02
+84,3 SCI (Ethan-gated),2274,Palm Southwest Mortuary (SCI Location #5260),Las Vegas,NV,us,Stacy (West),True,SCI,111,2026-11-02
+85,3 SCI (Ethan-gated),2426,Star of David (Palm Beach - SCI Location #4129),West Palm Beach,FL,us,Unassigned (Northeast/South),True,SCI,93,2026-03-28
+86,3 SCI (Ethan-gated),10325,King David Memorial Chapel (SCI Location #1006),Las Vegas,NV,us,Stacy (West),True,SCI,87,2026-11-02
+87,3 SCI (Ethan-gated),1700,Affordable Cremation Services & Burial Service (SCI Location #1004),Las Vegas,NV,us,Stacy (West),True,SCI,75,2026-09-25
+88,3 SCI (Ethan-gated),2267,Palm Downtown Mortuary & Cemetery (SCI Location #1008),Las Vegas,NV,us,Stacy (West),True,SCI,75,2026-10-23
+89,3 SCI (Ethan-gated),2052,Hines Rinaldi Funeral Home (SCI Location #9738),Silver Spring,MD,us,Unassigned (Northeast/South),True,SCI,73,2026-10-26
+90,3 SCI (Ethan-gated),1978,Garden Oaks Funeral Home & Crematory (SCI Location #9681),Houston,TX,us,Unassigned (Northeast/South),True,SCI,67,2026-10-08
+91,3 SCI (Ethan-gated),2137,Langevin El Paraiso Funeral Home (SCI Location #4208),Yakima,WA,us,Stacy (West),True,SCI,67,2026-10-21
+92,3 SCI (Ethan-gated),2061,Howard Quattlebaum Funeral Home (SCI Location #4823),North Palm Beach,FL,us,Unassigned (Northeast/South),True,SCI,66,2026-10-28
+93,3 SCI (Ethan-gated),3002,Kraeer-Fairchild Funeral Home and Cremation Center (SCI Location #7092),Fort Lauderdale,FL,us,Unassigned (Northeast/South),True,SCI,63,2026-08-18
+94,3 SCI (Ethan-gated),5080,Babione-Kraeer Funeral Home & Cremation Center (SCI Location #4417),Boca Raton,FL,us,Unassigned (Northeast/South),True,SCI,58,2026-09-04
+95,3 SCI (Ethan-gated),1743,Babione-Kraeer Funeral Home & Cremation Center (SCI Location #4416),Boca Raton,FL,us,Unassigned (Northeast/South),True,SCI,57,2026-10-06
+96,3 SCI (Ethan-gated),2901,Kraeer Funeral Home and Cremation Center (SCI Location #7089),Coral Springs,FL,us,Unassigned (Northeast/South),True,SCI,55,2026-10-21
+97,3 SCI (Ethan-gated),2123,Kraeer Funeral Home & Forest Lawn Memorial Gardens (SCI Location #4365),Pompano Beach,FL,us,Unassigned (Northeast/South),True,SCI,52,2026-10-09
+98,3 SCI (Ethan-gated),2268,Palm Eastern Mortuary & Cemetery (SCI Location #1009),Las Vegas,NV,us,Stacy (West),True,SCI,47,2026-10-29
+99,3 SCI (Ethan-gated),2152,Levine Chapels (SCI Location #7323),Brookline,MA,us,Unassigned (Northeast/South),True,SCI,44,2026-10-18
+100,3 SCI (Ethan-gated),1748,Bailey Memorial (SCI Location #2378),Tamarac,FL,us,Unassigned (Northeast/South),True,SCI,42,2026-08-21
+101,3 SCI (Ethan-gated),1797,Broward Burial & Cremation (SCI Location #7093),Fort Lauderdale,FL,us,Unassigned (Northeast/South),True,SCI,40,2026-08-28
+102,3 SCI (Ethan-gated),2272,Palm South Jones Mortuary (SCI Location #1012),Las Vegas,NV,us,Stacy (West),True,SCI,38,2026-11-02
+103,3 SCI (Ethan-gated),7447,Dignity Memorial Life Celebration Center (SCI Location #8527),Wildwood,FL,us,Unassigned (Northeast/South),True,SCI,36,2026-06-29
+104,3 SCI (Ethan-gated),2340,Riverside Nassau North (SCI Location #1226),Great Neck,NY,us,Unassigned (Northeast/South),True,SCI,35,2026-11-04
+105,3 SCI (Ethan-gated),3064,I.J. Morris Funeral Directors (SCI Location #1401),Dix Hills,NY,us,Unassigned (Northeast/South),True,SCI,34,2026-11-01
+106,3 SCI (Ethan-gated),2120,Kraeer Funeral Home and Cremation Center (SCI Location #7097),Pompano Beach,FL,us,Unassigned (Northeast/South),True,SCI,33,2026-07-13
+107,3 SCI (Ethan-gated),7262,Greenwood Memorial Park & Funeral Home (SCI Location #2480),Renton,WA,us,Stacy (West),True,SCI,32,2026-08-17
+108,3 SCI (Ethan-gated),2023,Gutterman and Musicant Jewish Funeral Directors (SCI Location #4459),Hackensack,NJ,us,Unassigned (Northeast/South),True,SCI,31,2026-10-29
+109,3 SCI (Ethan-gated),2205,Menorah Gardens & Funeral Chapels (SCI Location #4130),Southwest Ranches,FL,us,Unassigned (Northeast/South),True,SCI,29,2026-10-24
+110,3 SCI (Ethan-gated),2238,National Funeral Home & National Memorial Park (SCI Location #4927),Falls Church,VA,us,Unassigned (Northeast/South),True,SCI,29,2026-10-22
+111,3 SCI (Ethan-gated),2119,Kraeer-Becker Funeral Home and Cremation Center (SCI Location #7090),Deerfield Beach,FL,us,Unassigned (Northeast/South),True,SCI,26,2026-06-03
+112,3 SCI (Ethan-gated),1766,"Berkowitz, Kumin & Bookatz (SCI Location #4246)",Cleveland Heights,OH,us,Otto (Midwest),True,SCI,25,2026-10-28
+113,3 SCI (Ethan-gated),1775,Bloomfield-Cooper Jewish Funeral Chapels (SCI Location #4456),Manalapan,NJ,us,Unassigned (Northeast/South),True,SCI,24,2026-10-26
+114,3 SCI (Ethan-gated),21467,Kraeer Forest Lawn Funeral  (SCI Location #4366),Fort Lauderdale,FL,us,Unassigned (Northeast/South),True,SCI,24,2026-10-30
+115,3 SCI (Ethan-gated),2126,Kraeer Funeral Home and Cremation Center (Margate - SCI Location #7094),Margate,FL,us,Unassigned (Northeast/South),True,SCI,24,2026-05-06
+116,3 SCI (Ethan-gated),1765,Berger Memorial Chapel (SCI Location #4938),Saint Louis,MO,us,Otto (Midwest),True,SCI,23,2026-09-09
+117,3 SCI (Ethan-gated),1767,Bernheim-Apter-Kreitzman Suburban Funeral Chapel (SCI Location #4269),Livingston,NJ,us,Unassigned (Northeast/South),True,SCI,23,2026-10-19
+118,3 SCI (Ethan-gated),1781,Boulevard-Riverside Chapels (SCI Location #1224),Hewlett,NY,us,Unassigned (Northeast/South),True,SCI,23,2026-11-03
+119,3 SCI (Ethan-gated),3392,Schwartz Brothers - Jeffer Memorial Chapel (SCI Location #4131),Queens,NY,us,Unassigned (Northeast/South),True,SCI,22,2026-10-31
+120,3 SCI (Ethan-gated),1945,Forest Lawn Funeral Home & Memorial Gardens (SCI Location #4366),Orland Park,IL,us,Otto (Midwest),True,SCI,21,2025-01-10
+121,3 SCI (Ethan-gated),2273,Palm Northwest Mortuary (SCI Location #1011),Las Vegas,NV,us,Stacy (West),True,SCI,19,2026-09-07
+122,3 SCI (Ethan-gated),2339,Riverside Memorial Chapel (Mt. Vernon - SCI Location #3561),Hawthorne,NY,us,Unassigned (Northeast/South),True,SCI,19,2026-09-16
+123,3 SCI (Ethan-gated),2066,I.J. Morris Funeral Directors (SCI Location #1400),Brooklyn,NY,us,Unassigned (Northeast/South),True,SCI,17,2026-10-22
+124,3 SCI (Ethan-gated),2332,Riverside Memorial Chapel (SCI Location #1227),New York,NY,us,Unassigned (Northeast/South),True,SCI,17,2026-11-01
+125,3 SCI (Ethan-gated),9453,Katy Funeral Home (SCI Location #3070),Houston,TX,us,Unassigned (Northeast/South),True,SCI,13,2025-09-12
+126,3 SCI (Ethan-gated),2161,Longwood Funeral Home (SCI Location #4473),Kennett Square,PA,us,Unassigned (Northeast/South),True,SCI,13,2026-04-15
+127,3 SCI (Ethan-gated),2244,Nevsky Yablakoff Memorial Chapels (SCI Location #1360),Brooklyn,NY,us,Unassigned (Northeast/South),True,SCI,13,2026-05-22
+128,3 SCI (Ethan-gated),7226,Cook Walden Capital Parks (SCI Location #4993),Pflugerville,TX,us,Unassigned (Northeast/South),True,SCI,12,2026-05-01
+129,3 SCI (Ethan-gated),2334,RIverside Gordon Memorial Chapel (SCI Location #7083),Miami,FL,us,Unassigned (Northeast/South),True,SCI,12,2026-09-10
+130,3 SCI (Ethan-gated),2400,Sinai Chapels (Fresh Meadows) -- SCI Location #6489,Forest Hills,NY,us,Unassigned (Northeast/South),True,SCI,12,2026-10-30
+131,3 SCI (Ethan-gated),1925,Evergreen Funeral Home & Cemetery (SCI Location #7568),Everett,WA,us,Stacy (West),True,SCI,11,2026-09-02
+132,3 SCI (Ethan-gated),2422,Stanetsky Memorial Chapel (Brookline - SCI Location #4960),Brookline,MA,us,Unassigned (Northeast/South),True,SCI,11,2026-08-29
+133,3 SCI (Ethan-gated),2016,Green Funeral Home (SCI Location #6777),Danbury,CT,us,Unassigned (Northeast/South),True,SCI,10,2026-07-21
+134,3 SCI (Ethan-gated),5652,Hodges Funeral Home at Naples Memorial Gardens (SCI Location #7082),Fort Myers,FL,us,Unassigned (Northeast/South),True,SCI,10,2026-10-15
+135,3 SCI (Ethan-gated),2170,Mackey Funerals and Cremations at Century Drive (SCI Location #9611),Greenville,SC,us,Unassigned (Northeast/South),True,SCI,10,2026-09-09
+136,3 SCI (Ethan-gated),7960,Forest Lawn Funeral Home & Memory Gardens (SCI Location #4344),Ocala,FL,us,Unassigned (Northeast/South),True,SCI,9,2026-10-09
+137,3 SCI (Ethan-gated),2938,Hodges Funeral Home at Naples Memorial Gardens (SCI Location #7105),Naples,FL,us,Unassigned (Northeast/South),True,SCI,9,2026-09-03
+138,3 SCI (Ethan-gated),21659,Coral Ridge Funeral Home & Cemetery (SCI Location #7080),Cape Coral,FL,us,Unassigned (Northeast/South),True,SCI,8,2026-11-11
+139,3 SCI (Ethan-gated),1874,Demaine Funeral Home (SCI Location #4854),Alexandria,VA,us,Unassigned (Northeast/South),True,SCI,8,2025-04-04
+140,3 SCI (Ethan-gated),3259,Evergreen Washelli Funeral Home (SCI Location #8363),Seattle,WA,us,Stacy (West),True,SCI,8,2025-08-08
+141,3 SCI (Ethan-gated),16482,Forest Lawn Funeral Home and Cemetery (Washington - SCI Location #4176),Seattle,WA,us,Stacy (West),True,SCI,8,2026-10-30
+142,3 SCI (Ethan-gated),2113,Keith & Keith Funeral Home (SCI Location #4207),Yakima,WA,us,Stacy (West),True,SCI,8,2026-08-05
+143,3 SCI (Ethan-gated),2271,Palm Mortuary & Cemetery (SCI Location #1013),Las Vegas,NV,us,Stacy (West),True,SCI,8,2025-12-04
+144,3 SCI (Ethan-gated),14009,Advantage Funeral & Cremation Services (SCI Location #4607),Houston,TX,us,Unassigned (Northeast/South),True,SCI,7,2026-07-10
+145,3 SCI (Ethan-gated),1805,Caballero Rivero Little Havana (SCI Location #9548),Miami,FL,us,Unassigned (Northeast/South),True,SCI,7,2026-10-09
+146,3 SCI (Ethan-gated),6722,DEMAINE FUNERAL HOME (SCI Location #4855),Springfield,VA,us,Unassigned (Northeast/South),True,SCI,7,2026-04-23
+147,3 SCI (Ethan-gated),20315,Funeraria Del Angel Fresno (SCI Location #4059),Fresno,CA,us,Stacy (West),True,SCI,7,2026-11-04
+148,3 SCI (Ethan-gated),2027,H.M. Patterson & Son - Arlington Chapel (SCI Location #2330),Sandy Springs,GA,us,Unassigned (Northeast/South),True,SCI,7,2026-07-27
+149,3 SCI (Ethan-gated),19134,Joseph Gawler's Sons Funeral Home (SCI Location #2216),Washington,DC,us,Unassigned (Northeast/South),True,SCI,7,2026-11-10
+150,3 SCI (Ethan-gated),2136,Lakeside Memorial Park & Lakeside Funeral Home (SCI Location #1068),Miami,FL,us,Unassigned (Northeast/South),True,SCI,7,2026-04-08
+151,3 SCI (Ethan-gated),20913,Lima Family Erickson Memorial Chapel (SCI Location #2460),San Jose,CA,us,Stacy (West),True,SCI,7,2026-08-31
+152,3 SCI (Ethan-gated),6644,McEwen Funeral Home – Pineville Chapel (SCI Location #2671),Charlotte,NC,us,Unassigned (Northeast/South),True,SCI,7,2024-12-23
+153,3 SCI (Ethan-gated),2266,Palm Boulder Highway Mortuary & Cemetery (SCI Location #1010),Henderson,NV,us,Stacy (West),True,SCI,7,2026-07-09
+154,3 SCI (Ethan-gated),3113,Brookside Funeral Home at Champions (SCI Location #2732),Houston,TX,us,Unassigned (Northeast/South),True,SCI,6,2025-03-18
+155,3 SCI (Ethan-gated),3019,Caballero Rivero Hialeah (SCI Location #9549),Hialeah,FL,us,Unassigned (Northeast/South),True,SCI,6,2026-09-18
+156,3 SCI (Ethan-gated),8506,Dorsey - E. Earl Smith Funeral Home and Lake Worth Memory Gardens (SCI Location #4228),Lake Worth,FL,us,Unassigned (Northeast/South),True,SCI,6,2026-08-20
+157,3 SCI (Ethan-gated),1944,Forest Lawn (SCI Location #4365),Pompano Beach,FL,us,Unassigned (Northeast/South),True,SCI,6,2026-10-19
+158,3 SCI (Ethan-gated),2915,National Cremation & Burial Society (SCI Location #1114),Ruskin,FL,us,Unassigned (Northeast/South),True,SCI,6,2023-10-23
+159,3 SCI (Ethan-gated),2003,Goodbody Mortuary (SCI Location #4616),San Diego,CA,us,Stacy (West),True,SCI,5,2024-04-29
+160,3 SCI (Ethan-gated),21611,McAulay and Wallace Mortuary (SCI Location #6498),Fullerton,CA,us,Stacy (West),True,SCI,5,2026-10-22
+161,3 SCI (Ethan-gated),20935,Wasatch Lawn Memorial Park (SCI Location #4088),Millcreek,UT,us,Stacy (West),True,SCI,5,2026-10-23
+162,3 SCI (Ethan-gated),4638,Bernheim-Apter-Kreitzman Suburban Funeral Chapel (SCI Location #4269)G,Livingston,NJ,us,Unassigned (Northeast/South),True,SCI,4,2026-09-28
+163,3 SCI (Ethan-gated),6633,Brookside Cypress Creek Funeral Home (SCI Location #2537),Houston,TX,us,Unassigned (Northeast/South),True,SCI,4,2024-09-26
+164,3 SCI (Ethan-gated),10139,D'Andrea Bros. Funeral Home (SCI Location #1229),Copiague,NY,us,Unassigned (Northeast/South),True,SCI,4,2026-06-13
+165,3 SCI (Ethan-gated),1904,East Lawn Palms Mortuary & Cemetery (SCI Location #4654),Tucson,AZ,us,Stacy (West),True,SCI,4,2026-02-26
+166,3 SCI (Ethan-gated),18479,Finley-Sunset Hills Mortuary (SCI Location #9588),Portland,OR,us,Stacy (West),True,SCI,4,2026-08-05
+167,3 SCI (Ethan-gated),2943,Sugarman Sinai Memorial Chapel (SCI Location #1464),Providence,RI,us,Unassigned (Northeast/South),True,SCI,4,2026-07-09
+168,3 SCI (Ethan-gated),2480,Webb Noonan Kidd Funeral Home (SCI Location #6936),Hamilton,OH,us,Otto (Midwest),True,SCI,4,2026-09-04
+169,3 SCI (Ethan-gated),12975,William H. Scott Funeral Home (SCI Location #2444),Wilmette,IL,us,Otto (Midwest),True,SCI,4,2026-10-16
+170,3 SCI (Ethan-gated),1685,A.L. Moore-Grimshaw Mortuaries Bethany Chapel (SCI Location #4041),Phoenix,AZ,us,Stacy (West),True,SCI,3,2024-05-05
+171,3 SCI (Ethan-gated),10426,Ballard Family Moanalua Mortuary - Honolulu (SCI Location #8319),Honolulu,HI,us,Stacy (West),True,SCI,3,2026-09-09
+172,3 SCI (Ethan-gated),8440,BATEMAN CARROLL FUNERAL HOME (SCI Location# 7392),Gresham,OR,us,Stacy (West),True,SCI,3,2026-09-24
+173,3 SCI (Ethan-gated),1847,Cook-Walden Davis Funeral Home (SCI Location #4886),Georgetown,TX,us,Unassigned (Northeast/South),True,SCI,3,2023-03-04
+174,3 SCI (Ethan-gated),16728,Doane Beal and Ames Funeral Home (SCI Location #7208),Hyannis,MA,us,Unassigned (Northeast/South),True,SCI,3,2025-12-29
+175,3 SCI (Ethan-gated),11535,Eternal Hills Funeral Home & Memorial Gardens (SCI Location #4546),Snellville,GA,us,Unassigned (Northeast/South),True,SCI,3,2060-02-02
+176,3 SCI (Ethan-gated),5913,Eternal Hills Mortuary & Cemetery (SCI Location #4620),Oceanside,CA,us,Stacy (West),True,SCI,3,2060-02-02
+177,3 SCI (Ethan-gated),21030,Forest Park Westheimer Funeral Home & Cemetery (SCI Location #2492),Houston,TX,us,Unassigned (Northeast/South),True,SCI,3,2026-07-21
+178,3 SCI (Ethan-gated),6669,Forest Park Westheimer Funeral Home (SCI Location #3070),Houston,TX,us,Unassigned (Northeast/South),True,SCI,3,2026-07-20
+179,3 SCI (Ethan-gated),18076,Fred Hunter's Funeral Home (SCI Location #3599),Fort Lauderdale,FL,us,Unassigned (Northeast/South),True,SCI,3,2026-10-06
+180,3 SCI (Ethan-gated),6874,Funeraria Del Angel (SCI Location# 7477),Houston,TX,us,Unassigned (Northeast/South),True,SCI,3,2024-01-19
+181,3 SCI (Ethan-gated),1971,Funeraria Del Angel Trevino (SCI Location #7480),San Antonio,TX,us,Unassigned (Northeast/South),True,SCI,3,2025-11-02
+182,3 SCI (Ethan-gated),8920,George H. Lewis & Sons (SCI Location #2220),Houston,TX,us,Unassigned (Northeast/South),True,SCI,3,2026-08-07
+183,3 SCI (Ethan-gated),3047,Georgia Memorial Park Funeral Home & Cemetery (SCI Location #7125),Marietta,GA,us,Unassigned (Northeast/South),True,SCI,3,2026-07-27
+184,3 SCI (Ethan-gated),2012,Grand Prairie Funeral Home (SCI Location #4008),Grand Prairie,TX,us,Unassigned (Northeast/South),True,SCI,3,2025-07-30
+185,3 SCI (Ethan-gated),2015,Green Acres Mortuary & Cemetery (SCI Location #2107),Scottsdale,AZ,us,Stacy (West),True,SCI,3,2026-02-13
+186,3 SCI (Ethan-gated),17710,Miller Jones Mortuary & Crematory Moreno Valley (SCI Location #8808),Moreno Valley,CA,us,Stacy (West),True,SCI,3,2026-03-27
+187,3 SCI (Ethan-gated),14445,Oak Hill Funeral Home & Memorial Garden (SCI Location #2473),San Jose,CA,us,Stacy (West),True,SCI,3,2026-07-27
+188,3 SCI (Ethan-gated),18088,Ross Hollywood Chapel (SCI Location #4167),Portland,OR,us,Stacy (West),True,SCI,3,2026-04-28
+189,3 SCI (Ethan-gated),7817,Roswell Funeral Home (SCI Location #7127),Roswell,GA,us,Unassigned (Northeast/South),True,SCI,3,2025-04-30
+190,3 SCI (Ethan-gated),6434,Sandy Springs  Chapel (SCI Location #7119),Sandy Springs,GA,us,Unassigned (Northeast/South),True,SCI,3,2026-06-25
+191,3 SCI (Ethan-gated),8152,Skyline Memorial Gardens Funeral Home (SCI Location #2433),Portland,OR,us,Stacy (West),True,SCI,3,2024-09-27
+192,3 SCI (Ethan-gated),5785,Sparkman Hillcrest Funeral Home (SCI Location #2251),Dallas,TX,us,Unassigned (Northeast/South),True,SCI,3,2026-06-01
+193,3 SCI (Ethan-gated),5537,Thomas and Jones Funeral Home (SCI Location #7312),Las Vegas,NV,us,Stacy (West),True,SCI,3,2026-10-19
+194,3 SCI (Ethan-gated),7463,Alvah Halloran and Sons Funeral Home (SCI Location #1713),Rochester,NY,us,Unassigned (Northeast/South),True,SCI,2,2023-06-12
+195,3 SCI (Ethan-gated),6146,Bauer Funeral Chapel (SCI Location #7553),Snohomish,WA,us,Stacy (West),True,SCI,2,2026-06-23
+196,3 SCI (Ethan-gated),2929,Boulevard Riverside Chapels (SCI Location #1223),Hewlett,NY,us,Unassigned (Northeast/South),True,SCI,2,2025-10-22
+197,3 SCI (Ethan-gated),10546,Crown Hill Funeral Home (SCI location# 8366),Indianapolis,IN,us,Otto (Midwest),True,SCI,2,2026-10-20
+198,3 SCI (Ethan-gated),1858,"Cypress View Mausoleum, Mortuary and Crematory (SCI Location #9557)",San Diego,CA,us,Stacy (West),True,SCI,2,2025-01-01
+199,3 SCI (Ethan-gated),2791,DeYoung Shoreline Chapel (SCI Location #9809),Stockton,CA,us,Stacy (West),True,SCI,2,2023-05-11
+200,3 SCI (Ethan-gated),21519,Forest Park Missouri City Funeral Home (SCI Location #6971),Fresno,TX,us,Unassigned (Northeast/South),True,SCI,2,2026-06-10
+201,3 SCI (Ethan-gated),21522,Forest Park South Funeral Home (SCI Location #8473),Pearland,TX,us,Unassigned (Northeast/South),True,SCI,2,2026-06-02
+202,3 SCI (Ethan-gated),1949,Frank E. Campbell - The Funeral Chapel (SCI Location #1077),New York,NY,us,Unassigned (Northeast/South),True,SCI,2,2024-04-26
+203,3 SCI (Ethan-gated),1959,Frederick Funeral Home (SCI Location #5095),Flushing,NY,us,Unassigned (Northeast/South),True,SCI,2,2026-09-18
+204,3 SCI (Ethan-gated),2765,Funeraria Del Angel Chula Vista (SCI Location #7051),Chula Vista,CA,us,Stacy (West),True,SCI,2,2023-03-31
+205,3 SCI (Ethan-gated),10540,Funeraria Del Angel Crespo Navigation (SCI Location #9680),Houston,TX,us,Unassigned (Northeast/South),True,SCI,2,2023-11-29
+206,3 SCI (Ethan-gated),21415,Grant Mortuary & Crematory (SCI Location #8269),Craig,CO,us,Stacy (West),True,SCI,2,2026-11-04
+207,3 SCI (Ethan-gated),20927,Groover Funeral Home (SCI Location #4477),Ellenton,FL,us,Unassigned (Northeast/South),True,SCI,2,2026-02-25
+208,3 SCI (Ethan-gated),5942,Hoffmeister South County Chapel (SCI Location #4773),Lemay,MO,us,Otto (Midwest),True,SCI,2,2026-09-10
+209,3 SCI (Ethan-gated),5548,Krowicki McCracken Funeral Home (SCI Location #8437),Linden,NJ,us,Unassigned (Northeast/South),True,SCI,2,2026-09-14
+210,3 SCI (Ethan-gated),14928,"Lemmon Funeral Home of Dulaney Valley, Inc (SCI Location #4007)",Timonium,MD,us,Unassigned (Northeast/South),True,SCI,2,2024-10-14
+211,3 SCI (Ethan-gated),7918,Leo P. Gallagher & Son Funeral Homes (SCI Location #4878),Stamford,CT,us,Unassigned (Northeast/South),True,SCI,2,2026-08-10
+212,3 SCI (Ethan-gated),17711,Miller Jones Mortuary and Crematory (SCI Location #8805),Perris,CA,us,Stacy (West),True,SCI,2,2026-04-22
+213,3 SCI (Ethan-gated),2229,Mullins and Thompson Funeral Service (SCI Location #7534),Fredericksburg,VA,us,Unassigned (Northeast/South),True,SCI,2,2026-09-23
+214,3 SCI (Ethan-gated),6899,Norman's Mortuary (SCI Location #8315),Wailuku,HI,us,Stacy (West),True,SCI,2,2023-09-29
+215,3 SCI (Ethan-gated),18163,Peek Funeral Home (SCI Location # 4980),Westminster,CA,us,Stacy (West),True,SCI,2,2026-10-31
+216,3 SCI (Ethan-gated),2333,Riverside Chapels - Hewlett (SCI #1224),Hewlett,NY,us,Unassigned (Northeast/South),True,SCI,2,2026-10-27
+217,3 SCI (Ethan-gated),7974,Royal Palm Funeral Home & Memorial Gardens (SCI Location #9794),West Palm Beach,FL,us,Unassigned (Northeast/South),True,SCI,2,2026-08-07
+218,3 SCI (Ethan-gated),6571,Swan Funeral Home (SCI Location #2681),Old Saybrook,CT,us,Unassigned (Northeast/South),True,SCI,2,2026-07-03
+219,3 SCI (Ethan-gated),21489,Weed-Corley-Fish Funeral Home (SCI Location #8190),Austin,TX,us,Unassigned (Northeast/South),True,SCI,2,2026-06-12
+220,3 SCI (Ethan-gated),3339,West Resthaven Funeral Home (SCI Location #4707),Glendale,AZ,us,Stacy (West),True,SCI,2,2025-06-05
+221,3 SCI (Ethan-gated),7277,Woodstock Funeral Home (SCI Location #7129),Woodstock,GA,us,Unassigned (Northeast/South),True,SCI,2,2024-11-07
+222,3 SCI (Ethan-gated),21477,Baldwin-Fairchild Oaklawn Chapel (SCI Location #9830),Sanford,FL,us,Unassigned (Northeast/South),True,SCI,1,2026-05-19
+223,3 SCI (Ethan-gated),21400,Bastrop Providence Funeral Home (SCI Location #3039),Bastrop,TX,us,Unassigned (Northeast/South),True,SCI,1,2026-03-31
+224,3 SCI (Ethan-gated),1806,Caballero Rivero Westchester (SCI Location #9550),Miami,FL,us,Unassigned (Northeast/South),True,SCI,1,2025-06-23
+225,3 SCI (Ethan-gated),1815,Carmichael-Hemperley Funeral Home and Crematory (SCI Location #7126),Peachtree City,GA,us,Unassigned (Northeast/South),True,SCI,1,2025-04-21
+226,3 SCI (Ethan-gated),6943,Carolina Memorial Park Funerals And Cremations (SCI Location #9887),North Charleston,SC,us,Unassigned (Northeast/South),True,SCI,1,2023-04-17
+227,3 SCI (Ethan-gated),10472,Chapel of Eternal Peace at Forest Park (SCI Location #1088),Houston,TX,us,Unassigned (Northeast/South),True,SCI,1,2023-10-31
+228,3 SCI (Ethan-gated),21203,Cook Walden Funeral Home (SCI Location #4884),Austin,TX,us,Unassigned (Northeast/South),True,SCI,1,2026-03-16
+229,3 SCI (Ethan-gated),12065,D'Esopo Funeral Home (SCI Location #8082),Wethersfield,CT,us,Unassigned (Northeast/South),True,SCI,1,2024-09-07
+230,3 SCI (Ethan-gated),21638,DeVorss Flanagan-Hunt Mortuary (SCI Location #2157),Wichita,KS,us,Otto (Midwest),True,SCI,1,2026-07-13
+231,3 SCI (Ethan-gated),21503,Drake and Sons Funeral Home  (SCI  Location #2202),Chicago,IL,us,Otto (Midwest),True,SCI,1,2026-05-18
+232,3 SCI (Ethan-gated),19114,Draper Mortuary (SCI Location #4515),Ontario,CA,us,Stacy (West),True,SCI,1,2025-09-24
+233,3 SCI (Ethan-gated),21433,Forest Park - The Woodlands Funeral Home & Cemetery (SCI Location #4922),The Woodlands,TX,us,Unassigned (Northeast/South),True,SCI,1,2026-04-08
+234,3 SCI (Ethan-gated),14127,Fountainhead Funeral Home & Memorial Park (SCI Location #4468),Palm Bay,FL,us,Unassigned (Northeast/South),True,SCI,1,2025-04-21
+235,3 SCI (Ethan-gated),20272,Funeraria Del Angel Alvarez (SCI Location #9535),Bayamon,PR,us,Unassigned (Northeast/South),True,SCI,1,2026-06-16
+236,3 SCI (Ethan-gated),21775,Funeraria Puerto Rico Memorial (SCI Location #9525),San Juan,PR,us,Unassigned (Northeast/South),True,SCI,1,2026-10-14
+237,3 SCI (Ethan-gated),21668,Gorsline Runciman Funeral Homes  (SCI Location #7225),Lansing,MI,us,Otto (Midwest),True,SCI,1,2026-07-23
+238,3 SCI (Ethan-gated),21710,Gregory W. Spencer Funeral Directors (SCI Location # 1020),Fort Worth,TX,us,Unassigned (Northeast/South),True,SCI,1,2026-08-12
+239,3 SCI (Ethan-gated),21671,Hahn-Cook/Street & Draper Funeral Directors (SCI Location #2327),Oklahoma City,OK,us,Unassigned (Northeast/South),True,SCI,1,2026-07-23
+240,3 SCI (Ethan-gated),10459,Hargrave Funeral Home (SCI Location #7199),Morgan City,LA,us,Unassigned (Northeast/South),True,SCI,1,2023-11-01
+241,3 SCI (Ethan-gated),10021,Hoffmeister Colonial Mortuary (SCI Location #4722),St Louis,MO,us,Otto (Midwest),True,SCI,1,2023-09-28
+242,3 SCI (Ethan-gated),14376,Hubbard Kelly Funeral Home (SCI Location #7510),Odessa,TX,us,Unassigned (Northeast/South),True,SCI,1,2024-08-28
+243,3 SCI (Ethan-gated),21765,Indiana Funeral Care - North (SCI Location #3903),Indianapolis,IN,us,Otto (Midwest),True,SCI,1,2026-10-01
+244,3 SCI (Ethan-gated),2098,John M. Taylor Funeral Home (SCI Location #9716),Annapolis,MD,us,Unassigned (Northeast/South),True,SCI,1,2026-01-14
+245,3 SCI (Ethan-gated),15143,Joshua Memorial Park & Mortuary (SCI Location #4493),Lancaster,CA,us,Stacy (West),True,SCI,1,2025-01-10
+246,3 SCI (Ethan-gated),2109,Keaton's Mortuary (SCI LOCATION #),San Rafael,CA,us,Stacy (West),True,SCI,1,2022-10-12
+247,3 SCI (Ethan-gated),7016,Kingwood Funeral Home (SCI Location #4974),Kingswood,TX,us,Unassigned (Northeast/South),True,SCI,1,2025-07-21
+248,3 SCI (Ethan-gated),2124,Kraeer Funeral Home (SCI Location #7098),Fort Lauderdale,FL,us,Unassigned (Northeast/South),True,SCI,1,2022-07-27
+249,3 SCI (Ethan-gated),8799,Levy Funeral Directors (SCI Location #4923),Bellaire,TX,us,Unassigned (Northeast/South),True,SCI,1,2024-09-18
+250,3 SCI (Ethan-gated),21641,Meadowlawn Funeral Home and Memorial Park (SCI Location #4224),New Port Richey,FL,us,Unassigned (Northeast/South),True,SCI,1,2026-07-03
+251,3 SCI (Ethan-gated),2199,"Memorial Funeral Home, Crematory & Memorial Park Cemetery (SCI Location #9874)",Columbia,MO,us,Otto (Midwest),True,SCI,1,2025-05-02
+252,3 SCI (Ethan-gated),14768,Mills & Mills Funeral Home & Memorial Park (SCI Location #7560),Tumwater,WA,us,Stacy (West),True,SCI,1,2024-09-21
+253,3 SCI (Ethan-gated),5364,Miramar Memorial Services (SCI Location #1954),San Diego,CA,us,Stacy (West),True,SCI,1,2025-11-06
+254,3 SCI (Ethan-gated),19860,Moore Bowen Road Funeral Home (SCI Location #4274),Arlington,TX,us,Unassigned (Northeast/South),True,SCI,1,2025-11-26
+255,3 SCI (Ethan-gated),2225,Mount Vernon Memorial Park & Mortuary (SCI Location #4917),Fair Oaks,CA,us,Stacy (West),True,SCI,1,2026-09-03
+256,3 SCI (Ethan-gated),2227,Mountain View Funeral & Cremation (SCI Location #2140),Colorado Springs,CO,us,Stacy (West),True,SCI,1,2023-06-24
+257,3 SCI (Ethan-gated),9331,Navarre Funeral Home & Cremation Services (SCI Location #8426),Baytown,TX,us,Unassigned (Northeast/South),True,SCI,1,2023-08-15
+258,3 SCI (Ethan-gated),21157,"Nicoletti, Culjis & Herberger Funeral Home (SCI Location #7043)",Sacramento,CA,us,Stacy (West),True,SCI,1,2026-03-09
+259,3 SCI (Ethan-gated),7211,Oehler Funeral Home (SCI Location #7154),Des Plaines,IL,us,Otto (Midwest),True,SCI,1,2026-03-09
+260,3 SCI (Ethan-gated),8226,Pierce Brothers Valley Oaks-Griffin (SCI Location #4800),Westlake Village,CA,us,Stacy (West),True,SCI,1,2026-01-12
+261,3 SCI (Ethan-gated),5896,Purdy & Walters at Floral Hills (SCI Location #4171),Lynwood Center,WA,us,Stacy (West),True,SCI,1,2022-12-21
+262,3 SCI (Ethan-gated),2346,Rocko Funeral Home (SCI Location #9769),Montevallo,AL,us,Unassigned (Northeast/South),True,SCI,1,2024-03-06
+263,3 SCI (Ethan-gated),9934,Smith-McCracken Funeral Home (SCI Location #8517),Newton,NJ,us,Unassigned (Northeast/South),True,SCI,1,2023-09-26
+264,3 SCI (Ethan-gated),7171,Sylvan Abbey Memorial Park & Funeral Home (SCI Location #9854),Clearwater,FL,us,Unassigned (Northeast/South),True,SCI,1,2026-09-13
+265,3 SCI (Ethan-gated),15379,Thompson Funeral Home (SCI Location #3162),Aurora,ON,ca,non-US (not routed),True,SCI,1,2024-11-18
+266,3 SCI (Ethan-gated),7768,Whitley-Garner at Rosehaven Funeral Home (SCI Location #9621),Douglasville,GA,us,Unassigned (Northeast/South),True,SCI,1,2023-05-05
+267,3 SCI (Ethan-gated),2491,Whitten Timberlake Chapel (SCI Location #4896),Lynchburg,VA,us,Unassigned (Northeast/South),True,SCI,1,2026-08-21
+268,3 SCI (Ethan-gated),2269,[CLOSED] Palm Green Valley Mortuary (SCI - Location 1009),Las Vegas,NV,us,Stacy (West),False,SCI,0,
+269,3 SCI (Ethan-gated),1694,Advantage Funeral & Cremation Services - Maryvale (SCI Location #2719),Phoenix,AZ,us,Stacy (West),True,SCI,0,
+270,3 SCI (Ethan-gated),1695,Advantage Funeral & Cremation Services - Spokane  (SCI Location #8214),Spokane,WA,us,Stacy (West),True,SCI,0,
+271,3 SCI (Ethan-gated),7961,AE Brown Funeral Home ( SCI Location 4952),Grand Blanc,MI,us,Otto (Midwest),True,SCI,0,
+272,3 SCI (Ethan-gated),1724,American Heritage Funeral Home (SCI Location #4196),New Orleans,LA,us,Unassigned (Northeast/South),True,SCI,0,
+273,3 SCI (Ethan-gated),1747,Baggerley Funeral Home (SCI Location #7371),Edmond,OK,us,Unassigned (Northeast/South),True,SCI,0,
+274,3 SCI (Ethan-gated),4488,Bean Massey Burge Funeral Home (SCI Location #1215),Grand Prairie,TX,us,Unassigned (Northeast/South),True,SCI,0,
+275,3 SCI (Ethan-gated),20568,Berry Highland South (SCI LOC# 9627),Knoxville,TN,us,Unassigned (Northeast/South),True,SCI,0,
+276,3 SCI (Ethan-gated),1796,Brookside Chapel & Funeral Home (SCI Location #7093),Plaistow,NH,us,Unassigned (Northeast/South),True,SCI,0,
+277,3 SCI (Ethan-gated),1807,Cabellero Rivero Hialeah (SCI Location #9549),Hialeah,FL,us,Unassigned (Northeast/South),True,SCI,0,
+278,3 SCI (Ethan-gated),4092,Chapel Lawn Funeral Home & Memorial Gardens (SCI Location #7158),Crown Point,IN,us,Otto (Midwest),True,SCI,0,
+279,3 SCI (Ethan-gated),6185,Dimond & Shannon Mortuary (SCI Location #7040),Garden Grove,CA,us,Stacy (West),True,SCI,0,
+280,3 SCI (Ethan-gated),8141,Duckett Funeral Home ( SCI  Location # 4647),Sudbury,MA,us,Unassigned (Northeast/South),True,SCI,0,
+281,3 SCI (Ethan-gated),1900,Dunbar Funeral Home (SCI Location #9817),Columbia,SC,us,Unassigned (Northeast/South),True,SCI,0,
+282,3 SCI (Ethan-gated),8295,Edwin L. Bennett Funeral Home (SCI Location #1354),Scarsdale,NY,us,Unassigned (Northeast/South),True,SCI,0,
+283,3 SCI (Ethan-gated),21532,ERICKSON-ANDERSON MORTUARY (SCI Location #9559),La Mesa,CA,us,Stacy (West),True,SCI,0,
+284,3 SCI (Ethan-gated),2848,Forest Lawn Funeral Home (SCI Location #4922),Houston,TX,us,Unassigned (Northeast/South),True,SCI,0,
+285,3 SCI (Ethan-gated),1969,Funeraria Del Angel (Corpus Christi - SCI Location #2493),Corpus Christi,TX,us,Unassigned (Northeast/South),True,SCI,0,
+286,3 SCI (Ethan-gated),9154,FUNERARIA DEL ANGEL (SCI LOCATION #1028)PANORAMA,Panorama City,CA,us,Stacy (West),True,SCI,0,
+287,3 SCI (Ethan-gated),1970,Funeraria Del Angel (SCI Location #4008),,,us,no state,False,SCI,0,
+288,3 SCI (Ethan-gated),9709,Funeraria Del Angel Cupples (SCI Location #7479),San Antonio,TX,us,Unassigned (Northeast/South),True,SCI,0,
+289,3 SCI (Ethan-gated),3039,Funeraria Del Angel National City (SCI Location #9556),National City,CA,us,Stacy (West),True,SCI,0,
+290,3 SCI (Ethan-gated),1990,Glenn Abbey Memorial Park (SCI Location #,Bonita,CA,us,Stacy (West),True,SCI,0,
+291,3 SCI (Ethan-gated),4273,Goble Funeral home SCI (4028),Sparta,NJ,us,Unassigned (Northeast/South),True,SCI,0,
+292,3 SCI (Ethan-gated),2000,Gonzalez Funeral Home (SCI Location #),,,us,no state,False,SCI,0,
+293,3 SCI (Ethan-gated),20918,Groover Funeral Home( SCI Loc #0672 ),Ellenton,FL,us,Unassigned (Northeast/South),True,SCI,0,
+294,3 SCI (Ethan-gated),19623,H.M. PATTERSON & SON - ARLINGTON CHAPEL (SCI Location #4946),Atlanta,GA,us,Unassigned (Northeast/South),True,SCI,0,
+295,3 SCI (Ethan-gated),2030,Hampton Vaughan Funeral Home (SCI Location #4197),,,us,no state,False,SCI,0,
+296,3 SCI (Ethan-gated),21797,Hardage-Giddens Funeral Home (SCI Location #2316),Jacksonville,FL,us,Unassigned (Northeast/South),True,SCI,0,
+297,3 SCI (Ethan-gated),20412,Jardines de Venecia Funeraria,Soyapango,10,sv,non-US (not routed),True,SCI,0,
+298,3 SCI (Ethan-gated),2091,Jewish Direct Burial & Cremation (SCI LOCATION #5492),Jupiter,FL,us,Unassigned (Northeast/South),True,SCI,0,
+299,3 SCI (Ethan-gated),2115,Kennedy Roth Funeral Home (SCI),Queens,NY,us,Unassigned (Northeast/South),True,SCI,0,
+300,3 SCI (Ethan-gated),2121,Kraeer Funeral Home (SCI Location #4336),,,us,no state,False,SCI,0,
+301,3 SCI (Ethan-gated),2122,Kraeer Funeral Home (SCI Location #4356),,,us,no state,False,SCI,0,
+302,3 SCI (Ethan-gated),2181,Marshall-Donnelly Funeral Home (SCI Location #6838),,,us,no state,False,SCI,0,
+303,3 SCI (Ethan-gated),2190,McCraken Funeral Home (SCI Loc 2545),Union,NJ,us,Unassigned (Northeast/South),True,SCI,0,
+304,3 SCI (Ethan-gated),3091,Memorial Oaks Funeral Home & Cemetery (SCI Location #2673),Houston,TX,us,Unassigned (Northeast/South),True,SCI,0,
+305,3 SCI (Ethan-gated),2222,Moore Funeral Home (SCI Location #4274),,,us,no state,False,SCI,0,
+306,3 SCI (Ethan-gated),2236,National Creation Society (SCI Location #1116),Jacksonville,FL,us,Unassigned (Northeast/South),True,SCI,0,
+307,3 SCI (Ethan-gated),7836,Nelsen Williamsburg (SCI Location #5088),Williamsburg,VA,us,Unassigned (Northeast/South),True,SCI,0,
+308,3 SCI (Ethan-gated),21043,Neptune Society,Tacoma,WA,us,Stacy (West),True,SCI,0,
+309,3 SCI (Ethan-gated),4099,New Britain Memorial & Sagarino Funeral Home (SCI LOC#,New Britain,CT,us,Unassigned (Northeast/South),True,SCI,0,
+310,3 SCI (Ethan-gated),4106,New Britain Memorial & Sagarino Funeral Home (SCI Location #2487),New Britain,CT,us,Unassigned (Northeast/South),True,SCI,0,
+311,3 SCI (Ethan-gated),20752,People's Funeral Chapel (SCI Location# 4317),Hanford,CA,us,Stacy (West),True,SCI,0,
+312,3 SCI (Ethan-gated),2315,Rabenhorst Funeral Home (SCI Location #8506),Baton Rouge,LA,us,Unassigned (Northeast/South),True,SCI,0,
+313,3 SCI (Ethan-gated),2350,Romano Funeral Home (SCI Location #7418),,,us,no state,False,SCI,0,
+314,3 SCI (Ethan-gated),2353,Roselawn Funeral Home (SCI Location #9658),,,us,no state,False,SCI,0,
+315,3 SCI (Ethan-gated),2375,SAN LEANDRO FUNERAL HOME (SCI LOCATION #7068),,,us,no state,False,SCI,0,
+316,3 SCI (Ethan-gated),2393,Shannon Rufe Snow Drive Funeral Chapel (SCI Location #4495),,,us,no state,False,SCI,0,
+317,3 SCI (Ethan-gated),21255,Snow's Funerals and Cremations At Macon Memorial Park (SCI l Location #7134),Macon,GA,us,Unassigned (Northeast/South),True,SCI,0,
+318,3 SCI (Ethan-gated),21394,sunset funeral home and memorial gardens(SCI#4475),Machesney Park,IL,us,Otto (Midwest),True,SCI,0,
+319,3 SCI (Ethan-gated),2434,Sunset Memorial Park and Funeral Home (SCI Location #4411),San Antonio,TX,us,Unassigned (Northeast/South),True,SCI,0,
+320,3 SCI (Ethan-gated),19698,The Settegast-Kopf Company at Sugar Creek Funeral Home  (SCI #4219),Sugar Land,TX,us,Unassigned (Northeast/South),True,SCI,0,

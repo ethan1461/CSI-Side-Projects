@@ -30,6 +30,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OMS = ROOT / "data/raw/oms-funeral-homes-20261103.csv"
+# Name of the HubSpot Company join-key property. The OMS source column is still
+# called funeral_home_id; only the HubSpot property is oms_funeral_home_id (renamed
+# 2026-11-03: the original name was a reserved smart property). This script never
+# writes to HubSpot, so the constant is for plan/report consumers.
+HUBSPOT_JOIN_PROPERTY = "oms_funeral_home_id"
 HS = ROOT / "data/raw/hubspot-all-contacts-20261102.csv"
 OUT_MATCH = ROOT / "data/derived/oms-hubspot-match.csv"
 OUT_PLAN = ROOT / "data/derived/oms-company-plan.csv"

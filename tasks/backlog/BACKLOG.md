@@ -26,10 +26,20 @@ exist:** today nobody can tell a correct routing from a mistaken one on any book
 why the POS case is unresolvable and the margin leak unsizeable. One build, two outcomes.
 
 ### B-03 · Competitor set from auction data · `market-intel`
-Google Ads auction insights named real competitors with real impression share: **swacargo.com
-22.74%, internationalremainsshipping.com 27.60%, mortuary-shipping.com 10.69%, natmortuarysh…,
-altogetherfuner…, mortrack.com** — against CSI at 23.67%. This is the first competitive data
-CSI has that isn't anecdote. Profile each, and note where `§5` alliance rules apply.
+Google Ads auction insights named real domains with real impression share, against CSI at
+23.67%. **Corrected 2026-11-03 by `corpdev`: `swacargo.com` at 22.74% is Southwest Airlines
+Cargo, not a competing broker — I listed it as a competitor and that was wrong.**
+
+The refinement worth carrying: Southwest Cargo is on CSI's **cost** side as a carrier, *and*
+is the direct-booking alternative a funeral home would use instead of CSI. That is precisely
+what `§1` differentiator #1 answers — *"funeral homes pay the same air rate they'd pay calling
+the airline direct."* **So an airline outbidding CSI on its own search terms is a positioning
+finding, not a competitor-set finding.**
+
+Genuine broker domains to profile: **internationalremainsshipping.com 27.60%,
+mortuary-shipping.com 10.69%, natmortuarysh…, altogetherfuner…, mortrack.com**. Note that
+the first two **failed to resolve** from this session and need allowing. Apply `§5` alliance
+rules throughout.
 
 ### B-04 · Triage the 807 chat-origin contacts · `revops-crm`
 **A `§7.2` exposure, not a hygiene item.** 807 HubSpot contacts were created by website chat,

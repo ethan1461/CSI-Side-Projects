@@ -23,5 +23,5 @@
   ],
   "privacy_note": "Identifier columns dropped at load per CLAUDE.md \u00a77.2. Funeral-home business names retained deliberately; no individual name, email, phone or street address is read.",
   "known_limit": "booking_count sums to a figure above OMS booked-shipment history (BACKLOG B-01). Denominator unreconciled; shares are a share of this field, not of booked shipments. Not for external use until resolved.",
-  "run_timestamp_utc": "2026-11-03T02:52:06+00:00"
+  "run_timestamp_utc": "2026-11-03T03:00:11+00:00"
 }

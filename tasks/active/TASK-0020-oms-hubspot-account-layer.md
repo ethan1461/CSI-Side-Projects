@@ -4,7 +4,7 @@
 **Created:** 2026-11-03 by pm-orchestrator
 **Due:** 2026-11-07
 **Priority:** CRITICAL
-**Status:** BLOCKED
+**Status:** IN PROGRESS (60 of 2,305 built; remainder staged as import files)
 
 ## Objective
 
@@ -101,3 +101,4 @@ batch over 25, stage a brief in `reports/pending-approval/` and stop.
 - 2026-11-03 (revops-crm) — Matching built and run (`scripts/match_oms_hubspot.py`): contacts high 251 / medium 71 / low 377 / none 2,876. Company plan: 2,567 in scope, 2,305 create, 262 hold as duplicates. **BLOCKED on Company creation:** no `funeral_home_id` property exists on Company and the HubSpot connector cannot create properties or set read-only. Zero HubSpot writes made. Needs admin to create properties (list in `reports/account-layer-build.md`). Status: BLOCKED.
 - 2026-11-03 (revops-crm, session 2) — `funeral_home_id` exists on Company; uniqueness setting not verifiable via connector; eight other properties still missing. Stopped before any write. Pilot prepared in `reports/account-layer-pilot-log.md`. Waiting on Ethan: confirm unique-values tick; confirm partner IDs; decide on 90 extra never-booked homes. Status: BLOCKED (one confirmation).
 - 2026-11-03 (revops-crm, session 3) — Join key is now `oms_funeral_home_id`. Pilot executed: 10 Companies created, 10/10 read-back pass (`reports/account-layer-pilot-log.md`). Defect found and fixed: batch creates default owner to the calling user (Ethan); cleared on 9 records, future batches must blank owner explicitly. Unique-value constraint still unverified (needs a duplicate-ID test or Ethan checking the rule). Partner type not set (IDs unconfirmed). Eight properties still missing. Bulk run of remaining 2,295 NOT started. Status: AWAITING ETHAN (unique test, partner IDs, property build or go-without).
+- 2026-11-09 (revops-crm, session 4) — Nine properties confirmed. Pilot 10 updated with all properties (read back 10/10). Bulk batches 0-4 created: 50 Companies, 0 failures, batch 0 owner read back blank. Total 60 Companies. Stopped the 10-per-call build deliberately: about 280 calls remain, cannot complete or verify in one session. Staged `data/derived/hubspot-company-import-remaining.csv` (2,245) and `data/derived/hubspot-contact-association-import.csv` (505). Judgement calls (Las Rosas = 2143; Dunn & Sons and Karen C both partner, unmerged; 33 future dates withheld; zip 00000 withheld) in `reports/account-layer-build.md`. Log: `reports/account-layer-bulk-log.csv`. Contact associations not started: chat-origin exclusion not applicable from repo data.

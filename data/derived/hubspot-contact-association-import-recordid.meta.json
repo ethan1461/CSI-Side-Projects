@@ -1,0 +1,13 @@
+{
+  "sources": [
+    "data/derived/hubspot-contact-association-import.csv",
+    "data/derived/hubspot-company-ids.csv"
+  ],
+  "rows_in": 505,
+  "rows_out": 505,
+  "unmatched_oms_ids": [],
+  "ambiguous_oms_ids": [],
+  "duplicate_oms_ids_in_companies": 0,
+  "script": "scripts/build_association_import.py",
+  "run_timestamp": "2026-11-09T03:15:00.671051+00:00"
+}

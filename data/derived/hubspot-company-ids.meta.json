@@ -1,0 +1,9 @@
+{
+  "source": "HubSpot query_crm_data, COMPANY where oms_funeral_home_id IS NOT NULL, 5 pages of 500",
+  "row_count": 2305,
+  "dropped_columns": [
+    "name"
+  ],
+  "script": "scripts/stage_hubspot_company_ids.py",
+  "run_timestamp": "2026-11-09T03:14:27.973959+00:00"
+}

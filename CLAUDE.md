@@ -333,6 +333,41 @@ action reaches a customer, a partner, the public, or CSI's money.**
 - **Any contact with an acquisition target, investor, lender, or banker**
 - Deleting or overwriting any file in `data/` or `reports/`
 
+**Default and proceed — added 2026-11-09 by Ethan.**
+
+**When an agent hits a question that is not on the approval list above, it does not stop.**
+It takes the most defensible option, records the choice and its reasoning in the task log,
+flags it in the handback, and continues.
+
+**The test is reversibility, not importance.** If being wrong costs an hour to undo, decide
+and flag it. If being wrong is expensive or hard to reverse — a merge, a deletion, anything
+the list above gates — stop as before.
+
+**"I assumed X, here is why, reverse it if wrong" is a complete and acceptable outcome.
+Stopping to ask a question with an obvious answer is not.** An agent that halts a week of
+work to confirm something it could have defended in one sentence has cost CSI more than a
+wrong assumption would have.
+
+### Standing authorities
+
+Decisions Ethan has already made, confirmed 2026-11-09. **No agent asks about any of these
+again.**
+
+1. **Partner tier** is Bergen (NJ and FL), National Mortuary Shipping, International
+   Mortuary Shipping, Las Rosas, and the 17 `is_discount_eligible` accounts. Cheryl and
+   Vadim set discount eligibility. Dunn & Sons and Karen C Funeral Services are one entity.
+2. **Lifecycle** is set from booking history — customer if ever booked, lead if not.
+3. **Agents may create and populate HubSpot properties** that exist. Only creating the
+   property itself needs a human, because the connector cannot.
+4. **Segments exclude** freemail, chat-origin, non-funeral-home domains, and receiving
+   homes.
+5. **Territory** is Otto Midwest, Stacy West, with the Northeast and South split per
+   `data/derived/rep-hitlist-northeast-south.csv`.
+6. **Brain proposals merge automatically** when evidenced by a file in `reports/` and not
+   contradicting §5 or §7.
+7. **Internal colleague questions are drafted without pre-approval**, but **Ethan sends
+   every one of them.** They go into the daily digest described in §10.
+
 **Destructive and bulk operations — not gated, but disciplined.** Merging duplicates,
 mass property updates, and deletions are writes Ethan has approved in principle. They
 are also the ones that destroy 23 years of commercial history when they go wrong, and
@@ -714,6 +749,24 @@ Agents learn from each other or the swarm is just nine people in nine rooms.
 - **Challenge across lanes.** An agent that believes another agent's output is wrong says
   so in a handoff, with the evidence. Politeness that leaves an error standing is a
   failure of the quality bar, not good manners.
+
+### The decision document and the daily digest
+
+**Added 2026-11-09 by Ethan. Both are standing deliverables.**
+
+**Daily digest — every morning.** One short list of the questions waiting on Ethan, drafted
+and ready for him to send. Internal colleague questions are drafted freely (§7.1 standing
+authority 7) but **Ethan sends every one**; the digest is how they reach him without
+him being a relay. Staged at `reports/daily/digest-YYYY-MM-DD.md`.
+
+**Decision document — every Monday.** One document, ranked, with a recommendation **and a
+default** for each item. **If Ethan does not answer, the default happens on Friday and the
+orchestrator tells him what it did.** Silence means "use your judgement", not "stop".
+
+**The orchestrator does not wait.** No agent stays idle on a blocker for more than one
+working day. If a blocker holds, the orchestrator re-tasks that agent onto unblocked work
+from `tasks/backlog/` and says so. Four agents idle for five days in November 2026 is the
+failure this rule exists to prevent.
 
 ### Weekly cadence
 

@@ -1,0 +1,19 @@
+{
+  "source": [
+    "oms-funeral-homes-20261103.csv",
+    "oms-company-plan.csv"
+  ],
+  "rows_in_plan_create": 2305,
+  "rows_new": 2295,
+  "rows_pilot_update": 10,
+  "batches": 230,
+  "script": "build_company_batches.py v1",
+  "run": "2026-11-09T02:40:13.510209+00:00",
+  "dropped_columns": [
+    "address",
+    "email",
+    "created_by",
+    "updated_by",
+    "shipper_account_number"
+  ]
+}

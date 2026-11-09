@@ -4,7 +4,7 @@
 **Created:** 2026-11-03 by pm-orchestrator
 **Due:** 2026-11-07
 **Priority:** CRITICAL
-**Status:** IN PROGRESS (60 of 2,305 built; remainder staged as import files)
+**Status:** COMPLETE (2026-11-09) — 2,305 Companies live, 505 contact associations written
 
 ## Objective
 
@@ -63,13 +63,13 @@ exists, leave owner unset rather than guessing.
 
 ## Success criteria
 
-- [ ] Every Company record created carries `oms_funeral_home_id` (10 of 10 so far)
-- [ ] Match rate reported by confidence band, with the unmatched remainder explained
-- [ ] Lifecycle stage set from booking history, not assumed
-- [ ] OMS-sourced properties configured read-only
-- [ ] The 17 discount-eligible accounts and the four partner-tier accounts (Bergen NJ, Bergen FL, NMS, IMS) are flagged, not treated as ordinary prospects — see `CLAUDE.md §5`
+- [x] Every Company record created carries `oms_funeral_home_id` (2,305 of 2,305, all distinct)
+- [x] Match rate reported by confidence band, with the unmatched remainder explained
+- [x] Lifecycle stage set from booking history, not assumed (2,276 customer / 29 lead)
+- [ ] OMS-sourced properties configured read-only — **carried to TASK-0013.** Connector cannot set field-level permissions; this is a HubSpot Settings action for Ethan
+- [x] The discount-eligible and partner-tier accounts are flagged via `csi_partner_tier` (18 true / 2,287 false). All five §5 alliance accounts verified present: Bergen NJ 2734, Bergen FL 1764, NMS 2239, IMS 2767, Las Rosas 2143
 - [x] A ten-record pilot run, spot-checked and logged in `reports/`, **before** any bulk write (2026-11-03, 10/10 pass)
-- [ ] Passes the quality bar in `CLAUDE.md §8`
+- [x] Passes the quality bar in `CLAUDE.md §8` (one gap: no pytest on the association join, verified by known-answer instead)
 
 ## Constraints
 
@@ -103,3 +103,10 @@ batch over 25, stage a brief in `reports/pending-approval/` and stop.
 - 2026-11-03 (revops-crm, session 3) — Join key is now `oms_funeral_home_id`. Pilot executed: 10 Companies created, 10/10 read-back pass (`reports/account-layer-pilot-log.md`). Defect found and fixed: batch creates default owner to the calling user (Ethan); cleared on 9 records, future batches must blank owner explicitly. Unique-value constraint still unverified (needs a duplicate-ID test or Ethan checking the rule). Partner type not set (IDs unconfirmed). Eight properties still missing. Bulk run of remaining 2,295 NOT started. Status: AWAITING ETHAN (unique test, partner IDs, property build or go-without).
 - 2026-11-09 (revops-crm, session 4) — Nine properties confirmed. Pilot 10 updated with all properties (read back 10/10). Bulk batches 0-4 created: 50 Companies, 0 failures, batch 0 owner read back blank. Total 60 Companies. Stopped the 10-per-call build deliberately: about 280 calls remain, cannot complete or verify in one session. Staged `data/derived/hubspot-company-import-remaining.csv` (2,245) and `data/derived/hubspot-contact-association-import.csv` (505). Judgement calls (Las Rosas = 2143; Dunn & Sons and Karen C both partner, unmerged; 33 future dates withheld; zip 00000 withheld) in `reports/account-layer-build.md`. Log: `reports/account-layer-bulk-log.csv`. Contact associations not started: chat-origin exclusion not applicable from repo data.
 - 2026-11-09 (revops-crm, session 5) — Built fallback `data/derived/hubspot-contact-association-import-recordid.csv` keyed on Company Record ID (`scripts/stage_hubspot_company_ids.py` + `scripts/build_association_import.py`). 505/505 joined, 0 unmatched. 2,305 companies pulled: no duplicate `oms_funeral_home_id`, no duplicate record IDs. Zero HubSpot writes.
+- 2026-11-09 (pm-orchestrator) — **TASK CLOSED.** Both imports run by Ethan through the HubSpot UI.
+  - **Companies:** 2,245 import rows, 2,245 new records, 0 errors, 0 formatting issues. With the 60 built by connector, **2,305 Companies live, up from 0.**
+  - **Associations:** 505 import rows, **0 new records**, 812 updated, **505 new associations, 0 errors.** Verified by query: 505 contacts now carry `associatedcompanyid`; company count unchanged at 2,305, so nothing was duplicated.
+  - **Uniqueness, answered at last.** 2,305 companies carry 2,305 distinct `oms_funeral_home_id` values. The importer also offered the property under "required to update Companies", which it only does for unique-flagged properties — so the constraint is set, not merely satisfied by chance. The `-recordid` fallback file was not needed and is retained as a spare.
+  - **Safety property worth recording:** the association import ran with Company *create* disabled by HubSpot ("Companies can't be created. Required properties not mapped"), so it was structurally incapable of duplicating an account. Reuse that shape for future association imports.
+  - **Carried out of this task:** (1) OMS-sourced properties still writable by salespeople — Settings action, now TASK-0013's; (2) 127 contact formatting issues surfaced by the import, pre-existing rather than caused by it, to triage under TASK-0013; (3) Dunn & Sons 5176 and Karen C 19411 remain unmerged as two records of one entity per §5 — a merge decision for Ethan.
+  - **Unblocks TASK-0021.** Target lists can now be built against real accounts with booking history.

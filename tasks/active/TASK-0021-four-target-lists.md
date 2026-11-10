@@ -120,3 +120,5 @@ to `reports/pending-approval/`.
 
 ## Outcome
 See `reports/fy27-target-lists.md`. Sources do not sum to 556 on stated assumptions; first action is the 20-call sample.
+
+- 2026-11-10 revops-crm: BLOCKED on HubSpot connector scope `cms.membership.access_groups.write`. Join done (seg1 474/474, seg2 322/322, seg3 249/320, seg4 18/5,709); no lists created, nothing written. See `reports/fy27-lists-in-hubspot.md`. NFDA handoff not yet landed.

@@ -133,6 +133,30 @@ Three things, all small, none of which require agreeing on a diagnosis:
 - **Don't ask the exec team to adjudicate the legal questions.** They are not lawyers. Ask for the
   budget and the two internal actions; let counsel answer the rest.
 
+## The tone to hold — Ethan's instruction, 2026-11-10
+
+**Do not present any of this as assuming bad faith**, and say so explicitly rather than leaving it
+to be inferred. Ethan's position, which the evidence supports: he does not expect the counterparty
+to act badly, and the case does not rest on it.
+
+Every one of these gaps bites in scenarios where **everybody behaves well throughout** — the vendor
+is acquired and the people change, a key person leaves, a receiver is appointed, or a breach occurs
+and no one is *required* to tell CSI however much they want to.
+
+**And the strongest argument involves no falling-out at all.** CSI is pursuing acquisitions and a
+capital raise. Any buyer or lender will ask whether CSI owns the data in its own operating system.
+"No clause says so" is a valuation discount or an escrow holdback — payable today, against a vendor
+relationship that is working fine. That is a forward-looking commercial reason to fix the paper,
+and it is the one to lead with in front of Donald in particular.
+
+The line to use if anyone hears an accusation in it:
+
+> *"None of this assumes anyone does anything wrong. Most of it bites hardest when everyone behaves
+> perfectly and something outside the relationship changes — and the ownership question costs us in
+> a raise whatever happens."*
+
+---
+
 ## The honest caveat to say out loud
 
 Every finding rests on an **unsigned copy**. Say that before someone else notices it. It does not

@@ -37,6 +37,66 @@
 
 ---
 
+## 0b. Framing — added 2026-11-10 at Ethan's direction
+
+**Ethan's objection, and it is correct:** the findings above read as though hostility is the
+assumed case. *"All of these things are currently being framed as inevitable and not a risk if
+things turn sour."* That framing is both inaccurate and unusable in a room, and this section
+replaces it. **No agent should restate these gaps in the language of bad faith.**
+
+### §14.5 triggers on expiry, not only on a falling-out
+
+Ethan asked directly: if CSI sees out the full term, does it get its data back? **Yes.** §14.5
+opens *"Upon termination (by either Developer or CSI and regardless of the reason) **or upon
+expiration of this Agreement**,"* and §14.6 lists §14.5 among the surviving terms. A clean, ordinary
+end of term triggers transition assistance — documentation, access to personnel, and delivery of
+CSI's data *"in a format reasonably requested by CSI."* That is a real obligation, not a cliff, and
+the format standard is CSI's reasonable request rather than the vendor's convenience.
+
+**So the gap is narrower than a first reading suggests, and it is worth stating precisely:**
+
+| Not the problem | The actual problem |
+|---|---|
+| ~~CSI only gets its data if it terminates~~ | Expiry triggers it too |
+| ~~The vendor picks the format~~ | CSI's reasonable request governs |
+| ~~There is no obligation~~ | There is one, and it survives |
+| | **"Data belonging to CSI" is nowhere defined**, so the delivery right is only as wide as an undefined ownership term |
+| | **No export right during the Term** — so CSI cannot verify, before it matters, that an export works |
+| | **40 days is short and billable**, for a system run 24/7 |
+| | **§14.4 deletion is not sequenced** against §14.5 delivery |
+
+### Why these matter without anyone behaving badly
+
+The scenarios that make these gaps bite are mostly ones in which **everybody acts in good faith
+throughout**:
+
+- **The vendor is acquired.** The people change; the contract does not. Goodwill is not assignable.
+- **The vendor becomes insolvent.** Intent is irrelevant to a receiver.
+- **A key person leaves.** Escrow matters precisely because institutional knowledge walks.
+- **A breach happens.** The absence of a notification duty binds a conscientious vendor exactly as
+  it binds a careless one — they may not be required to tell CSI, however much they want to.
+- **CSI raises capital or sells.** This one costs money **today**, with no hostility anywhere.
+
+**That last scenario is the strongest argument and should lead.** CSI is pursuing acquisitions and
+a capital raise (`§0`, `§7.5`), and `reports/the-25m-gap.md` puts enterprise value at the centre of
+the scoreboard. Any serious buyer or lender runs diligence on the platform. "Does CSI own the data
+in its operating system?" is a standard question, and *"no clause says so"* is a discount or an
+escrow holdback — assessed against a vendor relationship that is working perfectly well.
+
+**Fixing the paper is therefore not a defensive act. It is a valuation input.**
+
+### The posture to take
+
+These are terms a well-run vendor agrees to readily. Escrow, breach notification and a standing
+export cost a conscientious developer close to nothing — they are evidence of professionalism, not
+suspicion of it. Raising them while the relationship is good is the easy version of this
+conversation; raising them when it is strained is the hard one, and by then the leverage has moved.
+
+**The ask is hygiene, not insurance against betrayal.** Anyone presenting this work should be able
+to say, truthfully, that they expect the counterparty to agree.
+
+---
+
 ## 1. Gap table, by the eight provisions
 
 Severity is exposure if the relationship changed, not likelihood of it changing. "Remedy" is a topic to raise with counsel, not drafting.

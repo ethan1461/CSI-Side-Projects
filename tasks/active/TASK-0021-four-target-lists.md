@@ -15,16 +15,40 @@ The OMS funeral home table now tells us exactly how big each one is.
 Turn those four into working queues two salespeople can pick up on a Monday morning, with a
 defensible call order and a reason to call attached to every name.
 
-**The finding that should shape this task.** Of 1,845 funeral homes that booked in the last
-twelve months, **845 have booked exactly once in their entire history — and all 845 took
-that first booking within the last twelve months.** CSI acquired 845 new accounts this year
-and not one has come back yet. That is not an acquisition problem. **Acquisition is working
-and first-to-second conversion is where the volume is leaking.**
+**CORRECTED 2026-11-10 — the original premise of this task was wrong. Do not work the old one.**
+
+This task was written around a finding that **845 funeral homes booked once and never
+returned**, and concluded that acquisition was working and retention was the leak. `sales-lead`
+challenged it and the challenge held. The 845 figure conflated two different things: first-booking
+homes ran 21–39/month through May 2026, then **144–199/month from June**, with the shipper flag
+collapsing from 91–97% to 22–35% and non-US origin rising from 0.9% to 27.1% (Mexico, Dominican
+Republic, Guatemala, El Salvador). **Those are receiving homes at the destination of an
+international shipment, not customers who tried CSI and chose someone else.**
+
+**The callable segments are 474 and 322, not 845 and 412.** Size the plan on those.
+
+**Donald's read, 2026-11-09, independently:** "This is a NEW client problem... we have been very
+lucky to maintain and slightly grow the business each year without full-time dedicated sales
+staff. We lose some clients every year and we bring on some new ones." He names Bergen growing,
+Ortiz declining and possibly returning, added SCI homes, and an FPG cohort roughly two years ago.
+
+**Ethan's ruling, 2026-11-10: "I still believe we can be doing more to both acquire AND retain."**
+That is the operating premise. This task is not an either/or. What changed is the *sizing* — the
+retention pool is 474 workable accounts rather than 845, so it is worth working but cannot carry
+the +5% on its own, and the bottom-up build below must show that honestly rather than inflating a
+conversion rate to close the gap.
+
+**Still unresolved and still blocking a confident answer:** CSI has no shipment-level history, so
+churn, reactivation and frequency remain uncomputable from repo data. Donald is pulling 2022-onward
+shipments via Rednodo (Claudio/Lucas). **The first query when that file lands is Donald's own
+claim** — Bergen up, Ortiz down — because it is specific, falsifiable, and settles whether an
+experienced read of this business can be trusted where the data is thin.
 
 ## Line to the metric
 
-Direct. ~556 incremental bookings are needed over 2026's run rate to hit +5%. 20% of the
-one-timers booking once more is 169 of them, at no acquisition cost.
+Direct. ~556 incremental bookings are needed over 2026's run rate to hit +5%. On the corrected
+474, a 20% reactivation is **95 bookings**, not 169 — so retention cannot carry the target alone
+and the acquisition sources must be sized to cover the rest. Say so plainly in the build.
 
 ## Deliverable
 
@@ -35,8 +59,8 @@ Four segments, each with a count, a sizing estimate, a call order and a reason-t
 
 | # | Segment | Size | Note |
 |---|---|---|---|
-| 1 | **One-time customers** | **845** | All first booked within 12 months. Highest-value, lowest-cost |
-| 2 | **Churned** | **412** | No booking in 24+ months. Mean 2.3 lifetime bookings, median 1 — low value each, finite list |
+| 1 | **One-time customers** | **474** | Corrected from 845 — see above. Shipper-flagged, genuinely callable. Highest-value, lowest-cost |
+| 2 | **Churned** | **322** | Corrected from 412. No booking in 24+ months. Low value each, finite list |
 | 3 | **Enterprise locations** | SCI 242 mapped of **4,439 total**; Northstar 45; Foundation Partners 30; Carriage 3 | The unmapped SCI locations are the largest identified addressable pool CSI has |
 | 4 | **Net-new** | 16,340 never-booked OMS records | Highest cost per booking. **CAC is currently unmeasurable** — rank accordingly |
 
@@ -75,9 +99,9 @@ spend (`§9.2`), and that applies to sales effort too.
 
 ## Dependencies
 
-- **Blocked by: TASK-0020.** The lists cannot be built until Companies exist with
-  `funeral_home_id`. Start the analysis and the segment design now; build the lists when
-  the account layer lands.
+- ~~Blocked by TASK-0020~~ — **UNBLOCKED 2026-11-09.** 2,305 Companies live, every one carrying
+  `oms_funeral_home_id`, lifecycle set from booking history, 505 contacts associated. Build the
+  lists.
 - Inputs: `data/raw/oms-funeral-homes-20261103.csv`, TASK-0020's match output,
   `reports/hubspot-defect-baseline.md`
 

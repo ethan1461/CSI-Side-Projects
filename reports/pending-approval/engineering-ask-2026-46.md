@@ -19,8 +19,9 @@
 | **Rewritten** | EA-45-11 — anyone can add the funeral home, rather than a hard block at invoicing |
 | **Added** | What the portal logs at event level |
 | **Still the priority** | Margin visibility at carrier selection. Flagged for Vadim to work on with them |
+| **Removed 2026-11-10** | The booking history cohort extract, previously item 1. Donald is sourcing it through Rednodo instead. Pulling it also stops the ask advertising that CSI is running churn and cohort analysis |
 
-**The shape of the note.** Four asks grouped into one theme — *give us the export buttons and we'll run them ourselves* — then two questions, then the one build that matters. That reads as a smaller ask than ten numbered items, which is the point.
+**The shape of the note, revised 2026-11-10.** The cohort extract is gone, so this is now three asks and one build. Shorter again, which is to the good. The remaining items are all system capability — which is the line Donald drew. The asks are grouped into one theme — *give us the export buttons and we'll run them ourselves* — then two questions, then the one build that matters. That reads as a smaller ask than ten numbered items, which is the point.
 
 **On support hours:** the note acknowledges the 40-hour position without making a meal of it. It invites them to tell you what's chargeable before starting, which is what `§1.2` of the agreement review recommends.
 
@@ -40,26 +41,7 @@ Ranked roughly by what helps us most. Happy to drop anything that doesn't fit.
 
 ---
 
-### 1. Booking history cohort extract — one-off, and the one I'd do first
-
-Can we get an export — or a few, if it's easier to break up — of every booking in the OMS since the start of 2021?
-
-Just four columns:
-
-- `booking_id`
-- `shipping_funeral_home_id`
-- `flight_date`
-- `status`
-
-Include bookings with no funeral home attached — keep the row, leave the ID null.
-
-**Why:** this gives us a much stronger gauge on whether a customer is active, new, reactivated or churned, our churn rate, and shipments per retained account. We can start bucketing customers and running targeted marketing for each segment. Most importantly it tells us **whether our flat volume is a retention problem or an acquisition problem** — which we genuinely can't answer today, and it changes what we spend money on next year.
-
-This can be run by hand once. No scheduling, no new screens.
-
----
-
-### 2. Export buttons — so we can pull these ourselves
+### 1. Export buttons — so we can pull these ourselves
 
 Rather than coming to you each time, could we get export functionality on a few places? We'd run these weekly on our own.
 
@@ -75,7 +57,7 @@ Rather than coming to you each time, could we get export functionality on a few 
 
 **One hard requirement:** no decedent or family fields in the export — stripped at the query rather than removed afterwards. We don't want that data leaving the system at all.
 
-**Why:** it's the file that turns monthly totals into lanes, corridors, accounts and carriers. It's also the only way to measure whether item 5 below actually works.
+**Why:** it's the file that turns monthly totals into lanes, corridors, accounts and carriers. It's also the only way to measure whether item 4 below actually works.
 
 **b) Funeral home records.** The bulk CSV in the admin tools doesn't work — that's why Kyri kindly sent me the file directly. Could we get that as a working export? Same fields as the file he sent is perfect.
 
@@ -85,7 +67,7 @@ Each of these could just be a download button on a screen you already have. If o
 
 ---
 
-### 3. Two questions, no build needed
+### 2. Two questions, no build needed
 
 **a) Are quotes stored anywhere we can query?**
 
@@ -101,7 +83,7 @@ Logins, quote requests, document uploads, bookings started versus completed — 
 
 ---
 
-### 4. Rate table — a couple of odd ones
+### 3. Rate table — a couple of odd ones
 
 Three columns come through empty on every row of the published rates export: `included_weight`, `weight_unit` and `flat_overage_surcharge`.
 
@@ -113,7 +95,7 @@ Related and quick: when an agent prices a lane that has more than one rate row, 
 
 ---
 
-### 5. The one real build — showing margin when an agent picks a carrier
+### 4. The one real build — showing margin when an agent picks a carrier
 
 **This is the one I most want to talk through, and Vadim is going to work on it with you.**
 

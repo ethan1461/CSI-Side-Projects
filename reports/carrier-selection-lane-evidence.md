@@ -82,6 +82,57 @@ That part is a management conversation between Ethan, the CEO and the COO. `CLAU
 
 ---
 
+## Addendum, 2026-11-10 — the seventh case, and why it is different in kind
+
+Vadim supplied a further example on 2026-11-09. **It should not be read as one more row on the
+table above.** The six lanes establish that the opportunity exists. This one establishes that
+training will not capture it.
+
+**The case.** ORD–MIA, flying 9 November, casket, 410lb. A multi-carrier day: both American and
+United were available and bookable. United's morning service arrives **11:11 AM**; the American
+service booked arrives **12:34 PM**. The booking went to American automatically. Vadim puts the
+margin forgone at **$140–150**.
+
+Three features make it the strongest evidence in this file:
+
+1. **It is observed, not recalled.** The six lanes in the table are Vadim's recollection of rate
+   relationships. This is a specific booking, on a dated flight, with the alternative visible in
+   the same screen. It is the first instance of the mechanism caught in the act.
+2. **It is pure margin.** On a multi-carrier day the customer's price and the service both hold —
+   here the unselected carrier was also **the earlier arrival**. There is no trade-off being made,
+   not even an implicit one. The margin is simply forgone.
+3. **It survived ten reminders.** Vadim reports issuing the guidance **ten times**. The booking
+   still defaulted. He also notes he was out of office that Friday and would otherwise have caught
+   it — which locates the control in *one person's attendance*, not in the process.
+
+**What that changes.** The case for EA-45-12 was previously an efficiency argument: agents lack
+information at the moment of choice, so give them the information. This case undercuts the premise.
+The information had been given, repeatedly, and the default still won. A control that depends on the
+COO being at his desk is not a control.
+
+So the design note in the main body — *highlight, don't just rank* — is load-bearing rather than
+cosmetic, and **the override-reason capture matters more than the highlight does.** Without it CSI
+still cannot distinguish "the cheaper carrier was unavailable" from "the booking defaulted," which
+is the distinction the whole question turns on. Ten verbal reminders produced no record. One click
+would.
+
+**Sizing, unchanged and still unknown.** One observation at $140–150 does not establish a rate.
+Vadim's own framing — "when you multiply this by how many times it happens" — is the open question,
+and it stays open until EA-45-02 lands a booking-level file carrying the carrier. Until then this is
+**[UNSOURCED]** as a total and must not be extrapolated into an annual figure. What it does justify
+is building the capture mechanism, which costs little and is the only thing that will ever answer it.
+
+**On attribution.** Vadim's note identifies the individual involved. That identification is recorded
+nowhere in this repo and will not be (`CLAUDE.md §7.7`). It is also beside the point: a default that
+defeats a ten-times-repeated instruction is a system property, not a person's. Had the most
+experienced hand on the desk been immune to it, the finding would be weaker, not stronger.
+
+**Source handling.** The supplied screenshot contains decedent and family data in the booking
+request. Per `§7.2` none of it has been transcribed here or anywhere else in the repo — this entry
+carries the lane, the carriers, the times and the dollar gap only. Future examples should be cropped
+above the name line before sending.
+
+
 ## Next
 
 | | |

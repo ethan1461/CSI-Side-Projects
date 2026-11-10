@@ -16,10 +16,16 @@ the 1B hold are all places where an enthusiastic first week could do damage that
 undo. They are framed as context rather than as rules, because that is how experienced salespeople
 actually absorb them.
 
-**Hold this until the segment property is populated** if you want the note to be wholly accurate —
-owners are assigned and verified now, but `fy27_segment` is being written as this is drafted. Either
-send it now and mention segments are landing, or wait a few hours. The draft is written to be sent
-now.
+**Segments are populated and verified** as of 2026-11-10: 474 one-time, 322 churned, 249 enterprise,
+18 net-new, all 1,063 spot-checked. The note is accurate as it stands and can go as soon as you like.
+
+**One thing you are promising in it.** Point 3 says you will send them the call order separately.
+That is deliberate: HubSpot cannot currently distinguish the 215 confirmed shippers from the 259
+unsorted accounts inside the one-time segment, so the filter they open will show all 474 together.
+Either create the `fy27_tier` property (spec in `reports/fy27-lists-in-hubspot.md`) and we mark it
+properly, or I send them the ranked CSV. **Do not let them open "one-time" believing it is a call
+list until one of those happens** — 259 of those names are probably receiving homes, and a cold
+call to one is a confusing conversation for everybody.
 
 **One honest limitation to keep in the note:** the account data is a one-way snapshot from the OMS
 and is not live. If they assume booking counts update themselves, they will eventually quote a
@@ -45,6 +51,10 @@ booking system.
 
 **Otto, 414 are yours. Stacy, 378 are yours.** Filter to "my companies" and you'll see them.
 
+There's also a **segment** field on each account — one-time, churned, enterprise or net-new — so you
+can see at a glance what kind of conversation you're walking into. Read point 3 below before you
+lean on the one-time one.
+
 **What's on each record:**
 
 - Whether they've ever booked with us, and how much — so you know immediately whether you're making
@@ -68,10 +78,13 @@ see, just say and we'll move it.
    Partners or Northstar — those relationships are managed centrally and a well-meaning call to a
    single location can cut across a conversation happening above it. Flag them to me and I'll tell
    you where it stands.
-3. **Not every account is ready to call yet.** Some are homes that received a shipment from us
-   rather than sent one, so they were never really our customer. We're running a short phone sample
-   next week to work out which is which, and you'll both be part of that. Until then, work the ones
-   marked as confirmed shippers first.
+3. **Not every account in "one-time" is ready to call yet.** Some are homes that *received* a
+   shipment from us rather than sent one, so they were never really our customer. Of the 474 in
+   that segment, **215 are confirmed shippers and 259 aren't yet sorted** — and right now the
+   filter in HubSpot shows you all 474 together, with no way to tell them apart. **I'll send you
+   the call order separately this week** so you're working the confirmed ones first. We're also
+   running a short phone sample next week to settle what the other 259 actually are, and you'll
+   both be part of that.
 
 **One limitation to keep in mind.** The booking history on these records is a snapshot from our
 system, not a live feed. It's accurate as of now, but it won't update itself — so if a number

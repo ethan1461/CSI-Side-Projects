@@ -1,6 +1,6 @@
 # FY27 segment lists in HubSpot — build log
 
-**Status: LISTS NOT CREATED. Join and member files are ready; the HubSpot write was refused.** Pre-write log, then outcome below.
+**Status (updated 2026-11-10): `fy27_segment` POPULATED on 1,063 companies and verified. Static lists were never created (403, see below). Saved views NOT built (no view tool on the connector).** Pre-write log, then outcome below.
 **Owner:** revops-crm. **Date:** 2026-11-10. **Task:** TASK-0021.
 
 ## Baseline (read from HubSpot, 2026-11-10)
@@ -93,3 +93,92 @@ Total 1,063 writes, about 107 calls. No overlap check yet between segments: I wi
 **Saved view for the reps:** Companies > Add view > filter `FY27 segment` is `one-time` AND Company owner is Otto (or Stacy). Enterprise stays Ethan-gated: no outreach naming SCI, Foundation Partners, Carriage or Northstar.
 
 Status: waiting on Ethan to create `fy27_segment`. Nothing populated.
+
+
+---
+## Property populated, 2026-11-10 (revops-crm, TASK-0021 final session)
+
+**Result: 1,063 of 1,063 companies written, 0 failures, verified.** Change log (company id, old value, new value, tier, status, read-back flag): `reports/fy27-segment-populate-log.csv`. It was written before the first write; status columns were updated afterwards.
+
+### Pre-write checks
+| Check | Result |
+|---|---|
+| Property exists, type enumeration | Yes. Options exactly `one-time`, `churned`, `enterprise`, `net-new` (value = label). No spelling mismatch, nothing substituted. |
+| Property empty before write | Yes (0 companies with any value). |
+| **Overlap across the four member files** | **0.** 1,063 rows, 1,063 distinct company ids, no id in two files, no blank ids. No definitional call was needed. |
+| Partner tier (`csi_partner_tier = true`) in any segment | **0**, asserted twice: member ids vs the 18 partner ids read live from HubSpot (0 hits), and after the write a search for partner-tier AND any `fy27_segment` returned 0. |
+
+### What was written
+| Value | Written | HubSpot count after (search) | Match |
+|---|---|---|---|
+| `one-time` | 474 | 474 | yes |
+| `churned` | 322 | 322 | yes |
+| `enterprise` | 249 | 249 | yes |
+| `net-new` | 18 | 18 | yes |
+
+Method: 10-record pilot (3 one-time, 3 churned, 2 enterprise, 2 net-new), read back 10/10 by id, then 106 batches of 10 (last of 3). Every batch returned updated=10, failed=0. Only `fy27_segment` was touched. No owners, lifecycle, contacts, lists or messages. No merges or deletions.
+
+**Caveat worth knowing:** the update call echoes empty properties, so a success summary alone proves nothing. Right after the pilot the search index also lagged and returned 0, even though a direct read by id showed the value. Verification therefore used direct reads by id plus the count searches above after the index caught up.
+
+### Read-back (40 records, stratified, seeded sample, compared against the log)
+12 one-time, 12 churned, 12 enterprise, 4 net-new, read directly by id with owner and partner flag. **40/40 matched the log.** `csi_partner_tier` false on all 40. Pilot read-back (10/10) is separate. Flagged in the CSV (`readback_40`). This matches the owner-assignment standard (40).
+
+### Cross-checks against the owner assignment
+- Rep-facing segments (one-time plus churned = 796): **exactly 5 have no owner**, the five no-state records left deliberately unowned (St. Charles Funeral Home, Rivera Family Funerals, North Sacramento Funeral Home, Levitt-Weinstein Location 3243, Macagna Funeral Home). Matches the earlier ruling.
+- Enterprise and net-new: unowned by design (Ethan-gated / not yet territory-assigned).
+
+### Segment 3 stays gated
+Populating the property does not authorise outreach. Composition: SCI 189, Northstar 41, Foundation Partners 19. No outreach naming SCI, Foundation Partners, Carriage or Northstar until Ethan clears it. A filter on `enterprise` shows reps these accounts; the instruction not to contact them has to be given to Otto and Stacy directly.
+
+### FINDING for Ethan: segment 4 contains 3 non-funeral-home records
+Segment 4 (18) was populated as instructed from the member file, but standing authority 4 says segments exclude non-funeral-home domains. By company name, 3 of 18 are not funeral homes:
+- **LUFTHANSA AIRLINES- JFK** (NY): an airline.
+- **MRZ Trucking And Logistics** (NY): a trucking company.
+- **Inman International** (IN): the name matches a competitor CSI names, Inman Shipping Worldwide. I did not confirm they are the same entity.
+
+I did not remove them. Reversal is one property clear per record. Recommendation: clear `fy27_segment` on these 3 (segment becomes 15) and have sales-lead's list build apply the non-funeral-home exclusion to segment 4 at source. The same check was **not** run on segments 1 to 3; segment 1 and 2 names looked like funeral homes in the 40-record sample but the other ~750 were not name-screened. Cheap next step: a name screen for airline, trucking, logistics, shipping and cargo terms across all 1,063.
+
+### Segment 1 split into 1A and 1B (215 / 259)
+**One property cannot carry it without changing the four-value definition.** `fy27_segment` is single-value with four options. Options:
+1. Add options `one-time-1a` and `one-time-1b`. Works, but it makes five or six values, breaks the definition everything is keyed to, and forces every saved view to OR two values to see "all one-time".
+2. **Recommended: a second company property `fy27_tier`** (dropdown, single value). Keeps `fy27_segment` at four stable values; the view filters `fy27_segment = one-time AND fy27_tier = 1A`. The member files already carry the tier, so populating is another bulk write, same method.
+
+**Spec for Ethan to create** (Settings > Data Management > Properties > Companies > Create property): Group Company information; Label `FY27 tier`; internal name `fy27_tier`; Dropdown select (single value); options, label -> value:
+
+| Label | Internal value | Count | Segment |
+|---|---|---|---|
+| 1A shipper-flagged | `1a` | 215 | one-time |
+| 1B hold pending sample | `1b` | 259 | one-time |
+| 2A 5+ bookings | `2a` | 23 | churned |
+| 2B 2-4 bookings | `2b` | 78 | churned |
+| 2C single booking (verify-only) | `2c` | 221 | churned |
+| 3 SCI | `3-sci` | 189 | enterprise |
+| 3 Northstar | `3-northstar` | 41 | enterprise |
+| 3 Foundation Partners | `3-foundation` | 19 | enterprise |
+| 4A shipper account | `4a` | 6 | net-new |
+| 4B no shipper account | `4b` | 12 | net-new |
+
+Total 1,063. Only 1A/1B is urgent; the rest comes free from the same file. I would populate it the same way within the session after it exists (about 107 calls).
+
+**Until then:** reps work 1A from `data/derived/fy27-seg1-one-time.csv` (ranked, tier column). Do not let anyone dial 1B before the 20-call diagnostic. In HubSpot, `one-time` alone shows all 474, **including the 259 held**, so the view cannot be handed to Otto or Stacy as "call these" yet. That is the one thing that could mislead on Monday.
+
+### Saved views: NOT BUILT, and not a 403
+I did not attempt them. The HubSpot connector in this session exposes no tool for creating saved index-page views. Its only list-style write is the segment tool, which is the path that returned `Error POSTing to endpoint: Forbidden`, so I did not route views through it. No error to report because no call was made. The property is the deliverable and it is live; the views are a UI step. Recommended names and filters, for Ethan or a rep to create (Companies > Add view):
+
+| View name | Filters |
+|---|---|
+| Otto: Past one-time customers - call list | FY27 segment is one-time AND Company owner is Otto (add FY27 tier is 1A once `fy27_tier` exists) |
+| Stacy: Past one-time customers - call list | same, owner Stacy |
+| Otto: Lapsed customers (no booking in 2+ years) | FY27 segment is churned AND owner is Otto |
+| Stacy: Lapsed customers (no booking in 2+ years) | same, owner Stacy |
+| Enterprise locations - DO NOT CONTACT without Ethan | FY27 segment is enterprise (no owner filter; accounts are unowned) |
+| New prospects with an account - not yet customers | FY27 segment is net-new |
+
+Owner is Otto 414 / Stacy 378 overall; the 5 unowned no-state records appear in neither rep view and need a human owner.
+
+### Open items
+1. Ethan: clear `fy27_segment` on the 3 non-funeral-home net-new records? (default: yes, Friday)
+2. Ethan: create `fy27_tier` (spec above), then I populate it. Blocks a safe 1A-only rep view.
+3. Ethan or a rep: create the six saved views by hand.
+4. Name screen of all 1,063 for non-funeral-home entities (revops-crm, next session, scriptable).
+5. Static lists: still blocked on the 403. The property replaces them. Recommend closing that path unless Ethan wants an approved retry to learn the cause.

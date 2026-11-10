@@ -122,3 +122,4 @@ to `reports/pending-approval/`.
 See `reports/fy27-target-lists.md`. Sources do not sum to 556 on stated assumptions; first action is the 20-call sample.
 
 - 2026-11-10 revops-crm: BLOCKED on HubSpot connector scope `cms.membership.access_groups.write`. Join done (seg1 474/474, seg2 322/322, seg3 249/320, seg4 18/5,709); no lists created, nothing written. See `reports/fy27-lists-in-hubspot.md`. NFDA handoff not yet landed.
+- 2026-11-10 revops-crm: Owner assignment per Ethan's NE/South alternation ruling. Plan built (`scripts/fy27_owner_assignment.py`; S1 Otto 248/Stacy 224, S2 Otto 165/Stacy 154, 5 no-state skipped, 0 partner, 0 pre-owned). PARTIAL: 170 of 791 written, then HubSpot auth expired; 621 pending. See `reports/fy27-owner-assignment.md` and `reports/fy27-owner-assignment-log.csv`.

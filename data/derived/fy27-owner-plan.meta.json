@@ -1,0 +1,20 @@
+{
+  "script": "scripts/fy27_owner_assignment.py",
+  "rows": 796,
+  "run": "2026-11-10T05:11:32.661713+00:00",
+  "sources": [
+    "data/derived/fy27-hubspot-members-seg1-one-time.csv",
+    "data/derived/fy27-hubspot-members-seg2-churned.csv",
+    "data/derived/fy27-seg1-one-time.csv",
+    "data/derived/fy27-seg2-churned.csv"
+  ],
+  "dropped_columns": "none loaded beyond business name/city/state/ids",
+  "counts": {
+    "1|Otto": 248,
+    "1|Stacy": 224,
+    "1|SKIP no state": 2,
+    "2|Otto": 165,
+    "2|Stacy": 154,
+    "2|SKIP no state": 3
+  }
+}

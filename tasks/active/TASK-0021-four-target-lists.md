@@ -129,3 +129,6 @@ See `reports/fy27-target-lists.md`. Sources do not sum to 556 on stated assumpti
   the 20 drawn homes carry the owners assigned under the 2026-11-10 territory ruling. The 259
   non-shipper-flagged homes in Segment 1 (1B) stay held pending the read-out.
 
+- 2026-11-10 revops-crm (resume session): OWNER ASSIGNMENT COMPLETE. 621 pending written (63 calls, 0 failures). HubSpot totals Otto 414 / Stacy 378, as expected (Otto includes pre-existing "Return Home"). Read-back 40/40 stratified (both reps, segments 1 and 2). 5 no-state rows confirmed unowned. See `reports/fy27-owner-assignment.md`, `reports/fy27-owner-assignment-log-final.csv`.
+- 2026-11-10 revops-crm: SEGMENT LISTS BLOCKED. Seg 4 (18) test create failed: `Error POSTing to endpoint: Forbidden`; no list created (verified). Not retried. Cause probable scope/subscription, not proven (error text does not name the scope; call sent unconfirmed because no approval from Ethan in-thread). Fallback `fy27_segment` company property specified in `reports/fy27-lists-in-hubspot.md`; WAITING on Ethan to create it. Nothing populated.
+- 2026-11-10 revops-crm: NFDA handoff done. 8 contacts + Carriage Services parent Company + 8 notes created, nothing sent. See `reports/nfda-2026-contacts-created.md`.

@@ -41,3 +41,33 @@ Each of batches 1 to 17 returned `updated 10, failed 0`. **A cross-segment, both
 ## Needs
 1. Someone re-authorizes HubSpot. I cannot start OAuth.
 2. Then I (or a fresh revops-crm session) finish the 621 and do the read-back sample across both reps and both segments.
+
+---
+## Resume session outcome (2026-11-10, revops-crm) — COMPLETE
+
+**All 621 PENDING rows written** (pilot batch of 10, read back 10/10, then batches 2-63; every call returned `updated N, failed 0`; 63 calls, 621 records). Full final log with status updated: `reports/fy27-owner-assignment-log-final.csv` (original log left untouched; create-over-overwrite).
+
+### Totals, read from HubSpot after the writes
+| Owner | Expected | Found |
+|---|---|---|
+| Otto Briede 102528265 | 413 plan + 1 pre-existing ("Return Home", no OMS id) = 414 | **414** |
+| Stacy Cotty 102528264 | 378 | **378** |
+
+Both match. The 5 SKIPPED (no state) were re-read and carry no owner: confirmed unowned. Owner IDs were confirmed live via `search_owners` (Otto) and matched the brief for Stacy.
+
+### Read-back sample (closes the open item)
+40 companies, stratified, drawn from the log with seed 20261110: 10 per rep per segment (segments 1 and 2), mixing rows written in the first session (5) and this session (35). Compared `hubspot_owner_id` and `oms_funeral_home_id` against the log.
+
+| Segment | Rep | Rows | Owner match | OMS id match |
+|---|---|---|---|---|
+| 1 | Otto | 10 (2 earlier, 8 new) | 10/10 | 10/10 |
+| 1 | Stacy | 10 (3 earlier, 7 new) | 10/10 | 10/10 |
+| 2 | Otto | 10 new | 10/10 | 10/10 |
+| 2 | Stacy | 10 new | 10/10 | 10/10 |
+| **Total** | | **40** | **40/40** | **40/40** |
+
+Mismatches: 0. Confidence: high (count totals match to the record, plus the sample). Segment 3 and 4 were never in the owner plan (no owner writes); not sampled.
+
+### Notes
+- Two OMS records written this session have older HubSpot ids (created 2026-11-03: 60496410905, 60397908828, 60383698494). They are legitimate OMS-built companies in the plan, not "Return Home". Return Home (60823091581) was not touched.
+- The connector did not demand a per-call confirmation flag for record updates; no marketing status, lifecycle, or any other property was touched.

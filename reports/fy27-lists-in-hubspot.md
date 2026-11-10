@@ -51,3 +51,45 @@ Confidence: high on seg 1-2 (100% key match); high on seg 3-4 matching, but seg 
 
 ## NFDA contacts
 `sales-lead` has not landed an NFDA handoff: no `reports/nfda-2026-lead-routing.md` and no NFDA handoff file in `handoffs/`. Skipped, as instructed.
+
+---
+## Retest, 2026-11-10 (resume session, revops-crm)
+
+**Test:** one create, the smallest list, exactly as planned: static COMPANY list "FY27 Seg 4 - Net-new with an account (18 of 5,709) - never booked", 18 member company ids from `data/derived/fy27-hubspot-members-seg4-net-new.csv`.
+
+**Result: FAILED. Exact error text:** `Error POSTing to endpoint: Forbidden`
+
+- No list was created. Verified afterwards: a search of company segments for "FY27" returns 0. No list ID exists.
+- Not retried, no other route tried, no workaround built (per instruction). Segs 1-3 not attempted.
+- **Cause: probable, not proven.** This text is a bare HTTP 403 from the HubSpot endpoint. Unlike the first attempt, it does not name `cms.membership.access_groups.write`. I made the call without setting `confirmationStatus` to CONFIRMED, because no approval from Ethan had been given in my thread and I will not mark a call approved on my own. A confirmation refusal would normally surface as a local validation message, not a POST to the endpoint, so a 403 from HubSpot is the likelier reading, consistent with the earlier scope failure and with a Content Hub feature not in CSI's subscription. If Ethan wants it settled beyond doubt, one approved retry in the live session would tell the two apart; I recommend not spending more on it, since the fallback below is better architecture anyway.
+
+## Fallback specification (NOT built, NOT populated)
+
+Segments become a **company property** plus a saved view filtered on property and owner. Visible on the record, durable, not silently stale like a static list.
+
+**Ethan must create it** (the connector cannot create properties). Where: HubSpot **Settings (gear icon) > Data Management > Properties**, object dropdown **Companies**, button **Create property**.
+
+| Field | Value |
+|---|---|
+| Object type | Company |
+| Group | Company information (or any group Ethan prefers) |
+| Label | FY27 segment |
+| **Internal name** | `fy27_segment` (confirm HubSpot keeps this exact auto-generated name on the next screen; it cannot be changed after creation) |
+| Field type | **Dropdown select** (single value) |
+| Options: label -> internal value | One-time customer -> `one-time`; Churned customer -> `churned`; Enterprise location -> `enterprise`; Net-new (never booked) -> `net-new` |
+| Required / show in forms | No |
+
+Option internal values must match exactly, lowercase, hyphen as shown, or the populate step will be rejected or silently mismatch.
+
+**Populate plan (after Ethan confirms the property exists):** write via the ordinary record-update path, 10 per call, log first, 10-record pilot, 25-per-segment read-back. Members come from `data/derived/fy27-hubspot-members-seg{1..4}-*.csv`.
+| Value | Companies to write |
+|---|---|
+| `one-time` | 474 |
+| `churned` | 322 |
+| `enterprise` | 249 (of 320 rows; 71 have no Company) |
+| `net-new` | 18 (of 5,709; 5,691 have no Company) |
+Total 1,063 writes, about 107 calls. No overlap check yet between segments: I will test that no company id appears in two member files before writing, because a single-value property cannot hold two.
+
+**Saved view for the reps:** Companies > Add view > filter `FY27 segment` is `one-time` AND Company owner is Otto (or Stacy). Enterprise stays Ethan-gated: no outreach naming SCI, Foundation Partners, Carriage or Northstar.
+
+Status: waiting on Ethan to create `fy27_segment`. Nothing populated.

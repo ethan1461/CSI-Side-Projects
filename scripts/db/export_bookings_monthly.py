@@ -33,7 +33,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
-from sqlalchemy import Engine, text
+from sqlalchemy import text
 
 from _conn import get_engine
 
@@ -41,51 +41,37 @@ OUT_DIR = Path(__file__).resolve().parents[2] / "data" / "derived"
 OUT_CSV = OUT_DIR / "db-bookings-monthly.csv"
 OUT_META = OUT_DIR / "db-bookings-monthly.meta.json"
 
-CANCEL_PATTERN = "%cancel%"
+# Schema facts confirmed against erp_production on 2026-11-12:
+#   - registration_date is TEXT in MM/DD/YYYY, not a DATE. YEAR() on it returns NULL,
+#     which is why an earlier version of this script returned two rows. Parse with
+#     STR_TO_DATE before extracting anything.
+#   - 2 of 49,467 rows parse to a zero date; they are excluded and counted separately.
+#   - hidden = 1 on 695 rows (soft delete).
+#   - There is NO cancellation signal. Status 23 "Cancelled" exists in csi_status and is
+#     used by zero bookings, so this script does not report a cancelled count. Reporting
+#     one would be reporting a constant zero as though it were a measurement.
 
-# Aggregated in SQL on purpose: the row-level table carries decedent names (§7.2),
-# so those columns must never be fetched, not merely dropped after fetching.
 _SQL_MYSQL = """
     SELECT
-        YEAR(b.registration_date)  AS yr,
-        MONTH(b.registration_date) AS mo,
-        COUNT(*)                   AS bookings,
-        SUM(CASE WHEN LOWER(COALESCE(s.status, '')) LIKE :cancel
-                 THEN 1 ELSE 0 END) AS cancelled
+        DATE_FORMAT(STR_TO_DATE(b.registration_date, :fmt), :ym) AS month,
+        COUNT(*)                                                 AS bookings
     FROM csi_bookings b
-    LEFT JOIN csi_status s ON s.status_id = b.status_id
-    WHERE b.registration_date IS NOT NULL
-      AND COALESCE(b.hidden, 0) = 0
-    GROUP BY YEAR(b.registration_date), MONTH(b.registration_date)
-    ORDER BY yr, mo
+    WHERE COALESCE(b.hidden, 0) = 0
+      AND STR_TO_DATE(b.registration_date, :fmt) IS NOT NULL
+      AND YEAR(STR_TO_DATE(b.registration_date, :fmt)) > 1900
+    GROUP BY 1
+    ORDER BY 1
 """
 
-_SQL_POSTGRES = """
-    SELECT
-        EXTRACT(YEAR  FROM b.registration_date)::int AS yr,
-        EXTRACT(MONTH FROM b.registration_date)::int AS mo,
-        COUNT(*)                                     AS bookings,
-        SUM(CASE WHEN LOWER(COALESCE(s.status, '')) LIKE :cancel
-                 THEN 1 ELSE 0 END)                  AS cancelled
-    FROM csi_bookings b
-    LEFT JOIN csi_status s ON s.status_id = b.status_id
-    WHERE b.registration_date IS NOT NULL
-      AND COALESCE(b.hidden, 0) = 0
-    GROUP BY 1, 2
-    ORDER BY 1, 2
+_SQL_UNPARSEABLE = """
+    SELECT COUNT(*) FROM csi_bookings b
+    WHERE COALESCE(b.hidden, 0) = 0
+      AND (STR_TO_DATE(b.registration_date, :fmt) IS NULL
+           OR YEAR(STR_TO_DATE(b.registration_date, :fmt)) <= 1900)
 """
 
-
-def _sql_for(engine: Engine) -> str:
-    """Pick the statement matching the connected database."""
-    name = engine.dialect.name
-    if name.startswith("mysql") or name.startswith("maria"):
-        return _SQL_MYSQL
-    if name.startswith("postgre"):
-        return _SQL_POSTGRES
-    raise RuntimeError(
-        f"Unsupported database dialect {name!r}. Add a statement for it in this file."
-    )
+DATE_FMT = "%m/%d/%Y"
+YEAR_MONTH = "%Y-%m"
 
 
 def _script_version() -> str:
@@ -98,53 +84,63 @@ def _script_version() -> str:
         return "unknown"
 
 
-def fetch_monthly() -> tuple[pd.DataFrame, str]:
-    """Read the monthly aggregate from the database. Returns the frame and the dialect."""
+def fetch_monthly() -> tuple[pd.DataFrame, int, str]:
+    """Return the monthly series, the count of unparseable dates, and the dialect."""
     engine = get_engine()
-    statement = _sql_for(engine)
+    if not engine.dialect.name.startswith(("mysql", "maria")):
+        raise RuntimeError(
+            f"This query is MySQL-specific (STR_TO_DATE); dialect is "
+            f"{engine.dialect.name!r}. Rewrite before running."
+        )
+    params = {"fmt": DATE_FMT, "ym": YEAR_MONTH}
     with engine.connect() as conn:
-        frame = pd.read_sql(text(statement), conn, params={"cancel": CANCEL_PATTERN})
-    print(f"rows in from database: {len(frame)}")
-    return frame, engine.dialect.name
+        frame = pd.read_sql(text(_SQL_MYSQL), conn, params=params)
+        bad = conn.execute(text(_SQL_UNPARSEABLE), {"fmt": DATE_FMT}).scalar_one()
+    print(f"rows in from database: {len(frame)} months")
+    print(f"bookings with an unparseable registration_date (excluded): {bad}")
+    return frame, int(bad), engine.dialect.name
 
 
 def main() -> None:
-    frame, dialect = fetch_monthly()
+    frame, unparseable, dialect = fetch_monthly()
     if frame.empty:
         raise RuntimeError(
-            "Query returned no rows. Check the schema caveat in this file's docstring "
-            "before assuming the database is empty."
+            "Query returned no rows. The schema was confirmed on 2026-11-12; if this "
+            "fails, the table has changed rather than the query being wrong."
         )
 
-    frame["month"] = (
-        frame["yr"].astype(int).astype(str)
-        + "-"
-        + frame["mo"].astype(int).astype(str).str.zfill(2)
-    )
-    frame = frame[["month", "bookings", "cancelled"]].sort_values("month")
-    frame = frame.reset_index(drop=True)
+    frame = frame.sort_values("month").reset_index(drop=True)
+    total = int(frame["bookings"].sum())
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     frame.to_csv(OUT_CSV, index=False)
-    print(f"rows out to {OUT_CSV.name}: {len(frame)}")
+    print(f"rows out to {OUT_CSV.name}: {len(frame)} months, {total:,} bookings")
 
     OUT_META.write_text(
         json.dumps(
             {
-                "source": "CSI production database (csi_bookings, csi_status)",
+                "source": "erp_production.csi_bookings (MySQL, read-only user)",
                 "dialect": dialect,
                 "script": Path(__file__).name,
                 "script_version": _script_version(),
                 "run_timestamp": datetime.now(timezone.utc).isoformat(),
                 "row_count": int(len(frame)),
                 "months_covered": [frame["month"].iloc[0], frame["month"].iloc[-1]],
-                "total_bookings": int(frame["bookings"].sum()),
+                "total_bookings": total,
                 "aggregation": "monthly; aggregated in SQL, no row-level data fetched",
-                "columns_deliberately_not_selected": (
-                    "every name, address and certificate field -- aggregated in SQL so "
-                    "no identifying column is read at all (CLAUDE.md 7.2)"
+                "excludes": (
+                    f"hidden <> 0 (695 rows as of 2026-11-12); "
+                    f"{unparseable} rows whose registration_date does not parse"
                 ),
-                "excludes": "rows where hidden <> 0, and rows with no registration_date",
+                "columns_deliberately_not_selected": (
+                    "every name, address and certificate field. Decedent data lives in "
+                    "csi_booking_deceased_information, which this query never touches "
+                    "(CLAUDE.md 7.2)"
+                ),
+                "known_limitation": (
+                    "No cancellation count is reported. csi_status row 23 'Cancelled' is "
+                    "used by zero bookings, so CSI has no cancellation signal in status."
+                ),
             },
             indent=2,
         )

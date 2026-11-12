@@ -1,77 +1,88 @@
-# Retention call sheets, November 2026 (v2, after Ethan's 2026-11-12 rulings)
+# Retention call sheets, November 2026 (v3, after Ethan's second 2026-11-12 ruling)
 
 **Status:** working document, rebuilt 2026-11-12 by sales-lead. Phone-led. Nothing is sent, no sequence, no HubSpot write (`CLAUDE.md` §7.1).
-**Built by** `scripts/build_rep_call_sheets.py` (v2.0, re-runnable, outputs not hand-edited). Business names only; no phone numbers or contacts (`§7.2`); pull those from HubSpot or the OMS account page.
-**This document covers account allocation and outcome capture only.** There is no bonus, incentive, commission or compensation field in any sheet, and none is modelled or implied (`§7.7`). That is Ethan's and Cheryl's to set.
+**Built by** `scripts/build_rep_call_sheets.py` (v3.0, re-runnable, outputs not hand-edited; `tests/test_rep_call_sheets.py`). Business names only; no phone numbers or contacts (`§7.2`); pull those from HubSpot or the OMS account page.
+**This document covers account allocation and outcome capture only.** There is no bonus, incentive, commission or compensation field in any sheet, and none is modelled or implied (`§7.7`).
 
-## Flag for Ethan: ruling 2 sits against `CLAUDE.md §7.1`, and Stacy has an open hold on an SCI location
+## Answer
 
-**Decision needed from Ethan. I have executed the ruling and imposed nothing else.**
+The sheets now partition the accounts: **404 source accounts, each in exactly one place, no row on two sheets.** Six named callers. Ethan, Otto and Stacy are confirmed; Susej, Renee and Abe are **PROVISIONAL, not yet confirmed**. 46 SCI rows are held; the 9 Northstar rows are released. **Three things need Ethan, in this order** (full text below): (1) the provisional sheets should stay unreleased until Vadim has seen the volume; (2) to give those three anything to hold, I had to take 119 one-and-done rows off the tail of Otto's and Stacy's v2 sheets, which is a departure from "keep intact" that I took as a default; (3) `§7.1` is incomplete on Northstar.
 
-1. **The standing rule and the instruction now disagree.** `§7.1` gates "any outbound communication naming SCI, Dignity, Everstory, Carriage, Foundation Partners, Park Lawn" behind Ethan, every time. Ruling 2 routes **46 SCI rows** (and 9 Northstar rows) to Otto and Stacy for retention calls. Ethan has the authority to make that call and he has made it, so the rows are on the rep sheets. But as written the rule still says every such call needs his approval. Either `§7.1` needs a standing authority added (for example: "retention calls to SCI and Northstar locations by Otto and Stacy are approved; anything to corporate, or naming SCI in writing, is not"), or the calls are individually gated and the ruling is empty. **This is a governance question, not a sales one, and it is the orchestrator's and Ethan's to settle.** I have not edited `CLAUDE.md`.
-   - Foundation Partners stays with Ethan, which is consistent with `§7.1`.
-   - Northstar is **not** named in the `§7.1` list. I cannot tell from files in this repo whether Northstar is an SCI brand or a separate group, so I have not assumed it falls under the same gate. Ethan to say.
-2. **Stacy was told to hold off contacting Phoebe at Palm, an SCI location, pending Cheryl's note to Pam.** I cannot tell from the files which row that is. Three SCI rows have "Palm" in the name: *Star of David (Palm Beach - SCI Location #4129)* on **Stacy's** at-risk block (call 10), *Palm Mortuary & Cemetery (SCI Location #1013)* on Stacy's dormant block, and *Royal Palm Funeral Home & Memorial Gardens (SCI Location #9794)* on Otto's one-and-done block. Stacy or Ethan should confirm which one it is. Other SCI locations are close to Stacy's top 10 (Fred Hunter's, call 2).
-3. **Recommendation (not imposed): hold every SCI row until Pam replies to Cheryl's note.** A rep calling other SCI locations while that note is unanswered is at best confusing, and Pam is the relationship that matters most in the pipeline. The hold is cheap: it removes 21 rows from Otto's sheet and 25 from Stacy's (all rows with `enterprise_group` beginning SCI; filter on that column), and **both sheets then revert to exactly the v1 rows minus Ponce** (160 and 163). The 9 Northstar rows are separate and are Ethan's call per point 1. Every SCI and Northstar row carries a `flag` column saying this, so a rep who reads their sheet sees it. **Until Ethan answers, the sheets contain the SCI rows and the flag; reps should be told to start with the non-enterprise rows**, which is already the order of work for most of the first week.
-4. If the hold is not wanted, I still recommend that reps are told the one thing not to do on an SCI call: do not mention Pam, corporate approval, or the portal pilot. Those are corporate conversations.
+## Flags for Ethan (recommend only; I have not resolved any of these)
 
-## What changed from this morning's sheets
+### 1. Susej, Renee and Abe: an operations capacity question for Vadim, not a sales one
 
-| Sheet | v1 (this morning) | v2 | Change |
-|---|---|---|---|
-| Otto | 161 | **184** | +24 SCI/Northstar rows, -1 (Ponce Funeral Home) |
-| Stacy | 163 | **194** | +31 SCI/Northstar rows |
-| Unassigned pool (new) | n/a | **378** | all rep-routable rows, no rep named |
-| Ortiz group, Cheryl / Vadim to assign (new) | n/a | **3** | R.G. Ortiz (Bronx), Rivera (Janet), Ponce Funeral Home |
-| Ethan (held) | 64 | **7** | Foundation Partners only |
-| Record repair | 14 | **14** | unchanged |
-| Partner flag, excluded | 2 IDs | **2 IDs** | unchanged |
+Susej is a Bookings Director; Renee and Abe are booking agents (`CLAUDE.md §5`). They staff the 24/7 desk, and `§3.4` names on-call load and burnout as a standing risk to the business. Ethan marked all three "maybe". Adding outbound calling to that desk changes their workload, and **how long a call-and-log takes a desk person, and what the desk can absorb, is Vadim's to answer** (he owns how long a booking takes, `§9.6`); I do not have it and have not estimated it. The three sheets hold 40, 40 and 39 accounts, all Situation C (one booking, never came back), the lowest-urgency block. At the 40-a-week pace assumed for Otto and Stacy, that is about a week of outbound work each, on top of the desk `[ESTIMATE: pace assumed, not measured for desk staff]`.
 
-**Reconciliation:** 48 at-risk + 54 dormant after removing the 8 that sit on both lists + 302 one-and-done = **404** rows = 184 + 194 + 3 + 7 + 14 + 2. (Pool rows are a second view of the 378 on the Otto and Stacy sheets, not additional accounts.)
+**Recommendation (Ethan decides):** keep the three sheets unreleased until Vadim has seen the volume and said yes or no, person by person. Nothing in the sheets needs to change to do that: they are built and marked, and nobody is told. **If any of the three is not confirmed, or Vadim says no, their rows revert to Otto and Stacy** by re-running the script with `--no-provisional` (the whole tail returns), or I re-allocate across whoever is confirmed. Default if there is no answer: sheets stay unreleased. Nothing is lost by waiting; these are the oldest wins on the list, and Otto and Stacy will not reach them before Dec 11 either way.
 
-**No v1 owner changed.** All 324 accounts that were on Otto's and Stacy's sheets this morning stay with the same rep (checked by script comparison against the morning files); the one exception is Ponce, below. The newly routed SCI and Northstar rows take the HubSpot owner plan's owner where one exists, otherwise the territory rule (Midwest Otto, West Stacy), and the Northeast/South ones alternate among themselves starting with Otto. That is the normal rule applied without reshuffling anyone's existing list.
+### 2. Otto's and Stacy's sheets are intact except for the one-and-done tail
 
-| Sheet | At-risk | Dormant | One-and-done | Total | of which SCI / Northstar | At-risk bookings/yr at stake |
-|---|---|---|---|---|---|---|
-| Otto | 18 | 21 | 145 | 184 | 21 / 3 | 348 |
-| Stacy | 19 | 29 | 146 | 194 | 25 / 6 | 329 |
-| Pool | 37 | 50 | 291 | 378 | 46 / 9 | 677 |
-| Ortiz group | 3 | 0 | 0 | 3 | n/a | 406 |
-| Ethan (Foundation Partners) | 4 | 2 | 1 | 7 | n/a | 90 |
-| Record repair | 2 | 2 | 10 | 14 | n/a | 40 |
+Ruling 1 (one account, one caller) and "keep Otto's and Stacy's existing assignments intact" cannot both hold if the provisional callers are to receive anything: in v2 the pool was the same 378 accounts the two reps already held, so there was no remainder. **Default I took, reverse if wrong:** Otto and Stacy keep **every** at-risk row, **every** dormant row, **every held SCI row**, and the **first 80 one-and-done rows** on their sheet (about two weeks of work at 40 a week, which takes them to Dec 11). Only released one-and-done rows beyond position 80 move: **119 rows, 59 from Otto and 60 from Stacy.** No one's at-risk or dormant list changed, and all 125 and 134 rows left on their sheets are rows they already had in v2 (checked by script comparison against the v2 files). If Ethan wants Otto's and Stacy's sheets frozen exactly as v2, the provisional sheets are empty and `--no-provisional` does it.
 
-At-risk accounting: 348 + 329 + 406 + 90 + 40 + 92 (partner tier) = 1,305, the source column total. The reps now hold **677 of the 1,305** bookings a year at stake, up from 547. At the $1,346 average yield that is about **$0.91M of revenue `[ESTIMATE: bookings x 2026 average yield, not account-level yield, which does not exist]`**. SCI and Northstar rows account for 157 of those 677 (SCI 84, Northstar 73); the hold in the flag section above would take 84 of them off the table for now. Dormant accounts on rep sheets lost another 191 bookings a year (Otto 85, Stacy 106).
+### 3. `§7.1` is incomplete: Northstar
 
-## What moved and why
+**New fact, confirmed by Ethan 2026-11-12: Northstar is another funeral home group, like SCI, Everstory and the others.** Previously unknown in this repo as a fact. (The brain already carries NorthStar Memorial Group as a consolidator, `context/brain/accounts-and-pipeline.md`; I have filed a proposal to record Ethan's confirmation and the "Northstar Location #" rows.) `§7.1`'s list of gated groups (SCI, Dignity, Everstory, Carriage, Foundation Partners, Park Lawn) does not name it, so the list is incomplete. **Ethan has released these particular rows regardless**, so the 9 Northstar rows are on rep sheets with no hold and the flag reads "Northstar location. Released by Ethan 2026-11-12". The rule is unchanged in `CLAUDE.md`; I have not edited it. The orchestrator will put the rule change to Ethan. Separate point: Foundation Partners is a named group and stays with Ethan as caller.
 
-1. **Ortiz group to the new sheet (3 rows).** Ruling 1. R.G. Ortiz (Bronx) and Rivera (Janet) as before. **I also moved Ponce Funeral Home (NY, at-risk, 27 bookings a year at stake) off Otto's sheet.** Ethan said "the rest of the combined Ortiz group", and Ponce is one of Donald's five Ortiz homes (`scripts/analyze_customer_cohorts.py`, `ORTIZ_GROUP_DONALD`; the cohort analysis counts it inside the -32% group decline). It was on Otto's sheet at call 3 this morning. **Default, reverse if wrong:** move it back if Ethan meant only the two largest. Donald's other two members, Rivera (Celsa) and Ortiz (Delta Shipments Only), are on none of the cohort lists, so nothing to move. The four "extended" names in the cohort script (Viva Shipments Only, R.G. Ortiz Funeral Home without "(Bronx)", Magano (Ortiz), Rivera (Bathgate)) were a sensitivity Donald did not name and are on none of the lists either. The owner field reads **"Cheryl / Vadim — to be assigned"**. No individual is named; nobody is to call until one is. The read on the group still holds: Rivera (Janet) to Rivera (Celsa) is volume moving inside the group, so do not count the Rivera figure as lost.
-2. **SCI and Northstar to reps (55 rows).** Ruling 2, by territory rule as above. 13 at-risk, 13 dormant and 34 one-and-done enterprise rows were held; of those 60, **53 are SCI or Northstar** and now route to reps, and **7 are Foundation Partners and stay with Ethan**. The two mislabelled siblings (below) add 2, giving the 55. No Everstory, Carriage or Park Lawn rows exist on these lists; if any appear later the script routes anything that is not SCI or Northstar to Ethan.
-3. **New pool sheet.** Ruling 3. See next section.
-4. **Two columns added** to the rep, pool and held sheets: `enterprise_group` and `flag`. They are the only changes to the columns. Capture fields are unchanged.
+## SCI held, Northstar released
 
-## The unassigned pool (`data/derived/call-sheet-unassigned-pool-2026-11.csv`)
+- **46 SCI rows are held, not deleted** (Otto 21: 2 at-risk, 4 dormant, 15 one-and-done; Stacy 25: 4, 4, 17). Each is on its assigned sheet with `call_status` = `HELD — awaiting SCI corporate` and sorts **last**, below every callable row, so a rep never reaches one by working down the sheet. **Release is a filter change on `call_status`, not a rebuild.** Held rows are never carved to the provisional callers.
+- **Levitt-Weinstein #3242** has group = Independent and an unconfirmed parent (SCI or Northstar). I **held it by default** because holding is cheaper to reverse than a wrong call; if the record shows Northstar, release it. Gillooly Funeral Home (SCI) is held as SCI. The record defect on both stays open (revops handoff item 3a).
+- **Northstar: 9 rows released**, 73 bookings a year at stake on the at-risk list: Otto 3, Stacy 5, Abe 1 (one from the carved tail).
+- **Palm Mortuary & Cemetery (Las Vegas, NV), SCI Location #1013** is **Phoebe's location** (Ethan confirmed). It is on Stacy's sheet (dormant, call 116) and is held with the rest, **and carries its own flag in `flag`: "PALM MORTUARY (Las Vegas): do not release with the other SCI rows when Pam replies. Check Stacy's separate conversation with Phoebe first (Ethan, 2026-11-12)."** Whoever releases the SCI rows must check that conversation before releasing this one. *Star of David (Palm Beach, SCI Location #4129)* and *Royal Palm Funeral Home & Memorial Gardens (SCI Location #9794)* are **different accounts**; they are held as SCI rows like the others and are not marked as Phoebe's. The script refuses to run unless exactly one held Palm Mortuary row in NV exists.
+- Held rows still show in each rep's count. **Callable now:** Otto 104, Stacy 109, Ethan 7, Abe 40, Renee 40, Susej 39 (the last three unreleased).
 
-Same columns and the same six capture fields, with the `rep` column deliberately blank so that handing a slice to someone is a filter and a name, not a rebuild. I have not modelled who. Extras: `default_territory_rep` (who the territory rule would pick), `claimed_by` and `claimed_on` (blank, for whoever hands out the slice).
+## The sheets (v2 to v3)
 
-**One account, one caller.** The pool lists the same 378 accounts that Otto and Stacy hold. If it is used as written, two people could ring the same funeral home in the same week, which is the failure that most damages a retention call. Rule I suggest, easy to change: **`claimed_by` on the pool sheet is the ledger.** Anyone taking a slice records the name there, and Otto and Stacy skip any row with another name in it. **Default I took, reverse if wrong:** I did not carve accounts out of Otto's and Stacy's sheets, because Ethan said to keep them as they are. If Ethan would rather the pool be the one-and-done tail that Otto and Stacy will not reach until December (about 40 a week each, four weeks of work), that is a one-line change to the script and removes the overlap.
+| Sheet | v2 | v3 | Caller status | At-risk | Dormant | One-and-done | Held SCI | Callable now |
+|---|---|---|---|---|---|---|---|---|
+| Otto | 184 | **125** | confirmed | 18 | 21 | 86 | 21 | 104 |
+| Stacy | 194 | **134** | confirmed | 19 | 29 | 86 | 25 | 109 |
+| Ethan (Foundation Partners) | 7 | **7** | confirmed | 4 | 2 | 1 | 0 | 7 |
+| Abe | n/a | **40** | PROVISIONAL, not yet confirmed | 0 | 0 | 40 | 0 | 40 |
+| Renee | n/a | **40** | PROVISIONAL, not yet confirmed | 0 | 0 | 40 | 0 | 40 |
+| Susej | n/a | **39** | PROVISIONAL, not yet confirmed | 0 | 0 | 39 | 0 | 39 |
+| Ortiz group, Cheryl / Vadim to assign | 3 | **3** | not a caller yet | 3 | 0 | 0 | n/a | 3 |
+| Record repair, not a call | 14 | **14** | revops | 2 | 2 | 10 | n/a | n/a |
+| Partner tier, excluded on the flag | 2 | **2** | nobody | 2 | 0 | 0 | n/a | n/a |
+| Unassigned pool | 378 | **removed** | n/a | | | | | |
 
-The sensible slice to hand over first is the one-and-done list: it is the largest (291 rows), needs no territory knowledge to open the conversation, and the rep-agnostic opener fits it. **Anyone working the pool needs the same rules as Otto and Stacy** (below), and in particular the no-pricing rule.
+The unassigned pool and its `claimed_by` convention are gone. I deleted its files and the old `call-sheet-ethan-held` files (replaced by Ethan's sheet). They are git-tracked, so recoverable; `§7.1` gates deleting files in `data/`, so I am saying so plainly. They were my own generated outputs, superseded by the ruling. Reverse if wrong.
 
-## How accounts were split (matches HubSpot)
+### Partition reconciliation
 
-- Midwest to Otto, West to Stacy, Northeast and South alternate by call rank starting with Otto, per Ethan's 2026-11-10 ruling. Same state sets as `scripts/fy27_target_lists.py`.
-- Where an account is in the HubSpot owner plan, the sheet uses the plan's owner, so the sheet and the HubSpot view cannot disagree for those. HubSpot was not read for rows outside the plan.
-- Florida, Texas and New York dominate the Northeast/South pool, so both reps have Florida accounts. That is the ruling, not a bug.
+Every source account lands in exactly one place. Per-account proof: `data/derived/call-sheet-reconciliation-2026-11.csv` (404 rows: account, source list, the one sheet it is on). The script also re-reads every written sheet and stops loudly if an account ID appears on two, or if rows are lost.
+
+| Source list | In | Otto | Stacy | Ethan | Abe | Renee | Susej | Ortiz | Record repair | Partner | Out |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| At-risk | 48 | 18 | 19 | 4 | 0 | 0 | 0 | 3 | 2 | 2 | **48** |
+| Dormant (after removing 8 also on at-risk) | 54 | 21 | 29 | 2 | 0 | 0 | 0 | 0 | 2 | 0 | **54** |
+| One-and-done | 302 | 86 | 86 | 1 | 40 | 40 | 39 | 0 | 10 | 0 | **302** |
+| **Total** | **404** | 125 | 134 | 7 | 40 | 40 | 39 | 3 | 14 | 2 | **404** |
+
+125 + 134 + 7 + 40 + 40 + 39 + 3 + 14 + 2 = 404. The 8 removed are accounts on both the at-risk and dormant lists, kept on at-risk (unchanged from v2).
+
+At-risk accounting: Otto 348 + Stacy 329 + Ethan 90 + Ortiz 406 + record repair 40 + partner tier 92 = **1,305** bookings a year, the source column total. Otto and Stacy hold 677 of them; **84 of those are on held SCI rows, so 593 are callable now**, about **$0.80M** of revenue `[ESTIMATE: 593 x $1,346 2026 average yield; account-level yield does not exist]`. Dormant accounts on Otto and Stacy lost another 191 bookings a year (Otto 85, Stacy 106), of which 163 are on callable rows.
+
+## The allocation rule (mechanical; no judgement about any person)
+
+1. **Otto, Stacy:** every v2 assignment stands (HubSpot owner plan where one exists, else Midwest to Otto, West to Stacy, Northeast and South alternating by call rank starting with Otto). Nothing reshuffled.
+2. **Tail:** on each of Otto's and Stacy's sheets, in call order, the first 80 one-and-done rows stay. Every **released** one-and-done row after position 80 is carved off. Held rows never move.
+3. **Round-robin:** the carved rows are dealt **Abe, Renee, Susej** (alphabetical, so no one is ranked), one counter running across both sheets, Otto's carved rows first, in call-rank order. No skill, seniority, region familiarity or any view of a person enters. Result: Abe 40 (20 from each sheet), Renee 40 (20 and 20), Susej 39 (19 and 20); counts differ by at most one.
+4. Each carved row keeps its `territory_rep` (who held it in v2) and states its round-robin position in `owner_rule`, so any row can be traced back.
+5. **Consequence to know:** the provisional callers hold the **older** one-and-done accounts, because one-and-done is ordered most recent first and the tail is the oldest. Recency helps an opener ("thank you for trusting us in [month]"); the oldest wins are the hardest conversations and the lowest likely reach, and that is a function of the ordering rule, not of the people.
+6. **Ethan** is the named caller of the Foundation Partners sheet (7 rows, enterprise stays with him). **Ortiz** stays with Cheryl / Vadim, to be assigned, unchanged: 3 rows, nobody calls until an owner is named. **Donald is not a caller** and does not appear on any sheet; he named the five Ortiz entities for the revenue grouping in the cohort analysis, nothing more.
+
+New columns on every sheet: `caller_status` (`CONFIRMED` or `PROVISIONAL — not yet confirmed`), `call_status` (`HELD — awaiting SCI corporate` or blank), `territory_rep`. The capture fields are unchanged.
 
 ## The point of the month
 
-CSI's problem is retention, not prospecting (`reports/customer-cohort-analysis.md`). Order of work, unchanged:
+CSI's problem is retention, not prospecting (`reports/customer-cohort-analysis.md`). Order of work, unchanged, with held rows excluded:
 
-1. **Week of Nov 16:** the at-risk block, now 18 rows for Otto and 19 for Stacy (first rows of each sheet, with any stopped accounts that sit among them).
-2. **Week of Nov 23:** the dormant block (Otto 21, Stacy 29), highest lost volume first.
-3. **Weeks of Nov 30 onward:** one-and-done, most recent first, about 40 a week (Otto 145, Stacy 146). Do not prospect cold before this is worked.
-
-If the SCI hold is adopted, the first block is 13 and 14.
+1. **Week of Nov 16:** the at-risk block, **16 callable for Otto and 15 for Stacy**, plus Ethan's 4.
+2. **Week of Nov 23:** the dormant block (Otto 17 callable, Stacy 25), highest lost volume first.
+3. **Weeks of Nov 30 and Dec 7:** one-and-done, most recent first, about 40 a week each. Do not prospect cold before this is worked.
+4. The provisional sheets, if released, are Situation C only.
 
 ## Call guidance
 
@@ -81,7 +92,7 @@ If the SCI hold is adopted, the first block is 13 and 14.
 
 **Situation C, one booking, never came back.** An onboarding-failure list, not a prospecting list. "Hi, it's [name] at Cargo Sales International. Thank you for trusting us with your case in [month]. We've only handled the one, and I wanted to ask how it went from your side, and whether anything about it made you hesitate to call us again." Some are receiving homes that never shipped one; code it and move on. Do not pitch. The backup framing is the close.
 
-**For all three:** no pricing, discounts or terms on a call (`§7.1`; anything needing a number goes to Donald through Ethan). No "win-back," "special offer" or urgency language (`§7.4`). **On an SCI or Northstar location:** call it as you would any funeral home. Do not raise the group, the corporate relationship or the portal pilot.
+**For all three:** no pricing, discounts or terms on a call (`§7.1`; anything needing a number goes to Donald through Ethan). No "win-back," "special offer" or urgency language (`§7.4`). **On a Northstar location:** call it as you would any funeral home; do not raise the group, the corporate relationship or the portal pilot. **SCI rows are not called while held.**
 
 ## What to capture (four fields, 60 seconds)
 
@@ -90,9 +101,9 @@ If the SCI hold is adopted, the first block is 13 and 14.
 3. **what_they_said:** one sentence, their words.
 4. **next_action_and_date:** what you will do and by when, including "none, leave dormant".
 
-Data-analyst needs **50 coded reasons by the end of Q1 FY27**. Situation B rows on the two territory sheets now total 54 (Otto 23, Stacy 31); at an unknown reach rate that may still land under 50 reached. If fewer than 50 are coded by Dec 11, extend into the Seg 2 churned list already in HubSpot or into the pool. **Outcome tracking is the same for anyone who takes a pool slice**, so reason codes stay comparable.
+Data-analyst needs **50 coded reasons by the end of Q1 FY27**. Situation B rows that are callable now total 46 on Otto's and Stacy's sheets (19 and 27); at an unknown reach rate that may land under 50 reached. If fewer than 50 are coded by Dec 11, extend into the Seg 2 churned list already in HubSpot. Situation C answers also produce codes and count toward the sample if data-analyst accepts them; that is theirs to say.
 
-## Top 10 to call first
+## Top 10 callable first (held SCI rows excluded)
 
 ### Otto
 | # | Account | St | Reason to call |
@@ -106,38 +117,38 @@ Data-analyst needs **50 coded reasons by the end of Q1 FY27**. Situation B rows 
 | 7 | Moss Feaster Funeral Home & Cremation Services (Northstar Location #4674) **[Northstar]** | FL | 32 bookings in 2024, 17 in 2025, 12 so far in 2026 (14 annualised); last shipped 2026-08-21 |
 | 8 | SUNSET FUNERAL HOME | TX | 16 bookings in 2024, 20 in 2025, none in 2026; last shipped 2025-12-16 (331 days ago) |
 | 9 | Hunt Funeral Home (Gabriela Rodriguez) | DC | 14 bookings in 2024, 10 in 2025, 1 so far in 2026 (1 annualised); last shipped 2026-01-20 |
-| 10 | Kraeer Funeral Home and Cremation Center (SCI Location #7097) **[SCI]** | FL | 13 bookings in 2024, 6 in 2025, 2 so far in 2026 (2 annualised); last shipped 2026-07-13 |
+| 10 | Corleto Latina Funeral Home | DE | 19 bookings in 2024, 17 in 2025, 7 so far in 2026 (8 annualised); last shipped 2026-06-08 |
 
 ### Stacy
 | # | Account | St | Reason to call |
 |---|---|---|---|
 | 1 | Fuller Funeral Home & Cremation Services | FL | 58 bookings in 2024, 47 in 2025, 5 so far in 2026 (6 annualised); last shipped 2026-05-18 |
-| 2 | Fred Hunter's Funeral Home (SCI Location #3597) **[SCI]** | FL | 59 bookings in 2024, 36 in 2025, 23 so far in 2026 (27 annualised); last shipped 2026-11-03 |
-| 3 | Florida Funeral Home and Crematory | FL | 29 bookings in 2024, 23 in 2025, none in 2026; last shipped 2025-12-03 (344 days ago) |
-| 4 | Guarino Funeral Home, Inc. | NY | 27 bookings in 2024, 0 in 2025, none in 2026; last shipped 2024-09-18 (785 days ago) |
-| 5 | Hiers-Baxley Funeral Services (The Villages) | FL | 27 bookings in 2024, 13 in 2025, 3 so far in 2026 (3 annualised); last shipped 2026-05-13 |
-| 6 | Quality Mortuary | NC | 21 bookings in 2024, 3 in 2025, 1 so far in 2026 (1 annualised); last shipped 2026-08-28 |
-| 7 | Downing Funeral Home and Cremation Services | FL | 28 bookings in 2024, 21 in 2025, 7 so far in 2026 (8 annualised); last shipped 2026-10-12 |
-| 8 | Sunflower Cremation | AZ | 26 bookings in 2024, 31 in 2025, 8 so far in 2026 (9 annualised); last shipped 2026-10-06 |
-| 9 | Brooklyn Funeral Home & Cremation Services | NY | 26 bookings in 2024, 13 in 2025, 9 so far in 2026 (10 annualised); last shipped 2026-10-02 |
-| 10 | Star of David (Palm Beach - SCI Location #4129) **[SCI]** | FL | 23 bookings in 2024, 25 in 2025, 9 so far in 2026 (10 annualised); last shipped 2026-03-28 |
+| 2 | Florida Funeral Home and Crematory | FL | 29 bookings in 2024, 23 in 2025, none in 2026; last shipped 2025-12-03 (344 days ago) |
+| 3 | Guarino Funeral Home, Inc. | NY | 27 bookings in 2024, 0 in 2025, none in 2026; last shipped 2024-09-18 (785 days ago) |
+| 4 | Hiers-Baxley Funeral Services (The Villages) | FL | 27 bookings in 2024, 13 in 2025, 3 so far in 2026 (3 annualised); last shipped 2026-05-13 |
+| 5 | Quality Mortuary | NC | 21 bookings in 2024, 3 in 2025, 1 so far in 2026 (1 annualised); last shipped 2026-08-28 |
+| 6 | Downing Funeral Home and Cremation Services | FL | 28 bookings in 2024, 21 in 2025, 7 so far in 2026 (8 annualised); last shipped 2026-10-12 |
+| 7 | Sunflower Cremation | AZ | 26 bookings in 2024, 31 in 2025, 8 so far in 2026 (9 annualised); last shipped 2026-10-06 |
+| 8 | Brooklyn Funeral Home & Cremation Services | NY | 26 bookings in 2024, 13 in 2025, 9 so far in 2026 (10 annualised); last shipped 2026-10-02 |
+| 9 | Elijah Bell's Funeral Services (Lauderdale) | FL | 17 bookings in 2024, 4 in 2025, 4 so far in 2026 (5 annualised); last shipped 2026-09-30 |
+| 10 | Blair-Mazzarella Funeral Home | NY | 17 bookings in 2024, 7 in 2025, 5 so far in 2026 (6 annualised); last shipped 2026-10-15 |
 
-**First call Monday:** Otto, Del Pueblo Funeral Home. Stacy, Fuller Funeral Home & Cremation Services. Neither is an enterprise location, so both are clear of the SCI question whichever way Ethan rules.
+**First call Monday:** Otto, Del Pueblo Funeral Home. Stacy, Fuller Funeral Home & Cremation Services. Neither is an enterprise location.
 
 ## Ortiz group (3 rows, `data/derived/call-sheet-ortiz-group-2026-11.csv`)
 
-Owner: **Cheryl / Vadim — to be assigned.** Ethan did not pick between them and I have not. 406 bookings a year at stake on the at-risk list, 31% of the 1,305.
+Owner: **Cheryl / Vadim — to be assigned**, unchanged from v2. Ethan did not pick between them and I have not. This is a revenue grouping, not a call list for anyone else: Donald named the five entities for the cohort analysis and is not a caller (Ethan, 2026-11-12). 406 bookings a year at stake on the at-risk list, 31% of the 1,305.
 | Account | St | List | Bookings/yr at stake | Why |
 |---|---|---|---|---|
-| R.G. Ortiz Funeral Home (Bronx) | NY | at_risk | 196 | Ortiz group (Donald's five): Ethan ruling 2026-11-12, Cheryl / Vadim to assign |
-| Rivera Funeral Home (Janet) | NY | at_risk | 183 | Ortiz group (Donald's five): Ethan ruling 2026-11-12, Cheryl / Vadim to assign |
-| Ponce Funeral Home | NY | at_risk | 27 | Ortiz group (Donald's five): Ethan ruling 2026-11-12, Cheryl / Vadim to assign |
+| R.G. Ortiz Funeral Home (Bronx) | NY | at_risk | 196 | Ortiz group (five entities named for the cohort revenue grouping): Ethan ruling 2026-11-12, Cheryl / Vadim to assign |
+| Rivera Funeral Home (Janet) | NY | at_risk | 183 | Ortiz group (five entities named for the cohort revenue grouping): Ethan ruling 2026-11-12, Cheryl / Vadim to assign |
+| Ponce Funeral Home | NY | at_risk | 27 | Ortiz group (five entities named for the cohort revenue grouping): Ethan ruling 2026-11-12, Cheryl / Vadim to assign |
 
 **Next action:** Cheryl and Vadim decide who owns it, by Nov 16 `[proposed date, Ethan to confirm]`; the sheet then goes to that person. Nobody calls before that.
 
-## Held for Ethan: Foundation Partners (7 rows, `data/derived/call-sheet-ethan-held-2026-11.csv`)
+## Ethan's sheet: Foundation Partners (7 rows, `data/derived/rep-call-sheet-ethan-2026-11.csv`)
 
-Ruling 2: "anything else enterprise stays with Ethan." On these lists that is Foundation Partners only. Foundation Partners locations on the decline list are relevant to the FPG story (the cohort analysis shows FPG delivered +201 bookings in 2024 and has since slid).
+Ethan's standing ruling: enterprise other than SCI and Northstar stays with him. On these lists that is Foundation Partners only. Ethan is the named caller; the sheet carries the same capture fields as the others. Foundation Partners locations on the decline list are relevant to the FPG story (the cohort analysis shows FPG delivered +201 bookings in 2024 and has since slid).
 | Account | St | List | Bookings/yr at stake | Why |
 |---|---|---|---|---|
 | Romero Funeral Home (Foundation Partners - Denver) | CO | at_risk | 31 | group = Foundation Partners (enterprise stays with Ethan, ruling 2026-11-12) |
@@ -152,35 +163,38 @@ Ruling 2: "anything else enterprise stays with Ethan." On these lists that is Fo
 
 Unchanged. Ten are shipping IDs with no match in the funeral home master; four are foreign homes or bad state codes. Expected: the 162 shipping IDs absent from the master are bounded at 15% or less of measured decay (`customer-cohort-analysis.md` §8). Two partner-tier accounts (Dunn & Sons, Scarpa-Las Rosas) are excluded by the flag, not by name; they are the alliance and Ethan's.
 
-**The two name-evidence accounts are still a record defect, and routing them does not fix it.** *Levitt-Weinstein - Location #3242* and *Gillooly Funeral Home (SCI)* carry `group = Independent` but are SCI siblings. They route to reps like other SCI rows now (Stacy at-risk call 13, and Otto one-and-done) and carry `enterprise_group` and a `RECORD DEFECT` flag. The group field is still wrong in HubSpot and the OMS export. **It stays in `handoffs/HANDOFF-call-sheets-revops-crm.md` as item 3a, updated today.** Levitt-Weinstein #3242's parent is not confirmed (SCI or Northstar); revops should resolve it from the record rather than from the name.
+**The two name-evidence accounts are still a record defect, and routing them does not fix it.** *Levitt-Weinstein - Location #3242* and *Gillooly Funeral Home (SCI)* carry `group = Independent` but are SCI siblings (or, for #3242, possibly Northstar). The group field is still wrong in HubSpot and the OMS export. **It stays open in `handoffs/HANDOFF-call-sheets-revops-crm.md` as item 3a, updated today.**
 
 ## Defaults I took (reverse any)
 
-1. Ponce Funeral Home treated as part of "the combined Ortiz group" and moved to the Ortiz sheet.
-2. Newly routed enterprise rows take the plan owner or territory rule; v1 owners are not reshuffled; Northeast/South enterprise rows alternate among themselves starting with Otto.
-3. Pool = every rep-routable row, with `claimed_by` as the one-caller ledger (alternative above).
-4. SCI hold is a recommendation only; the SCI rows are on the sheets with a flag.
-5. Levitt-Weinstein #3242 is treated as SCI-like for the flag because its parent is unconfirmed.
-6. The two siblings route to reps, per ruling 2's spirit (SCI and Northstar to reps); their record defect stays open.
-7. 8 accounts on both the at-risk and dormant lists are kept on at-risk. Zero-2026-booking at-risk accounts use the Situation B opening. Foreign homes and bad state codes go to record repair. Call order is list-first, not a blended value score.
+1. Otto and Stacy keep all at-risk, dormant and held rows plus their first 80 one-and-done; the rest of the tail goes to the provisional callers (flag 2). `--no-provisional` reverses it.
+2. The rule is a position cut (80), chosen as the rows they can reach by Dec 11 at the stated pace; it is a number I set, easy to change (`KEEP_TAIL`).
+3. Round-robin order is alphabetical (Abe, Renee, Susej), not the order Ethan listed them, to avoid implying a ranking.
+4. Levitt-Weinstein #3242 is held while its parent is unconfirmed.
+5. Held rows sort to the bottom of each sheet and are never carved.
+6. Ethan is the named caller of the Foundation Partners rows.
+7. Ponce Funeral Home stays on the Ortiz sheet (v2 default, still unconfirmed by Ethan).
+8. The pool and `call-sheet-ethan-held` files were deleted (git-tracked).
+9. 8 accounts on both the at-risk and dormant lists are kept on at-risk; zero-2026-booking at-risk accounts use the Situation B opening; foreign homes and bad state codes go to record repair; call order is list-first, not a blended value score.
 
 ## Confidence and limits
 
-- Medium-high on ranking; high that the at-risk rows are real, active accounts. Low on how many of the one-and-done are true failures versus receiving homes.
-- The $0.91M figure is `[ESTIMATE]` at the $1,346 average yield, not account-level revenue.
+- Medium-high on ranking; high that the at-risk rows are real, active accounts; high that the partition is exact (asserted in code and re-read from disk). Low on how many one-and-done are true failures versus receiving homes.
+- The $0.80M figure is `[ESTIMATE]` at the $1,346 average yield, not account-level revenue.
 - Churn is inferred from silence. These calls convert it to observed churn.
-- Raises confidence: the account merge log, a revenue column on the shipment export, the first 50 coded calls.
+- Raises confidence: the account merge log, a revenue column on the shipment export, the first 50 coded calls, Vadim's view on desk capacity.
 
 ## Next actions
 
 | Action | Owner | By |
 |---|---|---|
-| Decide the `§7.1` conflict, and whether to hold SCI rows until Pam replies | Ethan (via pm-orchestrator) | Nov 13, before reps start calls Monday Nov 16 `[proposed]` |
-| Confirm which SCI row is the "Palm" hold and tell Stacy | Ethan | Nov 13 |
+| Decide whether the provisional sheets are released; recommend not until Vadim has seen the volume | Ethan, with Vadim | Nov 13 `[proposed]` |
+| Confirm the tail carve (flag 2), or freeze Otto and Stacy as v2 | Ethan | Nov 13 |
+| Put the `§7.1` change (Northstar not named) to Ethan | pm-orchestrator | Nov 16 `[proposed]` |
+| Release SCI rows when Pam replies; check Stacy's Phoebe conversation before releasing Palm Mortuary | Ethan | on Pam's reply |
 | Assign the Ortiz group owner | Cheryl / Vadim | Nov 16 `[proposed]` |
 | Confirm Ponce belongs with the Ortiz group | Ethan | Nov 16 |
-| Decide who works the pool, and fill `claimed_by` | Ethan | Nov 16 |
-| Work the at-risk block | Otto, Stacy | Nov 20 |
+| Work the at-risk block (callable rows) | Otto, Stacy; Ethan for Foundation Partners | Nov 20 |
 | Work the dormant block | Otto, Stacy | Nov 27 |
-| Fix group field on two SCI siblings; flag accounts in HubSpot to match the sheets | revops-crm | Nov 16 |
+| Fix group field on the two SCI sibling records; flag accounts in HubSpot to match the sheets | revops-crm | Nov 16 |
 | 50 coded stop reasons | whoever works the sheets, to data-analyst | Dec 11 |

@@ -57,7 +57,7 @@ recommendation was made without GTM input.
 - **SCI is working:** 97 → 120 → **123** shipping locations, 1,044 → 1,128 →
   **1,198 `[ANN]`** bookings. The corporate-group motion is the one that compounds.
 - **Northstar is flat:** 42 locations, 714 → 644 → **641 `[ANN]`**.
-- **The partner tier is a stable 23–24% of revenue since 2018.** Treat its trajectory as
+- **The partner tier is a stable 23–24% of revenue since 2022, 22–26% since 2018.** Treat its trajectory as
   a relationship outcome, not a sales one (`CLAUDE.md §5`).
 
 Figures: `data/derived/named-account-trajectory.csv`,

@@ -24,7 +24,7 @@ Four things change the valuation narrative, two favourably.
 2. **Customer concentration is falling, which is a genuinely good diligence answer.**
    Top-10 share 54.1% (2016) → 45.3% (2023) → **39.2% (2026)**; top-50 86.9% → **63.7%**;
    HHI 589 → **322**. Customers with revenue 193 → **642**.
-3. **But four relationships are 23–24% of revenue, and have been since 2018.** Bergen
+3. **But four relationships are 23–24% of revenue, and have been since 2022 (22–26% since 2018).** Bergen
    alone is **13.4%** — the single largest customer, a position it took from the Ortiz
    group. `CLAUDE.md §5` is clear that the partner tier is an asset; it is also a
    dependency, and a diligence room will read it as the latter unless the narrative does

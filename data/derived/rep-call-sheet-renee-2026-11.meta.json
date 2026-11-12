@@ -1,0 +1,14 @@
+{
+  "source_files": [
+    "accounts-at-risk-volume-decline.csv",
+    "accounts-dormant.csv",
+    "accounts-one-and-done.csv",
+    "fy27-owner-plan.csv"
+  ],
+  "row_count": 40,
+  "script": "scripts/build_rep_call_sheets.py",
+  "script_version": "3.0",
+  "run_timestamp": "2026-11-12T05:02:00.900675+00:00",
+  "privacy": "business names only; no contacts, phone, or shipment-level data",
+  "scope": "account allocation and outcome capture only; no compensation fields"
+}

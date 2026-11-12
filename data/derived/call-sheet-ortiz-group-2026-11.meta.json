@@ -7,8 +7,8 @@
   ],
   "row_count": 3,
   "script": "scripts/build_rep_call_sheets.py",
-  "script_version": "2.0",
-  "run_timestamp": "2026-11-12T04:53:26.133299+00:00",
+  "script_version": "3.0",
+  "run_timestamp": "2026-11-12T05:02:00.902276+00:00",
   "privacy": "business names only; no contacts, phone, or shipment-level data",
   "scope": "account allocation and outcome capture only; no compensation fields"
 }

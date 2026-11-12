@@ -19,8 +19,7 @@ which is "none", and the note says plainly that no is a fine answer.
 **It gives him the finding, briefly.** He is more likely to engage with a capacity ask when he can
 see why the calls matter. One paragraph, not the full analysis.
 
-**The volume number is a placeholder.** Final per-person counts land when the rebuilt sheets finish.
-**Fill `[N]` before sending** — a capacity question with a vague number invites a vague answer.
+**The volume is filled in: 40 calls each.** From the rebuilt sheets — Susej 39, Renee 40, Abe 40, against Otto 125 and Stacy 134. Roughly 7 calls a week each over six weeks, which is a small enough ask that a yes is plausible and a no is not awkward.
 
 **Deliberately absent:** anything about how well any of the three would do this, any comparison
 between them, and anything touching bonus or compensation (`§7.7`). This is about hours on a desk.
@@ -49,7 +48,7 @@ savable.
 **What I'd like to understand is whether the desk has any room in it.** Otto and Stacy are taking
 the bulk. But there's a tail of smaller accounts, and I wondered whether Susej, Renee or Abe might
 pick up a slice — they know how a booking actually works, which on a call like this is worth more
-than sales technique. The ask would be roughly **[N] calls each, spread over about six weeks**.
+than sales technique. The ask would be roughly **40 calls each, spread over about six weeks** — so around seven a week.
 
 **I'm genuinely asking, not proposing.** Three honest options:
 

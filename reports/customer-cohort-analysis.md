@@ -129,7 +129,7 @@ noticed, because the aggregate never showed it arriving.
 |---|---|---|---|---|---|
 | 2016 | 193 | 19.3% | 54.1% | 86.9% | 589 |
 | 2021 | 444 | 10.7% | 39.6% | 69.4% | 277 |
-| 2023 | 526 | 12.4% | 45.3% | 70.1% | 412 |
+| 2023 | 526 | 13.0% | 45.3% | 70.1% | 412 |
 | 2025 | 636 | 13.0% | 41.5% | 65.8% | 355 |
 | 2026 | 642 | 13.4% | 39.2% | 63.7% | 322 |
 
@@ -141,7 +141,8 @@ diversified, as a by-product of the acquisition engine that is working.
 What concentration remains is **relationship** concentration, not sales concentration:
 **the partner tier has been a stable 23–24% of revenue since 2018** (2026, part year:
 Bergen $1.68M, IMS $0.66M, NMS $0.33M, Las Rosas $0.30M on $12.49M). Bergen alone is
-**13.4%** — CSI's single largest customer. Per `CLAUDE.md` §5 that is the
+**13.4%** — CSI's single largest customer, a position it took from the Ortiz group, which
+held it in 2023 at 13.0% against Bergen's 12.4%. Per `CLAUDE.md` §5 that is the
 alliance working as intended. It is still the number a lender or buyer will ask about
 first, and it belongs in the valuation narrative as both an asset and a dependency.
 

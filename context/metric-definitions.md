@@ -50,12 +50,12 @@ data-analyst, finance and revops charters.
 | M-09 | Contribution margin per shipment | **BLOCKED** | finance / operations |
 | M-10 | Cost to serve per booking | **BLOCKED** | operations |
 | M-11 | Yield (revenue per booking) | COMPUTABLE | data-analyst |
-| M-12 | Active account | **BLOCKED** | data-analyst |
-| M-13 | New account | **BLOCKED** | data-analyst |
-| M-14 | Reactivated account | **BLOCKED** | data-analyst |
-| M-15 | Churned account, churn rate | **BLOCKED** | data-analyst |
-| M-16 | Net-new funeral home (adopted from the CRO scorecard) | **BLOCKED** | sales-lead |
-| M-17 | Shipments per retained account | **BLOCKED** | data-analyst |
+| M-12 | Active account | COMPUTABLE | data-analyst |
+| M-13 | New account | COMPUTABLE | data-analyst |
+| M-14 | Reactivated account | COMPUTABLE | data-analyst |
+| M-15 | Churned account, churn rate | LIMITED | data-analyst |
+| M-16 | Net-new funeral home (adopted from the CRO scorecard) | LIMITED | sales-lead |
+| M-17 | Shipments per retained account | COMPUTABLE | data-analyst |
 | M-18 | CAC by channel | **BLOCKED** | marketing-lead |
 | M-19 | ROAS | **BLOCKED** | marketing-lead |
 | M-20 | Booking accuracy (adopted from the Bookings Director scorecard) | LIMITED | Kim Soto / Susej Roffe |
@@ -396,27 +396,50 @@ than merely obeyed:
 prioritization signal.** It is never a retention denominator, and the two windows must
 never appear in the same table.
 
-**Why all four are BLOCKED, and why HubSpot cannot substitute.** These need one row per
-booking with a funeral home ID and a date. The analytics export is monthly aggregate
-only. **And HubSpot holds no shipment history at all** — verified via the connector on
-2026-11-02: the portal has **no custom objects** of any kind, and a company-property
-search returns **no shipping-funeral-home or shipment-count property**. There is no
-CRM-side route to these metrics; the OMS export is the only one.
+**UNBLOCKED 2026-11-10.** The two-column history export arrived from **Rednodo
+(Claudio/Lucas)**, who built CSI's legacy system — not from the OMS, which is where this
+file expected it to come from. `data/raw/shipments-since-2022-20261110.xlsx` carries
+48,715 rows of `booking_id`, `shipping_funeral_home_id`, `flight_date`, `status`. It is
+exactly the "smallest version" this section asked for, plus status, and it unblocks
+M-12, M-13, M-14 and M-17 outright.
 
-**Route out, shared by M-12 through M-17.**
-**Who holds it:** **Alex** (builds exports) and **Kyri** (OMS) — TASK-0003, a Change
-Order build rather than a permission request.
-**Smallest version — and this is worth ranking separately in the engineering ask:**
-**two columns, `funeral_home_id` and `booking_date`, for full history.** No revenue, no
-lane, no carrier, no status. That alone computes active, new, reactivated, churned,
-churn rate and shipments per retained account for every account CSI has ever had. It is a
-far smaller build than the full booking-level row specification and it unblocks the
-entire account-cohort question on its own. *Recommend to `product` that it be ranked as
-its own line item in the Monday ask, so a "no" to the full export is not a "no" to this.*
-**Unblocks:** the volume decomposition (churn vs. acquisition vs. frequency — the
-decomposition that explains why revenue grew 4.4% while bookings grew 1.3%), account
-value, M-16's measurement, CAC's denominator, GTM segment targeting, and account scoring
-for sales.
+**It also reconciles.** Annual booking counts are *identical* to the OMS analytics export
+for 2023, 2024 and 2025 and for Jan–Aug 2026 (`reports/customer-cohort-analysis.md` §5).
+Two systems built decades apart agree exactly on volume, so the shipment export is the
+system of record for any account-level count.
+
+**HubSpot still cannot substitute** and nothing below depends on it: the portal has no
+custom objects and no shipping-funeral-home or shipment-count property (verified
+2026-11-02).
+
+**What the export does NOT carry, and what each gap still blocks:**
+
+| Missing | Still blocked | Smallest fix |
+|---|---|---|
+| Revenue per booking | **M-15's revenue-weighted churn** — the figure this section says to *lead with*. Volume-weighted churn is published in its place and is not the same thing | One more column on the same export |
+| Lane, gateway, service type | Mix, corridor and cremation-substitution analysis | Already in `reports/oms-export-spec.md` |
+| Account merge / rename log | Caps confidence: 162 shipping IDs (863 lifetime bookings) are absent from the account dimension, so some apparent attrition may be record migration. At most 15% of the measured decay | One query to Rednodo |
+
+**History and the earliest valid date, corrected.** The export begins 2022-01-02, but the
+legacy system was still being adopted through the first half of 2022: **9 bookings in
+January 2022 against 896 in December.** Treating 2022-01 as real coverage would make every
+pre-2024 account look new. So **`history_begins = 2022-08-01`** (August 2022, 734 bookings,
+the first month near run rate) and with a 365-day window the **earliest valid `as_of` is
+2024-07-31**. `src/metrics.py::classify_accounts` raises rather than returning a number
+built on truncated history, and this is the value to pass it.
+
+**Published figures as at 2026-11-10** (`data/derived/rolling-window-account-metrics.csv`,
+`scripts/analyze_customer_cohorts.py`): active **1,091**, new **411**, reactivated **94**,
+retained **586**, churned **318**, count churn **35.2%**, volume-weighted churn **5.6%**,
+shipments per retained account **17.16**.
+
+**Calendar-year cohorts are a second cut, not a substitute.** The year-by-year series in
+`data/derived/cohort-yearly-accounts.csv` uses calendar years, and its like-for-like
+variant a Jan–Oct (304-day) window so that a part-year 2026 is comparable. **The levels
+from a 304-day window are not comparable to the 365-day figures above** — a shorter window
+mechanically reports more churn. Use the Jan–Oct series for year-on-year *change* only,
+and never put the two windows in the same table.
+
 
 **One hard constraint on all cohort work.** Classifying new-versus-reactivated needs a
 full window of history *behind* the prior window. OMS history begins 2022-09-01, so **no
@@ -432,15 +455,22 @@ earlier window. The active set is partitioned exactly:
 That identity is asserted in the tests and should hold in any table you publish.
 
 ### M-12 — Active account
-At least one landed booking in the trailing 365 days ending at *t*. **Status: BLOCKED.**
+At least one landed booking in the trailing 365 days ending at *t*. **Status: COMPUTABLE**
+from `data/raw/shipments-since-2022-20261110.xlsx` via
+`src/metrics.py::classify_accounts`. **1,091 as at 2026-11-10**, up from 904 and 822 at
+the same date in the two prior years — a base growing 32.7% in two years while volume is
+flat, which is the single most important fact about CSI's plateau.
 
 ### M-13 — New account
 Active at *t*, with **no landed booking ever** before the current window opened.
-**Status: BLOCKED.** Distinct from M-16 — see the warning there.
+**Status: COMPUTABLE. 411 as at 2026-11-10.** Distinct from M-16 — see the warning there.
+Note that M-13 counts *any* first-ever booking while M-16 requires three shipments, a
+priority region and documented origination, so M-13 will always be the larger number.
+Never present them as the same metric.
 
 ### M-14 — Reactivated account
 Active at *t*, has a landed booking before the current window, but **none in the prior
-window** `(t−730, t−365]`. **Status: BLOCKED.** Reactivation and new acquisition cost
+window** `(t−730, t−365]`. **Status: COMPUTABLE. 94 as at 2026-11-10.** Reactivation and new acquisition cost
 very different amounts to achieve and must never be summed into "accounts gained."
 
 ### M-15 — Churned account, churn rate
@@ -455,12 +485,22 @@ revenue of all prior-active accounts. Count-based churn treats a funeral home th
 twice a decade identically to one that ships weekly; in a low-frequency business that
 systematically overstates the problem. Report both, lead with the weighted one.
 
+**Status: LIMITED.** Count-based churn, the size split and volume-weighted churn are all
+computable and published. **Revenue-weighted churn — the figure this definition says to
+lead with — is still not**, because the shipment export carries no revenue column.
+Volume-weighted churn (**5.6%** as at 2026-11-10, against **35.2%** by count) is published
+in its place and labelled as such.
+
+**The size split is not optional, and the 2026 figures show why:** accounts shipping ≥4
+times in the prior window churned at **9.5%**; accounts shipping fewer than 4 churned at
+**53.8%**. The headline count rate describes a company CSI is not.
+
 **State this honestly wherever churn is published:** churn here is **inferred from
 silence**, never observed. A funeral home does not send a cancellation notice; it simply
 calls someone else, or has no case to ship. For a small account, twelve months of
 silence is weak evidence. So report churn **split by account size** (≥4 shipments/yr vs.
 below) as well as weighted by revenue — the headline rate alone will mislead.
-**Status: BLOCKED.**
+
 
 ### M-16 — Net-new funeral home
 
@@ -476,6 +516,16 @@ five** hold:
 
 **Excluded:** accounts affiliated with **SCI** (outside the premier list — ask Ethan or
 Cheryl for it), **Northstar**, **Foundation Partners**, or **Impact Partners**.
+
+**Status: LIMITED as of 2026-11-10.** Conditions 1 and 3 are now computable from the
+shipment export, and condition 4 from the QuickBooks customer summary. Conditions 2
+(priority region) and 5 (documented origination) are **not** in any file the team holds:
+region needs the designated list from Ethan, and origination needs a CRM field nobody
+populates. So M-16 can be computed as an **upper bound** — homes that have never booked
+before and reach three shipments — and must be labelled as such. The exclusions are
+applied from the account dimension's `funeral_home_group`, which carries SCI, Northstar,
+Foundation Partners and Carriage but **no Impact Partners value at all**; that exclusion
+cannot currently be applied and any M-16 count must say so.
 For the Bookings Agent bonus the threshold is instead **≥$2,000 revenue in 2026** with
 documented origination (`okrs-2026-master.md`); and KR2 uses the ≥$2,000 test for its
 count of 50. Say which test you are applying.
@@ -497,7 +547,17 @@ bonus-bearing target.
 ### M-17 — Shipments per retained account
 Mean landed bookings in the current window across **retained accounts only**. The
 frequency term in the volume decomposition: it isolates "existing customers shipping
-more or less often" from accounts gained and lost. **Status: BLOCKED.**
+more or less often" from accounts gained and lost. **Status: COMPUTABLE. 17.16 as at
+2026-11-10**, down from 18.32 and 21.48 at the same date in the two prior years.
+
+**Read this one with care — it has a composition trap.** The retained set grows every
+year (460 → 551 → 586) and each new entrant is typically small, so the mean falls partly
+by arithmetic rather than by behaviour. **It is not evidence on its own that existing
+customers are shipping less.** The composition-free test is a *fixed* account set:
+`data/derived/base-attrition-vs-frequency.csv` holds the 2023 base constant and finds the
+428 survivors down only **2.3% in three years**, while 349 accounts stopped entirely and
+took 1,067 bookings. Quote the fixed-base figure when the question is behaviour, and M-17
+only when the question is the average account's size.
 
 ---
 

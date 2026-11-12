@@ -1,6 +1,8 @@
 # Data inventory
 
-**Last updated:** 2026-11-02 (product, TASK-0003: current `data/raw/` contents, gateway conflict closed, Missing list updated)
+**Last updated:** 2026-11-12 (data-analyst: the shipment-level export and the QuickBooks
+customer summary landed 2026-11-10 — Missing item 1 and item 2 both close, item 3 and
+item 4 unchanged. See `reports/customer-cohort-analysis.md`)
 **Source:** Ethan's local `Cargo Sales` folder (one-time export, 345 files, 2026-09-06), plus the exports placed in `data/raw/` on 2026-11-02.
 
 What the team has, what each file unlocks, and what is still missing. Every agent
@@ -16,7 +18,14 @@ declined programmatic access. All OMS-derived data must arrive as a manual expor
 placed in `data/raw/` by a human. Treat the OMS as an offline source, not a queryable
 one.
 
-Consequence: **no shipment-level data exists in this repo.** See [Missing](#missing)
+**Resolved 2026-11-10 by a route nobody had tried: Rednodo.** Claudio and Lucas at
+Rednodo built CSI's legacy system and supplied the shipment-level history directly, in a
+day. It did not have to come from the OMS at all. **Before specifying another OMS build,
+ask whether Rednodo already holds the data** — it is the cheaper and faster route for
+anything historical.
+
+Consequence (now historical): **no shipment-level data existed in this repo until
+2026-11-10.** See [Missing](#missing)
 below — this is the single largest gap. It blocks churn vs. acquisition vs. frequency,
 lane volume, corridor mix, account value, CAC and cohort work. **The route is a build,
 not a permission:** Ethan confirmed 2026-11-02 that the Flight Confirmation List, Ready to
@@ -35,6 +44,8 @@ analysis, never send names to a third-party tool, never put a name in a delivera
 | File | Shape | What it unlocks, and the caveat |
 |---|---|---|
 | `analytics-nov-daily-20261102.csv` | Header totals (revenue $150,742.43, 115 bookings, 0 missing revenue, 0 missing funeral home link) and daily `Period, Year, Revenue, Bookings` rows for Nov 2025 and Nov 2026 | Aggregate only. **`Period` is a flight or service date, not a creation date:** 2026 rows run to Nov 13, eleven days past the pull (`context/metric-definitions.md` M-02). The tie-out reference for any booking-level file |
+| `shipments-since-2022-20261110.xlsx` | Sheet `Shipments`, **48,715 rows × 4 cols**: `booking_id`, `shipping_funeral_home_id`, `flight_date`, `status`. From **Rednodo (Claudio/Lucas)**, the legacy system's builders — not the OMS | **The dependency four agents were blocked on.** Unblocks M-12–M-14, M-17, cohort and churn analysis, account value, the CAC denominator. **Annual booking counts are identical to the OMS analytics export** for 2023/24/25 and Jan–Aug 2026, so this is the system of record for volume. Caveats: the legacy system was still being adopted through H1 2022 (9 bookings in Jan 2022 vs 896 in Dec), so `history_begins` is **2022-08-01**; 2,183 rows (4.5%) have no funeral home; 1,270 have no flight date; 27 have impossible dates (26 of them the same mis-keyed `2060-02-02`); 162 account IDs are absent from the funeral-home master. **No revenue column**, so revenue-weighted churn (M-15) stays blocked. Carries **no decedent or family data** |
+| `sales-by-customer-summary-20261110.xlsx` | QuickBooks "Sales by Customer Summary", **1,428 customer rows × 2016–2026** annual accrued revenue. Header on row 5. From **Donald** | Revenue history back to 2016 — six years earlier than anything else the team has. **Two traps: a row literally named `TOTAL` sits inside the customer list and doubles every annual figure if summed naively, and an `ALREADY PAID` pseudo-customer carries $1.49M.** Exclude both and QuickBooks ties to the OMS analytics export within **1.3%** for 2023–2025, which partly closes the `CLAUDE.md §6` concern. Accrued, not cash. 2026 is partial, to Nov 10. Donald's grouping instruction (Bergen FL+NJ as one; Ortiz Delta, R.G. Ortiz Bronx, Rivera Janet, Rivera Celsa, Ponce as one) is applied in `scripts/analyze_customer_cohorts.py` and logged in `data/derived/revenue-customer-grouping-log.csv` |
 | `rates-published-20261102.csv` | 6,919 rows × 12 cols, 19 carriers. **`shipment_rate_type` blank on all rows.** 181 duplicated keys (487 rows); 133 carry conflicting prices, all `flat`; text in 5 `published_rate` and 5 `discount_rate` cells | Supersedes `rates-export-20260906.csv`. Defect list: `data/derived/rate-defect-keys.csv` (`scripts/rate_defects.py`) |
 | `rates-contracted-20261102.csv` | 157 data rows × 14 cols, four carriers (American, Delta, Southwest, United), all typed `Casket`; `effective_as_of` blank on 153 | The cost side (M-07). Reports cite 156 lanes; the file has 157 data rows and the difference is not traced. **15 carriers with 6,441 published lanes have no contracted row** |
 | `rates-special-20261102.csv` | Customer-specific rates (27 per `reports/carrier-margin-resolved.md`) × 16 cols, including `funeral_home_id` and `funeral_home_group_id` | Partner pricing (National Mortuary Shipping, Bergen) is deliberate, not leakage. Proves the OMS holds a funeral home group hierarchy |
@@ -119,17 +130,23 @@ OMS access because both figures are already in this repo.
 
 Ranked by how much each blocks.
 
-1. **Shipment-level records.** One row per shipment, with booking date, shipping
-   funeral home, origin gateway, destination, domestic/international flag, carrier,
-   revenue, status. Nothing in this repo contains it. Blocks: churn vs. acquisition vs.
-   frequency (the volume decomposition `CLAUDE.md §2` leaves open), active-account
-   definition, lane volume, corridor mix, account value, CAC, and every margin figure
-   that needs volume as well as rate. **Requires a build, not a permission** (no export
-   function exists on Flight Confirmation, Ready to Invoice or Collect Shipments, per
-   Ethan 2026-11-02). Specified in `reports/oms-export-spec.md`; requested as EA-45-01
-   (four-column cohort extract) and EA-45-02 (full file, nightly to Drive) in
-   `reports/pending-approval/engineering-ask-2026-45.md`. Staged for Ethan; not sent.
-2. **Legacy-system extract** for the OMS reconciliation described in `CLAUDE.md §6`.
+1. ~~**Shipment-level records.**~~ **LARGELY CLOSED 2026-11-10.**
+   `shipments-since-2022-20261110.xlsx` delivers booking date, shipping funeral home and
+   status for all 48,715 bookings since 2022. **Still missing from it, and what each gap
+   blocks:** *revenue per booking* (M-15 revenue-weighted churn, realised yield per
+   account, account value in dollars); *origin gateway, destination, domestic/international
+   flag, carrier, service type* (lane volume, corridor mix, cremation substitution, the
+   2026 yield question, every margin figure needing volume as well as rate); *the account
+   merge/rename log* (162 shipping IDs absent from the funeral-home master cap confidence
+   on the attrition finding at ~15%). **Ask Rednodo first, not the OMS** — they supplied
+   the first file in a day. Full specification remains `reports/oms-export-spec.md`.
+2. ~~**Legacy-system extract** for the OMS reconciliation described in `CLAUDE.md §6`.~~
+   **CLOSED 2026-11-10 for volume and revenue.** The shipment file *is* the legacy
+   extract. Bookings tie exactly for 2023–2025 and Jan–Aug 2026; QuickBooks revenue ties
+   within 1.3%. The §6 warning should be narrowed rather than repeated wholesale — see
+   `reports/customer-cohort-analysis.md` §5. **One live discrepancy remains:** QuickBooks
+   annualises 2026 to ~$14.4M (+1.3% on 2025) while the OMS Jan–Aug like-for-like showed
+   +4.4%. A ~$0.45M gap in the current year, open with Donald.
 3. **Marketing spend by channel by month** for the ~$20K. Blocks CAC by channel.
 4. **Quote log** (quotes issued vs. booked). The "wins on price ~80% of the time"
    claim in `CLAUDE.md §2` has no source in this repo. Ethan has confirmed no quote

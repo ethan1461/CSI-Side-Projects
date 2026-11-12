@@ -139,51 +139,53 @@ pip install -r requirements-db.txt
 
 ---
 
-## Step 7 — Find your database connection string
+## Step 7 — See what your .env actually calls things
 
-It's already on your machine, in the backend's environment file. Paste this one line:
+Your `.env` does **not** hold a single connection URL. It holds `DB_TYPE=mysql` and the rest split
+across separate variables. That is normal; we just need their names.
 
-```
-grep -i "database_url\|db_url\|postgres\|mysql" ~/Documents/"Cargo Sales"/cargo-sales-app/backend/.env
-```
-
-**You should see** one or more lines containing something shaped like:
+Paste this one line. **It prints variable NAMES only, never values** — nothing secret appears:
 
 ```
-postgresql://someuser:somepassword@some-host.com:5432/somedatabase
+grep -o '^[A-Za-z_]*' ~/Documents/"Cargo Sales"/cargo-sales-app/backend/.env | sort -u
 ```
 
-Copy **just that URL part** — from `postgresql://` (or `mysql://`) to the end. Not the
-`DATABASE_URL=` prefix, and no quotes.
+**You should see** a list like `DB_HOST`, `DB_NAME`, `DB_PASSWORD`, `DB_PORT`, `DB_TYPE`,
+`DB_USER` — possibly with other unrelated names mixed in.
 
-**Use the read-only user** if there's more than one. You said you have read-only credentials — that
-is the one to use here. Nothing in these scripts writes, but the read-only user is what makes that
-a guarantee rather than a promise.
+**Send me that list.** It is safe to paste into chat: names, no values.
 
 ---
 
-## Step 8 — Tell the script where the database is
+## Step 8 — Build the connection string without ever displaying your password
 
-Paste this, but **replace everything between the quotes** with the URL you just copied:
-
-```
-export CSI_DB_URL='postgresql://readonly_user:password@host:5432/dbname'
-```
-
-**Keep the single quotes.** They protect characters in the password.
-
-Nothing visible happens. That's correct.
-
-Check it took:
+Once the names are confirmed, paste this **whole block** at once (it is one unit, unlike the other
+steps). It reads the `.env`, assembles the URL, and prints it back **with the password masked**:
 
 ```
-echo $CSI_DB_URL
+set -a; source ~/Documents/"Cargo Sales"/cargo-sales-app/backend/.env; set +a
+export CSI_DB_URL="mysql+pymysql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT:-3306}/${DB_NAME}"
+echo "${CSI_DB_URL/:$DB_PASSWORD@/:********@}"
 ```
 
-**You should see** your URL printed back.
+**You should see** one line like:
 
-**This lasts only until you close Terminal.** To make it permanent, paste this one line — it
-appends the same line to your shell startup file:
+```
+mysql+pymysql://csi_readonly:********@some-host.com:3306/csi_production
+```
+
+Check that the user, host and database name look right. **If any part is blank** — you see `//:` or
+`@:3306/` with nothing between — the variable names differ from the guess. Send me the step 7 list
+and I will give you the corrected block.
+
+**Note the `mysql+pymysql://` prefix.** That is not a typo; it tells SQLAlchemy to use the PyMySQL
+driver you installed in step 6.
+
+**Use the read-only user.** If `.env` holds an admin account, swap `${DB_USER}` and
+`${DB_PASSWORD}` for the read-only credentials. Nothing here writes, but the read-only user is what
+makes that a guarantee rather than a promise.
+
+**This lasts only until you close Terminal.** To keep it, paste:
 
 ```
 echo "export CSI_DB_URL='$CSI_DB_URL'" >> ~/.zshrc

@@ -71,12 +71,21 @@ import json
 import logging
 import re
 import subprocess
+import sys
 from collections import Counter, defaultdict
 from dataclasses import dataclass
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 
 import openpyxl
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
+from metrics import (
+    BookingRecord,
+    classify_accounts,
+    shipments_per_retained_account,
+)
 
 VERSION = "1.0.0"
 SCRIPT_PATH = "scripts/analyze_customer_cohorts.py"
@@ -186,6 +195,18 @@ AT_RISK_MIN_PRIOR_BOOKINGS = 12  # roughly one shipment a month -- a real relati
 AT_RISK_MAX_RETENTION = 0.60  # 2026 annualised at or below 60% of 2024
 DORMANT_MIN_BOOKINGS = 5  # volume in 2024-25 worth a call
 ONE_AND_DONE_MIN_AGE_DAYS = 120  # give a new account a fair chance to re-book
+
+# When the legacy system's coverage becomes trustworthy. The export starts
+# 2022-01-02 but records 9 bookings in January 2022 against 896 in December: the
+# system was being adopted through the first half of the year. August 2022 (734)
+# is the first month at something near the run rate, so that is where history
+# can honestly be said to begin for cohort purposes.
+HISTORY_BEGINS = date(2022, 8, 1)
+
+# The size split `metric-definitions.md` M-15 requires: a count-based churn rate
+# that mixes a funeral home shipping weekly with one shipping twice a decade will
+# mislead, so churn is always reported either side of this line.
+FREQUENT_ACCOUNT_MIN_BOOKINGS = 4
 
 
 # --- small, testable primitives --------------------------------------------
@@ -414,7 +435,7 @@ def load_revenue(source: Path) -> tuple[dict[str, dict[int, float]], dict[str, i
 
     revenue: dict[str, dict[int, float]] = {}
     tally: Counter[str] = Counter()
-    for raw in rows[QB_HEADER_ROW :]:
+    for raw in rows[QB_HEADER_ROW:]:
         name = "" if raw[0] is None else str(raw[0]).strip()
         if not name or name.startswith("Accrual Basis"):
             continue
@@ -423,9 +444,7 @@ def load_revenue(source: Path) -> tuple[dict[str, dict[int, float]], dict[str, i
             tally[f"excluded_pseudo_customer_{name.upper().replace(' ', '_')}"] += 1
             continue
         series = {
-            year: float(raw[col])
-            for year, col in years.items()
-            if raw[col] not in (None, "")
+            year: float(raw[col]) for year, col in years.items() if raw[col] not in (None, "")
         }
         if not series:
             tally["excluded_no_revenue_any_year"] += 1
@@ -505,11 +524,9 @@ def decompose_years(by_year: dict[int, Counter[str]]) -> list[dict[str, object]]
                 "year": year,
                 "active_accounts": len(active),
                 "bookings": sum(now.values()),
-                "bookings_per_active_account": round(
-                    sum(now.values()) / len(active), 3
-                )
-                if active
-                else 0.0,
+                "bookings_per_active_account": (
+                    round(sum(now.values()) / len(active), 3) if active else 0.0
+                ),
                 "new_accounts": len(new),
                 "bookings_from_new": sum(now[a] for a in new),
                 "reactivated_accounts": len(reactivated),
@@ -518,19 +535,17 @@ def decompose_years(by_year: dict[int, Counter[str]]) -> list[dict[str, object]]
                 "retained_bookings_now": retained_now,
                 "retained_bookings_prior_year": retained_then,
                 "retained_bookings_delta": retained_now - retained_then,
-                "bookings_per_retained_account": round(retained_now / len(retained), 3)
-                if retained
-                else 0.0,
+                "bookings_per_retained_account": (
+                    round(retained_now / len(retained), 3) if retained else 0.0
+                ),
                 "churned_accounts": len(churned),
                 "churned_bookings_prior_year": sum(prior[a] for a in churned),
-                "gross_churn_rate_pct": round(len(churned) / len(prior_active) * 100, 2)
-                if prior_active
-                else None,
-                "logo_retention_rate_pct": round(
-                    len(retained) / len(prior_active) * 100, 2
-                )
-                if prior_active
-                else None,
+                "gross_churn_rate_pct": (
+                    round(len(churned) / len(prior_active) * 100, 2) if prior_active else None
+                ),
+                "logo_retention_rate_pct": (
+                    round(len(retained) / len(prior_active) * 100, 2) if prior_active else None
+                ),
                 "bookings_delta_vs_prior": sum(now.values()) - sum(prior.values()),
             }
         )
@@ -566,11 +581,11 @@ def retention_matrix(by_year: dict[int, Counter[str]]) -> list[dict[str, object]
                     "accounts_active": len(present),
                     "pct_accounts_active": round(len(present) / len(members) * 100, 2),
                     "bookings": sum(by_year[year][a] for a in members),
-                    "bookings_index_vs_first_year": round(
-                        sum(by_year[year][a] for a in members) / base_bookings * 100, 1
-                    )
-                    if base_bookings
-                    else None,
+                    "bookings_index_vs_first_year": (
+                        round(sum(by_year[year][a] for a in members) / base_bookings * 100, 1)
+                        if base_bookings
+                        else None
+                    ),
                 }
             )
     return rows
@@ -589,7 +604,7 @@ def first_to_second(bookings: list[Booking]) -> list[dict[str, object]]:
 
     windows = (90, 180, 365)
     buckets: dict[int, dict[str, object]] = {}
-    for account, account_dates in dates.items():
+    for account_dates in dates.values():
         account_dates.sort()
         first = account_dates[0]
         cohort = first.year
@@ -617,9 +632,7 @@ def first_to_second(bookings: list[Booking]) -> list[dict[str, object]]:
             if (DATA_CUT - first).days >= window:
                 row[f"eligible_{window}d"] = int(row[f"eligible_{window}d"]) + 1
                 if second is not None and (second - first).days <= window:
-                    row[f"second_within_{window}d"] = (
-                        int(row[f"second_within_{window}d"]) + 1
-                    )
+                    row[f"second_within_{window}d"] = int(row[f"second_within_{window}d"]) + 1
 
     out: list[dict[str, object]] = []
     for cohort in sorted(buckets):
@@ -668,9 +681,146 @@ def annualisation_factor(bookings: list[Booking], reference_years: tuple[int, ..
     return 1.0 / (sum(shares) / len(shares))
 
 
-def base_decay_rows(
-    by_year: dict[int, Counter[str]], factor: float
+def rolling_window_rows(
+    bookings: list[Booking], as_of_dates: tuple[date, ...]
 ) -> list[dict[str, object]]:
+    """The canonical M-12 to M-17 figures, on the published trailing 365-day window.
+
+    The calendar-year series elsewhere in this script answers "what happened in
+    2024"; this answers "what is true as at a date", which is the definition
+    `context/metric-definitions.md` section D commits CSI to and the one every
+    published churn figure must rest on. Computed through `src/metrics.py` so
+    there is one implementation of the definition, not two.
+
+    Churn is reported three ways because the count-based rate alone misleads in a
+    low-frequency business (M-15): by count, weighted by prior-window volume, and
+    split either side of `FREQUENT_ACCOUNT_MIN_BOOKINGS`.
+    """
+    records = [BookingRecord(b.account_id, b.flight_date) for b in bookings]
+    rows: list[dict[str, object]] = []
+    for as_of in as_of_dates:
+        cohorts = classify_accounts(records, as_of, history_begins=HISTORY_BEGINS)
+        current_opens = as_of - timedelta(days=cohorts.window_days)
+        prior_opens = as_of - timedelta(days=2 * cohorts.window_days)
+
+        prior_volume: Counter[str] = Counter()
+        current_volume: Counter[str] = Counter()
+        for record in records:
+            if prior_opens < record.booking_date <= current_opens:
+                prior_volume[record.funeral_home_id] += 1
+            elif current_opens < record.booking_date <= as_of:
+                current_volume[record.funeral_home_id] += 1
+
+        base = sum(prior_volume[a] for a in cohorts.active_prior)
+        lost = sum(prior_volume[a] for a in cohorts.churned)
+
+        split: dict[str, object] = {}
+        for label, keep in (
+            ("frequent", lambda n: n >= FREQUENT_ACCOUNT_MIN_BOOKINGS),
+            ("infrequent", lambda n: n < FREQUENT_ACCOUNT_MIN_BOOKINGS),
+        ):
+            members = [a for a in cohorts.active_prior if keep(prior_volume[a])]
+            churned_members = [a for a in members if a in cohorts.churned]
+            split[f"{label}_prior_active"] = len(members)
+            split[f"{label}_churned"] = len(churned_members)
+            split[f"{label}_churn_rate_pct"] = (
+                round(len(churned_members) / len(members) * 100, 2) if members else None
+            )
+            split[f"{label}_bookings_lost"] = sum(prior_volume[a] for a in churned_members)
+
+        rows.append(
+            {
+                "as_of": as_of.isoformat(),
+                "window_days": cohorts.window_days,
+                "active_accounts": len(cohorts.active),
+                "bookings_in_window": sum(current_volume.values()),
+                "new_accounts": len(cohorts.new),
+                "reactivated_accounts": len(cohorts.reactivated),
+                "retained_accounts": len(cohorts.retained),
+                "churned_accounts": len(cohorts.churned),
+                "churn_rate_count_pct": round(cohorts.churn_rate() * 100, 2),
+                "churn_rate_volume_weighted_pct": round(lost / base * 100, 2) if base else None,
+                "bookings_lost_to_churn": lost,
+                "shipments_per_retained_account": round(
+                    shipments_per_retained_account(records, cohorts), 3
+                ),
+                **split,
+            }
+        )
+    return rows
+
+
+def base_attrition_rows(by_year: dict[int, Counter[str]], factor: float) -> list[dict[str, object]]:
+    """Splits the base-year decay into accounts that stopped and accounts that shrank.
+
+    This is the decomposition the retention-versus-acquisition question actually
+    turns on, and it is composition-free: the account set is fixed at BASE_YEAR, so
+    none of the movement is an artefact of the base growing.
+    """
+    latest = max(by_year)
+    base = {a for a in by_year[BASE_YEAR]}
+    stopped = {a for a in base if by_year[latest][a] == 0}
+    surviving = base - stopped
+    new_since = {a for y in by_year for a in by_year[y]} - base
+
+    def volume(accounts: set[str], year: int, annualise: bool = False) -> float:
+        total = sum(by_year[year][a] for a in accounts)
+        return total * factor if annualise else float(total)
+
+    surviving_then = volume(surviving, BASE_YEAR)
+    surviving_now = volume(surviving, latest, annualise=True)
+    stopped_then = volume(stopped, BASE_YEAR)
+    new_now = volume(new_since, latest, annualise=True)
+
+    grew = {a for a in surviving if by_year[latest][a] * factor > by_year[BASE_YEAR][a]}
+    shrank = surviving - grew
+
+    return [
+        {
+            "effect": "1 accounts that stopped shipping entirely",
+            "accounts": len(stopped),
+            f"bookings_{BASE_YEAR}": round(stopped_then),
+            f"bookings_{latest}_annualised": 0,
+            "bookings_change": round(-stopped_then),
+            "note": f"{len(stopped)} of the {len(base)} accounts active in {BASE_YEAR}",
+        },
+        {
+            "effect": "2 accounts still shipping, net frequency change",
+            "accounts": len(surviving),
+            f"bookings_{BASE_YEAR}": round(surviving_then),
+            f"bookings_{latest}_annualised": round(surviving_now),
+            "bookings_change": round(surviving_now - surviving_then),
+            "note": (
+                f"{len(grew)} grew by "
+                f"{round(sum(by_year[latest][a] * factor - by_year[BASE_YEAR][a] for a in grew))}, "
+                f"{len(shrank)} shrank by "
+                f"{round(sum(by_year[BASE_YEAR][a] - by_year[latest][a] * factor for a in shrank))}"
+            ),
+        },
+        {
+            "effect": f"3 accounts acquired since {BASE_YEAR}",
+            "accounts": len(new_since),
+            f"bookings_{BASE_YEAR}": 0,
+            f"bookings_{latest}_annualised": round(new_now),
+            "bookings_change": round(new_now),
+            "note": "the acquisition engine's gross output",
+        },
+        {
+            "effect": "4 net change",
+            "accounts": len(base | new_since),
+            f"bookings_{BASE_YEAR}": round(volume(base, BASE_YEAR)),
+            f"bookings_{latest}_annualised": round(
+                volume(base | new_since, latest, annualise=True)
+            ),
+            "bookings_change": round(
+                volume(base | new_since, latest, annualise=True) - volume(base, BASE_YEAR)
+            ),
+            "note": "effects 1 + 2 + 3",
+        },
+    ]
+
+
+def base_decay_rows(by_year: dict[int, Counter[str]], factor: float) -> list[dict[str, object]]:
     """How the BASE_YEAR customer base has held up, banded by its size that year.
 
     The band totals plus the "new since" row reconcile to total volume, so the
@@ -691,9 +841,7 @@ def base_decay_rows(
             **{f"bookings_{y}": volumes[y] for y in years},
             f"bookings_{latest}_annualised": round(annualised),
             "change_vs_base_year": round(annualised - start),
-            "change_vs_base_year_pct": round((annualised / start - 1) * 100, 1)
-            if start
-            else None,
+            "change_vs_base_year_pct": round((annualised / start - 1) * 100, 1) if start else None,
         }
 
     for label, low, high in SIZE_BANDS:
@@ -803,25 +951,28 @@ def partner_share_rows(revenue: dict[str, dict[int, float]]) -> list[dict[str, o
     ortiz = [n for n in revenue if n in ORTIZ_GROUP_DONALD]
     partners = [n for n in revenue if is_partner(n)]
     rows: list[dict[str, object]] = []
+
+    def take(names: list[str], year: int) -> float:
+        return sum(revenue[n].get(year, 0.0) for n in names)
+
     for year in years:
         total = sum(s.get(year, 0.0) for s in revenue.values())
-        take = lambda names: sum(revenue[n].get(year, 0.0) for n in names)  # noqa: E731
         rows.append(
             {
                 "year": year,
                 "revenue": round(total, 2),
-                "partner_tier_revenue": round(take(partners), 2),
-                "partner_tier_share_pct": round(take(partners) / total * 100, 2)
-                if total
-                else None,
-                "bergen_group_revenue": round(take(bergen), 2),
-                "bergen_group_share_pct": round(take(bergen) / total * 100, 2)
-                if total
-                else None,
-                "ortiz_group_revenue": round(take(ortiz), 2),
-                "ortiz_group_share_pct": round(take(ortiz) / total * 100, 2)
-                if total
-                else None,
+                "partner_tier_revenue": round(take(partners, year), 2),
+                "partner_tier_share_pct": (
+                    round(take(partners, year) / total * 100, 2) if total else None
+                ),
+                "bergen_group_revenue": round(take(bergen, year), 2),
+                "bergen_group_share_pct": (
+                    round(take(bergen, year) / total * 100, 2) if total else None
+                ),
+                "ortiz_group_revenue": round(take(ortiz, year), 2),
+                "ortiz_group_share_pct": (
+                    round(take(ortiz, year) / total * 100, 2) if total else None
+                ),
             }
         )
     return rows
@@ -860,7 +1011,7 @@ def group_revenue(
             by_norm[normalize_name(name)].append(name)
     for names in by_norm.values():
         if len(names) > 1:
-            canonical = sorted(names, key=lambda n: (-len(n), n))[0]
+            canonical = min(names, key=lambda n: (-len(n), n))
             for name in names:
                 mapping[name] = canonical
                 if name != canonical:
@@ -912,6 +1063,10 @@ def revenue_churn_rows(grouped: dict[str, dict[int, float]]) -> list[dict[str, o
     active: dict[int, set[str]] = {
         year: {n for n, s in grouped.items() if s.get(year, 0.0) > 0} for year in years
     }
+
+    def rev(names: set[str], year: int) -> float:
+        return round(sum(grouped[n].get(year, 0.0) for n in names), 2)
+
     rows: list[dict[str, object]] = []
     for year in years:
         prior = active.get(year - 1, set())
@@ -920,9 +1075,6 @@ def revenue_churn_rows(grouped: dict[str, dict[int, float]]) -> list[dict[str, o
         retained = active[year] & prior
         reactivated = (active[year] & ever_before) - prior
         churned = prior - active[year]
-        rev = lambda names, y: round(  # noqa: E731
-            sum(grouped[n].get(y, 0.0) for n in names), 2
-        )
         rows.append(
             {
                 "year": year,
@@ -937,9 +1089,9 @@ def revenue_churn_rows(grouped: dict[str, dict[int, float]]) -> list[dict[str, o
                 "revenue_from_retained_prior_year": rev(retained, year - 1),
                 "churned_customers": len(churned),
                 "revenue_lost_to_churn_prior_year": rev(churned, year - 1),
-                "gross_churn_rate_pct": round(len(churned) / len(prior) * 100, 2)
-                if prior
-                else None,
+                "gross_churn_rate_pct": (
+                    round(len(churned) / len(prior) * 100, 2) if prior else None
+                ),
             }
         )
     return rows
@@ -1007,9 +1159,7 @@ def named_account_rows(
         ids: set[str] = set()
         for name in names:
             ids.update(joined.get(name, []))
-        return {
-            year: sum(bookings_by_account_year[year][i] for i in ids) for year in years
-        }
+        return {year: sum(bookings_by_account_year[year][i] for i in ids) for year in years}
 
     entities: list[tuple[str, str, list[str]]] = [
         ("Bergen Funeral Service (group)", "partner / Donald grouping", list(BERGEN_GROUP)),
@@ -1085,7 +1235,21 @@ def git_sha() -> str | None:
     return result.stdout.strip() or None
 
 
-def write_csv(path: Path, rows: list[dict[str, object]], sort_keys: tuple[str, ...]) -> None:
+def sort_value(value: object) -> tuple[int, float, str]:
+    """Sort key that orders numbers numerically and text lexically, nulls last."""
+    if value is None or value == "":
+        return (2, 0.0, "")
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        return (0, float(value), "")
+    return (1, 0.0, str(value))
+
+
+def write_csv(
+    path: Path,
+    rows: list[dict[str, object]],
+    sort_keys: tuple[str, ...],
+    descending: bool = False,
+) -> None:
     """Write rows deterministically so that diffs are meaningful."""
     if not rows:
         raise ValueError(f"refusing to write empty output: {path}")
@@ -1095,7 +1259,9 @@ def write_csv(path: Path, rows: list[dict[str, object]], sort_keys: tuple[str, .
             if key not in fields:
                 fields.append(key)
     ordered = sorted(
-        rows, key=lambda r: tuple(str(r.get(k)) if r.get(k) is not None else "" for k in sort_keys)
+        rows,
+        key=lambda r: tuple(sort_value(r.get(k)) for k in sort_keys),
+        reverse=descending,
     )
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
@@ -1124,7 +1290,7 @@ def write_meta(
         "dropped_columns_at_load": dropped,
         "filters_applied": filters,
         "git_sha": git_sha(),
-        "run_timestamp_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "run_timestamp_utc": datetime.now(UTC).isoformat(timespec="seconds"),
         "data_cut": DATA_CUT.isoformat(),
         "privacy_note": (
             "Shipment export carries no decedent or family data (four columns). "
@@ -1268,17 +1434,145 @@ def main() -> int:
         0,
         [],
         [
-            "windowed rates restricted to accounts whose first booking is at least "
-            "the window length before the data cut"
+            (
+                "windowed rates restricted to accounts whose first booking is at least "
+                "the window length before the data cut"
+            )
         ],
         "Does CSI keep what it wins? First-to-second-booking conversion by cohort.",
     )
 
+    # --- base decay and the sales lists ------------------------------------
+    factor = annualisation_factor(bookings, (2023, 2024, 2025))
+    LOG.info("annualisation factor for the part year: %.4f", factor)
+
+    rolling = rolling_window_rows(bookings, tuple(date(y, 11, 10) for y in (2024, 2025, 2026)))
+    write_csv(out / "rolling-window-account-metrics.csv", rolling, ("as_of",))
+    write_meta(
+        out / "rolling-window-account-metrics.meta.json",
+        [args.shipments],
+        booking_tally["rows_out"],
+        len(rolling),
+        [],
+        [
+            "trailing 365-day window per context/metric-definitions.md section D",
+            (
+                f"history_begins={HISTORY_BEGINS.isoformat()} -- the legacy system's "
+                "2022 adoption ramp means earlier months are not real coverage"
+            ),
+            (
+                "computed through src/metrics.py::classify_accounts, the canonical "
+                "implementation, so there is one definition and not two"
+            ),
+        ],
+        "The publishable M-12 to M-17 figures. Churn is reported by count, weighted by "
+        "volume, and split by account frequency, because the count rate alone misleads "
+        "in a low-frequency business (M-15).",
+    )
+
+    attrition = base_attrition_rows(full_year, factor)
+    write_csv(out / "base-attrition-vs-frequency.csv", attrition, ("effect",))
+    write_meta(
+        out / "base-attrition-vs-frequency.meta.json",
+        [args.shipments],
+        booking_tally["rows_out"],
+        len(attrition),
+        [],
+        [
+            (
+                f"account set fixed at {BASE_YEAR}, so no movement is an artefact of a "
+                "growing base"
+            ),
+            f"part-year {max(full_year)} annualised by {factor:.4f}",
+        ],
+        "The retention-versus-acquisition answer in four rows: how much volume left "
+        "with accounts that stopped, how much moved inside accounts that stayed, and "
+        "how much new business replaced it.",
+    )
+
+    write_csv(out / "base-decay-by-size-band.csv", base_decay_rows(full_year, factor), ("segment",))
+    write_meta(
+        out / "base-decay-by-size-band.meta.json",
+        [args.shipments],
+        booking_tally["rows_out"],
+        0,
+        [],
+        [
+            f"size bands set on {BASE_YEAR} bookings",
+            (
+                f"part-year {max(full_year)} annualised by {factor:.4f}, derived from "
+                "CSI's own 2023-2025 seasonal shape, not a uniform year"
+            ),
+        ],
+        "The flat-volume arithmetic in one table: how much of the base decayed and "
+        "how much new business replaced it.",
+    )
+
+    at_risk, dormant, one_and_done = sales_lists(bookings, full_year, accounts, factor)
+    for name, rows_out_, sort_key, descending, note in (
+        (
+            "accounts-at-risk-volume-decline.csv",
+            at_risk,
+            ("bookings_at_stake_vs_prior", "funeral_home"),
+            True,
+            (
+                f"Accounts with at least {AT_RISK_MIN_PRIOR_BOOKINGS} bookings two years "
+                f"ago now running at or below {AT_RISK_MAX_RETENTION:.0%} of that. Worked "
+                "list for the field, ranked by bookings at stake."
+            ),
+        ),
+        (
+            "accounts-dormant.csv",
+            dormant,
+            ("bookings_lost_per_year", "funeral_home"),
+            True,
+            (
+                f"Accounts with at least {DORMANT_MIN_BOOKINGS} bookings across the two "
+                "prior years and none at all this year. Win-back list."
+            ),
+        ),
+        (
+            "accounts-one-and-done.csv",
+            one_and_done,
+            ("first_and_only_booking", "funeral_home"),
+            False,
+            (
+                "Accounts won in the last two years that placed one booking and never "
+                "came back. Onboarding-failure list, not a prospecting list."
+            ),
+        ),
+    ):
+        write_csv(out / name, rows_out_, sort_key, descending=descending)
+        write_meta(
+            out / name.replace(".csv", ".meta.json"),
+            [args.shipments, args.accounts],
+            booking_tally["rows_out"],
+            len(rows_out_),
+            dropped,
+            [
+                "business names only; no individual contact is read from any source",
+                f"part-year annualised by {factor:.4f}",
+            ],
+            note,
+        )
+
     # --- revenue side -------------------------------------------------------
     grouped, merge_log = group_revenue(revenue)
-    write_csv(
-        out / "revenue-concentration-by-year.csv", concentration_rows(grouped), ("year",)
+    write_csv(out / "partner-tier-revenue-share.csv", partner_share_rows(revenue), ("year",))
+    write_meta(
+        out / "partner-tier-revenue-share.meta.json",
+        [args.revenue],
+        revenue_tally["rows_in"],
+        0,
+        [],
+        [
+            "partner tier per CLAUDE.md §5 and §7.1 standing authority 1",
+            "2026 is partial, to 2026-11-10: shares are valid, the level is not",
+        ],
+        "Partner-tier and family-group share of revenue. These are relationships, "
+        "not ordinary accounts (CLAUDE.md §5).",
     )
+    write_csv(out / "revenue-concentration-by-year.csv", concentration_rows(grouped), ("year",))
     write_meta(
         out / "revenue-concentration-by-year.meta.json",
         [args.revenue],
@@ -1286,20 +1580,22 @@ def main() -> int:
         0,
         [],
         [
-            "QuickBooks 'TOTAL' row excluded -- it is the report's own grand total "
-            "and including it doubles every annual figure",
+            (
+                "QuickBooks 'TOTAL' row excluded -- it is the report's own grand total "
+                "and including it doubles every annual figure"
+            ),
             "'ALREADY PAID' pseudo-customer excluded",
-            "Bergen FL+NJ combined and Donald's five Ortiz homes combined per his "
-            "instruction 2026-11-10",
+            (
+                "Bergen FL+NJ combined and Donald's five Ortiz homes combined per his "
+                "instruction 2026-11-10"
+            ),
             "duplicate QuickBooks customers with the same normalized name merged",
             "2026 is partial, to 2026-11-10: shares are valid, the level is not",
         ],
         "Top-N revenue share and HHI, 2016-2026, on grouped customers.",
     )
 
-    write_csv(
-        out / "revenue-customer-churn-by-year.csv", revenue_churn_rows(grouped), ("year",)
-    )
+    write_csv(out / "revenue-customer-churn-by-year.csv", revenue_churn_rows(grouped), ("year",))
     write_meta(
         out / "revenue-customer-churn-by-year.meta.json",
         [args.revenue],
@@ -1330,9 +1626,7 @@ def main() -> int:
     # --- join and reconciliation -------------------------------------------
     index = build_name_index(accounts)
     joined, join_tally = join_revenue_to_accounts(sorted(revenue), index, accounts)
-    matched_revenue_2024 = sum(
-        revenue[n].get(2024, 0.0) for n in joined if 2024 in revenue[n]
-    )
+    matched_revenue_2024 = sum(revenue[n].get(2024, 0.0) for n in joined if 2024 in revenue[n])
     total_revenue_2024 = sum(s.get(2024, 0.0) for s in revenue.values())
     matched_ids = {i for ids in joined.values() for i in ids}
     bookings_2024 = full_year.get(2024, Counter())
@@ -1350,18 +1644,22 @@ def main() -> int:
         {"metric": "unmatched_ambiguous_name", "value": join_tally["unmatched_ambiguous"]},
         {
             "metric": "pct_2024_revenue_joined",
-            "value": round(matched_revenue_2024 / total_revenue_2024 * 100, 2)
-            if total_revenue_2024
-            else None,
+            "value": (
+                round(matched_revenue_2024 / total_revenue_2024 * 100, 2)
+                if total_revenue_2024
+                else None
+            ),
         },
         {
             "metric": "pct_2024_bookings_on_joined_accounts",
-            "value": round(
-                sum(bookings_2024[i] for i in matched_ids) / sum(bookings_2024.values()) * 100,
-                2,
-            )
-            if bookings_2024
-            else None,
+            "value": (
+                round(
+                    sum(bookings_2024[i] for i in matched_ids) / sum(bookings_2024.values()) * 100,
+                    2,
+                )
+                if bookings_2024
+                else None
+            ),
         },
         {
             "metric": "shipping_accounts_in_export",
@@ -1426,13 +1724,16 @@ def main() -> int:
         0,
         dropped,
         [
-            "Donald's groupings applied as instructed; an extended Ortiz grouping is "
-            "reported alongside as a sensitivity, never folded into the primary figure",
-            "corporate-group rows are booking-side only: group revenue is often "
-            "billed centrally, so per-location revenue understates it",
+            (
+                "Donald's groupings applied as instructed; an extended Ortiz grouping is "
+                "reported alongside as a sensitivity, never folded into the primary figure"
+            ),
+            (
+                "corporate-group rows are booking-side only: group revenue is often "
+                "billed centrally, so per-location revenue understates it"
+            ),
         ],
-        "Trajectory of the accounts and groups the retention-vs-acquisition question "
-        "turns on.",
+        "Trajectory of the accounts and groups the retention-vs-acquisition question " "turns on.",
     )
 
     LOG.info("done")

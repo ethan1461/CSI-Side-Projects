@@ -139,7 +139,7 @@ funeral homes" is a growth argument, not a risk-reduction argument — CSI has a
 diversified, as a by-product of the acquisition engine that is working.
 
 What concentration remains is **relationship** concentration, not sales concentration:
-**the partner tier has been a stable 23–24% of revenue since 2018** (2026, part year:
+**the partner tier has been a stable 23–24% of revenue since 2022, and 22–26% since 2018** (2026, part year:
 Bergen $1.68M, IMS $0.66M, NMS $0.33M, Las Rosas $0.30M on $12.49M). Bergen alone is
 **13.4%** — CSI's single largest customer, a position it took from the Ortiz group, which
 held it in 2023 at 13.0% against Bergen's 12.4%. Per `CLAUDE.md` §5 that is the

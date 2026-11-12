@@ -1261,8 +1261,12 @@ def write_csv(
     rows: list[dict[str, object]],
     sort_keys: tuple[str, ...],
     descending: bool = False,
-) -> None:
-    """Write rows deterministically so that diffs are meaningful."""
+) -> int:
+    """Write rows deterministically so that diffs are meaningful.
+
+    Returns the number of rows written, so the companion `.meta.json` records a
+    real count rather than a figure the caller restated by hand.
+    """
     if not rows:
         raise ValueError(f"refusing to write empty output: {path}")
     fields: list[str] = []
@@ -1281,6 +1285,7 @@ def write_csv(
         writer.writeheader()
         writer.writerows(ordered)
     LOG.info("wrote %s rows_out=%d", path, len(ordered))
+    return len(ordered)
 
 
 def write_meta(
@@ -1422,7 +1427,7 @@ def main() -> int:
         "adoption ramp; 2024 is the first trustworthy acquisition year.",
     )
 
-    write_csv(
+    retention_out = write_csv(
         out / "cohort-retention-matrix.csv",
         retention_matrix(full_year),
         ("cohort_year", "year"),
@@ -1431,19 +1436,21 @@ def main() -> int:
         out / "cohort-retention-matrix.meta.json",
         [args.shipments],
         booking_tally["rows_out"],
-        0,
+        retention_out,
         [],
         ["as cohort-yearly-accounts"],
         "Accounts and bookings surviving by acquisition cohort. 2022 cohort is "
         "contaminated by left-censoring and is not an acquisition cohort.",
     )
 
-    write_csv(out / "cohort-first-to-second.csv", first_to_second(bookings), ("cohort_year",))
+    f2s_out = write_csv(
+        out / "cohort-first-to-second.csv", first_to_second(bookings), ("cohort_year",)
+    )
     write_meta(
         out / "cohort-first-to-second.meta.json",
         [args.shipments],
         booking_tally["rows_out"],
-        0,
+        f2s_out,
         [],
         [
             (
@@ -1502,12 +1509,14 @@ def main() -> int:
         "how much new business replaced it.",
     )
 
-    write_csv(out / "base-decay-by-size-band.csv", base_decay_rows(full_year, factor), ("segment",))
+    decay_out = write_csv(
+        out / "base-decay-by-size-band.csv", base_decay_rows(full_year, factor), ("segment",)
+    )
     write_meta(
         out / "base-decay-by-size-band.meta.json",
         [args.shipments],
         booking_tally["rows_out"],
-        0,
+        decay_out,
         [],
         [
             f"size bands set on {BASE_YEAR} bookings",
@@ -1570,12 +1579,14 @@ def main() -> int:
 
     # --- revenue side -------------------------------------------------------
     grouped, merge_log = group_revenue(revenue)
-    write_csv(out / "partner-tier-revenue-share.csv", partner_share_rows(revenue), ("year",))
+    partner_out = write_csv(
+        out / "partner-tier-revenue-share.csv", partner_share_rows(revenue), ("year",)
+    )
     write_meta(
         out / "partner-tier-revenue-share.meta.json",
         [args.revenue],
         revenue_tally["rows_in"],
-        0,
+        partner_out,
         [],
         [
             "partner tier per CLAUDE.md §5 and §7.1 standing authority 1",
@@ -1584,12 +1595,14 @@ def main() -> int:
         "Partner-tier and family-group share of revenue. These are relationships, "
         "not ordinary accounts (CLAUDE.md §5).",
     )
-    write_csv(out / "revenue-concentration-by-year.csv", concentration_rows(grouped), ("year",))
+    conc_out = write_csv(
+        out / "revenue-concentration-by-year.csv", concentration_rows(grouped), ("year",)
+    )
     write_meta(
         out / "revenue-concentration-by-year.meta.json",
         [args.revenue],
         revenue_tally["rows_in"],
-        0,
+        conc_out,
         [],
         [
             (
@@ -1607,12 +1620,14 @@ def main() -> int:
         "Top-N revenue share and HHI, 2016-2026, on grouped customers.",
     )
 
-    write_csv(out / "revenue-customer-churn-by-year.csv", revenue_churn_rows(grouped), ("year",))
+    rev_churn_out = write_csv(
+        out / "revenue-customer-churn-by-year.csv", revenue_churn_rows(grouped), ("year",)
+    )
     write_meta(
         out / "revenue-customer-churn-by-year.meta.json",
         [args.revenue],
         revenue_tally["rows_in"],
-        0,
+        rev_churn_out,
         [],
         ["as revenue-concentration-by-year"],
         "Revenue-based acquisition and churn. Reaches back to 2016, so unlike the "
@@ -1724,7 +1739,7 @@ def main() -> int:
         "analytics export (CLAUDE.md §6).",
     )
 
-    write_csv(
+    named_out = write_csv(
         out / "named-account-trajectory.csv",
         named_account_rows(grouped, revenue, full_year, joined, accounts),
         ("entity", "year"),
@@ -1733,7 +1748,7 @@ def main() -> int:
         out / "named-account-trajectory.meta.json",
         sources,
         revenue_tally["rows_in"] + booking_tally["rows_in"],
-        0,
+        named_out,
         dropped,
         [
             (

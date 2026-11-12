@@ -167,6 +167,26 @@ GROUP_PATTERNS: tuple[tuple[str, str], ...] = (
 
 CURVE_POINTS: tuple[int, ...] = (1, 5, 10, 25, 50, 100)
 
+# Reference year for the base-decay analysis. 2023 is the first full year clear of
+# the legacy system's 2022 adoption ramp.
+BASE_YEAR = 2023
+
+# Size bands for the base-decay table, on BASE_YEAR bookings.
+SIZE_BANDS: tuple[tuple[str, int, int], ...] = (
+    ("1 >=200", 200, 10**9),
+    ("2 100-199", 100, 200),
+    ("3 20-99", 20, 100),
+    ("4 5-19", 5, 20),
+    ("5 1-4", 1, 5),
+)
+
+# Thresholds for the sales lists. Chosen so each list is short enough to be worked
+# in a week and large enough to matter; stated here so they can be changed in one place.
+AT_RISK_MIN_PRIOR_BOOKINGS = 12  # roughly one shipment a month -- a real relationship
+AT_RISK_MAX_RETENTION = 0.60  # 2026 annualised at or below 60% of 2024
+DORMANT_MIN_BOOKINGS = 5  # volume in 2024-25 worth a call
+ONE_AND_DONE_MIN_AGE_DAYS = 120  # give a new account a fair chance to re-book
+
 
 # --- small, testable primitives --------------------------------------------
 
@@ -625,6 +645,186 @@ def first_to_second(bookings: list[Booking]) -> list[dict[str, object]]:
             )
         out.append(record)
     return out
+
+
+def annualisation_factor(bookings: list[Booking], reference_years: tuple[int, ...]) -> float:
+    """Multiplier that scales a part-year to a full year, from CSI's own seasonality.
+
+    Derived from the share of each complete year's bookings that fall on or before
+    the month and day of the data cut, averaged over the reference years. Using
+    the business's own shape beats assuming the year is uniform: 1/(314/365) would
+    be 1.162, CSI's actual shape gives a different number.
+    """
+    shares: list[float] = []
+    for year in reference_years:
+        full = [b for b in bookings if b.flight_date.year == year]
+        if not full:
+            continue
+        cutoff = date(year, DATA_CUT.month, DATA_CUT.day)
+        to_date = [b for b in full if b.flight_date <= cutoff]
+        shares.append(len(to_date) / len(full))
+    if not shares:
+        raise ValueError("no reference years available for annualisation")
+    return 1.0 / (sum(shares) / len(shares))
+
+
+def base_decay_rows(
+    by_year: dict[int, Counter[str]], factor: float
+) -> list[dict[str, object]]:
+    """How the BASE_YEAR customer base has held up, banded by its size that year.
+
+    The band totals plus the "new since" row reconcile to total volume, so the
+    flat-volume arithmetic is visible in one table.
+    """
+    latest = max(by_year)
+    base = by_year[BASE_YEAR]
+    years = sorted(y for y in by_year if y >= BASE_YEAR)
+    rows: list[dict[str, object]] = []
+
+    def row_for(label: str, accounts: set[str]) -> dict[str, object]:
+        volumes = {y: sum(by_year[y][a] for a in accounts) for y in years}
+        annualised = volumes[latest] * factor
+        start = volumes[BASE_YEAR]
+        return {
+            "segment": label,
+            "accounts": len(accounts),
+            **{f"bookings_{y}": volumes[y] for y in years},
+            f"bookings_{latest}_annualised": round(annualised),
+            "change_vs_base_year": round(annualised - start),
+            "change_vs_base_year_pct": round((annualised / start - 1) * 100, 1)
+            if start
+            else None,
+        }
+
+    for label, low, high in SIZE_BANDS:
+        rows.append(row_for(label, {a for a in by_year[BASE_YEAR] if low <= base[a] < high}))
+    rows.append(row_for(f"6 base {BASE_YEAR} total", set(by_year[BASE_YEAR])))
+    rows.append(
+        row_for(
+            f"7 accounts absent in {BASE_YEAR}",
+            {a for y in by_year for a in by_year[y]} - set(by_year[BASE_YEAR]),
+        )
+    )
+    rows.append(row_for("8 all accounts", {a for y in by_year for a in by_year[y]}))
+    return rows
+
+
+def sales_lists(
+    bookings: list[Booking],
+    by_year: dict[int, Counter[str]],
+    accounts: dict[str, Account],
+    factor: float,
+) -> tuple[list[dict[str, object]], list[dict[str, object]], list[dict[str, object]]]:
+    """Three worked lists: at-risk, dormant, and never-re-booked.
+
+    Business names only. No individual contact is read from any source, so these
+    are safe to hand to a rep as-is (`CLAUDE.md` §7.2).
+    """
+    latest = max(by_year)
+    prior = latest - 2  # 2024 against 2026: two full years of trend, not one month
+    first_seen: dict[str, date] = {}
+    last_seen: dict[str, date] = {}
+    total: Counter[str] = Counter()
+    for booking in bookings:
+        total[booking.account_id] += 1
+        account_id = booking.account_id
+        if account_id not in first_seen or booking.flight_date < first_seen[account_id]:
+            first_seen[account_id] = booking.flight_date
+        if account_id not in last_seen or booking.flight_date > last_seen[account_id]:
+            last_seen[account_id] = booking.flight_date
+
+    def describe(account_id: str) -> dict[str, object]:
+        account = accounts.get(account_id)
+        return {
+            "funeral_home_id": account_id,
+            "funeral_home": account.name if account else "(not in account export)",
+            "state": account.state if account else "",
+            "group": account.group if account else "",
+            "is_partner_tier": is_partner(account.name) if account else False,
+        }
+
+    at_risk: list[dict[str, object]] = []
+    for account_id, count in by_year[prior].items():
+        if count < AT_RISK_MIN_PRIOR_BOOKINGS:
+            continue
+        annualised = by_year[latest][account_id] * factor
+        if annualised > AT_RISK_MAX_RETENTION * count:
+            continue
+        at_risk.append(
+            {
+                **describe(account_id),
+                f"bookings_{prior}": count,
+                f"bookings_{latest - 1}": by_year[latest - 1][account_id],
+                f"bookings_{latest}_to_cut": by_year[latest][account_id],
+                f"bookings_{latest}_annualised": round(annualised),
+                "bookings_at_stake_vs_prior": round(count - annualised),
+                "retention_pct": round(annualised / count * 100, 1),
+                "last_booking": last_seen[account_id].isoformat(),
+            }
+        )
+
+    dormant: list[dict[str, object]] = []
+    for account_id in set(by_year[prior]) | set(by_year[latest - 1]):
+        recent = by_year[prior][account_id] + by_year[latest - 1][account_id]
+        if by_year[latest][account_id] or recent < DORMANT_MIN_BOOKINGS:
+            continue
+        dormant.append(
+            {
+                **describe(account_id),
+                f"bookings_{prior}": by_year[prior][account_id],
+                f"bookings_{latest - 1}": by_year[latest - 1][account_id],
+                "bookings_lost_per_year": recent / 2,
+                "last_booking": last_seen[account_id].isoformat(),
+                "days_since_last_booking": (DATA_CUT - last_seen[account_id]).days,
+            }
+        )
+
+    one_and_done: list[dict[str, object]] = []
+    for account_id, first in first_seen.items():
+        if total[account_id] != 1 or first.year < latest - 1:
+            continue
+        if (DATA_CUT - first).days < ONE_AND_DONE_MIN_AGE_DAYS:
+            continue
+        one_and_done.append(
+            {
+                **describe(account_id),
+                "first_and_only_booking": first.isoformat(),
+                "days_since": (DATA_CUT - first).days,
+            }
+        )
+
+    return at_risk, dormant, one_and_done
+
+
+def partner_share_rows(revenue: dict[str, dict[int, float]]) -> list[dict[str, object]]:
+    """Partner-tier and family-group share of revenue by year."""
+    years = sorted({y for s in revenue.values() for y in s})
+    bergen = [n for n in revenue if n in BERGEN_GROUP]
+    ortiz = [n for n in revenue if n in ORTIZ_GROUP_DONALD]
+    partners = [n for n in revenue if is_partner(n)]
+    rows: list[dict[str, object]] = []
+    for year in years:
+        total = sum(s.get(year, 0.0) for s in revenue.values())
+        take = lambda names: sum(revenue[n].get(year, 0.0) for n in names)  # noqa: E731
+        rows.append(
+            {
+                "year": year,
+                "revenue": round(total, 2),
+                "partner_tier_revenue": round(take(partners), 2),
+                "partner_tier_share_pct": round(take(partners) / total * 100, 2)
+                if total
+                else None,
+                "bergen_group_revenue": round(take(bergen), 2),
+                "bergen_group_share_pct": round(take(bergen) / total * 100, 2)
+                if total
+                else None,
+                "ortiz_group_revenue": round(take(ortiz), 2),
+                "ortiz_group_share_pct": round(take(ortiz) / total * 100, 2)
+                if total
+                else None,
+            }
+        )
+    return rows
 
 
 # --- revenue side -----------------------------------------------------------

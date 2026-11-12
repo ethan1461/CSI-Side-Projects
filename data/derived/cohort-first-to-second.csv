@@ -1,0 +1,6 @@
+cohort_year,accounts,accounts_with_second_booking_ever,pct_with_second_booking_ever,median_days_to_second,eligible_90d,pct_second_within_90d,eligible_180d,pct_second_within_180d,eligible_365d,pct_second_within_365d
+2022,613,500,81.57,36,613,55.63,613,65.74,613,73.41
+2023,378,256,67.72,125,378,29.37,378,40.74,378,51.85
+2024,306,175,57.19,110,306,26.47,306,35.95,306,45.75
+2025,297,141,47.47,81,297,24.24,297,30.98,259,42.86
+2026,373,98,26.27,29,253,23.72,133,33.08,0,

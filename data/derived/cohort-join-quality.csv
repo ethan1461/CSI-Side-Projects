@@ -1,0 +1,10 @@
+metric,value
+matched_unique_name,1226
+matched_via_duplicate_group,14
+pct_2024_bookings_on_joined_accounts,90.78
+pct_2024_revenue_joined,97.37
+quickbooks_customers,1426
+shipping_accounts_absent_from_account_dimension,158
+shipping_accounts_in_export,1967
+unmatched_ambiguous_name,30
+unmatched_no_account_record,156

@@ -1,0 +1,18 @@
+{
+  "data_cut": "2026-11-10",
+  "dropped_columns_at_load": [],
+  "filters_applied": [
+    "none -- every row in the export is counted here"
+  ],
+  "git_sha": "36dec5f4ada1a2c06c33a8f7e7b4da58053f5298",
+  "note": "Field completeness and status mix of the shipment export, by flight-date year.",
+  "privacy_note": "Shipment export carries no decedent or family data (four columns). OMS account export identifier columns dropped at load per CLAUDE.md \u00a77.2. Funeral-home business names retained deliberately. No row-level shipment data is written.",
+  "rows_in": 48715,
+  "rows_out": 8,
+  "run_timestamp_utc": "2026-11-12T04:11:44+00:00",
+  "script": "scripts/analyze_customer_cohorts.py",
+  "script_version": "1.0.0",
+  "source_files": [
+    "data/raw/shipments-since-2022-20261110.xlsx"
+  ]
+}

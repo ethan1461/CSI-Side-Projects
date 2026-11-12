@@ -1,0 +1,87 @@
+entity,kind,component_customers,year,revenue,bookings
+Bergen Funeral Service (group),partner / Donald grouping,2,2016,202290.58,
+Bergen Funeral Service (group),partner / Donald grouping,2,2017,392601.48,
+Bergen Funeral Service (group),partner / Donald grouping,2,2018,380749.85,
+Bergen Funeral Service (group),partner / Donald grouping,2,2019,555071.04,
+Bergen Funeral Service (group),partner / Donald grouping,2,2020,685067.05,
+Bergen Funeral Service (group),partner / Donald grouping,2,2021,1170908.95,
+Bergen Funeral Service (group),partner / Donald grouping,2,2022,1620725.24,509
+Bergen Funeral Service (group),partner / Donald grouping,2,2023,1728522.6,1116
+Bergen Funeral Service (group),partner / Donald grouping,2,2024,1769898.55,1181
+Bergen Funeral Service (group),partner / Donald grouping,2,2025,1853379.6,1202
+Bergen Funeral Service (group),partner / Donald grouping,2,2026,1677678.69,1112
+"Carriage Services (corporate group, booking side)",corporate group,0,2022,,0
+"Carriage Services (corporate group, booking side)",corporate group,0,2023,,0
+"Carriage Services (corporate group, booking side)",corporate group,0,2024,,0
+"Carriage Services (corporate group, booking side)",corporate group,0,2025,,0
+"Carriage Services (corporate group, booking side)",corporate group,0,2026,,0
+"Foundation Partners (corporate group, booking side)",corporate group,0,2022,,0
+"Foundation Partners (corporate group, booking side)",corporate group,9,2023,,45
+"Foundation Partners (corporate group, booking side)",corporate group,22,2024,,246
+"Foundation Partners (corporate group, booking side)",corporate group,19,2025,,248
+"Foundation Partners (corporate group, booking side)",corporate group,19,2026,,144
+International Mortuary Shipping,partner tier,2,2016,0.0,
+International Mortuary Shipping,partner tier,2,2017,262352.79,
+International Mortuary Shipping,partner tier,2,2018,491605.96,
+International Mortuary Shipping,partner tier,2,2019,594514.54,
+International Mortuary Shipping,partner tier,2,2020,556750.9,
+International Mortuary Shipping,partner tier,2,2021,671210.45,
+International Mortuary Shipping,partner tier,2,2022,704318.24,16
+International Mortuary Shipping,partner tier,2,2023,812534.07,12
+International Mortuary Shipping,partner tier,2,2024,699328.1,10
+International Mortuary Shipping,partner tier,2,2025,727854.26,10
+International Mortuary Shipping,partner tier,2,2026,663997.3,6
+Las Rosas (all),partner tier,3,2016,16051.72,
+Las Rosas (all),partner tier,3,2017,27302.38,
+Las Rosas (all),partner tier,3,2018,34824.97,
+Las Rosas (all),partner tier,3,2019,38722.45,
+Las Rosas (all),partner tier,3,2020,131444.0,
+Las Rosas (all),partner tier,3,2021,235869.69,
+Las Rosas (all),partner tier,3,2022,248002.25,91
+Las Rosas (all),partner tier,3,2023,298281.0,190
+Las Rosas (all),partner tier,3,2024,331087.0,222
+Las Rosas (all),partner tier,3,2025,316182.07,212
+Las Rosas (all),partner tier,3,2026,296033.39,189
+National Mortuary Shipping,partner tier,3,2016,64443.71,
+National Mortuary Shipping,partner tier,3,2017,484014.42,
+National Mortuary Shipping,partner tier,3,2018,751844.62,
+National Mortuary Shipping,partner tier,3,2019,867843.43,
+National Mortuary Shipping,partner tier,3,2020,964593.9,
+National Mortuary Shipping,partner tier,3,2021,1058533.66,
+National Mortuary Shipping,partner tier,3,2022,1245906.6,23
+National Mortuary Shipping,partner tier,3,2023,1237797.57,20
+National Mortuary Shipping,partner tier,3,2024,1078454.99,15
+National Mortuary Shipping,partner tier,3,2025,1104881.57,22
+National Mortuary Shipping,partner tier,3,2026,992674.36,7
+"Northstar (corporate group, booking side)",corporate group,21,2022,,272
+"Northstar (corporate group, booking side)",corporate group,41,2023,,656
+"Northstar (corporate group, booking side)",corporate group,42,2024,,714
+"Northstar (corporate group, booking side)",corporate group,39,2025,,644
+"Northstar (corporate group, booking side)",corporate group,42,2026,,555
+"Ortiz funeral homes (extended, sensitivity)",sensitivity -- adds names Donald did not list,9,2016,405206.13,
+"Ortiz funeral homes (extended, sensitivity)",sensitivity -- adds names Donald did not list,9,2017,781826.15,
+"Ortiz funeral homes (extended, sensitivity)",sensitivity -- adds names Donald did not list,9,2018,318470.94,
+"Ortiz funeral homes (extended, sensitivity)",sensitivity -- adds names Donald did not list,9,2019,266870.24,
+"Ortiz funeral homes (extended, sensitivity)",sensitivity -- adds names Donald did not list,9,2020,1002808.89,
+"Ortiz funeral homes (extended, sensitivity)",sensitivity -- adds names Donald did not list,9,2021,824421.66,
+"Ortiz funeral homes (extended, sensitivity)",sensitivity -- adds names Donald did not list,9,2022,1328809.82,297
+"Ortiz funeral homes (extended, sensitivity)",sensitivity -- adds names Donald did not list,9,2023,1869417.29,1026
+"Ortiz funeral homes (extended, sensitivity)",sensitivity -- adds names Donald did not list,9,2024,1758341.52,1131
+"Ortiz funeral homes (extended, sensitivity)",sensitivity -- adds names Donald did not list,9,2025,1484983.75,936
+"Ortiz funeral homes (extended, sensitivity)",sensitivity -- adds names Donald did not list,9,2026,1024828.49,664
+"Ortiz funeral homes (group, Donald's five)",Donald grouping,5,2016,403202.13,
+"Ortiz funeral homes (group, Donald's five)",Donald grouping,5,2017,780726.15,
+"Ortiz funeral homes (group, Donald's five)",Donald grouping,5,2018,318470.94,
+"Ortiz funeral homes (group, Donald's five)",Donald grouping,5,2019,266870.24,
+"Ortiz funeral homes (group, Donald's five)",Donald grouping,5,2020,1002808.89,
+"Ortiz funeral homes (group, Donald's five)",Donald grouping,5,2021,824421.66,
+"Ortiz funeral homes (group, Donald's five)",Donald grouping,5,2022,1328809.82,297
+"Ortiz funeral homes (group, Donald's five)",Donald grouping,5,2023,1805967.29,989
+"Ortiz funeral homes (group, Donald's five)",Donald grouping,5,2024,1750551.52,1127
+"Ortiz funeral homes (group, Donald's five)",Donald grouping,5,2025,1484983.75,936
+"Ortiz funeral homes (group, Donald's five)",Donald grouping,5,2026,1019483.49,661
+"SCI (corporate group, booking side)",corporate group,56,2022,,406
+"SCI (corporate group, booking side)",corporate group,102,2023,,971
+"SCI (corporate group, booking side)",corporate group,97,2024,,1044
+"SCI (corporate group, booking side)",corporate group,120,2025,,1128
+"SCI (corporate group, booking side)",corporate group,123,2026,,1038

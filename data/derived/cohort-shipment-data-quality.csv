@@ -1,0 +1,9 @@
+flight_date_year,rows,missing_funeral_home,missing_funeral_home_pct,status_not_booked,status_not_booked_pct,status_mix
+2022,5327,230,4.32,127,2.38,Airline Reservation=2; Booked=5200; Booking saved as draft=6; Pending=5; Pending AWB=92; Reservation TAG=19; Waiting Airline=3
+2023,10571,269,2.54,1,0.01,Booked=10570; Waiting Airline=1
+2024,10867,196,1.8,0,0.0,Booked=10867
+2025,10985,182,1.66,3,0.03,Booked=10982; Quote converted to booking=3
+2026,9668,59,0.61,17,0.18,Booked=9651; Booking saved as draft=16; Quote converted to booking=1
+impossible year 2052,1,0,0.0,0,0.0,Booked=1
+impossible year 2060,26,0,0.0,0,0.0,Booked=26
+no flight date,1270,1247,98.19,842,66.3,Airline Reservation=488; Booked=428; Booking saved as draft=88; Pending AWB=73; Quote converted to booking=6; Reservation TAG=186; Waiting Airline=1

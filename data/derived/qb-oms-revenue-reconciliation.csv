@@ -1,0 +1,12 @@
+year,quickbooks_accrued_revenue,oms_analytics_revenue,delta,delta_pct,comparable
+2016,2084904.3,,,,no -- OMS history begins Sep 2022
+2017,4367567.27,,,,no -- OMS history begins Sep 2022
+2018,4499972.84,,,,no -- OMS history begins Sep 2022
+2019,5653189.26,,,,no -- OMS history begins Sep 2022
+2020,7813149.25,,,,no -- OMS history begins Sep 2022
+2021,10948018.81,,,,no -- OMS history begins Sep 2022
+2022,13247259.09,,,,no -- OMS history begins Sep 2022
+2023,13923181.62,13900783.0,22398.62,0.16,yes
+2024,14045522.22,14141792.0,-96269.78,-0.68,yes
+2025,14237881.23,14417145.0,-179263.77,-1.24,yes
+2026,12491402.07,,,,no -- OMS history begins Sep 2022

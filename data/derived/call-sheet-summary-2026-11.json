@@ -1,39 +1,85 @@
 {
   "Otto": {
-    "at_risk": 14,
-    "dormant": 17,
-    "one_and_done": 130,
-    "stake_bookings_yr": 288,
-    "dormant_lost_bookings_yr": 70,
-    "total": 161
+    "at_risk": 18,
+    "dormant": 21,
+    "one_and_done": 145,
+    "at_risk_bookings_per_year": 348,
+    "dormant_lost_bookings_per_year": 85,
+    "enterprise_rows": 24,
+    "total": 184
   },
   "Stacy": {
-    "at_risk": 14,
-    "dormant": 22,
-    "one_and_done": 127,
-    "stake_bookings_yr": 259,
-    "dormant_lost_bookings_yr": 85,
-    "total": 163
+    "at_risk": 19,
+    "dormant": 29,
+    "one_and_done": 146,
+    "at_risk_bookings_per_year": 329,
+    "dormant_lost_bookings_per_year": 106,
+    "enterprise_rows": 31,
+    "total": 194
+  },
+  "unassigned_pool": {
+    "at_risk": 37,
+    "dormant": 50,
+    "one_and_done": 291,
+    "at_risk_bookings_per_year": 677,
+    "dormant_lost_bookings_per_year": 191,
+    "enterprise_rows": 55,
+    "total": 378
+  },
+  "ortiz-group": {
+    "at_risk": 3,
+    "dormant": 0,
+    "one_and_done": 0,
+    "at_risk_bookings_per_year": 406,
+    "dormant_lost_bookings_per_year": 0,
+    "enterprise_rows": 0,
+    "total": 3
   },
   "ethan-held": {
-    "at_risk": 16,
-    "dormant": 13,
-    "one_and_done": 35,
-    "stake_at_risk": 626,
-    "dormant_lost": 42,
-    "total": 64
+    "at_risk": 4,
+    "dormant": 2,
+    "one_and_done": 1,
+    "at_risk_bookings_per_year": 90,
+    "dormant_lost_bookings_per_year": 6,
+    "enterprise_rows": 0,
+    "total": 7
   },
   "unrouted": {
     "at_risk": 2,
     "dormant": 2,
     "one_and_done": 10,
-    "stake_at_risk": 40,
-    "dormant_lost": 7,
+    "at_risk_bookings_per_year": 40,
+    "dormant_lost_bookings_per_year": 7,
+    "enterprise_rows": 0,
     "total": 14
   },
   "partner_excluded": [
     "5176",
     "2380"
   ],
-  "yield_estimate": 1346
+  "enterprise_on_rep_sheets": {
+    "SCI": {
+      "at_risk": 6,
+      "dormant": 8,
+      "one_and_done": 32,
+      "at_risk_bookings_per_year": 84,
+      "dormant_lost_bookings_per_year": 28,
+      "enterprise_rows": 46,
+      "total": 46
+    },
+    "Northstar": {
+      "at_risk": 4,
+      "dormant": 3,
+      "one_and_done": 2,
+      "at_risk_bookings_per_year": 73,
+      "dormant_lost_bookings_per_year": 8,
+      "enterprise_rows": 9,
+      "total": 9
+    }
+  },
+  "yield_estimate": 1346,
+  "reconciliation": {
+    "rows_on_routed_sheets": 404,
+    "rows_in_after_dedupe": 404
+  }
 }

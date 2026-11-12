@@ -5,12 +5,12 @@
     "account set fixed at 2023, so no movement is an artefact of a growing base",
     "part-year 2026 annualised by 1.1544"
   ],
-  "git_sha": "f9507945d198b14eed60cef54ab8a4ad98409d9e",
+  "git_sha": "1d1fe7f49cb75f313d934bd2c96e456467295475",
   "note": "The retention-versus-acquisition answer in four rows: how much volume left with accounts that stopped, how much moved inside accounts that stayed, and how much new business replaced it.",
   "privacy_note": "Shipment export carries no decedent or family data (four columns). OMS account export identifier columns dropped at load per CLAUDE.md \u00a77.2. Funeral-home business names retained deliberately. No row-level shipment data is written.",
   "rows_in": 46397,
   "rows_out": 4,
-  "run_timestamp_utc": "2026-11-12T04:23:31+00:00",
+  "run_timestamp_utc": "2026-11-12T04:26:19+00:00",
   "script": "scripts/analyze_customer_cohorts.py",
   "script_version": "1.0.0",
   "source_files": [

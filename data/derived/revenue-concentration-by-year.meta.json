@@ -8,12 +8,12 @@
     "duplicate QuickBooks customers with the same normalized name merged",
     "2026 is partial, to 2026-11-10: shares are valid, the level is not"
   ],
-  "git_sha": "f9507945d198b14eed60cef54ab8a4ad98409d9e",
+  "git_sha": "1d1fe7f49cb75f313d934bd2c96e456467295475",
   "note": "Top-N revenue share and HHI, 2016-2026, on grouped customers.",
   "privacy_note": "Shipment export carries no decedent or family data (four columns). OMS account export identifier columns dropped at load per CLAUDE.md \u00a77.2. Funeral-home business names retained deliberately. No row-level shipment data is written.",
   "rows_in": 1428,
   "rows_out": 0,
-  "run_timestamp_utc": "2026-11-12T04:23:31+00:00",
+  "run_timestamp_utc": "2026-11-12T04:26:19+00:00",
   "script": "scripts/analyze_customer_cohorts.py",
   "script_version": "1.0.0",
   "source_files": [

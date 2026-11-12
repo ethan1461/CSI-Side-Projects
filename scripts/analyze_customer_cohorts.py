@@ -258,9 +258,21 @@ def normalize_name(raw: str) -> str:
 
 
 def is_partner(name: str) -> bool:
-    """True when the account is a named strategic partner (`CLAUDE.md` §5)."""
+    """True when the account is a named strategic partner (`CLAUDE.md` §5).
+
+    Matched on a word boundary, not a bare substring. "national mortuary shipping"
+    is a substring of "International Mortuary Shipping" -- two different partners,
+    and conflating them put International's revenue inside National's figures.
+
+    >>> is_partner("National Mortuary Shipping")
+    True
+    >>> is_partner("Bergen Funeral Service (Florida)")
+    True
+    >>> is_partner("Smith Funeral Home")
+    False
+    """
     lowered = name.lower()
-    return any(marker in lowered for marker in PARTNER_MARKERS)
+    return any(re.search(rf"\b{marker}", lowered) for marker in PARTNER_MARKERS)
 
 
 def corporate_group(name: str, oms_group: str) -> str:
@@ -1175,7 +1187,7 @@ def named_account_rows(
         ("International Mortuary Shipping", "international mortuary shipping"),
         ("Las Rosas (all)", "las rosas"),
     ):
-        names = [n for n in raw_revenue if marker in n.lower()]
+        names = [n for n in raw_revenue if re.search(rf"\b{marker}", n.lower())]
         entities.append((label, "partner tier", names))
 
     rows: list[dict[str, object]] = []

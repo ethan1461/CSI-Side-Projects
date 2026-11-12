@@ -1,0 +1,5 @@
+effect,accounts,bookings_2023,bookings_2026_annualised,bookings_change,note
+1 accounts that stopped shipping entirely,349,1067,0,-1067,349 of the 777 accounts active in 2023
+"2 accounts still shipping, net frequency change",428,9235,9018,-217,"225 grew by 1697, 203 shrank by 1914"
+3 accounts acquired since 2023,1190,0,1976,1976,the acquisition engine's gross output
+4 net change,1967,10302,10994,692,effects 1 + 2 + 3

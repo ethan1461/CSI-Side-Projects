@@ -1,0 +1,39 @@
+{
+  "data_cut": "2026-11-10",
+  "dropped_columns_at_load": [
+    "address",
+    "booking_count",
+    "city",
+    "country",
+    "created_by",
+    "created_date",
+    "directory_status",
+    "duplicate_sibling_ids",
+    "email",
+    "first_booking_date",
+    "is_discount_eligible",
+    "is_shipper",
+    "last_booking_date",
+    "likely_duplicate",
+    "phone",
+    "shipper_account_number",
+    "updated_by",
+    "zip"
+  ],
+  "filters_applied": [
+    "business names only; no individual contact is read from any source",
+    "part-year annualised by 1.1544"
+  ],
+  "git_sha": "f9507945d198b14eed60cef54ab8a4ad98409d9e",
+  "note": "Accounts with at least 5 bookings across the two prior years and none at all this year. Win-back list.",
+  "privacy_note": "Shipment export carries no decedent or family data (four columns). OMS account export identifier columns dropped at load per CLAUDE.md \u00a77.2. Funeral-home business names retained deliberately. No row-level shipment data is written.",
+  "rows_in": 46397,
+  "rows_out": 62,
+  "run_timestamp_utc": "2026-11-12T04:23:31+00:00",
+  "script": "scripts/analyze_customer_cohorts.py",
+  "script_version": "1.0.0",
+  "source_files": [
+    "data/raw/shipments-since-2022-20261110.xlsx",
+    "data/raw/oms-funeral-homes-20261109.csv"
+  ]
+}

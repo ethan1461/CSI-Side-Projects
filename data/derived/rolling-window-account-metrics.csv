@@ -1,0 +1,4 @@
+as_of,window_days,active_accounts,bookings_in_window,new_accounts,reactivated_accounts,retained_accounts,churned_accounts,churn_rate_count_pct,churn_rate_volume_weighted_pct,bookings_lost_to_churn,shipments_per_retained_account,frequent_prior_active,frequent_churned,frequent_churn_rate_pct,frequent_bookings_lost,infrequent_prior_active,infrequent_churned,infrequent_churn_rate_pct,infrequent_bookings_lost
+2024-11-10,365,822,10702,335,27,460,293,38.91,6.82,697,21.48,319,30,9.4,350,434,263,60.6,347
+2025-11-10,365,904,10777,288,65,551,271,32.97,4.68,501,18.323,354,22,6.21,184,468,249,53.21,317
+2026-11-10,365,1091,10943,411,94,586,318,35.18,5.58,601,17.159,380,36,9.47,239,524,282,53.82,362

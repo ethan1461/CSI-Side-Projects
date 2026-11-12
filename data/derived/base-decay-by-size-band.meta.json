@@ -1,0 +1,19 @@
+{
+  "data_cut": "2026-11-10",
+  "dropped_columns_at_load": [],
+  "filters_applied": [
+    "size bands set on 2023 bookings",
+    "part-year 2026 annualised by 1.1544, derived from CSI's own 2023-2025 seasonal shape, not a uniform year"
+  ],
+  "git_sha": "f9507945d198b14eed60cef54ab8a4ad98409d9e",
+  "note": "The flat-volume arithmetic in one table: how much of the base decayed and how much new business replaced it.",
+  "privacy_note": "Shipment export carries no decedent or family data (four columns). OMS account export identifier columns dropped at load per CLAUDE.md \u00a77.2. Funeral-home business names retained deliberately. No row-level shipment data is written.",
+  "rows_in": 46397,
+  "rows_out": 0,
+  "run_timestamp_utc": "2026-11-12T04:23:31+00:00",
+  "script": "scripts/analyze_customer_cohorts.py",
+  "script_version": "1.0.0",
+  "source_files": [
+    "data/raw/shipments-since-2022-20261110.xlsx"
+  ]
+}

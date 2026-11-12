@@ -1,0 +1,39 @@
+{
+  "Otto": {
+    "at_risk": 14,
+    "dormant": 17,
+    "one_and_done": 130,
+    "stake_bookings_yr": 288,
+    "dormant_lost_bookings_yr": 70,
+    "total": 161
+  },
+  "Stacy": {
+    "at_risk": 14,
+    "dormant": 22,
+    "one_and_done": 127,
+    "stake_bookings_yr": 259,
+    "dormant_lost_bookings_yr": 85,
+    "total": 163
+  },
+  "ethan-held": {
+    "at_risk": 16,
+    "dormant": 13,
+    "one_and_done": 35,
+    "stake_at_risk": 626,
+    "dormant_lost": 42,
+    "total": 64
+  },
+  "unrouted": {
+    "at_risk": 2,
+    "dormant": 2,
+    "one_and_done": 10,
+    "stake_at_risk": 40,
+    "dormant_lost": 7,
+    "total": 14
+  },
+  "partner_excluded": [
+    "5176",
+    "2380"
+  ],
+  "yield_estimate": 1346
+}

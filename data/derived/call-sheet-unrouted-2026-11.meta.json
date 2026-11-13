@@ -7,8 +7,8 @@
   ],
   "row_count": 14,
   "script": "scripts/build_rep_call_sheets.py",
-  "script_version": "3.0",
-  "run_timestamp": "2026-11-12T05:02:00.903001+00:00",
+  "script_version": "4.0",
+  "run_timestamp": "2026-11-13T01:15:13.488081+00:00",
   "privacy": "business names only; no contacts, phone, or shipment-level data",
-  "scope": "account allocation and outcome capture only; no compensation fields"
+  "scope": "account allocation and outcome capture only (CLAUDE.md s7.7)"
 }

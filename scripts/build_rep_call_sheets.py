@@ -1,20 +1,22 @@
-"""Build the retention call sheets: one account, one named caller, no row on two sheets (v3).
+"""Build the retention call sheets: one account, one named caller, no row on two sheets (v4).
 
 Purpose: partition the accounts on data/derived/accounts-{at-risk-volume-decline,dormant,one-and-done}.csv
-         across the six named callers, plus an Ortiz sheet (Cheryl / Vadim, to be assigned), a record-repair
-         list and the partner-tier exclusions. Every source account lands in exactly one place; the script
+         across the six named callers, plus a key-accounts sheet (Cheryl / Vadim, to be assigned), a
+         record-repair list and the partner-tier exclusions. Every source account lands in exactly one place; the script
          asserts it and writes a per-account reconciliation file.
 Inputs:  the three cohort CSVs and data/derived/fy27-owner-plan.csv (HubSpot owner plan).
 Outputs: data/derived/rep-call-sheet-{otto,stacy,ethan,abe,renee,susej}-2026-11.csv,
-         call-sheet-ortiz-group-2026-11.csv, call-sheet-unrouted-2026-11.csv,
+         call-sheet-key-accounts-2026-11.csv, call-sheet-unrouted-2026-11.csv,
          call-sheet-reconciliation-2026-11.csv, call-sheet-summary-2026-11.json (+ .meta.json each).
-Owner:   sales-lead. Date: 2026-11-12 (v3, after Ethan's second 2026-11-12 ruling). Idempotent.
-         Business names only; no contacts, no phone. Allocation and outcome tracking only: no
-         bonus, incentive, commission or compensation field of any kind (CLAUDE.md s7.7).
+Owner:   sales-lead. Date: 2026-11-13 (v4, key-account rule). Idempotent.
+         Business names only; no contacts, no phone. Allocation and outcome tracking only (CLAUDE.md s7.7).
 Callers: Ethan, Otto, Stacy confirmed. Susej, Renee, Abe PROVISIONAL (Ethan: "maybe"); their sheets stay
          unreleased until Vadim has seen the volume (recommendation, Ethan decides).
-Routing: partner flag asserted (never name-filtered). Ortiz five -> Ortiz sheet. Other enterprise
-         (Foundation Partners) -> Ethan. SCI -> stays on its v2 sheet, flagged HELD. Northstar released.
+Routing: partner flag asserted (never name-filtered). KEY-ACCOUNT RULE (Ethan, 2026-11-13): peak annual
+         bookings >= KEY_ACCOUNT_PEAK in 2024 or 2025 -> key-accounts sheet (Cheryl / Vadim), not a rep.
+         The three Ortiz rows are on the same sheet, identified by the in_ortiz_group column. Other enterprise
+         (Foundation Partners) -> Ethan unless the key-account rule applies. SCI -> stays on its sheet (the
+         key-accounts sheet if it meets the rule), flagged HELD. Northstar released.
          Otto and Stacy keep every v2 account except the one-and-done tail beyond KEEP_TAIL rows
          (unreached before Dec 11); that tail goes round-robin to the provisional callers.
          Use --no-provisional to return the tail to Otto and Stacy (a rebuild, not a hand edit).
@@ -88,12 +90,24 @@ US = {
     "WY",
     "PR",
 }
-OWNER_ORTIZ = "Cheryl / Vadim \u2014 to be assigned"  # Ethan 2026-11-12: not an individual, not Ethan
+OWNER_KEY = "Cheryl / Vadim \u2014 to be assigned"  # Ethan 2026-11-12: not an individual, not Ethan
+# Key-account threshold (Ethan, 2026-11-13): peak annual bookings = max(2024, 2025). Chosen from the OBSERVED
+# distribution, not picked round. Across the three cohort lists the non-partner, non-Ortiz peaks run
+# 63, 59, 58 ... then 37 (Ponce, an Ortiz row) ... then 32, 32, 32, 31, 30. Nothing sits between 40 and 50, so
+# any value from 38 to 50 gives the identical split; 50 is the top of that gap, the most conservative cut
+# (fewest accounts leave the reps). Six accounts reach it. The sensitivity at 40 and 30 is computed from
+# the data on every run and written to call-sheet-summary-2026-11.json.
+KEY_ACCOUNT_PEAK = 50
+# Ethan counted Romero (Foundation Partners) among his six, so the rule also covers Ethan's own sheet.
+# Set False to leave enterprise rows with Ethan regardless of size (a rebuild, not a hand edit).
+KEY_RULE_COVERS_ETHAN_SHEET = True
+SENSITIVITY_THRESHOLDS = (30, 40, KEY_ACCOUNT_PEAK)
 # The five Ortiz entities named for the cohort revenue grouping (scripts/analyze_customer_cohorts.py
 # ORTIZ_GROUP_DONALD). Naming them was a grouping exercise; nobody named is a caller. Only IDs present on
 # the cohort lists can appear here: 7428 R.G. Ortiz (Bronx), 2706 Rivera (Janet), 2298 Ponce Funeral Home.
 # Rivera (Celsa) and Ortiz (Delta Shipments Only) are in the group but on no cohort list.
 ORTIZ_IDS = {"7428", "2706", "2298"}
+KEY_SHEET = "Key accounts"
 ORTIZ_NAMES = (
     "R.G. Ortiz Funeral Home (Bronx)",
     "Rivera Funeral Home (Janet)",
@@ -125,12 +139,23 @@ PALM_NOTE = (
 STALE = (
     "call-sheet-unassigned-pool-2026-11",
     "call-sheet-ethan-held-2026-11",
+    "call-sheet-ortiz-group-2026-11",  # renamed call-sheet-key-accounts-2026-11 in v4
 )
 
 
 def read(name: str) -> list[dict[str, str]]:
     with (D / f"{name}.csv").open(encoding="utf-8-sig") as fh:
         return list(csv.DictReader(fh))
+
+
+def peak_bookings(r: dict[str, str]) -> int:
+    """Peak annual bookings: max of 2024 and 2025 (one-and-done rows carry neither, so 0)."""
+    return max(int(r.get("bookings_2024") or 0), int(r.get("bookings_2025") or 0))
+
+
+def is_key_account(peak: int, threshold: int = KEY_ACCOUNT_PEAK) -> bool:
+    """The key-account rule: peak annual bookings at or above the threshold."""
+    return peak >= threshold
 
 
 def days(s: str) -> int:
@@ -244,7 +269,8 @@ def reason(r: dict[str, str], lst: str) -> tuple[str, str]:
 def build_rows(
     lists: list[tuple[str, list[dict[str, str]]]], plan: dict[str, tuple[str, str]]
 ) -> list[dict]:
-    """Route every source row once. Otto/Stacy owners reproduce v2 exactly (no reshuffle)."""
+    """Route every source row once. Otto/Stacy owners reproduce v2 exactly (no reshuffle);
+    the key-account rule only removes rows, it never changes another row's owner."""
     rows: list[dict] = []
     for lst, data in lists:
         pool = 0  # v1 alternation counter: keeps every v1 owner unchanged
@@ -291,10 +317,27 @@ def build_rows(
                         f"NE/South alternation, enterprise rows (position {pool_new})"
                     )
             grp, flag, held = caution(r)
-            if bucket == "ortiz":
-                owner, rule = OWNER_ORTIZ, "Ethan ruling 2026-11-12"
+            peak = peak_bookings(r)
+            in_ortiz = bucket == "ortiz"
+            territory = owner  # owner before the key-account override: counters above are unchanged
             if bucket == "ethan":
                 owner, rule = "Ethan", "enterprise stays with Ethan (ruling 2026-11-12)"
+                territory = owner
+            if (
+                bucket == "rep" or (bucket == "ethan" and KEY_RULE_COVERS_ETHAN_SHEET)
+            ) and is_key_account(peak):
+                bucket = "key"
+                note = (
+                    f"Key-account rule (Ethan 2026-11-13): peak {peak} annual bookings, "
+                    f"threshold {KEY_ACCOUNT_PEAK}; Cheryl / Vadim to assign"
+                )
+                owner, rule = (
+                    OWNER_KEY,
+                    f"key-account rule, peak {peak} >= {KEY_ACCOUNT_PEAK}",
+                )
+            if in_ortiz:
+                owner, rule = OWNER_KEY, "Ethan ruling 2026-11-12 (Ortiz group)"
+                territory = owner
             palm = "Palm Mortuary & Cemetery (SCI" in r["funeral_home"]
             if palm:
                 flag = f"{flag}. {PALM_NOTE}"
@@ -306,10 +349,12 @@ def build_rows(
                     "bucket": bucket,
                     "hold_reason": note,
                     "rep": owner,
-                    "territory_rep": owner,
+                    "territory_rep": territory,
+                    "in_ortiz_group": "Y" if in_ortiz else "",
+                    "peak_annual_bookings": peak,
                     "owner_rule": rule,
                     "caller_status": "",
-                    "call_status": HELD if (held and bucket == "rep") else "",
+                    "call_status": HELD if (held and bucket in ("rep", "key")) else "",
                     "funeral_home_id": fid,
                     "funeral_home": r["funeral_home"],
                     "state": r["state"],
@@ -412,8 +457,8 @@ def main() -> None:
             r["sheet"] = r["rep"]
         elif r["bucket"] == "ethan":
             r["sheet"] = "Ethan"
-        elif r["bucket"] == "ortiz":
-            r["sheet"] = "Ortiz group"
+        elif r["bucket"] in ("ortiz", "key"):
+            r["sheet"] = KEY_SHEET
         elif r["bucket"] == "unrouted":
             r["sheet"] = "Record repair"
         else:
@@ -421,7 +466,11 @@ def main() -> None:
         r["caller_status"] = (
             STATUS_PROVISIONAL
             if r["sheet"] in PROVISIONAL
-            else STATUS_CONFIRMED if r["sheet"] in CONFIRMED else ""
+            else (
+                STATUS_CONFIRMED
+                if r["sheet"] in CONFIRMED
+                else "OWNER NOT YET ASSIGNED" if r["sheet"] == KEY_SHEET else ""
+            )
         )
     capture = [
         "called_on",
@@ -447,15 +496,17 @@ def main() -> None:
         "state",
         "enterprise_group",
         "flag",
+        "in_ortiz_group",
         "bookings_2024",
         "bookings_2025",
+        "peak_annual_bookings",
         "bookings_2026_to_10nov",
         "last_booking",
         "bookings_per_year_at_stake",
         "reason_to_call",
     ]
     cap = ["call_order", *base, *capture]
-    summary: dict = {"script_version": "3.0", "provisional_released": False}
+    summary: dict = {"script_version": "4.0", "provisional_released": False}
     sheets = {}
     for name in ("Otto", "Stacy", "Ethan", *PROVISIONAL):
         # Released rows first (in list order), held rows last, so a rep never starts on a held row.
@@ -471,8 +522,11 @@ def main() -> None:
         summary[name]["caller_status"] = (
             STATUS_PROVISIONAL if name in PROVISIONAL else STATUS_CONFIRMED
         )
-    for name, sheet in (("ortiz-group", "Ortiz group"), ("unrouted", "Record repair")):
-        sub = sorted((r for r in rows if r["sheet"] == sheet), key=sort_key)
+    for name, sheet in (("key-accounts", KEY_SHEET), ("unrouted", "Record repair")):
+        sub = sorted(
+            (r for r in rows if r["sheet"] == sheet),
+            key=lambda r: (bool(r["call_status"]), *sort_key(r)),
+        )
         for i, r in enumerate(sub, 1):
             r["call_order"] = i
         write(D / f"call-sheet-{name}-2026-11.csv", cap[: cap.index("called_on")], sub)
@@ -521,6 +575,45 @@ def main() -> None:
             if not r["call_status"]
         ][:10]
     summary["top10_callable"] = top10
+    summary["top3_callable"] = {
+        name: [
+            {
+                k: r[k]
+                for k in (
+                    "call_order",
+                    "funeral_home_id",
+                    "funeral_home",
+                    "state",
+                    "enterprise_group",
+                    "bookings_2024",
+                    "bookings_2025",
+                    "bookings_2026_to_10nov",
+                    "last_booking",
+                    "situation",
+                )
+            }
+            for r in sheets[name]
+            if not r["call_status"]
+        ][:3]
+        for name in ("Otto", "Stacy")
+    }
+    summary["key_account_rule"] = {
+        "threshold_peak_annual_bookings": KEY_ACCOUNT_PEAK,
+        "sensitivity": sensitivity(rows),
+        "key_accounts_by_rule": [
+            {
+                "funeral_home_id": r["funeral_home_id"],
+                "funeral_home": r["funeral_home"],
+                "peak": r["peak_annual_bookings"],
+                "list": r["list"],
+                "bookings_per_year_at_stake": r["bookings_per_year_at_stake"],
+                "pre_rule_owner": r["territory_rep"],
+                "held": bool(r["call_status"]),
+            }
+            for r in rows
+            if r["bucket"] == "key"
+        ],
+    }
     summary["yield_estimate"] = YIELD
     (D / "call-sheet-summary-2026-11.json").write_text(json.dumps(summary, indent=2))
     for s in STALE:
@@ -536,11 +629,35 @@ def main() -> None:
     )
 
 
+def sensitivity(rows: list[dict]) -> dict:
+    """What would leave the rep and Ethan sheets at each threshold (accounts not already key/Ortiz/partner)."""
+    out: dict[str, dict] = {}
+    pool = [
+        r
+        for r in rows
+        if r["bucket"] in ("rep", "ethan", "key") and r["list"] != "one_and_done"
+    ]
+    for t in SENSITIVITY_THRESHOLDS:
+        moved = [r for r in pool if is_key_account(r["peak_annual_bookings"], t)]
+        at_risk = [r for r in moved if r["list"] == "at_risk"]
+        out[str(t)] = {
+            "accounts_moved": len(moved),
+            "at_risk_bookings_per_year": sum(
+                r["bookings_per_year_at_stake"] for r in at_risk
+            ),
+            "accounts": [
+                f"{r['funeral_home']} (peak {r['peak_annual_bookings']}, from {r['territory_rep']})"
+                for r in sorted(moved, key=lambda r: -r["peak_annual_bookings"])
+            ],
+        }
+    return out
+
+
 def verify_on_disk(expected: int) -> dict:
     """Re-read the written sheets: no account id on two sheets, none missing."""
     seen: dict[str, str] = {}
     files = sorted(D.glob("rep-call-sheet-*-2026-11.csv")) + [
-        D / "call-sheet-ortiz-group-2026-11.csv",
+        D / "call-sheet-key-accounts-2026-11.csv",
         D / "call-sheet-unrouted-2026-11.csv",
     ]
     for f in files:
@@ -581,10 +698,10 @@ def write(path: Path, cols: list[str], data: list[dict]) -> None:
         ],
         "row_count": len(data),
         "script": "scripts/build_rep_call_sheets.py",
-        "script_version": "3.0",
+        "script_version": "4.0",
         "run_timestamp": datetime.now(UTC).isoformat(),
         "privacy": "business names only; no contacts, phone, or shipment-level data",
-        "scope": "account allocation and outcome capture only; no compensation fields",
+        "scope": "account allocation and outcome capture only (CLAUDE.md s7.7)",
     }
     path.with_suffix(".meta.json").write_text(json.dumps(meta, indent=2))
     print(f"wrote {path.name}: {len(data)} rows")

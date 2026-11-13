@@ -5,10 +5,10 @@
     "accounts-one-and-done.csv",
     "fy27-owner-plan.csv"
   ],
-  "row_count": 125,
+  "row_count": 122,
   "script": "scripts/build_rep_call_sheets.py",
-  "script_version": "3.0",
-  "run_timestamp": "2026-11-12T05:02:00.896576+00:00",
+  "script_version": "4.0",
+  "run_timestamp": "2026-11-13T01:15:13.483849+00:00",
   "privacy": "business names only; no contacts, phone, or shipment-level data",
-  "scope": "account allocation and outcome capture only; no compensation fields"
+  "scope": "account allocation and outcome capture only (CLAUDE.md s7.7)"
 }

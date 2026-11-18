@@ -1,4 +1,125 @@
-# Retention call sheets, November 2026 (v4, key-account rule)
+# Retention call sheets, November 2026 (v5, partner-routed homes struck, territory audited)
+
+**Status:** working document, rebuilt 2026-11-18 by sales-lead. Phone-led. Nothing is sent, no sequence, no HubSpot write (`CLAUDE.md` §7.1).
+**Built by** `scripts/build_rep_call_sheets.py` (v5.0, re-runnable, outputs not hand-edited, identical on a second run; `tests/test_rep_call_sheets.py`, 15 tests pass). Business names only (`§7.2`). Account allocation and outcome capture only (`§7.7`).
+**Everything below this v5 section is the v4 text of 2026-11-13.** Where a count or a first-three line differs, v5 wins.
+
+## v5 answer
+
+**100 partner-routed homes are struck, 5 go to Ethan's sheet, 6 stay (the brief said 8, see section 1), and no surviving row changed rep.** The strike removes 100 accounts that CSI has never invoiced directly. They reach CSI through a partner and are that partner's customers. Struck: Otto 38, Stacy 21, Abe 15, Susej 14, Renee 12, Ethan 0, key accounts 0. The key-accounts sheet came through untouched (nine rows, none in the manifest, and the script stops if one ever is). The territory rule holds on every row, so I kept every v4 owner (the "preserve" option below). The other thing that matters: **163 of the rows on Otto's and Stacy's sheets are not yet owned in HubSpot**, so a rep opening HubSpot today sees a different list from the one Ethan sends. That is a revops write, in the handoff.
+
+**Final counts and first three calls** (history is bookings in 2024 / 2025 / 2026 to Nov 10; held SCI rows excluded; these lines are for Ethan's emails):
+
+| Sheet | v4 | v5 | Callable now | Held SCI | At-risk bookings/yr callable |
+|---|---|---|---|---|---|
+| Otto | 122 | **83** | 62 | 21 | 148 |
+| Stacy | 132 | **107** | 83 | 24 | 193 |
+| Ethan | 6 | **11** | 11 | 0 | 95 |
+| Abe (PROVISIONAL) | 40 | **25** | 25 | 0 | n/a |
+| Renee (PROVISIONAL) | 40 | **28** | 28 | 0 | n/a |
+| Susej (PROVISIONAL) | 39 | **25** | 25 | 0 | n/a |
+| Key accounts (Cheryl / Vadim) | 9 | **9** | 8 | 1 | 680 total |
+| Record repair | 14 | 14 | n/a | n/a | n/a |
+| Partner tier, excluded on the flag | 2 | 2 | n/a | n/a | n/a |
+| **Struck, partner-routed** | n/a | **100** | n/a | n/a | n/a |
+
+83 + 107 + 11 + 25 + 28 + 25 + 9 + 14 + 2 + 100 = **404**, the source total, each account in one place (`call-sheet-reconciliation-2026-11.csv`). Otto and Stacy: callable at-risk volume is 341 bookings a year (v4: 382), about $0.46M `[ESTIMATE: 341 x $1,346 2026 average yield; account-level yield does not exist]`. Callable dormant: 138 a year (v4: 163).
+
+### Otto
+| # | Account | St | 2024 / 2025 / 2026 | Last shipped | Opening |
+|---|---|---|---|---|---|
+| 1 | Santa Cruz Servicios Funerales | DC | 32 / 19 / 7 | 2026-07-18 | A |
+| 2 | Mississippi Mortuary Services | MS | 30 / 10 / 6 | 2026-11-10 | A |
+| 3 | Plenitud Funeral Homes | FL | 20 / 4 / 0 | 2025-09-12 | B |
+
+### Stacy
+| # | Account | St | 2024 / 2025 / 2026 | Last shipped | Opening |
+|---|---|---|---|---|---|
+| 1 | Florida Funeral Home and Crematory | FL | 29 / 23 / 0 | 2025-12-03 | B |
+| 2 | Guarino Funeral Home, Inc. | NY | 27 / 0 / 0 | 2024-09-18 | B |
+| 3 | Hiers-Baxley Funeral Services (The Villages) | FL | 27 / 13 / 3 | 2026-05-13 | A |
+
+**Otto's and Stacy's first three are the same accounts as v4.** None of the six was struck. Two are KEEP rows and should be said plainly in the notes: Mississippi Mortuary (3 partner-billed, 67 CSI-billed) and Florida Funeral Home and Crematory (1 partner-billed, 86 CSI-billed) are real CSI customers who also arrive via a partner, so call them as customers. **Guarino has no HubSpot company under OMS id 2021**, so Stacy cannot log her #2 call against a record until revops finds or creates it.
+
+### Ethan (Foundation Partners and the five flags)
+| # | Account | St | 2024 / 2025 / 2026 | Last shipped | Note |
+|---|---|---|---|---|---|
+| 1 | Edwards Memorial Center (Lakewood, WA - Foundation Partners) | WA | 32 / 16 / 7 | 2026-11-09 | KEEP: 6 partner, 56 CSI-billed |
+| 2 | First Call Plus of Washington - Kent (Foundation Partners) | WA | 23 / 0 / 2 | 2026-08-18 | KEEP: 2 partner, 22 CSI-billed |
+| 3 | All Mortuary of Colorado (Foundation Partners) | CO | 15 / 26 / 1 | 2026-06-08 | |
+
+Rows 7 to 11 are the five FLAG rows, sorted last, marked "do not call" until Ethan decides (below).
+
+### Abe, Renee, Susej (provisional, one-and-done, no 2024 or 2025 history)
+Each home was won once and has not booked since, so history is the single booking date. All three sheets stay unreleased pending Vadim.
+
+| Sheet | #1 | #2 | #3 |
+|---|---|---|---|
+| Abe | Perna, Dengler, Roberts Funeral Home (NY), 2026-01-20 | Sacco Funeral Home (NY), 2026-01-29 | Funeraria Valle de Paz, Cidra (PR), 2026-01-31 |
+| Renee | Shapiro Funeral Care (OH), 2026-01-20 | Strang Funeral Home (IL), 2026-02-02 | Robert J Lawler & Crosby (MA), 2026-02-03 |
+| Susej | David Ferguson Funeral Home (NY), 2026-01-13 | Ames Funeral Home (VA), 2026-01-26 | Beach Memorial Chapel (FL), 2026-01-28 |
+
+## 1. What was struck, and why
+
+Source of truth is the partner-billed manifest (`data/derived/partner-billed-homes-manifest-20261118.csv`, 535 homes, from the invoice bill-to field). The script **recomputes** each verdict from the manifest (STRIKE if self-billed is 0; KEEP if self-billed is at least partner-billed; otherwise FLAG) and stops if it disagrees with Ethan's verdict file on any row. It agrees on all 111.
+
+| Verdict | Rows | Where they went |
+|---|---|---|
+| STRIKE | **100** (at-risk 1, dormant 5, one-and-done 94) | `data/derived/call-sheet-struck-partner-routed-2026-11.csv`, with partner, the booking split, first and last booking and the former sheet. Not deleted: evidence, and revops needs them. Partners: NMS 55, IMS 42, Bergen 2, mixed 1; 176 partner-billed bookings in all |
+| KEEP | **6 in the file** (see discrepancy) | Stay where they were, with a flag naming the split. Otto 2 (Mississippi Mortuary, Roberts), Stacy 2 (Florida Funeral Home, Genuine Funeral), Ethan 2 (Edwards, First Call Plus) |
+| FLAG | **5** | Ethan's sheet, last, "do not call". Quality Mortuary (50 partner, 5 CSI-billed), Sunset Funeral Home (55 / 5), Akes Family Funeral Home (12 / 1), San Jacinto Valley Mortuary (9 / 2), Florida Mortuary Funeral & Cremation Services (6 / 1) |
+
+Counts reconcile to the brief: at-risk loses 1, dormant 5, one-and-done 94. By sheet, Otto -38, Stacy -21, Abe -15, Renee -12, Susej -14, Ethan 0 (strikes only; Otto and Stacy also lose 1 and 4 to Ethan's sheet as flags, giving the 83 and 107). The struck accounts carried 5 at-risk and 15 dormant bookings a year of stake that were never CSI's to win back.
+
+**Discrepancy to correct: the brief says KEEP is 8, the verdict file and the manifest give 6.** I could not reproduce 8. The nearest explanation is two homes that are in the manifest but not in the verdict file: **Pompes Funebres Gillot (8627) and Patton & Storck PTE Limited (21622)**, both on the record-repair sheet with a non-US state code, one Bergen-billed booking each and no CSI-billed booking. By the rule those two are STRIKE-equivalent, not KEEP. I did not strike them: record repair is not a call sheet and they are not callable, so they stay there for revops, flagged in `call-sheet-summary-2026-11.json`. If Ethan means another two KEEPs, I need the IDs.
+
+## 2. Territory: preserve, not re-alternate
+
+Rule: `CLAUDE.md §5` authority 5 and the 2026-11-10 ruling. Midwest to Otto, West to Stacy, Northeast and South alternating by call rank.
+
+**Audit result (every rep-routed row, on `territory_rep`, so the provisional callers' rows count):** zero Midwest rows not with Otto, zero West rows not with Stacy, before and after the strike. The FY27 owner plan itself (796 rows) also has zero violations, and splits Northeast and South 278 / 278.
+
+| NE/South rows | Otto | Stacy |
+|---|---|---|
+| Before the strike | 125 | 124 |
+| After the strike (rows still with a rep) | 96 | 93 |
+
+**Decision: preserve existing assignments.** Strike and the tail carve are applied after owners are fixed, so every surviving row keeps the rep it had in v4 and nothing moves between people. Reasons: (1) after the strike the split is 96 / 93, so a full re-alternation would fix a 3-row imbalance by moving dozens of rows; (2) 26 plan rows on Otto's and Stacy's sheets and 61 on the provisional sheets are already written in HubSpot (`reports/fy27-owner-assignment.md`), so re-alternating the sheets would create the exact sheet-versus-CRM disagreement Ethan asked to remove, and the fix would be HubSpot writes; (3) Otto and Stacy have not been emailed, so either would be defensible, but stability costs nothing. There were no gaps to re-alternate: no row needed a new assignment.
+Side effect to know: Otto now holds 52 one-and-done rows and Stacy 67, against a planned 80 each, because the strike took rows from the head of the lists. The provisional callers hold the carved tail (78 rows after strikes). **Recommendation, not done:** if Vadim declines the provisional sheets, `--no-provisional` returns them; if he accepts, leave it.
+
+**The five rows with no state** (North Sacramento Funeral Home, Macagna Funeral Home, St. Charles Funeral Home, Rivera Family Funerals, Levitt-Weinstein - Location #3243) are on no call sheet and unowned in HubSpot. I did not guess a region.
+
+## 3. HubSpot reconciliation (read-only; nothing written)
+
+Read 2026-11-18: every call-sheet account looked up by OMS id (`call-sheet-hubspot-owner-snapshot-20261118.csv`). 357 of the 404 have a company record; 129 carry an owner. Per-row file: `data/derived/call-sheet-hubspot-reconciliation-2026-11.csv` (388 rows; record-repair and partner-tier rows excluded).
+
+| Category | Rows | Meaning |
+|---|---|---|
+| MATCH | 46 | Otto/Stacy rows whose HubSpot owner equals the sheet (26), plus Ethan's 11 and key accounts' 9, correctly with no rep owner |
+| **SET_OWNER** | **156** (Otto 68, Stacy 88) | On the rep's sheet, no owner in HubSpot. Revops sets it as the sheet states |
+| **CONFLICT** | **1** | Merchant Logo Greenwood Funeral Home (LA): sheet says Stacy (alternation), HubSpot says Otto, record last modified 2026-11-17, after the bulk write. Keep HubSpot's; Ethan decides which side moves |
+| **NO_HUBSPOT_RECORD** | **7** | No company carries the OMS id: Russell & Pica (Otto), Roberts (Otto), Guarino, Phoenix Mortuary Funeral & Cremation, Majestic Funeral Home, The Abbey Funeral Homes, Fred Young Funeral Home (Stacy). Find or create before an owner is set |
+| PROVISIONAL_HOLDS_TERRITORY_OWNER | 61 | Sheet is Abe, Renee or Susej; HubSpot holds the territory rep. By design until Vadim releases |
+| PROVISIONAL_NO_OWNER | 17 | As above, no owner yet |
+| **STRUCK_HAS_REP_OWNER** | **41** (Otto 24, Stacy 17) | Struck partner customers that HubSpot shows owned by Otto or Stacy. Ethan decides unassign or leave; they should not sit in a rep's book of business as targets |
+| STRUCK_NO_OWNER | 59 | Fine as is |
+
+State differs between sheet and HubSpot on 0 of the rows where HubSpot returned a state. **Caveats:** the snapshot lists owned companies only, so for the 300 ids after the first 100, "no owner" cannot be told apart from "no record"; the 7 NO_HUBSPOT_RECORD are therefore a floor. HubSpot totals (Otto 414, Stacy 378) are unchanged by this work and were not re-read. Confidence: high on the 129 owned rows, medium on the unowned.
+
+## 4. Things that need Ethan
+
+1. **The 5 FLAG rows.** Mostly partner, some direct. Default if no answer: they stay on your sheet, marked "do not call", and nobody calls them.
+2. **KEEP count 8 versus 6.** See section 1; send me the two IDs if the 8 is right.
+3. **Merchant Logo Greenwood: Otto or Stacy?** Default: HubSpot stands (Otto) and the next rebuild moves the row to Otto's sheet.
+4. **41 struck homes owned in HubSpot by Otto or Stacy.** Default: leave the owners, add the partner-routed marker through revops, and do not call.
+5. **Commit 10065f8** in this repo was created automatically mid-session with a message that says "eight homes" stay. The data shows six. The message is the only thing wrong; I did not amend it.
+
+Prior flags from v4 (key-accounts owner, Romero, Fred Hunter's held, Palm Mortuary held) are unchanged. SCI: 46 rows still held, none struck; Palm Mortuary and Cemetery (Las Vegas) is still held and flagged, and the script refuses to run without exactly one such row.
+
+---
+
+# v4 text (2026-11-13), superseded where it conflicts
+
 
 **Status:** working document, rebuilt 2026-11-13 by sales-lead. Phone-led. Nothing is sent, no sequence, no HubSpot write (`CLAUDE.md` §7.1).
 **Built by** `scripts/build_rep_call_sheets.py` (v4.0, re-runnable, outputs not hand-edited; `tests/test_rep_call_sheets.py`, 6 tests pass). Business names only; no phone numbers or contacts (`§7.2`); pull those from HubSpot or the OMS account page.

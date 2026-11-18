@@ -135,3 +135,136 @@ def test_levitt_weinstein_3242_not_pulled_across_by_name() -> None:
         if "Location #3242" in r["funeral_home"]
     ]
     assert len(rows) == 1
+
+
+# ---- v5: partner-routed strike and territory (Ethan, 2026-11-18) ----
+
+
+def test_partner_verdict_boundaries() -> None:
+    assert b.partner_verdict(1, 0) == "STRIKE"
+    assert b.partner_verdict(55, 5) == "FLAG"
+    assert (
+        b.partner_verdict(5, 5) == "KEEP"
+    )  # equal counts stay: "at least as many self-billed"
+    assert b.partner_verdict(3, 67) == "KEEP"
+
+
+def _vrow(fid: str, bucket: str = "rep", rep: str = "Otto") -> dict:
+    return {
+        "funeral_home_id": fid,
+        "funeral_home": f"Home {fid}",
+        "bucket": bucket,
+        "rep": rep,
+        "territory_rep": rep,
+        "flag": "",
+        "owner_rule": "",
+        "list": "one_and_done",
+        "list_rank": 1,
+    }
+
+
+def _man(p: int, s: int) -> dict:
+    return {
+        "partner_bookings": str(p),
+        "self_billed_bookings": str(s),
+        "main_partner": "NMS",
+    }
+
+
+def test_apply_partner_verdicts_strike_keep_flag_and_untouched() -> None:
+    rows = [
+        _vrow("1"),
+        _vrow("2"),
+        _vrow("3"),
+        _vrow("4", bucket="unrouted"),
+        _vrow("5"),
+    ]
+    man = {"1": _man(4, 0), "2": _man(1, 9), "3": _man(50, 5), "4": _man(1, 0)}
+    out = b.apply_partner_verdicts(rows, man)
+    assert [r["funeral_home_id"] for r in out["STRIKE"]] == ["1"] and rows[0][
+        "bucket"
+    ] == "struck"
+    assert (
+        rows[1]["bucket"] == "rep"
+        and rows[1]["rep"] == "Otto"
+        and "Also arrives via a partner" in rows[1]["flag"]
+    )
+    assert (
+        rows[2]["bucket"] == "ethan"
+        and rows[2]["rep"] == "Ethan"
+        and "was Otto" in rows[2]["owner_rule"]
+    )
+    assert (
+        rows[3]["bucket"] == "unrouted" and len(out["NOT_ACTIONED"]) == 1
+    )  # record repair is not a call row
+    assert rows[4]["partner_verdict_col"] == ""
+
+
+def test_key_account_in_manifest_stops_the_build() -> None:
+    with pytest.raises(SystemExit):
+        b.apply_partner_verdicts(
+            [_vrow("9", bucket="key", rep=b.OWNER_KEY)], {"9": _man(1, 0)}
+        )
+
+
+def test_no_struck_id_reappears_on_any_sheet() -> None:
+    """Ethan 2026-11-18: a struck partner-routed account is on the struck file and on no caller, key, or repair sheet."""
+    struck = {
+        r["funeral_home_id"]
+        for r in _sheet("call-sheet-struck-partner-routed-2026-11.csv")
+    }
+    assert len(struck) == 100
+    sheets = [
+        f"rep-call-sheet-{w}-2026-11.csv"
+        for w in ("otto", "stacy", "ethan", "abe", "renee", "susej")
+    ]
+    sheets += ["call-sheet-key-accounts-2026-11.csv", "call-sheet-unrouted-2026-11.csv"]
+    for name in sheets:
+        on = {r["funeral_home_id"] for r in _sheet(name)}
+        assert not (on & struck), (name, sorted(on & struck))
+
+
+def test_struck_rows_match_manifest_and_verdict_file() -> None:
+    man = {r["funeral_home_id"]: r for r in _sheet(f"{b.MANIFEST}.csv")}
+    for r in _sheet("call-sheet-struck-partner-routed-2026-11.csv"):
+        assert int(man[r["funeral_home_id"]]["self_billed_bookings"]) == 0
+        assert r["partner"] and int(r["partner_bookings"]) >= 1
+    verdict = {r["funeral_home_id"]: r["verdict"] for r in _sheet(f"{b.EXPOSURE}.csv")}
+    assert sum(v == "STRIKE" for v in verdict.values()) == 100
+
+
+def test_flag_rows_are_on_ethans_sheet_and_nowhere_else() -> None:
+    flags = {
+        r["funeral_home_id"]
+        for r in _sheet(f"{b.EXPOSURE}.csv")
+        if r["verdict"] == "FLAG"
+    }
+    assert len(flags) == 5
+    assert flags <= {
+        r["funeral_home_id"] for r in _sheet("rep-call-sheet-ethan-2026-11.csv")
+    }
+    for w in ("otto", "stacy", "abe", "renee", "susej"):
+        assert not (
+            flags
+            & {r["funeral_home_id"] for r in _sheet(f"rep-call-sheet-{w}-2026-11.csv")}
+        )
+
+
+def test_key_accounts_sheet_untouched_by_the_strike() -> None:
+    key = _sheet("call-sheet-key-accounts-2026-11.csv")
+    man = {r["funeral_home_id"] for r in _sheet(f"{b.MANIFEST}.csv")}
+    assert len(key) == 9 and not ({r["funeral_home_id"] for r in key} & man)
+
+
+def test_territory_rule_holds_on_every_sheet() -> None:
+    """Midwest rows belong to Otto, West rows to Stacy (territory_rep), whichever sheet carries them."""
+    for w in ("otto", "stacy", "abe", "renee", "susej"):
+        for r in _sheet(f"rep-call-sheet-{w}-2026-11.csv"):
+            t = b.territory_of(r["state"])
+            if t in ("Otto", "Stacy"):
+                assert r["territory_rep"] == t, (w, r["funeral_home_id"], r["state"])
+
+
+def test_territory_of_known_answers() -> None:
+    assert b.territory_of("IL") == "Otto" and b.territory_of("CA") == "Stacy"
+    assert b.territory_of("NY") == "NE/South" and b.territory_of("") == "NE/South"

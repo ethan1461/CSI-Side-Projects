@@ -174,11 +174,45 @@
     "by_category": {
       "CONFLICT": 1,
       "MATCH": 46,
+      "NO_HUBSPOT_RECORD": 7,
       "PROVISIONAL_HOLDS_TERRITORY_OWNER": 61,
       "PROVISIONAL_NO_OWNER": 17,
-      "SET_OWNER": 163,
+      "SET_OWNER": 156,
       "STRUCK_HAS_REP_OWNER": 41,
       "STRUCK_NO_OWNER": 59
+    },
+    "owner_plan_check": {
+      "plan_rows": 796,
+      "territory_violations": [],
+      "ne_south_otto": 278,
+      "ne_south_stacy": 278,
+      "deliberately_unowned": [
+        {
+          "id": "2246",
+          "state": "",
+          "name": "North Sacramento Funeral Home"
+        },
+        {
+          "id": "2169",
+          "state": "",
+          "name": "Macagna Funeral Home"
+        },
+        {
+          "id": "2419",
+          "state": "",
+          "name": "St. Charles Funeral Home"
+        },
+        {
+          "id": "2328",
+          "state": "",
+          "name": "Rivera Family Funerals"
+        },
+        {
+          "id": "2158",
+          "state": "",
+          "name": "Levitt-Weinstein - Location #3243"
+        }
+      ]
     },
     "state_differs": 0
   },
@@ -485,14 +519,14 @@
       },
       {
         "call_order": 3,
-        "funeral_home_id": "2947",
-        "funeral_home": "Quality Mortuary",
-        "state": "NC",
+        "funeral_home_id": "11000",
+        "funeral_home": "All Mortuary of Colorado (Foundation Partners)",
+        "state": "CO",
         "enterprise_group": "",
-        "bookings_2024": "21",
-        "bookings_2025": "3",
+        "bookings_2024": "15",
+        "bookings_2025": "26",
         "bookings_2026_to_10nov": "1",
-        "last_booking": "2026-08-28",
+        "last_booking": "2026-06-08",
         "situation": "A"
       }
     ],

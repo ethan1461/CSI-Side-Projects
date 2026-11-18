@@ -192,7 +192,12 @@ def apply_partner_verdicts(
     Key-account, Ortiz, record-repair and partner-tier rows are never actioned. A key-account row found in the
     manifest stops the build: Ethan was told that sheet is clean and it must not silently change.
     """
-    out: dict[str, list[dict]] = {"STRIKE": [], "KEEP": [], "FLAG": [], "NOT_ACTIONED": []}
+    out: dict[str, list[dict]] = {
+        "STRIKE": [],
+        "KEEP": [],
+        "FLAG": [],
+        "NOT_ACTIONED": [],
+    }
     for r in rows:
         m = manifest.get(r["funeral_home_id"])
         r.update(partner_verdict_col="", partner_billed="", self_billed="")
@@ -206,8 +211,11 @@ def apply_partner_verdicts(
                 "Ethan was told the key-accounts sheet is clean. Stop and raise it."
             )
         if r["bucket"] not in ("rep", "ethan"):
-            r.update(partner_verdict_col=f"{v}-equivalent, not actioned ({r['bucket']})",
-                     partner_billed=p, self_billed=sb)
+            r.update(
+                partner_verdict_col=f"{v}-equivalent, not actioned ({r['bucket']})",
+                partner_billed=p,
+                self_billed=sb,
+            )
             out["NOT_ACTIONED"].append(r)
             continue
         r.update(partner_verdict_col=v, partner_billed=p, self_billed=sb)
@@ -236,14 +244,21 @@ def territory_of(state: str) -> str:
 
 def territory_audit(rows: list[dict]) -> dict:
     """Every rep-routed row: Midwest -> Otto, West -> Stacy (on territory_rep, so the provisional callers' rows are
-    audited too); NE/South split counted. Run on the pre-strike and post-strike populations."""
+    audited too); NE/South split counted. Run on the pre-strike and post-strike populations.
+    """
+
     def pop(keep: bool) -> dict:
-        sub = [r for r in rows if r["territory_rep"] in ("Otto", "Stacy") and r["bucket"] in
-               (("rep", "struck", "ethan") if keep else ("rep",))]
+        sub = [
+            r
+            for r in rows
+            if r["territory_rep"] in ("Otto", "Stacy")
+            and r["bucket"] in (("rep", "struck", "ethan") if keep else ("rep",))
+        ]
         viol = [
             r["funeral_home_id"]
             for r in sub
-            if territory_of(r["state"]) in ("Otto", "Stacy") and territory_of(r["state"]) != r["territory_rep"]
+            if territory_of(r["state"]) in ("Otto", "Stacy")
+            and territory_of(r["state"]) != r["territory_rep"]
         ]
         nes = [r for r in sub if territory_of(r["state"]) == "NE/South"]
         return {
@@ -252,6 +267,7 @@ def territory_audit(rows: list[dict]) -> dict:
             "ne_south_otto": sum(1 for r in nes if r["territory_rep"] == "Otto"),
             "ne_south_stacy": sum(1 for r in nes if r["territory_rep"] == "Stacy"),
         }
+
     return {"before_strike": pop(True), "after_strike_rows_with_a_rep": pop(False)}
 
 
@@ -618,7 +634,11 @@ def main() -> None:
         # Released rows first (in list order), held rows last, so a rep never starts on a held row.
         sub = sorted(
             (r for r in rows if r["sheet"] == name),
-            key=lambda r: (bool(r["call_status"]), *sort_key(r)),
+            key=lambda r: (
+                bool(r["call_status"]),
+                r["partner_verdict_col"] == "FLAG",
+                *sort_key(r),
+            ),
         )
         for i, r in enumerate(sub, 1):
             r["call_order"] = i
@@ -649,8 +669,13 @@ def main() -> None:
         "keep_ids": [r["funeral_home_id"] for r in verdicts["KEEP"]],
         "flag_ids": [r["funeral_home_id"] for r in verdicts["FLAG"]],
         "not_actioned_in_manifest": [
-            {"id": r["funeral_home_id"], "name": r["funeral_home"], "sheet": r["sheet"],
-             "partner": r["partner_billed"], "self_billed": r["self_billed"]}
+            {
+                "id": r["funeral_home_id"],
+                "name": r["funeral_home"],
+                "sheet": r["sheet"],
+                "partner": r["partner_billed"],
+                "self_billed": r["self_billed"],
+            }
             for r in verdicts["NOT_ACTIONED"]
         ],
         "struck_by_list": {k: sum(1 for r in struck if r["list"] == k) for k in ORDER},
@@ -659,8 +684,12 @@ def main() -> None:
             for k in sorted({r["struck_from"] for r in struck})
         },
         "struck_by_partner": {
-            k: sum(1 for r in struck if manifest[r["funeral_home_id"]]["main_partner"] == k)
-            for k in sorted({manifest[r["funeral_home_id"]]["main_partner"] for r in struck})
+            k: sum(
+                1 for r in struck if manifest[r["funeral_home_id"]]["main_partner"] == k
+            )
+            for k in sorted(
+                {manifest[r["funeral_home_id"]]["main_partner"] for r in struck}
+            )
         },
     }
     summary["territory_audit"] = {
@@ -788,7 +817,9 @@ def sensitivity(rows: list[dict]) -> dict:
     return out
 
 
-def check_against_verdict_file(rows: list[dict], verdicts: dict[str, list[dict]]) -> None:
+def check_against_verdict_file(
+    rows: list[dict], verdicts: dict[str, list[dict]]
+) -> None:
     """The manifest-derived verdicts must equal Ethan's verdict file for every row it lists. Loud on any disagreement."""
     mine = {r["funeral_home_id"]: v for v, lst in verdicts.items() for r in lst}
     bad = [
@@ -797,7 +828,9 @@ def check_against_verdict_file(rows: list[dict], verdicts: dict[str, list[dict]]
         if mine.get(e["funeral_home_id"]) != e["verdict"]
     ]
     if bad:
-        raise SystemExit(f"verdict file disagrees with manifest-derived verdicts: {bad[:10]}")
+        raise SystemExit(
+            f"verdict file disagrees with manifest-derived verdicts: {bad[:10]}"
+        )
     print(
         f"partner verdicts: STRIKE {len(verdicts['STRIKE'])} KEEP {len(verdicts['KEEP'])} "
         f"FLAG {len(verdicts['FLAG'])}; in manifest but not actioned {len(verdicts['NOT_ACTIONED'])}"
@@ -815,35 +848,82 @@ def audit_before_after(before: dict, rows: list[dict]) -> dict:
 
 def write_struck(struck: list[dict], manifest: dict[str, dict[str, str]]) -> None:
     cols = [
-        "funeral_home_id", "funeral_home", "state", "former_sheet", "territory_rep", "list", "list_rank",
-        "situation", "partner", "partner_bookings", "self_billed_bookings", "other_billed_bookings",
-        "first_booking_date", "last_booking_date", "bookings_2024", "bookings_2025", "bookings_2026_to_10nov",
-        "verdict", "reason_struck",
+        "funeral_home_id",
+        "funeral_home",
+        "state",
+        "former_sheet",
+        "territory_rep",
+        "list",
+        "list_rank",
+        "situation",
+        "partner",
+        "partner_bookings",
+        "self_billed_bookings",
+        "other_billed_bookings",
+        "first_booking_date",
+        "last_booking_date",
+        "bookings_2024",
+        "bookings_2025",
+        "bookings_2026_to_10nov",
+        "bookings_per_year_at_stake",
+        "verdict",
+        "reason_struck",
     ]
     data = []
     for r in struck:
         m = manifest[r["funeral_home_id"]]
-        data.append({
-            **r,
-            "former_sheet": r["struck_from"],
-            "partner": m["main_partner"],
-            "partner_bookings": m["partner_bookings"],
-            "self_billed_bookings": m["self_billed_bookings"],
-            "other_billed_bookings": m["other_billed_bookings"],
-            "first_booking_date": m["first_booking_date"],
-            "last_booking_date": m["last_booking_date"],
-            "verdict": "STRIKE",
-            "reason_struck": "No CSI-invoiced booking ever (invoice bill-to); a partner's customer, not CSI's "
-                             "(Ethan 2026-11-18). Kept as evidence, not deleted",
-        })
-    write(D / "call-sheet-struck-partner-routed-2026-11.csv", cols, data, extra_sources=[MANIFEST + ".csv", EXPOSURE + ".csv"])
+        data.append(
+            {
+                **r,
+                "former_sheet": r["struck_from"],
+                "partner": m["main_partner"],
+                "partner_bookings": m["partner_bookings"],
+                "self_billed_bookings": m["self_billed_bookings"],
+                "other_billed_bookings": m["other_billed_bookings"],
+                "first_booking_date": m["first_booking_date"],
+                "last_booking_date": m["last_booking_date"],
+                "verdict": "STRIKE",
+                "reason_struck": "No CSI-invoiced booking ever (invoice bill-to); a partner's customer, not CSI's "
+                "(Ethan 2026-11-18). Kept as evidence, not deleted",
+            }
+        )
+    write(
+        D / "call-sheet-struck-partner-routed-2026-11.csv",
+        cols,
+        data,
+        extra_sources=[MANIFEST + ".csv", EXPOSURE + ".csv"],
+    )
+
+
+def plan_territory_check() -> dict:
+    """The HubSpot owner plan itself (791 writes of 2026-11-10) against the territory rule, plus the unowned rows."""
+    rows = read("fy27-owner-plan")
+    viol = [
+        r["oms_funeral_home_id"]
+        for r in rows
+        if r["new_owner"]
+        and territory_of(r["state"]) in ("Otto", "Stacy")
+        and territory_of(r["state"]) != r["new_owner"]
+    ]
+    unowned = [r for r in rows if not r["new_owner"]]
+    nes = [r for r in rows if r["new_owner"] and territory_of(r["state"]) == "NE/South"]
+    return {
+        "plan_rows": len(rows),
+        "territory_violations": viol,
+        "ne_south_otto": sum(1 for r in nes if r["new_owner"] == "Otto"),
+        "ne_south_stacy": sum(1 for r in nes if r["new_owner"] == "Stacy"),
+        "deliberately_unowned": [
+            {"id": r["oms_funeral_home_id"], "state": r["state"], "name": r["name"]}
+            for r in unowned
+        ],
+    }
 
 
 def hubspot_reconcile(rows: list[dict]) -> dict:
     """Compare each row's sheet rep with the HubSpot company owner (read-only snapshot taken 2026-11-18).
 
-    The snapshot lists only companies that carry an owner, so 'no owner' covers both an unowned record and a
-    missing one. Writes the per-row file revops works from. Nothing is written to HubSpot.
+    The snapshot lists every company that carries an owner, and for the first 100 account ids also says whether
+    a company with that OMS id exists (`record`); for the rest, 'no owner' covers an unowned or a missing record. Writes the per-row file revops works from. Nothing is written to HubSpot.
     """
     path = D / f"{SNAPSHOT}.csv"
     if not path.exists():
@@ -857,42 +937,88 @@ def hubspot_reconcile(rows: list[dict]) -> dict:
             continue
         fid, sh = r["funeral_home_id"], snap.get(r["funeral_home_id"])
         hs = sh["hubspot_owner"] if sh else ""
+        missing = bool(sh) and sh["record"] == "missing"
         rep_, terr = r["rep"], r["territory_rep"]
         if r["bucket"] == "struck":
             c, act = (
-                ("STRUCK_HAS_REP_OWNER", "Partner's customer: unassign (or leave) is Ethan's call; propose partner-routed marker")
-                if hs else ("STRUCK_NO_OWNER", "None; keep unowned"))
+                (
+                    "STRUCK_HAS_REP_OWNER",
+                    "Partner's customer: unassign (or leave) is Ethan's call; propose partner-routed marker",
+                )
+                if hs
+                else ("STRUCK_NO_OWNER", "None; keep unowned")
+            )
+        elif missing and r["sheet"] not in ("Ethan", KEY_SHEET):
+            c, act = (
+                "NO_HUBSPOT_RECORD",
+                "No company carries this OMS id: find or create the record before any owner is set",
+            )
         elif r["sheet"] in ("Otto", "Stacy"):
             if hs == rep_:
                 c, act = "MATCH", ""
             elif not hs:
-                c, act = "SET_OWNER", f"Set owner {rep_} (sheet rule: {r['owner_rule']})"
+                c, act = (
+                    "SET_OWNER",
+                    f"Set owner {rep_} (sheet rule: {r['owner_rule']})",
+                )
             else:
-                c, act = "CONFLICT", f"HubSpot {hs}, sheet {rep_}: list for Ethan; do not overwrite"
+                c, act = (
+                    "CONFLICT",
+                    f"HubSpot {hs}, sheet {rep_}: list for Ethan; do not overwrite",
+                )
         elif r["sheet"] in PROVISIONAL:
             if hs == terr:
-                c, act = "PROVISIONAL_HOLDS_TERRITORY_OWNER", "None until Vadim releases the sheet"
+                c, act = (
+                    "PROVISIONAL_HOLDS_TERRITORY_OWNER",
+                    "None until Vadim releases the sheet",
+                )
             elif not hs:
-                c, act = "PROVISIONAL_NO_OWNER", f"Territory owner is {terr}; set once the sheet is confirmed"
+                c, act = (
+                    "PROVISIONAL_NO_OWNER",
+                    f"Territory owner is {terr}; set once the sheet is confirmed",
+                )
             else:
                 c, act = "CONFLICT", f"HubSpot {hs}, territory {terr}"
         else:  # Ethan, key accounts
             if hs:
-                c, act = "REP_OWNER_ON_ETHAN_OR_KEY_ROW", f"HubSpot owner {hs} on a {r['sheet']} row: Ethan decides whether to clear"
+                c, act = (
+                    "REP_OWNER_ON_ETHAN_OR_KEY_ROW",
+                    f"HubSpot owner {hs} on a {r['sheet']} row: Ethan decides whether to clear",
+                )
             else:
                 c, act = "MATCH", ""
-        sd = bool(sh) and sh["hubspot_state"] != r["state"]
-        out.append({
-            "funeral_home_id": fid, "funeral_home": r["funeral_home"], "sheet": r["sheet"],
-            "sheet_rep": rep_, "territory_rep": terr, "state_sheet": r["state"],
-            "state_hubspot": sh["hubspot_state"] if sh else "", "hubspot_owner": hs,
-            "in_fy27_owner_plan": "Y" if fid in plan else "", "category": c,
-            "state_differs": "Y" if sd else "", "action_for_revops": act,
-        })
+        sd = (
+            bool(sh) and bool(sh["hubspot_state"]) and sh["hubspot_state"] != r["state"]
+        )
+        out.append(
+            {
+                "funeral_home_id": fid,
+                "funeral_home": r["funeral_home"],
+                "sheet": r["sheet"],
+                "sheet_rep": rep_,
+                "territory_rep": terr,
+                "state_sheet": r["state"],
+                "state_hubspot": sh["hubspot_state"] if sh else "",
+                "hubspot_owner": hs,
+                "in_fy27_owner_plan": "Y" if fid in plan else "",
+                "category": c,
+                "state_differs": "Y" if sd else "",
+                "action_for_revops": act,
+            }
+        )
         cat[c] = cat.get(c, 0) + 1
-    write(D / "call-sheet-hubspot-reconciliation-2026-11.csv", list(out[0]), out, extra_sources=[SNAPSHOT + ".csv"])
-    return {"rows": len(out), "by_category": dict(sorted(cat.items())),
-            "state_differs": sum(1 for o in out if o["state_differs"])}
+    write(
+        D / "call-sheet-hubspot-reconciliation-2026-11.csv",
+        list(out[0]),
+        out,
+        extra_sources=[SNAPSHOT + ".csv"],
+    )
+    return {
+        "rows": len(out),
+        "by_category": dict(sorted(cat.items())),
+        "owner_plan_check": plan_territory_check(),
+        "state_differs": sum(1 for o in out if o["state_differs"]),
+    }
 
 
 def verify_on_disk(expected: int) -> dict:
@@ -914,7 +1040,9 @@ def verify_on_disk(expected: int) -> dict:
     with (D / "call-sheet-reconciliation-2026-11.csv").open(encoding="utf-8") as fh:
         recon = list(csv.DictReader(fh))
     partner = {r["funeral_home_id"] for r in recon if r["sheet"].startswith("Partner")}
-    with (D / "call-sheet-struck-partner-routed-2026-11.csv").open(encoding="utf-8") as fh:
+    with (D / "call-sheet-struck-partner-routed-2026-11.csv").open(
+        encoding="utf-8"
+    ) as fh:
         struck_ids = {r["funeral_home_id"] for r in csv.DictReader(fh)}
     back = sorted(struck_ids & set(seen))
     if back:
@@ -933,7 +1061,12 @@ def verify_on_disk(expected: int) -> dict:
     }
 
 
-def write(path: Path, cols: list[str], data: list[dict], extra_sources: list[str] | None = None) -> None:
+def write(
+    path: Path,
+    cols: list[str],
+    data: list[dict],
+    extra_sources: list[str] | None = None,
+) -> None:
     with path.open("w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=cols, extrasaction="ignore")
         w.writeheader()

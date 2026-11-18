@@ -62,8 +62,8 @@ funeral_home_id,funeral_home,sheet,sheet_rep,territory_rep,state_sheet,state_hub
 13276,The Bradshaw Group Inc,Otto,Otto,Otto,MN,,,,SET_OWNER,,Set owner Otto (sheet rule: Midwest rule)
 7314,Joseph F Nardone Funeral Home,Otto,Otto,Otto,NY,,,,SET_OWNER,,Set owner Otto (sheet rule: NE/South alternation (list pool position 3))
 14241,Cook Brothers Funeral Directors and Cremations,Otto,Otto,Otto,VA,,,,SET_OWNER,,Set owner Otto (sheet rule: NE/South alternation (list pool position 5))
-2365,Russell & Pica Funeral Home,Otto,Otto,Otto,MA,,,,SET_OWNER,,Set owner Otto (sheet rule: NE/South alternation (list pool position 7))
-3666,Roberts Funeral Home,Otto,Otto,Otto,SC,,,,SET_OWNER,,Set owner Otto (sheet rule: NE/South alternation (list pool position 9))
+2365,Russell & Pica Funeral Home,Otto,Otto,Otto,MA,,,,NO_HUBSPOT_RECORD,,No company carries this OMS id: find or create the record before any owner is set
+3666,Roberts Funeral Home,Otto,Otto,Otto,SC,,,,NO_HUBSPOT_RECORD,,No company carries this OMS id: find or create the record before any owner is set
 4335,Randall Funeral Home,Otto,Otto,Otto,VA,,,,SET_OWNER,,Set owner Otto (sheet rule: NE/South alternation (list pool position 11))
 2334,RIverside Gordon Memorial Chapel (SCI Location #7083),Otto,Otto,Otto,FL,,,,SET_OWNER,,"Set owner Otto (sheet rule: NE/South alternation, enterprise rows (position 3))"
 1856,"Crowe's Funeral Homes, Inc.",Otto,Otto,Otto,NY,,,,SET_OWNER,,Set owner Otto (sheet rule: NE/South alternation (list pool position 13))
@@ -156,7 +156,7 @@ funeral_home_id,funeral_home,sheet,sheet_rep,territory_rep,state_sheet,state_hub
 21651,Dalton Funeral Home,Renee,Renee,Stacy,GA,GA,Stacy,Y,PROVISIONAL_HOLDS_TERRITORY_OWNER,,None until Vadim releases the sheet
 21655,Magrath Funeral Home,Renee,Renee,Otto,MA,,,,PROVISIONAL_NO_OWNER,,Territory owner is Otto; set once the sheet is confirmed
 1939,Florida Funeral Home and Crematory,Stacy,Stacy,Stacy,FL,,,,SET_OWNER,,Set owner Stacy (sheet rule: NE/South alternation (list pool position 4))
-2021,"Guarino Funeral Home, Inc.",Stacy,Stacy,Stacy,NY,,,,SET_OWNER,,Set owner Stacy (sheet rule: NE/South alternation (list pool position 6))
+2021,"Guarino Funeral Home, Inc.",Stacy,Stacy,Stacy,NY,,,,NO_HUBSPOT_RECORD,,No company carries this OMS id: find or create the record before any owner is set
 10731,Hiers-Baxley Funeral Services (The Villages),Stacy,Stacy,Stacy,FL,,,,SET_OWNER,,Set owner Stacy (sheet rule: NE/South alternation (list pool position 8))
 1894,Downing Funeral Home and Cremation Services,Stacy,Stacy,Stacy,FL,,,,SET_OWNER,,Set owner Stacy (sheet rule: NE/South alternation (list pool position 12))
 2431,Sunflower Cremation,Stacy,Stacy,Stacy,AZ,,,,SET_OWNER,,Set owner Stacy (sheet rule: West rule)
@@ -171,7 +171,7 @@ funeral_home_id,funeral_home,sheet,sheet_rep,territory_rep,state_sheet,state_hub
 1980,"Watkins, Garrett & Woods Mortuary, Inc.",Stacy,Stacy,Stacy,SC,,,,SET_OWNER,,Set owner Stacy (sheet rule: NE/South alternation (list pool position 24))
 1721,Amadorez Funeral Home,Stacy,Stacy,Stacy,PA,,,,SET_OWNER,,Set owner Stacy (sheet rule: NE/South alternation (list pool position 26))
 1752,Banks Page Theus Funeral Home (Northstar Location #2283),Stacy,Stacy,Stacy,FL,,,,SET_OWNER,,"Set owner Stacy (sheet rule: NE/South alternation, enterprise rows (position 8))"
-2290,Phoenix Mortuary Funeral & Cremation,Stacy,Stacy,Stacy,AZ,,,,SET_OWNER,,Set owner Stacy (sheet rule: West rule)
+2290,Phoenix Mortuary Funeral & Cremation,Stacy,Stacy,Stacy,AZ,,,,NO_HUBSPOT_RECORD,,No company carries this OMS id: find or create the record before any owner is set
 2184,Martinez Memorial LLC (New Jersey),Stacy,Stacy,Stacy,NJ,,,,SET_OWNER,,Set owner Stacy (sheet rule: NE/South alternation (list pool position 2))
 9453,Katy Funeral Home (SCI Location #3070),Stacy,Stacy,Stacy,TX,,,,SET_OWNER,,"Set owner Stacy (sheet rule: NE/South alternation, enterprise rows (position 2))"
 7240,Heritage Coolidge Funeral Home,Stacy,Stacy,Stacy,AZ,,,,SET_OWNER,,Set owner Stacy (sheet rule: West rule)
@@ -183,13 +183,13 @@ funeral_home_id,funeral_home,sheet,sheet_rep,territory_rep,state_sheet,state_hub
 2325,Richmond Coach & Cremation Service,Stacy,Stacy,Stacy,VA,,,,SET_OWNER,,Set owner Stacy (sheet rule: NE/South alternation (list pool position 10))
 4580,Direct Cremation Services of Virginia,Stacy,Stacy,Stacy,VA,,,,SET_OWNER,,Set owner Stacy (sheet rule: NE/South alternation (list pool position 12))
 1754,Bartlett-Heritage Funeral Home,Stacy,Stacy,Stacy,TN,,,,SET_OWNER,,Set owner Stacy (sheet rule: NE/South alternation (list pool position 14))
-7188,Majestic Funeral Home,Stacy,Stacy,Stacy,NY,,,,SET_OWNER,,Set owner Stacy (sheet rule: NE/South alternation (list pool position 16))
+7188,Majestic Funeral Home,Stacy,Stacy,Stacy,NY,,,,NO_HUBSPOT_RECORD,,No company carries this OMS id: find or create the record before any owner is set
 7913,Valley of the Temples Funeral Home (Northstar Location #1410),Stacy,Stacy,Stacy,HI,,,,SET_OWNER,,Set owner Stacy (sheet rule: West rule)
-15693,The Abbey Funeral Homes,Stacy,Stacy,Stacy,FL,,,,SET_OWNER,,Set owner Stacy (sheet rule: NE/South alternation (list pool position 18))
+15693,The Abbey Funeral Homes,Stacy,Stacy,Stacy,FL,,,,NO_HUBSPOT_RECORD,,No company carries this OMS id: find or create the record before any owner is set
 2433,Sunset Lawn Chapel of the Chimes (Northstar Location #1830),Stacy,Stacy,Stacy,CA,,,,SET_OWNER,,Set owner Stacy (sheet rule: West rule)
 18380,Santos Robinson Mortuary,Stacy,Stacy,Stacy,CA,,,,SET_OWNER,,Set owner Stacy (sheet rule: West rule)
 15801,Metropolitan Mortuary,Stacy,Stacy,Stacy,CA,,,,SET_OWNER,,Set owner Stacy (sheet rule: West rule)
-1958,"Fred Young Funeral Home | Cremation, Memorial & Funeral Services",Stacy,Stacy,Stacy,CA,,,,SET_OWNER,,Set owner Stacy (sheet rule: West rule)
+1958,"Fred Young Funeral Home | Cremation, Memorial & Funeral Services",Stacy,Stacy,Stacy,CA,,,,NO_HUBSPOT_RECORD,,No company carries this OMS id: find or create the record before any owner is set
 1874,Demaine Funeral Home (SCI Location #4854),Stacy,Stacy,Stacy,VA,,,,SET_OWNER,,"Set owner Stacy (sheet rule: NE/South alternation, enterprise rows (position 4))"
 2271,Palm Mortuary & Cemetery (SCI Location #1013),Stacy,Stacy,Stacy,NV,,,,SET_OWNER,,Set owner Stacy (sheet rule: West rule)
 8293,Merchant Logo Greenwood Funeral Home,Stacy,Stacy,Stacy,LA,LA,Otto,,CONFLICT,,"HubSpot Otto, sheet Stacy: list for Ethan; do not overwrite"

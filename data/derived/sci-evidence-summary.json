@@ -10,7 +10,7 @@
     "rows_counted": 46397,
     "rows_in": 48715
   },
-  "git_sha": "bece636",
+  "git_sha": "cfa316d",
   "match_tiers": {
     "T0_no_register_match": 18023,
     "T1_location_code": 280,
@@ -29,14 +29,16 @@
     "quickbooks_sci_named_but_unmatched_revenue_all_years": 302439.82,
     "sci_accounts_considered": 688
   },
-  "run_timestamp": "2026-11-18T03:36:56.597949+00:00",
+  "run_timestamp": "2026-11-18T03:39:50.690614+00:00",
   "sci_accounts_ever_shipped": 248,
   "sci_accounts_ever_shipped_strict_rule": 210,
   "sci_accounts_identified": 688,
   "sci_accounts_identified_strict_rule": 292,
+  "sci_accounts_in_savings_window": 197,
   "sci_bookings_all_years": 4634,
-  "sci_bookings_in_savings_window": 4222,
-  "sci_revenue_in_savings_window": 3874103.42,
+  "sci_bookings_in_savings_window": 3995,
+  "sci_bookings_in_savings_window_all_accounts": 4222,
+  "sci_revenue_in_savings_window": 3837260.46,
   "sci_shipping_accounts_in_june_2026_register": 246,
   "sci_shipping_accounts_not_in_june_2026_register": 2,
   "script_version": "1.0.0"

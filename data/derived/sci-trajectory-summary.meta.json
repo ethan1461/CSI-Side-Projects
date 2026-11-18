@@ -2,8 +2,8 @@
   "description": "SCI locations and booking movement by trajectory class.",
   "script": "scripts/sci_relationship_evidence.py",
   "script_version": "1.0.0",
-  "git_sha": "bece636",
-  "run_timestamp": "2026-11-18T03:36:56.597949+00:00",
+  "git_sha": "cfa316d",
+  "run_timestamp": "2026-11-18T03:39:50.690614+00:00",
   "sources": [
     "data/raw/sci-location-report-202606.xlsx",
     "data/raw/oms-funeral-homes-20261103.csv",
@@ -18,7 +18,7 @@
     "sales-by-customer-summary-20261110.xlsx": 1429,
     "partner-billed-homes-manifest-20261118.csv": 535
   },
-  "output_row_count": 7,
+  "output_row_count": 6,
   "filters_applied": [
     "derived from sci-location-trajectory.csv"
   ],

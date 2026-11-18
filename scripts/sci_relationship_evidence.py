@@ -861,12 +861,14 @@ def trajectory_rows(
         first_year = min(per_year)
         partner = manifest.get(account.account_id, {})
 
+        # Class order matters and is deliberate. A location that first shipped in
+        # 2025 is classified on its 2025 -> 2026 movement, not parked in a "new"
+        # bucket: the cohort it belongs to is the `first_shipping_year` column's
+        # job, and conflating the two hides whether last year's wins are growing.
         if y2026 == 0 and (y2025 > 0 or y2024 > 0):
             trajectory = "lapsed"
-        elif first_year >= 2026:
+        elif first_year >= DATA_CUT_YEAR:
             trajectory = "new_2026"
-        elif first_year == 2025:
-            trajectory = "new_2025"
         elif y2025 == 0:
             trajectory = "reactivated"
         elif y2026_ann > y2025 * 1.15:
@@ -892,6 +894,7 @@ def trajectory_rows(
                 "bookings_all_years": sum(per_year.values()),
                 "first_shipping_year": first_year,
                 "trajectory": trajectory,
+                "cohort": f"first_shipped_{first_year}",
                 "partner_billed_bookings": partner.get("partner_bookings", 0),
                 "self_billed_bookings": partner.get("self_billed_bookings", 0),
                 "main_partner": partner.get("main_partner", ""),
@@ -939,15 +942,14 @@ def definition_reconciliation_rows(
     """
     strict_ids = [a.account_id for a in accounts.values() if a.is_sci_strict]
     wide_ids = [a.account_id for a in accounts.values() if a.is_sci]
+    def active(ids: list[str], year: int) -> tuple[int, int]:
+        live = [i for i in ids if bookings.get(i, Counter()).get(year, 0) > 0]
+        return len(live), sum(bookings[i][year] for i in live)
+
     rows: list[dict[str, object]] = []
     for year in range(2022, DATA_CUT_YEAR + 1):
-
-        def active(ids: list[str]) -> tuple[int, int]:
-            live = [i for i in ids if bookings.get(i, Counter()).get(year, 0) > 0]
-            return len(live), sum(bookings[i][year] for i in live)
-
-        strict_locations, strict_bookings = active(strict_ids)
-        wide_locations, wide_bookings = active(wide_ids)
+        strict_locations, strict_bookings = active(strict_ids, year)
+        wide_locations, wide_bookings = active(wide_ids, year)
         rows.append(
             {
                 "year": year,
@@ -1555,6 +1557,8 @@ def main() -> int:
             sum(bookings[a.account_id].values()) for a in sci_shipping
         ),
         "sci_bookings_in_savings_window": window_bookings,
+        "sci_bookings_in_savings_window_all_accounts": all_sci_window_bookings,
+        "sci_accounts_in_savings_window": len(matched_shipping),
         "sci_revenue_in_savings_window": round(window_revenue, 2),
         "match_tiers": {k: v for k, v in sorted(tiers.items())},
         "booking_row_accounting": booking_tally,

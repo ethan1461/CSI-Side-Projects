@@ -2,8 +2,8 @@
   "description": "Booking-fee-avoidance sensitivity grid. Three of five inputs are assumptions.",
   "script": "scripts/sci_relationship_evidence.py",
   "script_version": "1.0.0",
-  "git_sha": "bece636",
-  "run_timestamp": "2026-11-18T03:36:56.597949+00:00",
+  "git_sha": "cfa316d",
+  "run_timestamp": "2026-11-18T03:39:50.690614+00:00",
   "sources": [
     "data/raw/sci-location-report-202606.xlsx",
     "data/raw/oms-funeral-homes-20261103.csv",
@@ -20,8 +20,8 @@
   },
   "output_row_count": 64,
   "filters_applied": [
-    "window 2023-2026, SCI bookings=4222",
-    "SCI revenue in window=$3,874,103 (QuickBooks, matched names only)",
+    "window 2023-2026, SCI bookings=3995 from the 197 SCI accounts whose QuickBooks revenue joined (all-SCI window bookings = 4222)",
+    "SCI revenue in window=$3,837,260 (QuickBooks accrued, matched only)",
     "EWA fee rate is [ASSUMPTION] from four observed points (CLAUDE.md 4.2)",
     "air-rate share is [ASSUMPTION]: CSI revenue includes ancillary fees",
     "diversion share is [ASSUMPTION]: CSI has no quote log"

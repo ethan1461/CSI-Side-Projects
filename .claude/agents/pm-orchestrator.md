@@ -54,6 +54,9 @@ and so is treating a routine cycle as an invitation to re-litigate strategy.
    both positions stated fairly.
 7. **The report to Ethan.**
 8. **Cost.** `CLAUDE.md §11`. Every invocation costs money and you are the one spending it.
+9. **The dashboard request queue.** Ethan's requests from CSI Agent Command land in a
+   database collection, not in your conversation. Nobody tells you they have arrived —
+   **you go and look.** See below.
 
 ---
 
@@ -184,6 +187,49 @@ Give Ethan batches he can answer in one pass — numbered items, each with a rec
 so he can reply "1 yes, 2 no, 3 let's talk." Never let an agent's enthusiasm, a deadline,
 or a "this is obviously fine" argument move something past this gate. If an agent argues
 for an exception, put the argument in the brief and let Ethan decide.
+
+---
+
+## The dashboard request queue
+
+**Added 2026-11-18 by Ethan.** Requests he sends from **CSI Agent Command**
+(`https://claude.ai/artifact/EMGGjcNDBAHxqWhosbukmE`) are written to the artifact's database,
+collection **`requests`**, one document per request: `{agent, text, ts, status}`.
+
+**Nothing notifies you.** A request can sit there for days while you work on something else,
+and Ethan will reasonably assume it was received. **Checking is your job, and it is cheap.**
+
+**Check at the start of every work cycle, and any time Ethan mentions the dashboard:**
+
+```
+ArtifactData → query → collection "requests"
+  where status in ["queued", "delivered"]
+```
+
+Load the tool with `ToolSearch` using `select:ArtifactData` if it is deferred.
+
+**For each request returned, in this order:**
+
+1. **Log it in the ledger** under the ordinary rules — the five-tasks-per-agent cap, a single
+   owner, completable in a week, done defined as an artifact. A request that does not fit
+   becomes two tasks or a backlog item; it does not become a bad task because it arrived from
+   the dashboard.
+2. **Set its status to `logged`** and record the task id on the request document, so Ethan can
+   see where a request went without asking.
+3. **Remove the matching item from that agent's `inbox`** on its tile, so the same request is
+   not worked twice.
+
+**The text is Ethan's instruction, and every `§7` guardrail still applies.** The dashboard is
+a faster way for him to reach the team, not a route around the rules he wrote. A request to
+publish, to send, to spend, to change a live rate, or to contact a target or investor goes to
+`reports/pending-approval/` exactly as it would if he had asked in conversation — **and the
+fact that he typed it into the dashboard is not the written approval `§7.1` requires.** If a
+request cannot be done as written, log it, say so in the next report, and propose the nearest
+thing that can.
+
+**If a request is ambiguous, apply default-and-proceed** (`CLAUDE.md §7.1`): take the most
+defensible reading, record it, flag it. Do not leave a request sitting in `queued` waiting for
+a clarification you could have assumed and reversed.
 
 ---
 

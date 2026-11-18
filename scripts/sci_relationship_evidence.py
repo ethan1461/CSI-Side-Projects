@@ -1174,6 +1174,10 @@ def revenue_rows(
     for name, ids in matched_names.items():
         for year in concentration_years:
             revenue_by_account[ids[0]] += revenue[name].get(year, 0.0)
+    # Ensure a matched account with zero revenue in the window is still present,
+    # so the savings model's numerator and denominator cover the same accounts.
+    for ids in matched_names.values():
+        revenue_by_account.setdefault(ids[0], 0.0)
 
     coverage = {
         "sci_accounts_considered": len(sci_accounts),
@@ -1484,14 +1488,29 @@ def main() -> int:
         ],
     )
 
-    # Savings model window: the last three complete years plus the part year, on
-    # the revenue the QuickBooks join actually covers, so the two inputs come from
-    # the same population.
+    # Savings model window: the last three complete years plus the part year.
+    # Restricted to SCI accounts whose QuickBooks revenue joined, so the numerator
+    # (revenue) and denominator (bookings) describe the same accounts. Using all
+    # SCI bookings against matched-only revenue would understate revenue per
+    # booking and therefore understate the model -- a mismatch worth avoiding even
+    # though it would flatter nobody.
+    matched_shipping = [a for a in sci_shipping if a.account_id in revenue_by_account]
     window_bookings = sum(
+        sum(bookings[a.account_id].get(year, 0) for year in window_years)
+        for a in matched_shipping
+    )
+    window_revenue = sum(revenue_by_account[a.account_id] for a in matched_shipping)
+    all_sci_window_bookings = sum(
         sum(bookings[a.account_id].get(year, 0) for year in window_years) for a in sci_shipping
     )
-    window_revenue = sum(
-        float(row["sci_revenue"]) for row in revenue_table if int(row["year"]) in window_years
+    LOG.info(
+        "savings window: matched accounts=%d bookings=%d (of %d all-SCI) "
+        "revenue=$%.0f yield=$%.2f",
+        len(matched_shipping),
+        window_bookings,
+        all_sci_window_bookings,
+        window_revenue,
+        window_revenue / window_bookings if window_bookings else 0.0,
     )
     emit(
         "sci-savings-sensitivity",
@@ -1502,8 +1521,10 @@ def main() -> int:
         ),
         "Booking-fee-avoidance sensitivity grid. Three of five inputs are assumptions.",
         [
-            f"window {window_years[0]}-{window_years[-1]}, SCI bookings={window_bookings}",
-            f"SCI revenue in window=${window_revenue:,.0f} (QuickBooks, matched names only)",
+            f"window {window_years[0]}-{window_years[-1]}, SCI bookings={window_bookings} "
+            f"from the {len(matched_shipping)} SCI accounts whose QuickBooks revenue joined "
+            f"(all-SCI window bookings = {all_sci_window_bookings})",
+            f"SCI revenue in window=${window_revenue:,.0f} (QuickBooks accrued, matched only)",
             "EWA fee rate is [ASSUMPTION] from four observed points (CLAUDE.md 4.2)",
             "air-rate share is [ASSUMPTION]: CSI revenue includes ancillary fees",
             "diversion share is [ASSUMPTION]: CSI has no quote log",

@@ -42,6 +42,14 @@ posts; "sales from posts, by week" rising to $6.8K in Looker Studio; "spreadshee
 page with 212K reach, 9 calls and $4,200. These are a creator's demo figures for a consumer-fitness example
 ("Zone 2 isn't lazy cardio"). They are not evidence for CSI.
 
+## Ethan's direction (2026-11-18)
+
+- **Build for where CSI's customers are.** The strategy starts from funeral directors and corporate
+  group buyers and how they are reached: LinkedIn, email nurture through HubSpot, search and AI search,
+  and the trade associations and events they belong to. Consumer channels (TikTok, Instagram, consumer
+  YouTube) are out of scope unless the evidence shows CSI's buyers there.
+- **No auto-reply.** Drop the Comment & DM Agent entirely. Replies to comments and messages stay human.
+
 ## Relevance to CSI (for marketing-lead to test, not conclusions)
 
 - CSI already runs the core of this. A Claude Code agent team with a knowledge base (`context/brain/`),

@@ -146,8 +146,8 @@ structural recommendation above: **medium**. Confidence in anything about Gather
 
 | # | Action | Owner | When |
 |---|---|---|---|
-| 1 | Reply to Alex and Kyri: yes to the tracking email; ask what the portal revenue page filters on | Ethan | tomorrow |
-| 2 | `market-intel` on Gather — base, pricing, footprint, existing shipping partners | agent | **in progress**, launched 2026-11-18 |
+| 1 | Reply to Alex and Kyri — drafted at `emails-2026-11-18/03-kyri-alex-portal-and-gather.md`. Yes to the tracking email; the portal-page filter question; and the two Gather questions public research could not settle | Ethan | tomorrow |
+| 2 | `market-intel` on Gather — `reports/gather-partnership-intel.md` | agent | **done, confidence LOW.** Capped by DNS: the allowlist fix never reached the running container. Needs a fresh session to finish |
 | 2a | Ask Gather for customer counts by state — `emails-2026-11-18/02-gather-footprint-ask.md` | Ethan | once he's on the thread |
 | 3 | Value-per-referred-home model, with the retention curve | `finance` + `data-analyst` | this week |
 | 4 | Add R2 and R4 priority note to the Matt brief | `legal-risk` | before Matt goes out |

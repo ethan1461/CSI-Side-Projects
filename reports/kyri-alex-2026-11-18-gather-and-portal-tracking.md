@@ -53,9 +53,12 @@ face. That gap is the single most valuable thing counsel can resolve, because it
 difference between paying on portal-originated revenue from the existing base and not. It is
 already R2 in the Matt brief; this proposal raises its priority.
 
-### One thing to hand them
+### The partner suppression — they are already across it
 
-They plan to suppress partner-routed customers and will otherwise have to guess at the list.
+**Ethan confirmed 2026-11-18 that Kyri and Alex are aware.** Recorded here only so the rule
+is written down somewhere other than a call.
+
+They plan to suppress partner-routed customers and would otherwise have to guess at the list.
 **CSI has it measured:** 535 homes and 3,161 bookings 2022–2026, identified on the invoice
 bill-to field, in `data/derived/partner-billed-homes-manifest-20261118.csv`. The rule is
 `COALESCE(csi_new_shipper_to_invoice.shipper_id, csi_booking_shipper_information.shipper_funeral_home_id)`.
@@ -143,8 +146,9 @@ structural recommendation above: **medium**. Confidence in anything about Gather
 
 | # | Action | Owner | When |
 |---|---|---|---|
-| 1 | Reply to Alex and Kyri: yes to the tracking email; ask what the portal revenue page filters on; offer the partner-suppression rule | Ethan | tomorrow |
-| 2 | `market-intel` on Gather — base, pricing, footprint, existing shipping partners | agent | before Ethan replies to Chase Downs |
+| 1 | Reply to Alex and Kyri: yes to the tracking email; ask what the portal revenue page filters on | Ethan | tomorrow |
+| 2 | `market-intel` on Gather — base, pricing, footprint, existing shipping partners | agent | **in progress**, launched 2026-11-18 |
+| 2a | Ask Gather for customer counts by state — `emails-2026-11-18/02-gather-footprint-ask.md` | Ethan | once he's on the thread |
 | 3 | Value-per-referred-home model, with the retention curve | `finance` + `data-analyst` | this week |
 | 4 | Add R2 and R4 priority note to the Matt brief | `legal-risk` | before Matt goes out |
 | 5 | Gather referral-source field → Monday engineering ask, **only if** structure 3 stays live | `product` | 2026-11-23 |

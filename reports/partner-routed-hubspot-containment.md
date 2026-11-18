@@ -103,3 +103,63 @@ Lifecycle, account class and contact association are still to do for all 13. Not
 > Partner-routed homes (the partner-billed manifest: no CSI-invoiced booking, or direct volume below partner volume) carry no HubSpot seller owner and are not enrolled in any sequence. revops-crm applies this on every refresh of the manifest and records prior owners before clearing. Homes with direct volume at least equal to partner volume keep their owner.
 
 Reason to make it standing: the manifest will move with each booking export, and a new partner-routed home can pick up a rep owner from any territory import. Ownership writes should check the manifest first.
+
+---
+
+# Addendum 2026-11-18: `csi_partner_routing` populated
+
+**Status:** 451 of 535 manifest homes marked, 0 failed. 84 homes have no HubSpot company and could not be marked (list below). No owner changes, merges, deletions or enrolments in this run.
+
+## Property as created vs spec: material mismatch
+
+| | Spec | As created |
+|---|---|---|
+| Internal name | `csi_partner_routing` | `csi_partner_routing` (match) |
+| Label | CSI partner routing | `csi_partner_routing` (raw name) |
+| Type | Dropdown select | **string (free text), no options** |
+| Options | 3 enumerated values | **none** |
+| Description | set | empty |
+| `csi_prior_owner` | optional | **not created** |
+
+Consequence: HubSpot will accept any string, so a typo in an import or a hand edit matches no filter and fails silently. I wrote the three spec values exactly (`partner_routed_hold`, `mixed_hold`, `direct_also_partner`); text equality filters work today. Nothing is enforcing them. **Fix: change the field type to Dropdown select with those three options** (HubSpot converts existing matching text values); add the description. I did not stop for this, per instruction. `csi_prior_owner` was not populated because it does not exist; reversal still depends on `reports/partner-routed-containment-owner-clear-plan-20261118.csv`.
+
+## Verdict rule (same as the clearing)
+
+No self-billed bookings: `partner_routed_hold`. Self-billed >= partner-billed: `direct_also_partner`. Otherwise `mixed_hold`. Applied to all 535 manifest rows: 414 / 51 / 70.
+
+## Log (written before the writes)
+
+`reports/partner-routing-marker-plan-20261118.csv`: company id, OMS id, name, partner and self-billed bookings, value to set, 451 rows. Company ids from `data/derived/hubspot-company-ids.csv`, the clearing and owner-set plans, plus one HubSpot search (Roberts Funeral Home 3666, created earlier today).
+
+## Result
+
+| Value | Planned (writable) | In HubSpot after |
+|---|---|---|
+| `partner_routed_hold` | 345 | 345 |
+| `mixed_hold` | 45 | 45 |
+| `direct_also_partner` | 61 | 61 |
+| Total | 451 | 451 |
+
+The 11 KEEP-rule homes that kept their owners, and the 6 KEEP-verdict homes, carry `direct_also_partner`, as do the three manifest-KEEP unowned homes (Florida Funeral Home 1939, Mississippi Mortuary 2217, Genuine Funeral 12197), confirmed by read-back. Their owners were not touched and remain blank.
+
+## Not marked: 84 homes with no HubSpot company
+
+Searched by `oms_funeral_home_id`; no company exists. List: `reports/partner-routing-marker-no-hubspot-company-20261118.csv` (verdicts: mostly `partner_routed_hold`). I did not create 84 companies just to carry a marker: that widens the write, adds records no rep should see, and Ethan's ruling is not to route them to sellers. **Risk:** a territory import that creates these companies will create them unmarked and ownable. Either create them with the marker (decision for Ethan, 84 creates, below the 25-record bulk gate only for merges and deletes), or make the import check the manifest first (candidate standing authority above).
+
+## Verification
+
+- **Pilot:** 10 records, 4 / 3 / 3 across the three values, read back 10 of 10 before the rest ran.
+- **Counts:** per-value search totals match plan exactly. The first `partner_routed_hold` count read 336 (search index lag after the final batches); re-run read 345.
+- **Planned-but-unmarked check:** all 345 planned partner_routed_hold ids returned no "missing marker" rows; no record holds a value outside the three.
+- **Stratified read-back:** 30 records fetched directly (13 `partner_routed_hold`, 6 `mixed_hold`, 11 `direct_also_partner`), 30 of 30 match the plan. Every hold-marked record read back with a blank owner.
+- **Hold with owner:** zero `partner_routed_hold` or `mixed_hold` records carry an owner.
+- **Connector:** no drops, 46 write calls, 0 failures.
+
+## Still open (not resolved by me)
+
+1. Three manifest-KEEP homes (1939, 2217, 12197): marked `direct_also_partner`, still unowned. Ownership ruling is Ethan's.
+2. Greenwood (8293): not in the manifest, no marker; owner still Otto vs sheet Stacy.
+3. Held SCI rows that carry an owner (Palm Mortuary, Levitt-Weinstein, Gillooly): unchanged.
+4. Convert `csi_partner_routing` to a dropdown with the three options and add the description; optionally create `csi_prior_owner`.
+5. The 84 homes with no company.
+6. Standing authority candidate (above): ownership writes and imports check the manifest and `csi_partner_routing` first.

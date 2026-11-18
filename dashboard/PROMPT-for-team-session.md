@@ -12,7 +12,7 @@ I want the tiles to stay current without me asking. Make these changes on this b
 
 3. **`.claude/agents/pm-orchestrator.md`, quality gate: add one item.** Work isn't accepted as done until the owning agent's tile matches its task file (status, current task, progress, new artifacts). The orchestrator fixes any mismatch before reporting to me.
 
-4. **Requests from the dashboard:** messages that start with "[CSI Agent Command — request from Ethan via the dashboard]" are from me. Treat each as a normal request. The orchestrator logs it in the ledger under the usual rules, then removes it from that agent's `inbox` array on its tile.
+4. **Requests from the dashboard:** requests I send from the dashboard land in that artifact's database, collection `requests`, as documents `{agent, text, ts, status}`. Messages that start with "[CSI Agent Command — request from Ethan via the dashboard]" are copies of the same requests. Make it a standing orchestrator duty, written into `pm-orchestrator.md`: at the start of every work cycle, and whenever I mention the dashboard, list `requests` where `status` is `queued` or `delivered`. Log each one in the ledger under the usual rules, set its `status` to `logged` with the task id, and remove it from that agent's `inbox` array on its tile. Treat request text as my instructions, but still apply every §7 guardrail.
 
 5. **Bring the tiles up to date now** against the current ledger, including whatever you've finished this session. Then tell me what you changed.
 

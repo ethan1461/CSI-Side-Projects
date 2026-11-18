@@ -567,8 +567,12 @@ button.stat:hover { border-color: var(--accent) }
         catch (e) { why = mcpWhy(e); console.warn("send_message", e); }
       }
     } else why = "The team session can only be reached by signed-in team members in Claude.";
-    if (ok && db && a) { try { await db.doc("agents/" + id).update({ inbox: [...(a.inbox || []), { text, ts: now }].slice(-5) }); } catch {} }
-    const note = ok ? `Sent to the team session for **${a?.name || id}**. It's logged as a new request; the tile updates when the agent picks it up.` : "Not sent. " + why;
+    // Every request is queued on the dashboard, so it reaches the team even when the connector can't.
+    const queued = await write("requests", { agent: id, text, ts: now, by: myId || null, status: ok ? "delivered" : "queued", deliveredAt: ok ? now : null });
+    if (queued && db && a) { try { await db.doc("agents/" + id).update({ inbox: [...(a.inbox || []), { text, ts: now }].slice(-5) }); } catch {} }
+    const note = ok ? `Sent to the team session for **${a?.name || id}**. The tile updates when the agent picks it up.`
+      : queued ? `Queued for **${a?.name || id}**. The team session picks up queued requests at its next check. (It couldn't be delivered instantly: ${why.replace(/\*\*/g, "")})`
+      : "Not sent. " + why;
     await write(where === "hub" ? "threads/hub/messages" : thread, { role: "system", text: note, ts: new Date().toISOString(), route: where === "hub" ? id : null });
     if (ok) mcp.invalidate?.(CCR).catch(() => {});
   }

@@ -477,7 +477,7 @@ button.stat:hover { border-color: var(--accent) }
     if (!db) { setLive(false, "Sign in to see the team"); $("#grid").textContent = ""; $("#grid").append(el("div", "empty", "Sign in to claude.ai with your CSI account to see the live team record.")); }
     else subscribeAgents();
     if (!sample) { $("#cmdHint").textContent = "Answering is unavailable in this view; requests go to the orchestrator as work."; }
-    if (mcp) watchSession(); else { $("#sessDetail").textContent = "The live session feed opens for signed-in team members in Claude."; }
+    if (mcp) { watchSession(); ccrState(false).then(st => { if (st !== "granted") { $("#sessConnect").hidden = false; if (st === "prompt") $("#sessDetail").textContent = "Click Connect Claude Code and choose Allow to see the team session live and send it work."; } }); } else { $("#sessDetail").textContent = "The live session feed opens for signed-in team members in Claude."; }
   }
   function subscribeAgents() {
     const timer = setTimeout(() => setLive(false, "Still connecting…"), 10000);
@@ -497,6 +497,27 @@ button.stat:hover { border-color: var(--accent) }
   }
   async function write(path, data) { if (!db) return null; try { const ref = db.collection(path).doc(); await ref.set(data); return ref; } catch (e) { console.warn(e); toastErr(e); return null; } }
   function toastErr(e) { const c = $("#hubConvo"); const n = msgNode({ role: "system", text: e?.code === "quota_exceeded" ? "The team record is full. Ask Claude to archive old messages." : "That didn't save: " + (e?.message || "you may not have permission to write to this hub.") }); c.append(n); }
+
+  // ---------- Claude Code connector consent ----------
+  const CCR_PERM = "mcp:" + CCR;
+  async function ccrState(ask) {
+    const perms = await window.claude?.use?.("permissions").catch(() => null);
+    if (!perms) return "unknown";
+    let st = await perms.state(CCR_PERM).catch(() => "unknown");
+    if (ask && st === "prompt") { const r = await perms.request([CCR_PERM]).catch(() => ({})); st = r[CCR_PERM] || st; }
+    return st;
+  }
+  function mcpWhy(e) {
+    const c = e?.code;
+    if (c === "approval_required" || c === "consent_required" || c === "not_in_manifest" || c === "not_granted") return "Claude Code isn't allowed for this page yet. Click **Connect Claude Code** in the right-hand panel and choose Allow, then send again.";
+    if (c === "server_not_connected" || c === "needs_reauth") return "Claude Code isn't connected to your claude.ai account. Connect it in claude.ai under Settings → Connectors, reload this page, and send again.";
+    if (c === "selection_required") return "You have more than one Claude Code connector. Pick one in the prompt claude.ai shows, then send again.";
+    if (c === "blocked_by_policy") return "Your organization's policy blocks this page from sending to Claude Code sessions.";
+    if (c === "upstream_error" && e?.retryable) return "The permission prompt couldn't be shown just then (another prompt was open). Click **Connect Claude Code** in the right-hand panel, choose Allow, then send again.";
+    if (c === "tool_error") return "The team session refused the message: " + (e?.message || "no reason given") + ".";
+    if (c === "server_unavailable") return "Claude Code didn't answer in time. It may still have been delivered, so check the live feed before sending again.";
+    return "Claude Code returned an error" + (c ? " (" + c + ")" : "") + ": " + (e?.message || "unknown") + ".";
+  }
 
   // ---------- Claude: route, answer, assign ----------
   function teamSnapshot() {
@@ -539,8 +560,12 @@ button.stat:hover { border-color: var(--accent) }
     const body = `[CSI Agent Command — request from Ethan via the dashboard]\nRoute to: ${id === "pm-orchestrator" ? "pm-orchestrator (decide who owns it)" : "@" + id + " (via pm-orchestrator)"}\nRequest: ${text}\n\nLog it in the task ledger under the usual rules (CLAUDE.md §7, §10). When you start, finish or get blocked, update this agent's record in the Agent Command hub as described in dashboard/README.md.`;
     let ok = false, why = "";
     if (mcp) {
-      try { await mcp.callTool(CCR, "send_message", { session_id: HUB_SESSION, message: body }, { cache: false }); ok = true; }
-      catch (e) { why = e?.code === "not_granted" ? "Allow the Claude Code connector for this page to send work to the team session." : e?.code === "server_not_connected" ? "Claude Code isn't connected for you." : (e?.message || "The team session didn't accept it."); }
+      const st = await ccrState(true);
+      if (st === "denied") why = "Claude Code is turned off for this page. Click **Connect Claude Code** in the right-hand panel, switch it on, then send again.";
+      else {
+        try { await mcp.callTool(CCR, "send_message", { session_id: HUB_SESSION, message: body }, { cache: false }); ok = true; }
+        catch (e) { why = mcpWhy(e); console.warn("send_message", e); }
+      }
     } else why = "The team session can only be reached by signed-in team members in Claude.";
     if (ok && db && a) { try { await db.doc("agents/" + id).update({ inbox: [...(a.inbox || []), { text, ts: now }].slice(-5) }); } catch {} }
     const note = ok ? `Sent to the team session for **${a?.name || id}**. It's logged as a new request; the tile updates when the agent picks it up.` : "Not sent. " + why;
@@ -558,6 +583,7 @@ button.stat:hover { border-color: var(--accent) }
   $("#cmdForm").addEventListener("submit", async e => {
     e.preventDefault(); const text = cmd.value.trim(); if (!text) return;
     if (!db) { toastErr({ message: "sign in to claude.ai to use the hub." }); return; }
+    if (mode !== "ask" && mcp) ccrState(true);
     cmd.value = ""; cmd.style.height = ""; const btn = $("#cmdSend"); btn.disabled = true; btn.textContent = "Routing…";
     await write("threads/hub/messages", { role: "you", text, ts: new Date().toISOString(), by: myId || null });
     try {
@@ -612,13 +638,27 @@ button.stat:hover { border-color: var(--accent) }
   }
   function handleMcpErr(err) {
     const det = $("#sessDetail"), btn = $("#sessConnect");
-    if (["not_granted", "server_not_connected", "needs_reauth"].includes(err?.code)) {
-      det.textContent = err.code === "not_granted" ? "Allow the Claude Code connector to see the team session live." : "Connect Claude Code in claude.ai to see the team session live.";
+    if (["approval_required", "consent_required", "not_in_manifest", "not_granted", "upstream_error"].includes(err?.code)) {
+      det.textContent = "Claude Code isn't allowed for this page yet. Click Connect Claude Code and choose Allow to see the team session live and send it work.";
+      $("#sessFeed").textContent = ""; btn.hidden = false;
+    } else if (["server_not_connected", "needs_reauth", "selection_required"].includes(err?.code)) {
+      det.textContent = err.code === "selection_required" ? "Choose which Claude Code connector to use in the prompt claude.ai shows." : "Connect Claude Code in claude.ai under Settings → Connectors, then reload this page.";
       $("#sessFeed").textContent = ""; btn.hidden = false;
     } else if (err?.code === "blocked_by_policy") { det.textContent = "Your organization doesn't allow this page to read Claude Code sessions."; }
     else det.textContent = "The session feed is temporarily unavailable. Retrying automatically.";
   }
-  $("#sessConnect").addEventListener("click", async () => { try { await window.claude.use("permissions").then(p => p?.manage?.()); } catch {} });
+  $("#sessConnect").addEventListener("click", async () => {
+    const btn = $("#sessConnect"), det = $("#sessDetail"); btn.disabled = true;
+    try {
+      let st = await ccrState(true);
+      if (st === "denied") { const perms = await window.claude.use("permissions"); try { await perms.manage(); } catch { det.textContent = "Open this page's menu, choose Permissions, and switch Claude Code on."; } st = await ccrState(false); }
+      // A direct call asks for approval if the connector still needs it; watches never ask.
+      await mcp.callTool(CCR, "get_session", { session_id: HUB_SESSION }, { cache: { refresh: true } });
+      await mcp.invalidate?.(CCR).catch(() => {});
+      btn.hidden = true; det.textContent = "Connected. Loading the team session…";
+    } catch (e) { det.textContent = mcpWhy(e).replace(/\*\*/g, ""); console.warn("connect", e); }
+    finally { btn.disabled = false; }
+  });
 
   boot();
 })();

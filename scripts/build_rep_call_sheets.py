@@ -1,4 +1,4 @@
-"""Build the retention call sheets: one account, one named caller, no row on two sheets (v4).
+"""Build the retention call sheets: one account, one named caller, no row on two sheets (v5).
 
 Purpose: partition the accounts on data/derived/accounts-{at-risk-volume-decline,dormant,one-and-done}.csv
          across the six named callers, plus a key-accounts sheet (Cheryl / Vadim, to be assigned), a
@@ -8,7 +8,7 @@ Inputs:  the three cohort CSVs and data/derived/fy27-owner-plan.csv (HubSpot own
 Outputs: data/derived/rep-call-sheet-{otto,stacy,ethan,abe,renee,susej}-2026-11.csv,
          call-sheet-key-accounts-2026-11.csv, call-sheet-unrouted-2026-11.csv,
          call-sheet-reconciliation-2026-11.csv, call-sheet-summary-2026-11.json (+ .meta.json each).
-Owner:   sales-lead. Date: 2026-11-13 (v4, key-account rule). Idempotent.
+Owner:   sales-lead. Date: 2026-11-18 (v5, partner-routed strike + territory audit). Idempotent.
          Business names only; no contacts, no phone. Allocation and outcome tracking only (CLAUDE.md s7.7).
 Callers: Ethan, Otto, Stacy confirmed. Susej, Renee, Abe PROVISIONAL (Ethan: "maybe"); their sheets stay
          unreleased until Vadim has seen the volume (recommendation, Ethan decides).
@@ -20,6 +20,16 @@ Routing: partner flag asserted (never name-filtered). KEY-ACCOUNT RULE (Ethan, 2
          Otto and Stacy keep every v2 account except the one-and-done tail beyond KEEP_TAIL rows
          (unreached before Dec 11); that tail goes round-robin to the provisional callers.
          Use --no-provisional to return the tail to Otto and Stacy (a rebuild, not a hand edit).
+v5 (Ethan, 2026-11-18): partner-routed homes. Verdicts are RECOMPUTED from the invoice bill-to manifest
+         (data/derived/partner-billed-homes-manifest-20261118.csv) and asserted equal to the verdict file
+         call-sheet-partner-exposure-20261118.csv. STRIKE (no CSI-invoiced booking ever) -> removed from every rep
+         sheet into call-sheet-struck-partner-routed-2026-11.csv (evidence, not deleted). KEEP (self-billed >=
+         partner-billed) stays. FLAG (mostly partner, some direct) -> Ethan's sheet. Key-accounts, record-repair and
+         partner-tier rows are never touched by the strike; the script fails if a key-account row is in the manifest.
+         TERRITORY: strike and the tail carve are applied AFTER every v4 owner is assigned, so a surviving row never
+         changes rep (the "preserve" option; see reports/rep-call-sheets-2026-11.md). The territory audit and the
+         HubSpot reconciliation (call-sheet-hubspot-reconciliation-2026-11.csv, from the read-only snapshot
+         call-sheet-hubspot-owner-snapshot-20261118.csv) are written on every run. No HubSpot write.
 """
 
 from __future__ import annotations
@@ -136,6 +146,11 @@ PALM_NOTE = (
     "PALM MORTUARY (Las Vegas): do not release with the other SCI rows when Pam replies. "
     "Check Stacy's separate conversation with Phoebe first (Ethan, 2026-11-12)"
 )
+MANIFEST = "partner-billed-homes-manifest-20261118"
+EXPOSURE = "call-sheet-partner-exposure-20261118"
+SNAPSHOT = "call-sheet-hubspot-owner-snapshot-20261118"
+SHEET_STRUCK = "Struck (partner-routed)"
+V = "5.0"
 STALE = (
     "call-sheet-unassigned-pool-2026-11",
     "call-sheet-ethan-held-2026-11",
@@ -156,6 +171,88 @@ def peak_bookings(r: dict[str, str]) -> int:
 def is_key_account(peak: int, threshold: int = KEY_ACCOUNT_PEAK) -> bool:
     """The key-account rule: peak annual bookings at or above the threshold."""
     return peak >= threshold
+
+
+def partner_verdict(partner: int, self_billed: int) -> str:
+    """Ethan 2026-11-18: no CSI-invoiced booking ever -> STRIKE; self-billed >= partner-billed -> KEEP; else FLAG."""
+    if self_billed == 0:
+        return "STRIKE"
+    return "KEEP" if self_billed >= partner else "FLAG"
+
+
+def read_manifest() -> dict[str, dict[str, str]]:
+    return {r["funeral_home_id"]: r for r in read(MANIFEST)}
+
+
+def apply_partner_verdicts(
+    rows: list[dict], manifest: dict[str, dict[str, str]]
+) -> dict[str, list[dict]]:
+    """Apply STRIKE / KEEP / FLAG to call rows (bucket rep or ethan) AFTER owners are fixed, so no survivor changes rep.
+
+    Key-account, Ortiz, record-repair and partner-tier rows are never actioned. A key-account row found in the
+    manifest stops the build: Ethan was told that sheet is clean and it must not silently change.
+    """
+    out: dict[str, list[dict]] = {"STRIKE": [], "KEEP": [], "FLAG": [], "NOT_ACTIONED": []}
+    for r in rows:
+        m = manifest.get(r["funeral_home_id"])
+        r.update(partner_verdict_col="", partner_billed="", self_billed="")
+        if not m:
+            continue
+        p, sb = int(m["partner_bookings"]), int(m["self_billed_bookings"])
+        v = partner_verdict(p, sb)
+        if r["bucket"] in ("key", "ortiz"):
+            raise SystemExit(
+                f"key-account row {r['funeral_home_id']} {r['funeral_home']} is in the partner manifest; "
+                "Ethan was told the key-accounts sheet is clean. Stop and raise it."
+            )
+        if r["bucket"] not in ("rep", "ethan"):
+            r.update(partner_verdict_col=f"{v}-equivalent, not actioned ({r['bucket']})",
+                     partner_billed=p, self_billed=sb)
+            out["NOT_ACTIONED"].append(r)
+            continue
+        r.update(partner_verdict_col=v, partner_billed=p, self_billed=sb)
+        split = f"{p} partner-billed ({m['main_partner']}), {sb} CSI-billed"
+        if v == "STRIKE":
+            r["struck_from"] = r["rep"] if r["bucket"] == "rep" else r["bucket"]
+            r["bucket"] = "struck"
+        elif v == "FLAG":
+            r["flag"] = (
+                f"{r['flag']}. " if r["flag"] else ""
+            ) + f"PARTNER-ROUTED FLAG: {split}. Ethan decides; do not call"
+            r["owner_rule"] = f"FLAG to Ethan (was {r['rep']}): {split}"
+            r["bucket"] = "ethan"
+            r["rep"] = "Ethan"
+        else:
+            r["flag"] = (
+                f"{r['flag']}. " if r["flag"] else ""
+            ) + f"Also arrives via a partner: {split}. Genuine CSI customer, keep"
+        out[v].append(r)
+    return out
+
+
+def territory_of(state: str) -> str:
+    return "Otto" if state in MIDWEST else "Stacy" if state in WEST else "NE/South"
+
+
+def territory_audit(rows: list[dict]) -> dict:
+    """Every rep-routed row: Midwest -> Otto, West -> Stacy (on territory_rep, so the provisional callers' rows are
+    audited too); NE/South split counted. Run on the pre-strike and post-strike populations."""
+    def pop(keep: bool) -> dict:
+        sub = [r for r in rows if r["territory_rep"] in ("Otto", "Stacy") and r["bucket"] in
+               (("rep", "struck", "ethan") if keep else ("rep",))]
+        viol = [
+            r["funeral_home_id"]
+            for r in sub
+            if territory_of(r["state"]) in ("Otto", "Stacy") and territory_of(r["state"]) != r["territory_rep"]
+        ]
+        nes = [r for r in sub if territory_of(r["state"]) == "NE/South"]
+        return {
+            "rows": len(sub),
+            "midwest_not_otto_or_west_not_stacy": viol,
+            "ne_south_otto": sum(1 for r in nes if r["territory_rep"] == "Otto"),
+            "ne_south_stacy": sum(1 for r in nes if r["territory_rep"] == "Stacy"),
+        }
+    return {"before_strike": pop(True), "after_strike_rows_with_a_rep": pop(False)}
 
 
 def days(s: str) -> int:
@@ -450,6 +547,10 @@ def main() -> None:
             "Palm Mortuary & Cemetery (Las Vegas) must match exactly one held row"
         )
     carved = [] if args.no_provisional else carve_tail(rows)
+    audit_before = territory_audit(rows)
+    manifest = read_manifest()
+    verdicts = apply_partner_verdicts(rows, manifest)
+    check_against_verdict_file(rows, verdicts)
 
     # Assign sheet, status and call order. A row's sheet is its single destination.
     for r in rows:
@@ -459,6 +560,8 @@ def main() -> None:
             r["sheet"] = "Ethan"
         elif r["bucket"] in ("ortiz", "key"):
             r["sheet"] = KEY_SHEET
+        elif r["bucket"] == "struck":
+            r["sheet"] = SHEET_STRUCK
         elif r["bucket"] == "unrouted":
             r["sheet"] = "Record repair"
         else:
@@ -496,6 +599,9 @@ def main() -> None:
         "state",
         "enterprise_group",
         "flag",
+        "partner_verdict_col",
+        "partner_billed",
+        "self_billed",
         "in_ortiz_group",
         "bookings_2024",
         "bookings_2025",
@@ -506,7 +612,7 @@ def main() -> None:
         "reason_to_call",
     ]
     cap = ["call_order", *base, *capture]
-    summary: dict = {"script_version": "4.0", "provisional_released": False}
+    summary: dict = {"script_version": V, "provisional_released": False}
     sheets = {}
     for name in ("Otto", "Stacy", "Ethan", *PROVISIONAL):
         # Released rows first (in list order), held rows last, so a rep never starts on a held row.
@@ -533,6 +639,35 @@ def main() -> None:
         summary[name] = counts(sub)
     partner = [r for r in rows if r["bucket"] == "partner"]
     summary["partner_excluded"] = [r["funeral_home_id"] for r in partner]
+
+    struck = sorted(verdicts["STRIKE"], key=lambda r: (r["struck_from"], *sort_key(r)))
+    write_struck(struck, manifest)
+    summary["partner_strike"] = {
+        "struck": len(struck),
+        "keep": len(verdicts["KEEP"]),
+        "flag_to_ethan": len(verdicts["FLAG"]),
+        "keep_ids": [r["funeral_home_id"] for r in verdicts["KEEP"]],
+        "flag_ids": [r["funeral_home_id"] for r in verdicts["FLAG"]],
+        "not_actioned_in_manifest": [
+            {"id": r["funeral_home_id"], "name": r["funeral_home"], "sheet": r["sheet"],
+             "partner": r["partner_billed"], "self_billed": r["self_billed"]}
+            for r in verdicts["NOT_ACTIONED"]
+        ],
+        "struck_by_list": {k: sum(1 for r in struck if r["list"] == k) for k in ORDER},
+        "struck_by_former_sheet": {
+            k: sum(1 for r in struck if r["struck_from"] == k)
+            for k in sorted({r["struck_from"] for r in struck})
+        },
+        "struck_by_partner": {
+            k: sum(1 for r in struck if manifest[r["funeral_home_id"]]["main_partner"] == k)
+            for k in sorted({manifest[r["funeral_home_id"]]["main_partner"] for r in struck})
+        },
+    }
+    summary["territory_audit"] = {
+        **audit_before_after(audit_before, rows),
+        "decision": "preserve: every v4 owner kept; strike and carve applied after assignment",
+    }
+    summary["hubspot_reconciliation"] = hubspot_reconcile(rows)
 
     # Partition reconciliation: every source account lands in exactly one place.
     src = {"at_risk": len(atr), "dormant": len(dor_deduped), "one_and_done": len(one)}
@@ -595,7 +730,7 @@ def main() -> None:
             for r in sheets[name]
             if not r["call_status"]
         ][:3]
-        for name in ("Otto", "Stacy")
+        for name in ("Otto", "Stacy", "Ethan", *PROVISIONAL)
     }
     summary["key_account_rule"] = {
         "threshold_peak_annual_bookings": KEY_ACCOUNT_PEAK,
@@ -653,6 +788,113 @@ def sensitivity(rows: list[dict]) -> dict:
     return out
 
 
+def check_against_verdict_file(rows: list[dict], verdicts: dict[str, list[dict]]) -> None:
+    """The manifest-derived verdicts must equal Ethan's verdict file for every row it lists. Loud on any disagreement."""
+    mine = {r["funeral_home_id"]: v for v, lst in verdicts.items() for r in lst}
+    bad = [
+        (e["funeral_home_id"], e["verdict"], mine.get(e["funeral_home_id"]))
+        for e in read(EXPOSURE)
+        if mine.get(e["funeral_home_id"]) != e["verdict"]
+    ]
+    if bad:
+        raise SystemExit(f"verdict file disagrees with manifest-derived verdicts: {bad[:10]}")
+    print(
+        f"partner verdicts: STRIKE {len(verdicts['STRIKE'])} KEEP {len(verdicts['KEEP'])} "
+        f"FLAG {len(verdicts['FLAG'])}; in manifest but not actioned {len(verdicts['NOT_ACTIONED'])}"
+    )
+
+
+def audit_before_after(before: dict, rows: list[dict]) -> dict:
+    after = territory_audit(rows)
+    return {
+        "before_strike": before["before_strike"],
+        "after_strike": after["after_strike_rows_with_a_rep"],
+        "rule": "Midwest -> Otto, West -> Stacy (CLAUDE.md s5 authority 5); NE/South alternating by call rank",
+    }
+
+
+def write_struck(struck: list[dict], manifest: dict[str, dict[str, str]]) -> None:
+    cols = [
+        "funeral_home_id", "funeral_home", "state", "former_sheet", "territory_rep", "list", "list_rank",
+        "situation", "partner", "partner_bookings", "self_billed_bookings", "other_billed_bookings",
+        "first_booking_date", "last_booking_date", "bookings_2024", "bookings_2025", "bookings_2026_to_10nov",
+        "verdict", "reason_struck",
+    ]
+    data = []
+    for r in struck:
+        m = manifest[r["funeral_home_id"]]
+        data.append({
+            **r,
+            "former_sheet": r["struck_from"],
+            "partner": m["main_partner"],
+            "partner_bookings": m["partner_bookings"],
+            "self_billed_bookings": m["self_billed_bookings"],
+            "other_billed_bookings": m["other_billed_bookings"],
+            "first_booking_date": m["first_booking_date"],
+            "last_booking_date": m["last_booking_date"],
+            "verdict": "STRIKE",
+            "reason_struck": "No CSI-invoiced booking ever (invoice bill-to); a partner's customer, not CSI's "
+                             "(Ethan 2026-11-18). Kept as evidence, not deleted",
+        })
+    write(D / "call-sheet-struck-partner-routed-2026-11.csv", cols, data, extra_sources=[MANIFEST + ".csv", EXPOSURE + ".csv"])
+
+
+def hubspot_reconcile(rows: list[dict]) -> dict:
+    """Compare each row's sheet rep with the HubSpot company owner (read-only snapshot taken 2026-11-18).
+
+    The snapshot lists only companies that carry an owner, so 'no owner' covers both an unowned record and a
+    missing one. Writes the per-row file revops works from. Nothing is written to HubSpot.
+    """
+    path = D / f"{SNAPSHOT}.csv"
+    if not path.exists():
+        return {"skipped": "snapshot file absent"}
+    with path.open(encoding="utf-8") as fh:
+        snap = {r["oms_funeral_home_id"]: r for r in csv.DictReader(fh)}
+    plan = plan_owners()
+    out, cat = [], {}
+    for r in sorted(rows, key=lambda r: (r["sheet"], *sort_key(r))):
+        if r["bucket"] in ("unrouted", "partner"):
+            continue
+        fid, sh = r["funeral_home_id"], snap.get(r["funeral_home_id"])
+        hs = sh["hubspot_owner"] if sh else ""
+        rep_, terr = r["rep"], r["territory_rep"]
+        if r["bucket"] == "struck":
+            c, act = (
+                ("STRUCK_HAS_REP_OWNER", "Partner's customer: unassign (or leave) is Ethan's call; propose partner-routed marker")
+                if hs else ("STRUCK_NO_OWNER", "None; keep unowned"))
+        elif r["sheet"] in ("Otto", "Stacy"):
+            if hs == rep_:
+                c, act = "MATCH", ""
+            elif not hs:
+                c, act = "SET_OWNER", f"Set owner {rep_} (sheet rule: {r['owner_rule']})"
+            else:
+                c, act = "CONFLICT", f"HubSpot {hs}, sheet {rep_}: list for Ethan; do not overwrite"
+        elif r["sheet"] in PROVISIONAL:
+            if hs == terr:
+                c, act = "PROVISIONAL_HOLDS_TERRITORY_OWNER", "None until Vadim releases the sheet"
+            elif not hs:
+                c, act = "PROVISIONAL_NO_OWNER", f"Territory owner is {terr}; set once the sheet is confirmed"
+            else:
+                c, act = "CONFLICT", f"HubSpot {hs}, territory {terr}"
+        else:  # Ethan, key accounts
+            if hs:
+                c, act = "REP_OWNER_ON_ETHAN_OR_KEY_ROW", f"HubSpot owner {hs} on a {r['sheet']} row: Ethan decides whether to clear"
+            else:
+                c, act = "MATCH", ""
+        sd = bool(sh) and sh["hubspot_state"] != r["state"]
+        out.append({
+            "funeral_home_id": fid, "funeral_home": r["funeral_home"], "sheet": r["sheet"],
+            "sheet_rep": rep_, "territory_rep": terr, "state_sheet": r["state"],
+            "state_hubspot": sh["hubspot_state"] if sh else "", "hubspot_owner": hs,
+            "in_fy27_owner_plan": "Y" if fid in plan else "", "category": c,
+            "state_differs": "Y" if sd else "", "action_for_revops": act,
+        })
+        cat[c] = cat.get(c, 0) + 1
+    write(D / "call-sheet-hubspot-reconciliation-2026-11.csv", list(out[0]), out, extra_sources=[SNAPSHOT + ".csv"])
+    return {"rows": len(out), "by_category": dict(sorted(cat.items())),
+            "state_differs": sum(1 for o in out if o["state_differs"])}
+
+
 def verify_on_disk(expected: int) -> dict:
     """Re-read the written sheets: no account id on two sheets, none missing."""
     seen: dict[str, str] = {}
@@ -672,19 +914,26 @@ def verify_on_disk(expected: int) -> dict:
     with (D / "call-sheet-reconciliation-2026-11.csv").open(encoding="utf-8") as fh:
         recon = list(csv.DictReader(fh))
     partner = {r["funeral_home_id"] for r in recon if r["sheet"].startswith("Partner")}
-    if len(seen) + len(partner) != expected:
+    with (D / "call-sheet-struck-partner-routed-2026-11.csv").open(encoding="utf-8") as fh:
+        struck_ids = {r["funeral_home_id"] for r in csv.DictReader(fh)}
+    back = sorted(struck_ids & set(seen))
+    if back:
+        raise SystemExit(f"struck accounts reappear on a sheet: {back}")
+    if len(seen) + len(partner) + len(struck_ids) != expected:
         raise SystemExit(
-            f"{len(seen)} on sheets + {len(partner)} partner != {expected} source"
+            f"{len(seen)} on sheets + {len(partner)} partner + {len(struck_ids)} struck != {expected} source"
         )
     return {
         "accounts_on_sheets": len(seen),
         "partner_excluded": len(partner),
+        "struck_partner_routed": len(struck_ids),
+        "struck_ids_on_a_rep_sheet": 0,
         "duplicates_across_sheets": 0,
         "source_accounts": expected,
     }
 
 
-def write(path: Path, cols: list[str], data: list[dict]) -> None:
+def write(path: Path, cols: list[str], data: list[dict], extra_sources: list[str] | None = None) -> None:
     with path.open("w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=cols, extrasaction="ignore")
         w.writeheader()
@@ -695,10 +944,11 @@ def write(path: Path, cols: list[str], data: list[dict]) -> None:
             "accounts-dormant.csv",
             "accounts-one-and-done.csv",
             "fy27-owner-plan.csv",
+            *(extra_sources or [MANIFEST + ".csv", EXPOSURE + ".csv"]),
         ],
         "row_count": len(data),
         "script": "scripts/build_rep_call_sheets.py",
-        "script_version": "4.0",
+        "script_version": V,
         "run_timestamp": datetime.now(UTC).isoformat(),
         "privacy": "business names only; no contacts, phone, or shipment-level data",
         "scope": "account allocation and outcome capture only (CLAUDE.md s7.7)",

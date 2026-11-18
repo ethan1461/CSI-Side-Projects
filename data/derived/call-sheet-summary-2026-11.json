@@ -1,76 +1,76 @@
 {
-  "script_version": "4.0",
+  "script_version": "5.0",
   "provisional_released": false,
   "Otto": {
-    "at_risk": 15,
-    "dormant": 21,
-    "one_and_done": 86,
-    "at_risk_bookings_per_year": 189,
-    "dormant_lost_bookings_per_year": 85,
+    "at_risk": 13,
+    "dormant": 18,
+    "one_and_done": 52,
+    "at_risk_bookings_per_year": 168,
+    "dormant_lost_bookings_per_year": 74,
     "held_sci": 21,
     "northstar_released": 2,
-    "callable_now": 101,
-    "total": 122,
+    "callable_now": 62,
+    "total": 83,
     "caller_status": "CONFIRMED"
   },
   "Stacy": {
-    "at_risk": 17,
-    "dormant": 29,
-    "one_and_done": 86,
-    "at_risk_bookings_per_year": 245,
-    "dormant_lost_bookings_per_year": 106,
+    "at_risk": 16,
+    "dormant": 24,
+    "one_and_done": 67,
+    "at_risk_bookings_per_year": 225,
+    "dormant_lost_bookings_per_year": 92,
     "held_sci": 24,
     "northstar_released": 5,
-    "callable_now": 108,
-    "total": 132,
+    "callable_now": 83,
+    "total": 107,
     "caller_status": "CONFIRMED"
   },
   "Ethan": {
-    "at_risk": 3,
-    "dormant": 2,
+    "at_risk": 5,
+    "dormant": 5,
     "one_and_done": 1,
-    "at_risk_bookings_per_year": 59,
-    "dormant_lost_bookings_per_year": 6,
+    "at_risk_bookings_per_year": 95,
+    "dormant_lost_bookings_per_year": 16,
     "held_sci": 0,
     "northstar_released": 0,
-    "callable_now": 6,
-    "total": 6,
+    "callable_now": 11,
+    "total": 11,
     "caller_status": "CONFIRMED"
   },
   "Abe": {
     "at_risk": 0,
     "dormant": 0,
-    "one_and_done": 40,
+    "one_and_done": 25,
     "at_risk_bookings_per_year": 0,
     "dormant_lost_bookings_per_year": 0,
     "held_sci": 0,
     "northstar_released": 1,
-    "callable_now": 40,
-    "total": 40,
+    "callable_now": 25,
+    "total": 25,
     "caller_status": "PROVISIONAL \u2014 not yet confirmed"
   },
   "Renee": {
     "at_risk": 0,
     "dormant": 0,
-    "one_and_done": 40,
+    "one_and_done": 28,
     "at_risk_bookings_per_year": 0,
     "dormant_lost_bookings_per_year": 0,
     "held_sci": 0,
     "northstar_released": 0,
-    "callable_now": 40,
-    "total": 40,
+    "callable_now": 28,
+    "total": 28,
     "caller_status": "PROVISIONAL \u2014 not yet confirmed"
   },
   "Susej": {
     "at_risk": 0,
     "dormant": 0,
-    "one_and_done": 39,
+    "one_and_done": 25,
     "at_risk_bookings_per_year": 0,
     "dormant_lost_bookings_per_year": 0,
     "held_sci": 0,
     "northstar_released": 0,
-    "callable_now": 39,
-    "total": 39,
+    "callable_now": 25,
+    "total": 25,
     "caller_status": "PROVISIONAL \u2014 not yet confirmed"
   },
   "key-accounts": {
@@ -99,6 +99,89 @@
     "5176",
     "2380"
   ],
+  "partner_strike": {
+    "struck": 100,
+    "keep": 6,
+    "flag_to_ethan": 5,
+    "keep_ids": [
+      "1939",
+      "10424",
+      "2217",
+      "5951",
+      "12197",
+      "3666"
+    ],
+    "flag_ids": [
+      "2947",
+      "2837",
+      "2861",
+      "8112",
+      "7110"
+    ],
+    "not_actioned_in_manifest": [
+      {
+        "id": "8627",
+        "name": "Pompes Funebres Gillot",
+        "sheet": "Record repair",
+        "partner": 1,
+        "self_billed": 0
+      },
+      {
+        "id": "21622",
+        "name": "Patton & Storck PTE Limited Funeral Directors",
+        "sheet": "Record repair",
+        "partner": 1,
+        "self_billed": 0
+      }
+    ],
+    "struck_by_list": {
+      "at_risk": 1,
+      "dormant": 5,
+      "one_and_done": 94
+    },
+    "struck_by_former_sheet": {
+      "Abe": 15,
+      "Otto": 38,
+      "Renee": 12,
+      "Stacy": 21,
+      "Susej": 14
+    },
+    "struck_by_partner": {
+      "BERGEN": 2,
+      "IMS": 42,
+      "MIXED": 1,
+      "NMS": 55
+    }
+  },
+  "territory_audit": {
+    "before_strike": {
+      "rows": 373,
+      "midwest_not_otto_or_west_not_stacy": [],
+      "ne_south_otto": 125,
+      "ne_south_stacy": 124
+    },
+    "after_strike": {
+      "rows": 268,
+      "midwest_not_otto_or_west_not_stacy": [],
+      "ne_south_otto": 96,
+      "ne_south_stacy": 93
+    },
+    "rule": "Midwest -> Otto, West -> Stacy (CLAUDE.md s5 authority 5); NE/South alternating by call rank",
+    "decision": "preserve: every v4 owner kept; strike and carve applied after assignment"
+  },
+  "hubspot_reconciliation": {
+    "rows": 388,
+    "by_category": {
+      "CONFLICT": 1,
+      "MATCH": 46,
+      "PROVISIONAL_HOLDS_TERRITORY_OWNER": 61,
+      "PROVISIONAL_NO_OWNER": 17,
+      "SET_OWNER": 163,
+      "STRUCK_HAS_REP_OWNER": 41,
+      "STRUCK_NO_OWNER": 59
+    },
+    "state_differs": 0
+  },
   "reconciliation": {
     "dormant_rows_also_on_at_risk_removed": 8,
     "source_accounts": 404,
@@ -106,43 +189,49 @@
       "at_risk": {
         "Key accounts": 9,
         "Partner tier (excluded)": 2,
-        "Stacy": 17,
-        "Otto": 15,
-        "Ethan": 3,
-        "Record repair": 2
+        "Stacy": 16,
+        "Otto": 13,
+        "Ethan": 5,
+        "Record repair": 2,
+        "Struck (partner-routed)": 1
       },
       "dormant": {
-        "Otto": 21,
-        "Stacy": 29,
-        "Ethan": 2,
+        "Otto": 18,
+        "Stacy": 24,
+        "Struck (partner-routed)": 5,
+        "Ethan": 5,
         "Record repair": 2
       },
       "one_and_done": {
-        "Otto": 86,
-        "Stacy": 86,
+        "Otto": 52,
+        "Struck (partner-routed)": 94,
+        "Stacy": 67,
         "Record repair": 10,
         "Ethan": 1,
-        "Susej": 39,
-        "Abe": 40,
-        "Renee": 40
+        "Susej": 25,
+        "Abe": 25,
+        "Renee": 28
       }
     },
     "sheet_totals": {
-      "Abe": 40,
-      "Ethan": 6,
+      "Abe": 25,
+      "Ethan": 11,
       "Key accounts": 9,
-      "Otto": 122,
+      "Otto": 83,
       "Partner tier (excluded)": 2,
       "Record repair": 14,
-      "Renee": 40,
-      "Stacy": 132,
-      "Susej": 39
+      "Renee": 28,
+      "Stacy": 107,
+      "Struck (partner-routed)": 100,
+      "Susej": 25
     },
     "carved_to_provisional": 119
   },
   "checks": {
-    "accounts_on_sheets": 402,
+    "accounts_on_sheets": 302,
     "partner_excluded": 2,
+    "struck_partner_routed": 100,
+    "struck_ids_on_a_rep_sheet": 0,
     "duplicates_across_sheets": 0,
     "source_accounts": 404
   },
@@ -178,44 +267,44 @@
       ],
       [
         5,
-        "SUNSET FUNERAL HOME",
-        "TX",
-        "16 bookings in 2024, 20 in 2025, none in 2026; last shipped 2025-12-16 (331 days ago)",
-        ""
-      ],
-      [
-        6,
         "Hunt Funeral Home (Gabriela Rodriguez)",
         "DC",
         "14 bookings in 2024, 10 in 2025, 1 so far in 2026 (1 annualised); last shipped 2026-01-20",
         ""
       ],
       [
-        7,
+        6,
         "Corleto Latina Funeral Home",
         "DE",
         "19 bookings in 2024, 17 in 2025, 7 so far in 2026 (8 annualised); last shipped 2026-06-08",
         ""
       ],
       [
-        8,
+        7,
         "Rasberry Family Funeral Home",
         "TX",
         "13 bookings in 2024, 2 in 2025, 3 so far in 2026 (3 annualised); last shipped 2026-09-26",
         ""
       ],
       [
-        9,
+        8,
         "Rose's Funeral Home Inc.",
         "NY",
         "13 bookings in 2024, 5 in 2025, 4 so far in 2026 (5 annualised); last shipped 2026-09-15",
         ""
       ],
       [
-        10,
+        9,
         "Francis J. Collins Funeral Home",
         "MD",
         "14 bookings in 2024, 14 in 2025, 5 so far in 2026 (6 annualised); last shipped 2026-08-24",
+        ""
+      ],
+      [
+        10,
+        "Holloway Funeral Home & Cremation Services",
+        "FL",
+        "12 bookings in 2024, 10 in 2025, 4 so far in 2026 (5 annualised); last shipped 2026-11-10",
         ""
       ]
     ],
@@ -243,51 +332,51 @@
       ],
       [
         4,
-        "Quality Mortuary",
-        "NC",
-        "21 bookings in 2024, 3 in 2025, 1 so far in 2026 (1 annualised); last shipped 2026-08-28",
-        ""
-      ],
-      [
-        5,
         "Downing Funeral Home and Cremation Services",
         "FL",
         "28 bookings in 2024, 21 in 2025, 7 so far in 2026 (8 annualised); last shipped 2026-10-12",
         ""
       ],
       [
-        6,
+        5,
         "Sunflower Cremation",
         "AZ",
         "26 bookings in 2024, 31 in 2025, 8 so far in 2026 (9 annualised); last shipped 2026-10-06",
         ""
       ],
       [
-        7,
+        6,
         "Brooklyn Funeral Home & Cremation Services",
         "NY",
         "26 bookings in 2024, 13 in 2025, 9 so far in 2026 (10 annualised); last shipped 2026-10-02",
         ""
       ],
       [
-        8,
+        7,
         "Elijah Bell's Funeral Services (Lauderdale)",
         "FL",
         "17 bookings in 2024, 4 in 2025, 4 so far in 2026 (5 annualised); last shipped 2026-09-30",
         ""
       ],
       [
-        9,
+        8,
         "Blair-Mazzarella Funeral Home",
         "NY",
         "17 bookings in 2024, 7 in 2025, 5 so far in 2026 (6 annualised); last shipped 2026-10-15",
         ""
       ],
       [
-        10,
+        9,
         "Loomis Family Funeral Home Inc",
         "FL",
         "17 bookings in 2024, 13 in 2025, 7 so far in 2026 (8 annualised); last shipped 2026-11-03",
+        ""
+      ],
+      [
+        10,
+        "Las Americas Funeral Home",
+        "NJ",
+        "13 bookings in 2024, 4 in 2025, 4 so far in 2026 (5 annualised); last shipped 2026-07-28",
         ""
       ]
     ]
@@ -367,6 +456,158 @@
         "bookings_2026_to_10nov": "3",
         "last_booking": "2026-05-13",
         "situation": "A"
+      }
+    ],
+    "Ethan": [
+      {
+        "call_order": 1,
+        "funeral_home_id": "10424",
+        "funeral_home": "Edwards Memorial Center, LLC (Lakewood, WA - Foundation Partners)",
+        "state": "WA",
+        "enterprise_group": "",
+        "bookings_2024": "32",
+        "bookings_2025": "16",
+        "bookings_2026_to_10nov": "7",
+        "last_booking": "2026-11-09",
+        "situation": "A"
+      },
+      {
+        "call_order": 2,
+        "funeral_home_id": "5951",
+        "funeral_home": "First Call Plus of Washington - Kent (Foundation Partners)",
+        "state": "WA",
+        "enterprise_group": "",
+        "bookings_2024": "23",
+        "bookings_2025": "0",
+        "bookings_2026_to_10nov": "2",
+        "last_booking": "2026-08-18",
+        "situation": "A"
+      },
+      {
+        "call_order": 3,
+        "funeral_home_id": "2947",
+        "funeral_home": "Quality Mortuary",
+        "state": "NC",
+        "enterprise_group": "",
+        "bookings_2024": "21",
+        "bookings_2025": "3",
+        "bookings_2026_to_10nov": "1",
+        "last_booking": "2026-08-28",
+        "situation": "A"
+      }
+    ],
+    "Abe": [
+      {
+        "call_order": 1,
+        "funeral_home_id": "8557",
+        "funeral_home": "PERNA , DENGLER, ROBERTS FUNERAL HOME",
+        "state": "NY",
+        "enterprise_group": "",
+        "bookings_2024": "",
+        "bookings_2025": "",
+        "bookings_2026_to_10nov": "",
+        "last_booking": "2026-01-20",
+        "situation": "C"
+      },
+      {
+        "call_order": 2,
+        "funeral_home_id": "18483",
+        "funeral_home": "Sacco Funeral Home",
+        "state": "NY",
+        "enterprise_group": "",
+        "bookings_2024": "",
+        "bookings_2025": "",
+        "bookings_2026_to_10nov": "",
+        "last_booking": "2026-01-29",
+        "situation": "C"
+      },
+      {
+        "call_order": 3,
+        "funeral_home_id": "10932",
+        "funeral_home": "FUNERARIA VALLE DE PAZ (CIDRA)",
+        "state": "PR",
+        "enterprise_group": "",
+        "bookings_2024": "",
+        "bookings_2025": "",
+        "bookings_2026_to_10nov": "",
+        "last_booking": "2026-01-31",
+        "situation": "C"
+      }
+    ],
+    "Renee": [
+      {
+        "call_order": 1,
+        "funeral_home_id": "11665",
+        "funeral_home": "SHAPIRO FUNERAL CARE",
+        "state": "OH",
+        "enterprise_group": "",
+        "bookings_2024": "",
+        "bookings_2025": "",
+        "bookings_2026_to_10nov": "",
+        "last_booking": "2026-01-20",
+        "situation": "C"
+      },
+      {
+        "call_order": 2,
+        "funeral_home_id": "5832",
+        "funeral_home": "Strang Funeral Home",
+        "state": "IL",
+        "enterprise_group": "",
+        "bookings_2024": "",
+        "bookings_2025": "",
+        "bookings_2026_to_10nov": "",
+        "last_booking": "2026-02-02",
+        "situation": "C"
+      },
+      {
+        "call_order": 3,
+        "funeral_home_id": "19737",
+        "funeral_home": "Robert J Lawler & Crosby",
+        "state": "MA",
+        "enterprise_group": "",
+        "bookings_2024": "",
+        "bookings_2025": "",
+        "bookings_2026_to_10nov": "",
+        "last_booking": "2026-02-03",
+        "situation": "C"
+      }
+    ],
+    "Susej": [
+      {
+        "call_order": 1,
+        "funeral_home_id": "19991",
+        "funeral_home": "DAVID FERGUSON FUNERAL HOME",
+        "state": "NY",
+        "enterprise_group": "",
+        "bookings_2024": "",
+        "bookings_2025": "",
+        "bookings_2026_to_10nov": "",
+        "last_booking": "2026-01-13",
+        "situation": "C"
+      },
+      {
+        "call_order": 2,
+        "funeral_home_id": "4704",
+        "funeral_home": "AMES FUNERAL HOME",
+        "state": "VA",
+        "enterprise_group": "",
+        "bookings_2024": "",
+        "bookings_2025": "",
+        "bookings_2026_to_10nov": "",
+        "last_booking": "2026-01-26",
+        "situation": "C"
+      },
+      {
+        "call_order": 3,
+        "funeral_home_id": "20714",
+        "funeral_home": "Beach memorial Chapel ( 9761)",
+        "state": "FL",
+        "enterprise_group": "",
+        "bookings_2024": "",
+        "bookings_2025": "",
+        "bookings_2026_to_10nov": "",
+        "last_booking": "2026-01-28",
+        "situation": "C"
       }
     ]
   },

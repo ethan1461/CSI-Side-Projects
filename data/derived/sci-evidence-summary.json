@@ -10,7 +10,7 @@
     "rows_counted": 46397,
     "rows_in": 48715
   },
-  "git_sha": "ff1678e",
+  "git_sha": "36e4235",
   "match_tiers": {
     "T0_no_register_match": 18023,
     "T1_location_code": 280,
@@ -29,7 +29,7 @@
     "quickbooks_sci_named_but_unmatched_revenue_all_years": 302439.82,
     "sci_accounts_considered": 688
   },
-  "run_timestamp": "2026-11-18T03:41:28.011049+00:00",
+  "run_timestamp": "2026-11-18T03:49:57.132491+00:00",
   "sci_accounts_ever_shipped": 248,
   "sci_accounts_ever_shipped_strict_rule": 210,
   "sci_accounts_identified": 688,

@@ -2,8 +2,8 @@
   "description": "SCI shipping locations and bookings by origin state (origin proxy only).",
   "script": "scripts/sci_relationship_evidence.py",
   "script_version": "1.0.0",
-  "git_sha": "ff1678e",
-  "run_timestamp": "2026-11-18T03:41:28.011049+00:00",
+  "git_sha": "36e4235",
+  "run_timestamp": "2026-11-18T03:49:57.132491+00:00",
   "sources": [
     "data/raw/sci-location-report-202606.xlsx",
     "data/raw/oms-funeral-homes-20261103.csv",

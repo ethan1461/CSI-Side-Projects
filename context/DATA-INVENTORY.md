@@ -1,8 +1,12 @@
 # Data inventory
 
-**Last updated:** 2026-11-12 (data-analyst: the shipment-level export and the QuickBooks
-customer summary landed 2026-11-10 — Missing item 1 and item 2 both close, item 3 and
-item 4 unchanged. See `reports/customer-cohort-analysis.md`)
+**Last updated:** 2026-11-18 (data-analyst: the SCI location register entry is corrected — the
+4,439 figure is not a funeral-home count and was about to be used as a penetration denominator.
+Also recorded: the shipment export has **no origin, destination or country**, which blocks every
+lane, corridor and domestic/international question. See `reports/sci-relationship-evidence.md`.
+Previous update 2026-11-12: the shipment-level export and the QuickBooks customer summary landed
+2026-11-10 — Missing item 1 and item 2 both close, item 3 and item 4 unchanged. See
+`reports/customer-cohort-analysis.md`)
 **Source:** Ethan's local `Cargo Sales` folder (one-time export, 345 files, 2026-09-06), plus the exports placed in `data/raw/` on 2026-11-02.
 
 What the team has, what each file unlocks, and what is still missing. Every agent
@@ -66,7 +70,7 @@ HubSpot row is a live system, not a file.
 | `rates-export-20260906.csv` | 6,383 lanes × 8 cols: airline, origin/destination (airport, zone, region, country, state), rate_type, published_rate, discount_rate | Lane-level rate structure. **Only 156 lanes carry both published and discount** — all four US domestic majors; zero international coverage |
 | `rates-jan-2026.xls` | 8 carrier tabs: American, Southwest, Delta, United, Copa/IBC, Viva/Volaris, Avianca, plus a discounts & special rates tab. Columns include Origin, Destination, **Published**, **discount** | **Carrier cost.** Contribution margin per lane becomes computable. Validates the EWA ~10% comparison against real published rates |
 | `latam-rate-unification.xlsx` | 47 rows × 18 cols: carrier, origin, destination, csi domestic cost, csi intl cost, csi trucking cost, customer price, csi domestic/intl/total profit, historical split, unified intl price | A **worked margin model** for LatAm corridors. The method here generalizes to other corridors |
-| `sci-locations-june.xlsx` | 4,439 active SCI locations × 24 cols: name, address, phone, Location Code, Location ID, Location Status, Product Line, Business Line. Plus tabs for location changes, new, closed | The **enterprise account map** for SCI/Dignity. Location-level activation planning, pilot scoping, territory assignment |
+| `sci-locations-june.xlsx` (present in `data/raw/` as **`sci-location-report-202606.xlsx`**) | Sheet `Active SCI Location`, **4,439 rows × 24 cols**: name, address, phone, `location type`, `Location Code`, `Location ID`, `Product Line`, `Business Line`. Plus tabs for location changes, new, closed | The **enterprise account map** for SCI/Dignity. **The 4,439 figure is a corporate location register, not 4,439 funeral homes, and must not be used as a penetration denominator:** 486 legal-posting rows, 486 legal-parent rows, 466 overhead and 40 legal rows are accounting structures; 625 operating rows are cemeteries. **2,961 are operating; 1,582 are on the Funeral Home Product Line, and 243 of the 246 SCI locations CSI serves sit on that one product line — so 1,582 is the denominator.** Working: `reports/sci-relationship-evidence.md` §1, `data/derived/sci-denominator.csv`. `Location Code` joins directly to the OMS account-name convention `(SCI Location #4356)`, which carries 99.2% of CSI's SCI volume |
 | `hitlist-2026.xlsx` | Sheet1: 22 SCI premier locations with contact names, priority, outreach status. California tab: 167 funeral homes with contact, title, email, date contacted, notes | The active target list. Note this is **~189 accounts, not the 878** referenced in `CLAUDE.md §6` |
 | `hubspot-contacts-2026-04-19.xlsx` | 3,416 contacts × 10 cols: Record ID, name, email, email domain, IP city/state, phone | Contact-level CRM export. **Contacts, not accounts** — no company, deal, or shipment association |
 | **HubSpot live portal (MCP, read at run time)** — baseline `data/derived/hubspot-baseline-2026-11-02.csv`, report `reports/hubspot-defect-baseline.md` | 3,574 contacts, **0 companies**, 1 deal, 1 ticket (2026-11-02). 99.4% unowned, 100% lifecycle "lead", 80.8% no phone, no OMS key property | Supersedes the 3,416-row April export for counts. Added by revops-crm, TASK-0009. Still missing: person-level duplicate pairs (needs a contact export in `data/raw/`) and the OMS funeral-home list for the crosswalk |

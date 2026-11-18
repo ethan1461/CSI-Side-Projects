@@ -1,0 +1,451 @@
+company_id,oms,funeral_home,partner_bookings,self_billed,csi_partner_routing
+60863516457,1704,Airport Mortuary Shipping Services,37,244,direct_also_partner
+60855788831,1726,Amigone Funeral Home and Cremation Services (Buffalo),1,1,direct_also_partner
+60876650320,1737,Austin Mortuary Services,2,0,partner_routed_hold
+60848335443,1739,Avery-Storti Funeral Home,1,0,partner_routed_hold
+60874482693,1783,Boza & Roel Funeral Home (Northstar Location #4374),1,45,direct_also_partner
+60877116681,1817,Casper Funeral & Cremation Services (Boston),8,373,direct_also_partner
+60877271852,1845,Congleton Funeral Home and Cremation,6,0,partner_routed_hold
+60875570103,1848,Coppola-Migliore International Queens New York,2,12,direct_also_partner
+60874158610,1886,Dobbs Funeral Home,1,26,direct_also_partner
+60870443838,1903,E.C. Whitaker Company,2,8,direct_also_partner
+60862288983,1917,Emmanuel Funeral Home (Miami),5,496,direct_also_partner
+60846344587,1929,Faggas Funeral Services,6,163,direct_also_partner
+60879089438,1939,Florida Funeral Home and Crematory,1,86,direct_also_partner
+60874324998,1981,Gary Panoch Funeral Home & Cremations of Boca Raton,2,8,direct_also_partner
+60846169484,1984,Genesis Funeral Home,1,25,direct_also_partner
+60873867274,1994,Golden Gate Funeral Home,4,0,partner_routed_hold
+60899495696,2002,Good Shepard Funeral Home,2,1,mixed_hold
+60870443840,2029,HALLOWELL FUNERAL HOME,18,1,mixed_hold
+60865197491,2128,Kraft Sussman Funeral & Cremation Services,2,47,direct_also_partner
+60875108750,2148,Legacy Options Funeral and Cremation Services (Naples),1,91,direct_also_partner
+60877116687,2161,Longwood Funeral Home (SCI Location #4473),7,6,mixed_hold
+60875413037,2214,Miller Funeral Home  & Crematory (Minnesota),1,0,partner_routed_hold
+60879565889,2217,Mississippi Mortuary Services,3,67,direct_also_partner
+60845876055,2223,Moser Funeral Home,1,1,direct_also_partner
+60875243574,2241,Nelson Funeral Homes & Crematory,1,2,direct_also_partner
+60853472020,2242,Neptune Society (Location #5499),1,0,partner_routed_hold
+60872013892,2256,OK Cremation & Funeral Home,5,10,direct_also_partner
+60879089441,2267,Palm Downtown Mortuary & Cemetery (SCI Location #1008),3,63,direct_also_partner
+60856254594,2302,Powers Funeral Home,6,1,mixed_hold
+60847115926,2308,Price Funeral Chapels,1,0,partner_routed_hold
+60883417889,2309,Professional Mortuary Services,1,0,partner_routed_hold
+60865970313,2319,"Ratterman & Sons, Inc.",1,0,partner_routed_hold
+60853163648,2342,Robert Bryant Funeral and Cremation Chapel,6,12,direct_also_partner
+60878486655,2389,Serenity Funeral Home (Louisiana),4,22,direct_also_partner
+60880938881,2396,"Shives Funeral Home, Inc.",2,1,mixed_hold
+60870928804,2457,TM Ralph Funeral Home,2,0,partner_routed_hold
+60865819785,2497,Winter Oak Funeral Home,3,2,mixed_hold
+60864154118,2771,Crotty Funeral Home & Cremation Services,69,4,mixed_hold
+60873231148,2773,Borthwick Mortuary (SCI Location #4873),486,15,mixed_hold
+60855635997,2777,Bond Memorial Chapel,1,1,direct_also_partner
+60876031642,2795,Hot Springs F.H,1,1,direct_also_partner
+60898421370,2798,JOHN A GENTLEMAN MORTUARY,287,28,mixed_hold
+60866881317,2799,LaFayette Funeral Home,97,10,mixed_hold
+60853932054,2806,Jessen & Keller Funeral Homes – Whiteland Chapel,3,4,direct_also_partner
+60871060345,2808,Funeraria Gurabo Memorial,1,0,partner_routed_hold
+60865353137,2825,Gilbert H Schobert FH,1,1,direct_also_partner
+60879408536,2826,YUMA MORTUARY,8,1,mixed_hold
+60868119840,2829,PIERCE FUNERAL HOME,13,0,partner_routed_hold
+60875877733,2840,"W.H. Bacon Funeral Home, Inc.",1,1324,direct_also_partner
+60871217565,2843,Stroo Funeral Home,1,1,direct_also_partner
+60901358981,2850,TRAHAN MORTUARY SERVICES,19,1,mixed_hold
+60845706015,2861,Akes Family Funeral Home,12,1,mixed_hold
+60846169175,2865,Akridge Family Funeral Care,20,4,mixed_hold
+60869223502,2868,BERRY-BELL & HALL MORTUARY,59,2,mixed_hold
+60874949433,2872,CAPPADONA FUNERAL HOME,15,3,mixed_hold
+60880482459,2882,Beall Funeral Home,22,52,direct_also_partner
+60879565890,2889,Metro Mortuary and Crematory,2,3,direct_also_partner
+60856704009,2911,"Krause Funeral Homes and Cremation Service (Milwaukee, WI)",2,0,partner_routed_hold
+60878175342,2916,Rutherford-Corbin Funeral Homes,4,1,mixed_hold
+60882491510,2927,INTEGRITY FUNERAL HOME,4,3,mixed_hold
+60845876052,2930,ALTMEYER FUNERAL HOME,104,4,mixed_hold
+60860280130,2933,Foster Funeral Service,1,0,partner_routed_hold
+60899342218,2934,OAKWOOD FUNERAL HOME,2,1,mixed_hold
+60858894686,2936,Cannon Mortuary,4,1,mixed_hold
+60847115927,2939,ROSSI FUNERAL HOME,2,0,partner_routed_hold
+60856254593,2947,Quality Mortuary,50,5,mixed_hold
+60881099899,2948,Legacy Heritage Chapel at Angelus,1,0,partner_routed_hold
+60877578660,2976,MILE HIGH EMBALMING & SHIPPING,4,0,partner_routed_hold
+60868586134,2996,WEEKS DRYER MORTUARY,95,5,mixed_hold
+60900579158,3004,Family Funeral & Cremation (IMS),1,2,direct_also_partner
+60859183637,3025,LABBY MEMORIAL HOME,12,0,partner_routed_hold
+60846169483,3027,Plummer Funeral Home,1,1,direct_also_partner
+60875570102,3030,Billman Hunt Funeral Home,4,4,direct_also_partner
+60897510443,3053,COX GIFFORD SEAWINDS FUNERAL HOME,3,0,partner_routed_hold
+60867039073,3063,McReynolds Nave Larson Funeral Home,48,4,mixed_hold
+60860127401,3070,ROSE MORTUARY AND CREMATION,15,2,mixed_hold
+60846807890,3075,Parkview Funeral Home,1,0,partner_routed_hold
+60846650806,3077,"Adam Dwyer Funeral Trade, Inc.",9,0,partner_routed_hold
+60846169476,3079,GEORGE BROTHERS FUNERAL SERVICE,3,0,partner_routed_hold
+60872459433,3080,Dwayne R Spence Funeral Home,1,0,partner_routed_hold
+60872608791,3104,HART AND BRUCE FUNERAL HOME,22,1,mixed_hold
+60847561602,3115,"Davis Funeral Home, LLC",1,2,direct_also_partner
+60866586267,3117,"TWINWOOD MORTUARY SERVICE, INC",2,1,mixed_hold
+60863365889,3121,Carris Family Funeral Home (NMS),1,1,direct_also_partner
+60855022380,3129,Hardin Mortuary services,1,0,partner_routed_hold
+60858406325,3132,Ortiz Funeral Homes (Delta Shipments Only),2,2507,direct_also_partner
+60846651445,3135,DICKERSON MORTUARY,3,1,mixed_hold
+60877116676,3150,CANNON FUNERAL HOME,1,0,partner_routed_hold
+60875731336,3152,"The JW Woodward Funeral Home, INC",7,0,partner_routed_hold
+60861810000,3166,Ballard Family Mortuary,6,0,partner_routed_hold
+60879089027,3257,Albin International Repatriation Limited,2,0,partner_routed_hold
+60881099898,3264,Stribling Funeral Home (IMS),2,0,partner_routed_hold
+60859347787,3276,BRUNE MORTUARY,2,0,partner_routed_hold
+60856704016,3366,McAlister-Smith Funeral Home (IMS),3,0,partner_routed_hold
+60876173422,3373,Chapel Of the Chimes Oakland (Northstar Location #1810),1,2,direct_also_partner
+60897653312,3375,WALKER FUNERAL HOME (NMS),1,0,partner_routed_hold
+60878018990,3401,Iles Dunn's Funeral Home,3,0,partner_routed_hold
+60871060352,3417,SHELLHOUSE- RIVERS FUNERAL HOME  (IMS),1,0,partner_routed_hold
+60868586123,3529,Briscoe-Tonic Funeral Home,1,6,direct_also_partner
+60859662913,3669,Funerales El Angel- GUA,1,0,partner_routed_hold
+60860280129,3698,IVINS MOORAVECEK FUNERAL HOME,1,2,direct_also_partner
+60900425280,3699,SPRING GROVE FUNERAL HOME,4,1,mixed_hold
+60900579162,3707,SOLLON FUNERAL HOME (NMS),2,0,partner_routed_hold
+60860421809,3765,COLONIAL FUNERAL HOME (IMS),7,1,mixed_hold
+60866881323,3809,Johnson and Jenkins Funeral Homes,5,4,mixed_hold
+60874949437,3925,ROSEDALE FUNERAL HOME,1,0,partner_routed_hold
+60867982609,3962,Fletcher Funeral Service (IMS),6,0,partner_routed_hold
+60862761089,4053,WAYNESVILLE MEMORIAL CHAPEL,10,1,mixed_hold
+60848179330,4074,WHITE AND DAY COLONIAL MORTUARY (BERGEN NJ),1,0,partner_routed_hold
+60854703423,4135,MARSH FUNERAL HOME,1,0,partner_routed_hold
+60860127391,4148,ANDERSON FUNERAL HOME,1,1,direct_also_partner
+60873554195,4152,JANSSEN FUNERAL HOMES (IMS),1,2,direct_also_partner
+60882027416,4215,JERRY SPEARS FUNERAL HOME,34,3,mixed_hold
+60857479293,4279,HARTFORD TRADE SERVICES,3,0,partner_routed_hold
+60876173428,4280,TURRENTINE JACKSON MORROW FUNERAL HOME,4,5,direct_also_partner
+60861810003,4426,Beasley Funeral Home (IMS),1,1,direct_also_partner
+60858119694,4445,STROWDERS FUNERAL HOME (NMS),1,0,partner_routed_hold
+60860280136,4571,Mimms Funeral Services,8,1,mixed_hold
+60871060350,4574,Music City Mortuary,1,0,partner_routed_hold
+60882951057,4598,STERLING AND SMITH FUNERAL DIRECTORS,9,1,mixed_hold
+60874949430,4706,Benson FH & Cremation Service,1,0,partner_routed_hold
+60870301098,4717,THE UNITY MORTUARY OF ANDERSON,1,0,partner_routed_hold
+60898730768,4776,AUCLAIR FUNERSL HOME,1,0,partner_routed_hold
+60862451211,4801,Carnes Funeral Home,2,2,direct_also_partner
+60848661838,4811,OLINGER-SAENZ MORTUARY SERVICE,19,2,mixed_hold
+60862761084,4821,HOWARD AND JONES FUNERAL HOME,45,0,partner_routed_hold
+60864758872,4822,Alvarez Funeral Directors (Chicago),1,3,direct_also_partner
+60881099894,4898,Fort Bend Memorial Planning Center,1,0,partner_routed_hold
+60863229351,4924,PIASECKI ALTHAUSE FUNERAL HOME,1,0,partner_routed_hold
+60899038797,4948,KEHL'S LEGACY FUNERAL HOME,28,0,partner_routed_hold
+60875108753,4957,Sensible Cremation and funerals,3,0,partner_routed_hold
+60898730773,4969,ROBINSON FUNERAL HOME,2,0,partner_routed_hold
+60868737414,5015,Langeland Family Funeral Homes Burial & Cremation Services,2,0,partner_routed_hold
+60855022388,5062,Watson Funeral Services and Crematory,4,0,partner_routed_hold
+60846496787,5118,ralph Meyers and Deters Funeral Home,3,0,partner_routed_hold
+60859970427,5123,"SANDIFER FUNERAL HOME, INC",1,0,partner_routed_hold
+60867826861,5143,TOLAND-HERZIG FUNERAL HOME,6,0,partner_routed_hold
+60867522111,5155,Reed Funeral Home,3,0,partner_routed_hold
+60874325009,5186,PARADISE MORTUARY AND CREMATION SERVICE,4,0,partner_routed_hold
+60858119685,5273,HALLOWELL & JAMES FUNERAL HOME,1,0,partner_routed_hold
+60867522112,5304,RICHMOND HILL FUNERAL HOME,2,0,partner_routed_hold
+60883417882,5311,Barbara Falowski Funeral Home,1,0,partner_routed_hold
+60861050291,5487,James Memorial Funerial Home,2,0,partner_routed_hold
+60855788832,5493,DAMPMAN FUNERAL SERVICE,1,0,partner_routed_hold
+60848509861,5502,Bradshaw and Sons Funeral Home,1,0,partner_routed_hold
+60873709319,5503,D W Rhodes Funeral Home,1,0,partner_routed_hold
+60876173423,5524,ALL SEASON BURIAL & CREMATION ONLY,2,0,partner_routed_hold
+60871697411,5535,Morris-Baker Funeral Home,3,0,partner_routed_hold
+60854842513,5539,All Seasons Funeral Services,5,0,partner_routed_hold
+60865197496,5638,WARLICK FUNERAL HOME,1,0,partner_routed_hold
+60867674711,5743,McCabe Funeral Home,1,0,partner_routed_hold
+60845706284,5780,Herbert Thompson FH,1,0,partner_routed_hold
+60848818260,5800,BUSCH FUNERAL AND CREMATORY SERVICES,3,0,partner_routed_hold
+60862603271,5804,Carolina Funeral Home,3,0,partner_routed_hold
+60848818268,5859,MILLER MORTUARY & CREMATORY,1,0,partner_routed_hold
+60847115923,5926,MAXWELL P. DUNNE FUNERAL HOME,2,3,direct_also_partner
+60869223506,5951,First Call Plus of Washington - Kent (Foundation Partners),2,22,direct_also_partner
+60867674713,6113,snyder rodman funeral home,1,0,partner_routed_hold
+60848335446,6273,Kutis South County Chapel,1,0,partner_routed_hold
+60870443841,6301,RAMEY FUNERAL HOME,6,0,partner_routed_hold
+60847266308,6342,SEARCY FUNERAL HOME,7,0,partner_routed_hold
+60874482707,6382,SERENITYFUNERAL AND CREMATORY,1,0,partner_routed_hold
+60872459436,6385,Mid America Mortuary Services,2,0,partner_routed_hold
+60867191061,6398,James Funeral Service,2,0,partner_routed_hold
+60855636002,6486,Lewis Cremations,6,0,partner_routed_hold
+60871697335,6525,Metcalfe and Shaver Funeral Home,1,0,partner_routed_hold
+60876031640,6544,TAYLOR FUNERAL HOME ( NMS),1,0,partner_routed_hold
+60880317772,6626,Everly Funeral Home,1,3,direct_also_partner
+60860595380,6665,CASADA FUNERAL HOME,1,0,partner_routed_hold
+60874325004,6683,Burroughs Funeral Home and Cremation Services,1,0,partner_routed_hold
+60848509859,6715,CENTRAL IILINOIS TRADE SERVICE,1,0,partner_routed_hold
+60854703422,6739,Mueller Memorial,4,0,partner_routed_hold
+60897962567,6756,ESTES FUNERAL CHAPEL,7,0,partner_routed_hold
+60866586268,6778,Zeis-McGreevey F.H.,2,0,partner_routed_hold
+60868586127,6860,EDWARD J KUHN FH INC,1,0,partner_routed_hold
+60854703427,6911,Renaissance Funeral Home,1,0,partner_routed_hold
+60845706286,6990,GROCE FUNERAL HOME,3,0,partner_routed_hold
+60877116688,7048,MID SOUTH MORTUARY SERVICES,3,0,partner_routed_hold
+60883109525,7055,Williams Funeral Home,1,0,partner_routed_hold
+60872459438,7083,Sanders Funeral Home,2,1,mixed_hold
+60853472010,7110,Florida Mortuary Funeral & Cremation Services,6,1,mixed_hold
+60857027871,7151,McLeod Funeral Home,2,0,partner_routed_hold
+60846344588,7177,Bay Area Mortuary Services,17,2,mixed_hold
+60878637372,7183,Bratton Funeral Home Inc,2,0,partner_routed_hold
+60870443833,7189,Funeraria Ehret,1,0,partner_routed_hold
+60872321675,7224,LAKE RIDGE CHAPEL & MEMORIAL DESIGNERS,1,0,partner_routed_hold
+60848179326,7242,Brust Funeral Home,1,0,partner_routed_hold
+60869048953,7258,Gunderson Funeral home,2,0,partner_routed_hold
+60853472011,7272,Ballard Funeral Home ( HILO),1,0,partner_routed_hold
+60868291930,7360,Mulhearn Funeral Home,1,0,partner_routed_hold
+60873073223,7376,DAVIS FUNERAL HOME AND MEMORIAL PARK,3,0,partner_routed_hold
+60864910619,7412,Cremation Society of South Carolina,16,0,partner_routed_hold
+60845706279,7454,COREY-KERLIN FUNERAL HOME,1,0,partner_routed_hold
+60862761090,7461,The Standard Cremation and funeral Center,2,0,partner_routed_hold
+60856254592,7528,Kirikos Family Funeral Home,1,0,partner_routed_hold
+60847115922,7717,"Edwards Memorial Center, LLC (University Place, WA - Foundation Partners)",3,26,direct_also_partner
+60864910612,7757,FALLON MORTUARY SERVICES,3,0,partner_routed_hold
+60868737420,7767,Cross Island Funeral Services,2,0,partner_routed_hold
+60877408555,7780,Bogner Family Funeral Home and Cremation Services,1,0,partner_routed_hold
+60880317776,7793,Macon Funeral Home,1,0,partner_routed_hold
+60869223504,7840,Carl M William Funeral Directors,1,0,partner_routed_hold
+60897510449,7875,LEESIDE FUNERAL HOME,3,0,partner_routed_hold
+60877116679,7928,Grandstrand Funeral Home,1,0,partner_routed_hold
+60872164898,7959,Neal-Tarpley Parchman Funeral Home,1,0,partner_routed_hold
+60848179325,7970,Behrens Wilson Funeral Home,1,0,partner_routed_hold
+60883417895,7983,MYRTLE BEACH FUNERAL HOME INC.,4,0,partner_routed_hold
+60870301092,8016,Harden Funeral Services Inc,1,0,partner_routed_hold
+60882951056,8059,MARTENSON FUNERAL HOME,1,0,partner_routed_hold
+60858119695,8063,SMITH FAMILY FUNERAL HOME,2,0,partner_routed_hold
+60872459444,8106,MAY FUNERAL HOME,1,0,partner_routed_hold
+60899651902,8112,San Jacinto Valley Mortuary.,9,2,mixed_hold
+60878175341,8119,PITMAN FUNERAL HOME,1,0,partner_routed_hold
+60871697332,8128,Ferfolia Funeral Home,2,0,partner_routed_hold
+60873554204,8144,Thompson Larson Funeral Home,1,0,partner_routed_hold
+60878018986,8162,HERITAGE LIFE STORY FUNERAL HOME,1,0,partner_routed_hold
+60858406327,8245,Carter Trent Funeral Home,4,0,partner_routed_hold
+60882951055,8259,Brown Dawson Flick Funeral Home,1,0,partner_routed_hold
+60879408530,8267,Eline Funeral Home,1,0,partner_routed_hold
+60898730776,8271,Kutis Funeral Home,3,0,partner_routed_hold
+60847561598,8510,Laughlin Funeral Home,2,0,partner_routed_hold
+60848661839,8533,ROGERS FUNERAL HOME,1,0,partner_routed_hold
+60868291920,8540,CHISM FAMILY FUNERAL HOME,9,0,partner_routed_hold
+60848335441,8555,Fitzgerald Funeral Home & Crematory,3,0,partner_routed_hold
+60880317780,8586,Portland Cremation Center and Mortuary,1,0,partner_routed_hold
+60853622969,8605,Eugene J. Zale Funeral Home,4,0,partner_routed_hold
+60865970315,8627,Pompes Funebres Gillot,1,0,partner_routed_hold
+60845706283,8640,Holcombe funeral home,5,0,partner_routed_hold
+60863826297,8727,Roper & Sons Inc,1,0,partner_routed_hold
+60875570179,8794,Raymer-Kepner Funeral Home and Cremation Services,1,0,partner_routed_hold
+60900425281,8809,Henderson-Highland Park Funeral Home,6,0,partner_routed_hold
+60876327190,8886,Osborne Williams F.H. & Cremation,1,0,partner_routed_hold
+60878330173,8943,Schulte Mahon Murphy Funeral Home,1,0,partner_routed_hold
+60855022381,8949,GRAND TETON FUNERAL HOME,1,0,partner_routed_hold
+60874025749,8965,Dewhirst & Boles Funeral Home,17,0,partner_routed_hold
+60855152292,8979,SENSIBLE CREMATION,15,0,partner_routed_hold
+60862761086,9068,Joseph Reardon Funeral Home,5,0,partner_routed_hold
+60848179329,9127,Sauls Funeral Home,4,0,partner_routed_hold
+60899038799,9292,THOMPSON-HALL & JORDAN FUNERAL HOME,12,0,partner_routed_hold
+60882491511,9337,McDermotts Funeral Service,2,0,partner_routed_hold
+60871060354,9393,The Springs Funeral Services (Foundation Partners),43,108,direct_also_partner
+60854242659,9441,Aztlan Mortuary,2,0,partner_routed_hold
+60856099211,9495,James Funeral Home(Huntersville),1,0,partner_routed_hold
+60900579159,9513,INMAN WARD FH,1,0,partner_routed_hold
+60869048960,9683,Whitaker Funeral Home,1,0,partner_routed_hold
+60867982613,9686,RIEMANN FAMILY FUNERAL HOME,2,0,partner_routed_hold
+60860904712,9704,Falowski Kalis Mcintee Funeral & cremation,2,0,partner_routed_hold
+60870928799,9717,M.J EDWARDS FUNERAL HOME,4,0,partner_routed_hold
+60882179890,9740,GILMAN & VALADE FUNERAL HOME,6,0,partner_routed_hold
+60864154121,9782,PFEFFER FUNERAL HOME,5,0,partner_routed_hold
+60845876056,9804,HINDLE FUNERL HOME,1,0,partner_routed_hold
+60859970431,9816,THOMSON DOUGHERTY FUNERAL HOME,10,0,partner_routed_hold
+60858406320,9875,Genesis Funeral Home (FLL),2,64,direct_also_partner
+60845875576,9876,AFFORDABLE BURIAL & CREMATION SERVICE,4,0,partner_routed_hold
+60867674716,9932,US NAVAL HOSPITAL,9,0,partner_routed_hold
+60875877726,9942,Ofield Funeral Home Inc.,2,2,direct_also_partner
+60854842515,9990,TAYLOR FUNERAL HOME (BNA),1,0,partner_routed_hold
+60877116686,10000,Independent Funeral Service,2,0,partner_routed_hold
+60858406329,10046,WRIGHT FUNERAL HOME (VA),1,0,partner_routed_hold
+60856874088,10071,RENNER WIKOFF  FUNERAL HOME,1,0,partner_routed_hold
+60871394722,10084,THE ANGELUS FUNERAL HOME,1,0,partner_routed_hold
+60848179334,10089,WYNN FUNERAL HOME,1,0,partner_routed_hold
+60867826856,10095,Krienen-Griffith - Wilmington,2,0,partner_routed_hold
+60855152288,10114,SYMONDS FUNERAL HOME,4,0,partner_routed_hold
+60899038796,10327,Corley Funeral Home,1,0,partner_routed_hold
+60854242654,10424,"Edwards Memorial Center, LLC (Lakewood, WA - Foundation Partners)",6,56,direct_also_partner
+60882491507,10656,Avance Funeral Home,2,0,partner_routed_hold
+60898127488,10667,Risher Mortuary,3,0,partner_routed_hold
+60847115924,10670,NICHOLSON FUNERAL HOME,1,0,partner_routed_hold
+60882491503,10673,Darling & Fischer Garden Chapel,1,0,partner_routed_hold
+60898566712,10683,Darlings  Fischer Garden Chapel,3,0,partner_routed_hold
+60879714082,10701,Baird Funeral HOme,1,0,partner_routed_hold
+60847405652,10709,Stark Memorial Funeral  Home,2,1,mixed_hold
+60879714089,10742,Serenity Funerals & Cremation,2,0,partner_routed_hold
+60856254589,10781,JOHN G. ADINAMIS F. D. LIMITED,6,0,partner_routed_hold
+60846942626,11097,Makeeva Duplain W Rhodes Funeral Home,2,0,partner_routed_hold
+60874949438,11098,THOMPSON FUNERAL HOME,2,0,partner_routed_hold
+60883574443,11259,Ocean View Funeral Home,2,0,partner_routed_hold
+60859183636,11440,ASBURY MORTUARY,3,0,partner_routed_hold
+60872321669,11449,Joldersman and Klein Funeral Home,3,0,partner_routed_hold
+60872321679,11452,SOUTHWEST OKLAHOMA MORTUARY SERVICE,3,0,partner_routed_hold
+60846169480,11454,BELL PROFESSIONAL MORTUARY SERVICE,1,0,partner_routed_hold
+60856254588,11510,BOWLING FUNERAL HOME,1,0,partner_routed_hold
+60845706291,11584,Colligan Funeral Home,1,0,partner_routed_hold
+60854383024,11605,Milton Shealy Funeral Home,1,0,partner_routed_hold
+60898127476,11621,JOHNSON FUNERAL HOME (NC),52,2,mixed_hold
+60880482462,11666,Serenity Mortuary,3,0,partner_routed_hold
+60880317769,11754,Bella Vida Funeral Home,1,0,partner_routed_hold
+60847869512,11785,"BRASOTA SERVICES, INC",6,1,mixed_hold
+60874776216,11807,Baldi Funeral Home,2,0,partner_routed_hold
+60856570799,11910,Paul L Murphy & Sons Funeral Home,1,0,partner_routed_hold
+60874324999,11977,Apfel Funeral Home,3,0,partner_routed_hold
+60900123985,12003,STEHN FAMILY CHAPELS,1,0,partner_routed_hold
+60873073227,12136,DAVIDSON BECKER FUNERAL HOME,1,0,partner_routed_hold
+60853623046,12178,Renner Wikoff Chapel,1,0,partner_routed_hold
+60867522099,12197,Genuine Funeral LLC,1,10,direct_also_partner
+60868737424,12214,Wilson-Wooddale Funeral Home,1,0,partner_routed_hold
+60854091138,12420,Q.L DOUGLAS FUNERAL HOME,3,0,partner_routed_hold
+60870928807,12458,White Pine Funeral Services,2,0,partner_routed_hold
+60898421367,12511,Hanson Runsvold Funeral Home,2,0,partner_routed_hold
+60853932059,12523,Woodlawn Family Funeral Centre,2,0,partner_routed_hold
+60877578651,12578,Cornerstone Funeral Services,1,0,partner_routed_hold
+60862288989,12647,Bynes-Royall Funeral Home,1,0,partner_routed_hold
+60878948685,12748,Smith and Kernke Funeral Directors,1,0,partner_routed_hold
+60853776641,12960,McFarland Funeral Chapel,1,0,partner_routed_hold
+60859347788,13178,ASBURY MORTUARY (GERONIMO),1,0,partner_routed_hold
+60873709328,13290,McNerney's Mortuary,1,0,partner_routed_hold
+60854842142,13308,Air Force Mortuary Affairs Operations,1,0,partner_routed_hold
+60867364746,13325,KNOX HIGH MORTUARY,2,0,partner_routed_hold
+60848818263,13377,Long Island Funeral Trade Inc.,3,34,direct_also_partner
+60855788835,13446,St. Johns Family Funeral Home And Crematory,2,0,partner_routed_hold
+60872608790,13557,Jesse E Cooley Jr. Funeral Service,1,0,partner_routed_hold
+60897962571,13602,Stephen M. Brady Funeral Home,1,0,partner_routed_hold
+60868737415,13618,San Jose Funeral Service,1,0,partner_routed_hold
+60866586263,13641,LANHAM SCHANHOFER FUNERAL HOME,1,0,partner_routed_hold
+60875108746,13667,FRIENDS Funeral Home - Cremation and Burials Los Angeles,1,94,direct_also_partner
+60856099215,13822,Rodgers Awkard & Lyons Funeral Home,2,0,partner_routed_hold
+60865523016,13994,HARMON FUNERAL HOME,2,0,partner_routed_hold
+60855635998,14096,Forest Meadows Funeral Home,1,5,direct_also_partner
+60848509862,14143,ARNOLD FUNERAL HOMES & CREMATION,1,0,partner_routed_hold
+60878794545,14148,HARLEY FUNERAL HOME AND CREMATORY,1,0,partner_routed_hold
+60875243575,14155,DEBAPTISTE FUNERAL HOME,1,0,partner_routed_hold
+60857479301,14265,NORTH AREA FUNERAL HOME,1,0,partner_routed_hold
+60853932045,14373,FRASER FUNERAL HOME,22,0,partner_routed_hold
+60866274944,14438,Benson Family Funeral Home,1,0,partner_routed_hold
+60846942632,14479,Stevenson and Sons Funeral Home,2,0,partner_routed_hold
+60899038802,14492,YURCH FUNERAL HOME,1,0,partner_routed_hold
+60869223513,14526,TIES/Borden Mortuary Services,2,0,partner_routed_hold
+60863516728,14643,Valley Funeral Home,1,0,partner_routed_hold
+60859347796,14668,Sosebee Mortuary and Crematory,1,0,partner_routed_hold
+60846651446,14733,DEFIORE FUNERAL AND CREMATION,1,0,partner_routed_hold
+60872013883,14742,Faith Memorial Chapel,1,0,partner_routed_hold
+60863365891,14809,GREATER JACKSON MORTUARY SERVICE,1,0,partner_routed_hold
+60858894695,14814,Thielen Funeral Home and Crematory,2,0,partner_routed_hold
+60876650329,14867,Lonning Funeral Home,2,0,partner_routed_hold
+60864154114,14875,Jarmusz Cotton Funeral Home,1,0,partner_routed_hold
+60867674712,14915,Linwood Rhodes Funeral Home,1,0,partner_routed_hold
+60853163645,14975,Pressley's Funeral Home,2,0,partner_routed_hold
+60855636004,14999,"Newcomer Cremations, Funerals & Receptions, Northeast Chapel Columbus",1,0,partner_routed_hold
+60865197488,15201,Aspen Lakewood Mortuary (Foundation Partners),1,6,direct_also_partner
+60871217558,15303,Christensen Family Funeral Home,3,0,partner_routed_hold
+60847405654,15317,Weldon Funeral Home,1,0,partner_routed_hold
+60854091136,15556,JOWETT FUNERAL HOME,1,0,partner_routed_hold
+60898566721,15633,Cannon-Catavolos Funeral Home,2,0,partner_routed_hold
+60865523015,15762,BEGGS FUNERAL HOME (THL),1,0,partner_routed_hold
+60867674714,15828,SLATER FUNERAL HOME LTD,1,0,partner_routed_hold
+60848818267,15934,PATTON-SCHAD FUNERAL & CREMATION SERVICES,2,0,partner_routed_hold
+60881874323,15943,ARNOLD FUNERAL HOME,1,0,partner_routed_hold
+60898127485,16015,LIVING WATERS FUNERAL HOME,2,0,partner_routed_hold
+60881874333,16112,Thomas Family Funeral Home,2,0,partner_routed_hold
+60864153713,16240,AGAPE316 LLC,1,0,partner_routed_hold
+60866742285,16247,WIlson Woodale Funeral Home,1,0,partner_routed_hold
+60872013887,16338,HASTINGS FUNERAL HOME,1,0,partner_routed_hold
+60845706289,16424,Sunset Funeral Chapel,3,4,direct_also_partner
+60900123984,16543,Powers Funeral Home (SC),7,3,mixed_hold
+60846344594,16572,Schaff funeral services,3,0,partner_routed_hold
+60877116684,16619,NEWTON BRACEWELL FUNERAL HOME,1,0,partner_routed_hold
+60862451212,16700,Kirk Mortuary Svc. of Houston,10,1,mixed_hold
+60868737416,16759,J.M. DUNBAR FUNERAL HOME,1,0,partner_routed_hold
+60872608798,16775,Speaks Chapel,1,0,partner_routed_hold
+60867674717,16801,WHEELAN-PRESSLY FUNERAL HOME,1,0,partner_routed_hold
+60865673998,16831,Terell Borady Funeral Home,1,0,partner_routed_hold
+60871697409,16914,"Willie A. Watkins Funeral Home (Carrollton, GA)",1,0,partner_routed_hold
+60860595383,16959,GENE H CORL FUNERAL CHAPEL,1,0,partner_routed_hold
+60854703420,17257,DEARLY BELOVED MORTUARY SERVICES,11,0,partner_routed_hold
+60877867527,17258,MINOR-MORRIS FUNERAL HOME,2,0,partner_routed_hold
+60883108903,17266,AFFORDABLE FUNERAL SERVICES,1,0,partner_routed_hold
+60846169486,17300,Serenity Funeral Home,2,0,partner_routed_hold
+60847735582,17358,D W BROOKS FUNERAL HOME,14,0,partner_routed_hold
+60875413038,17448,Norman E. Gannon Funeral Home,3,0,partner_routed_hold
+60876327193,17450,Perman Funeral Home,1,0,partner_routed_hold
+60899038798,17592,RODENBERGER-GRAY FUNERAL HOME,1,0,partner_routed_hold
+60878486653,17650,"Major H. Winfield Funeral Home, Inc",1,0,partner_routed_hold
+60879860229,17693,Waterbury Funeral Services,1,0,partner_routed_hold
+60848509866,17714,Champion Funeral Contracting Service,1,0,partner_routed_hold
+60846496789,17858,SMITH KELLEHER FUNERAL HOME,1,0,partner_routed_hold
+60880317768,17875,Bliley's Chippenham Funeral Home,1,0,partner_routed_hold
+60900123989,18073,Iles Funeral Home (Des Moines),2,0,partner_routed_hold
+60863999271,18125,Mercer-Adams Funeral Service,2,0,partner_routed_hold
+60847735590,18194,"Stone Funeral Home, Inc.",1,0,partner_routed_hold
+60853622967,18275,Jenkins-Soffe Funeral Homes & Cremation Center,1,0,partner_routed_hold
+60871697412,18301,Rutledge and Bigham Mortuary,1,0,partner_routed_hold
+60879860231,18429,Mull Funeral Home Inc,1,0,partner_routed_hold
+60877578663,18477,O'Connor Mortuary,1,44,direct_also_partner
+60861050288,18926,Brice W Herndon & Sons Funeral Homes,1,0,partner_routed_hold
+60867826859,19373,Wilson Family Funeral Home,1,0,partner_routed_hold
+60870928801,19513,Owens Funeral Home,1,0,partner_routed_hold
+60900425277,19568,Carters-RIck Funeral Home,1,0,partner_routed_hold
+60854383028,19589,Moody-Connolly FH,1,0,partner_routed_hold
+60847735585,19733,Heritage Memorial Chapel Inc,1,0,partner_routed_hold
+60847869513,19771,Ducro Funeral Services,1,0,partner_routed_hold
+60867364747,19888,Napier Funeral Home,1,0,partner_routed_hold
+60858560283,20193,Langeland Sterenberg Funeral Home,1,0,partner_routed_hold
+60848661842,20291,"Radney's Funeral Home, Inc",1,0,partner_routed_hold
+60875413033,20344,Carlisle-Branson Funeral Service & Crematory,1,0,partner_routed_hold
+60856254585,20526,Briggs Funeral Home & Crematory,1,0,partner_routed_hold
+60862897712,20560,Chapel of the Chimes Funeral Home,1,0,partner_routed_hold
+60878175340,20685,Optima Funeral Home,1,0,partner_routed_hold
+60855636000,21006,Moody-Davis Funeral Services,1,0,partner_routed_hold
+60865353142,21188,Sexton-Hall Funeral Home,1,0,partner_routed_hold
+60898730772,21209,Legacy Growney Funeral Home,1,0,partner_routed_hold
+60865673995,21299,Nuuanu Memorial Park & Mortuary,5,0,partner_routed_hold
+60875877723,21386,"Marlan Gary Funeral Home, Chapel of Peace",1,0,partner_routed_hold
+60874776234,21387,Ziemer Funeral Home,1,0,partner_routed_hold
+60846169477,21404,Butler and Sons Funeral Home,1,0,partner_routed_hold
+60855636001,21408,Legacy Funeral Center-Nunnelley Chapel,1,0,partner_routed_hold
+60859970432,21436,LIGHTHOUSE FUNERAL AND CREMATION SERVICES,1,0,partner_routed_hold
+60847561609,21440,Sunset Funeral Homes - Northeast,10,0,partner_routed_hold
+60899651894,21484,Casket Emporium Corporation,1,0,partner_routed_hold
+60860904722,21489,Weed-Corley-Fish Funeral Home (SCI Location #8190),1,1,direct_also_partner
+60863666578,21495,Heafey Hoffmann Dworak Cutler Mortuaries & Crematory,1,0,partner_routed_hold
+60881099892,21497,Brown Funerals- Cremation Society of SC,1,0,partner_routed_hold
+60858560287,21502,Legacy Funeral Home,1,0,partner_routed_hold
+60868737412,21537,Baker-Hazel & Snider Funeral Home,1,0,partner_routed_hold
+60871394183,21542,Adams Funeral Home,1,0,partner_routed_hold
+60873553686,21549,Accu-Care Mortuary Service and Crematory,2,0,partner_routed_hold
+60862288991,21558,Wiegel Funeral Home,1,0,partner_routed_hold
+60883727436,21577,United Funeral Home of Loris,1,0,partner_routed_hold
+60860280128,21587,Angel Valley Funeral Home,1,0,partner_routed_hold
+60860127388,21597,HASARA FAMILY FUNERAL DIRECTORS,3,0,partner_routed_hold
+60873554200,21598,Michaelson Funeral Home,1,0,partner_routed_hold
+60853932044,21606,Freeman Funeral Home,1,0,partner_routed_hold
+60876483161,21622,Patton & Storck PTE Limited Funeral Directors,1,0,partner_routed_hold
+60867674710,21623,Life and Legacy Funeral and Cremations,4,0,partner_routed_hold
+60865673996,21628,Price Helton Funeral Home,1,0,partner_routed_hold
+60861050292,21633,Carter Funeral Home,1,0,partner_routed_hold
+60873709324,21639,Memorial Funeral Home LLC,1,0,partner_routed_hold
+60866742280,21643,Spaulding Funeral Home and Crematory,1,0,partner_routed_hold
+60847405648,21650,Hayes Brothers Funeral Home,1,0,partner_routed_hold
+60874776218,21652,christensen hoagland funeral home,1,0,partner_routed_hold
+60871697336,21660,Metro Mortuary,2,0,partner_routed_hold
+60856099212,21662,"Memory Eternal Funeral Directors, LTD.",2,0,partner_routed_hold
+60845706297,21665,McPhearson-Rawls Funeral Home,1,0,partner_routed_hold
+60877578653,21668,Gorsline Runciman Funeral Homes  (SCI Location #7225),1,0,partner_routed_hold
+60901358977,21681,"Legacy Funeral Home, Kehl's Chapel",2,0,partner_routed_hold
+60864758873,21684,F.B. PRATT & SON FUNERAL HOME,1,0,partner_routed_hold
+60856704012,21690,Ray Funeral Home,1,0,partner_routed_hold
+60899342219,21693,Symonds Lakes in Chicago,1,0,partner_routed_hold
+60871697408,21724,T. P. White & Sons Funeral Home,1,0,partner_routed_hold
+60875413039,21726,Raddatz Funeral Services,1,0,partner_routed_hold
+60899811638,21728,Be at Peace Funerals and Cremations,1,0,partner_routed_hold
+60874158608,21731,ANDERSON & SONS MORTUARY INC,1,0,partner_routed_hold
+60877578658,21732,Crawford Funeral Home,1,0,partner_routed_hold
+60863999270,21751,Hollis Funeral Home,1,0,partner_routed_hold
+60864910623,21757,STEHNS FUNERAL HOME,1,0,partner_routed_hold
+60899342215,21758,Gallop Funeral Services,1,0,partner_routed_hold
+60874158609,21761,Benta's Funeral Home,1,0,partner_routed_hold
+60856254582,21772,Barnes-Frederich & Pope Funeral Home,1,0,partner_routed_hold
+60848509870,21781,OAKWOOD FUNERALHOME,1,0,partner_routed_hold
+60862761092,21786,Thomas Funeral Home,1,0,partner_routed_hold
+60855021890,21802,"Agape Funeral Service, Garfield-Waters Funeral Home",1,0,partner_routed_hold

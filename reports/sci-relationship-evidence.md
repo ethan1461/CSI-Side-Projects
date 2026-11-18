@@ -101,8 +101,8 @@ code, a register phone unique to one location, or name + ZIP.
 | 2026 `[ANN]` | — | **1,198** | — | **1,215** | **~$1,124,474** |
 
 ¹ The revenue column is not split by definition: it is the QuickBooks join against all SCI accounts
-(§4). The 15 extra locations the wide rule adds carry 72 bookings and negligible revenue, so the
-same figure serves both columns.
+(§4). The locations the wide rule adds carry 46 bookings across the whole history and negligible
+revenue, so the same figure serves both columns.
 
 **The strict column reproduces the published 97 / 120 / 123 and 1,044 / 1,128 / 1,038 / 1,198
 exactly**, so this report and the cohort analysis agree to the booking. It is pinned by
@@ -112,8 +112,8 @@ cut; they are now excluded, which is both correct and what makes the two reports
 
 **Which figure to quote:** the **strict** one in any external setting — 123 locations, ~1,198
 bookings. It rests on CSI's own labelling and needs no explanation of a matching method. The wide
-figure is the better internal planning number because the 15 extra locations are real volume CSI's
-own system does not know is SCI (§5).
+figure is the better internal planning number because the 15 extra locations active in 2026 (38
+across the whole history) are real volume CSI's own system does not know is SCI (§5).
 
 **Growth, four years:** locations 56 → 123 (**+120%**), bookings 406 → ~1,198 (**+195%**), revenue
 $684,679 → ~$1,124,474 (**+64%**). SCI's share of CSI revenue has risen every year:
@@ -305,7 +305,7 @@ so a shared-phone match is not evidence of anything. Pinned by
 
 **The finding for revops-crm, not for the meeting:** 37 funeral homes that ship with CSI match an
 SCI register location on a name-and-ZIP or unique-phone basis and are **not labelled SCI anywhere in
-CSI's systems**. They are 72 bookings — immaterial to the volume story, material to account
+CSI's systems**. They are 46 bookings across five years — immaterial to the volume story, material to account
 planning, because a rep working those accounts does not know they are Dignity locations and nobody
 counts them in SCI reporting. Handed to revops-crm.
 

@@ -1,0 +1,40 @@
+{
+  "script": "scripts/build_rep_workbooks.py",
+  "script_version": "1.0.0",
+  "generated_at": "2026-11-18T05:10:34.354430+00:00",
+  "source_file": "data/derived/rep-call-sheet-otto-2026-11.csv",
+  "rows_in": 83,
+  "rows_out": 62,
+  "rows_held_back": 21,
+  "held_rows_written_to": "data/derived/rep-call-sheet-HELD-2026-11.csv",
+  "group_counts": {
+    "at_risk": 11,
+    "dormant": 14,
+    "one_and_done": 37
+  },
+  "at_risk_bookings_per_year_at_stake": 148,
+  "columns_dropped": [
+    "list_rank",
+    "situation",
+    "bucket",
+    "hold_reason",
+    "rep",
+    "territory_rep",
+    "owner_rule",
+    "caller_status",
+    "call_status",
+    "enterprise_group",
+    "flag",
+    "partner_verdict_col",
+    "partner_billed",
+    "self_billed",
+    "in_ortiz_group",
+    "peak_annual_bookings"
+  ],
+  "pii": "none - business names, states and booking counts only (CLAUDE.md s7.2)",
+  "notes": [
+    "HELD rows removed from the rep workbook rather than sorted last (Ethan, 2026-11-18).",
+    "Partner-routed homes were already struck upstream on invoice bill-to; the 'watch for partner accounts' instruction is deliberately not reproduced, because a rep cannot identify one on sight.",
+    "outcome and reason_code are dropdowns off a fixed picklist so the capture is countable."
+  ]
+}

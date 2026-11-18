@@ -13,9 +13,9 @@ Live hub for monitoring, querying and assigning work to the 14-agent CSI team.
 |---|---|---|
 | Agent tiles, status, progress, OKRs, artifacts | The artifact's shared database, collection `agents` | Instantly, on any write |
 | Chat threads | `threads/hub/messages` and `threads/<agent-id>/messages` | Instantly |
-| "Live from the team session" | Claude Code connector: `get_session` and `list_events` on the team session | Every 30 seconds |
+| "Requests you've sent" | `requests` collection: `{agent, text, ts, status}`, status `queued` → `logged` | Instantly |
 | Answers to "Ask" | Claude, grounded only in the agent's record | Streams as written |
-| "Assign" | Claude Code connector: `send_message` into the team session, where pm-orchestrator logs it | On send |
+| "Assign" | Writes a `queued` document to `requests`; pm-orchestrator logs it at the start of its next work cycle | On send; picked up next cycle |
 
 ## Protocol for agents: keep your tile current
 
@@ -48,3 +48,6 @@ Example: an agent picks up a task.
 
 The guardrails in `CLAUDE.md` §7 apply to the dashboard too. No fabricated numbers, and no personnel
 matters. Corp dev items (§7.5) appear by title only.
+
+The Claude Code connector is not used: claude.ai could not load it for this page, so the page
+declares only `db`, `user` and `sample`.

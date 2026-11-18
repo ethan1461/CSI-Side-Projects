@@ -254,8 +254,13 @@ button.stat:hover { border-color: var(--accent) }
         <ul class="needs" id="needs"></ul>
       </div>
       <div class="card">
+        <h4>Requests you've sent <span class="badge num" id="reqCount">0</span></h4>
+        <div class="small muted">Work you assign waits here until the orchestrator logs it as a task at the start of its next work cycle.</div>
+        <div class="feed" id="reqFeed"></div>
+      </div>
+      <div class="card" hidden>
         <h4>Live from the team session <span class="pill idle" id="sessPill"><i></i><span>Checking</span></span></h4>
-        <div class="small muted" id="sessDetail">Connect Claude Code to see what the orchestrator is doing right now.</div>
+        <div class="small muted" id="sessDetail"></div>
         <div class="feed" id="sessFeed"></div>
         <button class="btn ghost" id="sessConnect" type="button" hidden>Connect Claude Code</button>
       </div>
@@ -379,6 +384,16 @@ button.stat:hover { border-color: var(--accent) }
     if (live && live.where === "hub") c.append(liveNode());
     c.scrollTop = c.scrollHeight;
   }
+  function renderRequests(list) {
+    const f = $("#reqFeed"); f.textContent = "";
+    const open = list.filter(r => r.status !== "logged").length; $("#reqCount").textContent = open;
+    if (!list.length) { f.append(el("div", "small muted", "Nothing sent yet. Use Assign work in the bar above or on any agent.")); return; }
+    for (const r of list) {
+      const n = el("div", "feed-item"); n.style.borderLeftColor = r.status === "logged" ? "var(--ok)" : "var(--accent)";
+      const head = el("time"); head.textContent = fmtTime(r.ts) + "  ·  " + (agentName(r.agent) || r.agent) + "  ·  " + (r.status === "logged" ? "Logged" + (r.taskId ? " as " + r.taskId : "") : "Waiting for the orchestrator");
+      n.append(head, el("div", null, r.text)); f.append(n);
+    }
+  }
   function renderAll() { renderPulse(); renderGrid(); renderNeeds(); if (openId) renderDrawer(); }
 
   // ---------- drawer ----------
@@ -458,7 +473,7 @@ button.stat:hover { border-color: var(--accent) }
     const comp = el("form", "composer");
     const ta = el("textarea"); ta.id = "chatInput"; ta.placeholder = "Message " + a.name + "…"; ta.value = draft || ""; ta.setAttribute("aria-label", "Message " + a.name);
     const row = el("div", "row");
-    row.append(el("span", "small muted", "Ask = answered now. Assign = sent to the team session as work."));
+    row.append(el("span", "small muted", "Ask = answered now. Assign = queued for the orchestrator as work."));
     const ask = el("button", "btn ghost", "Ask"); ask.type = "submit"; ask.dataset.kind = "ask";
     const asg = el("button", "btn accent", "Assign"); asg.type = "submit"; asg.dataset.kind = "assign";
     row.append(ask, asg); comp.append(ta, row);
@@ -472,7 +487,8 @@ button.stat:hover { border-color: var(--accent) }
   async function boot() {
     const c = window.claude;
     if (!c?.use) { setLive(false, "Open in Claude to go live"); $("#grid").textContent = ""; $("#grid").append(el("div", "empty", "This hub runs inside Claude. Open it from claude.ai to see the live team.")); return; }
-    [db, sample, mcp, user] = await Promise.all([c.use("db"), c.use("sample"), c.use("mcp"), c.use("user")]);
+    // The Claude Code connector is not available to this page, so requests go through the hub database instead.
+    [db, sample, user] = await Promise.all([c.use("db"), c.use("sample"), c.use("user")]); mcp = null;
     if (user) { try { myId = await user.id(); } catch {} }
     if (!db) { setLive(false, "Sign in to see the team"); $("#grid").textContent = ""; $("#grid").append(el("div", "empty", "Sign in to claude.ai with your CSI account to see the live team record.")); }
     else subscribeAgents();
@@ -488,6 +504,7 @@ button.stat:hover { border-color: var(--accent) }
       renderAll();
       const m = /^#agent-(.+)$/.exec(location.hash); if (m && !openId && agents.some(a => a.id === m[1])) openAgent(m[1]);
     }, err => { clearTimeout(timer); setLive(false, "Offline"); console.warn(err); });
+    db.collection("requests").orderBy("ts", "desc").limit(8).onSnapshot(snap => renderRequests(snap.docs.map(d => ({ id: d.id, ...d.data() }))), () => {});
     db.collection("threads/hub/messages").orderBy("ts", "desc").limit(30).onSnapshot(snap => { hubMsgs = snap.docs.map(d => ({ id: d.id, ...d.data() })).reverse(); renderHub(); }, () => {});
   }
   function subscribeThread(id) {
@@ -566,12 +583,12 @@ button.stat:hover { border-color: var(--accent) }
         try { await mcp.callTool(CCR, "send_message", { session_id: HUB_SESSION, message: body }, { cache: false }); ok = true; }
         catch (e) { why = mcpWhy(e); console.warn("send_message", e); }
       }
-    } else why = "The team session can only be reached by signed-in team members in Claude.";
+    } else why = "";
     // Every request is queued on the dashboard, so it reaches the team even when the connector can't.
     const queued = await write("requests", { agent: id, text, ts: now, by: myId || null, status: ok ? "delivered" : "queued", deliveredAt: ok ? now : null });
     if (queued && db && a) { try { await db.doc("agents/" + id).update({ inbox: [...(a.inbox || []), { text, ts: now }].slice(-5) }); } catch {} }
     const note = ok ? `Sent to the team session for **${a?.name || id}**. The tile updates when the agent picks it up.`
-      : queued ? `Queued for **${a?.name || id}**. The team session picks up queued requests at its next check. (It couldn't be delivered instantly: ${why.replace(/\*\*/g, "")})`
+      : queued ? `Queued for **${a?.name || id}**. The orchestrator logs it as a task at the start of its next work cycle, and you can follow it under "Requests you've sent".`
       : "Not sent. " + why;
     await write(where === "hub" ? "threads/hub/messages" : thread, { role: "system", text: note, ts: new Date().toISOString(), route: where === "hub" ? id : null });
     if (ok) mcp.invalidate?.(CCR).catch(() => {});
@@ -579,7 +596,7 @@ button.stat:hover { border-color: var(--accent) }
 
   // command bar
   const cmd = $("#cmdInput");
-  function setMode(m) { mode = m; store.set("csi.mode", m); document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.mode === m))); $("#cmdHint").textContent = { auto: "Auto: answered now if the team's records cover it, otherwise sent to the orchestrator as work.", ask: "Ask now: the best-placed agent answers from its records.", assign: "Assign work: sent to the team session; the orchestrator logs it and hands it to the right agent." }[m]; }
+  function setMode(m) { mode = m; store.set("csi.mode", m); document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.mode === m))); $("#cmdHint").textContent = { auto: "Auto: answered now if the team's records cover it, otherwise sent to the orchestrator as work.", ask: "Ask now: the best-placed agent answers from its records.", assign: "Assign work: queued for the orchestrator, who logs it and hands it to the right agent." }[m]; }
   document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => setMode(b.dataset.mode))); setMode(mode);
   cmd.addEventListener("input", () => { cmd.style.height = "auto"; cmd.style.height = Math.min(180, cmd.scrollHeight) + "px"; });
   cmd.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); $("#cmdForm").requestSubmit(); } });

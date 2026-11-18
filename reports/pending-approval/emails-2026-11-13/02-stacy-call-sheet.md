@@ -1,3 +1,11 @@
+# ✅ SENT — 2026-11-18 by Ethan
+
+Sent from Ethan's Outlook with the workbook attached (`data/derived/rep-workbook-{otto,stacy}-2026-11.xlsx`), CC Cheryl, Donald, Vadim.
+Kept for the record. **Do not re-send.** The held rows are withheld in
+`data/derived/rep-call-sheet-HELD-2026-11.csv` pending the SCI corporate conversation.
+
+---
+
 # DRAFT — to Stacy, her call sheet
 
 **Status:** Draft for Ethan. He sends it (`CLAUDE.md §7.1`).

@@ -1,0 +1,112 @@
+sheet,list,verdict,funeral_home_id,funeral_home,partner,partner_bookings,self_billed
+otto,at_risk,FLAG,2837,SUNSET FUNERAL HOME,MIXED,55,5
+stacy,at_risk,FLAG,2947,Quality Mortuary,MIXED,50,5
+stacy,dormant,FLAG,2861,Akes Family Funeral Home,MIXED,12,1
+stacy,dormant,FLAG,8112,San Jacinto Valley Mortuary.,BERGEN,9,2
+stacy,dormant,FLAG,7110,Florida Mortuary Funeral & Cremation Services,IMS,6,1
+ethan,at_risk,KEEP,10424,"Edwards Memorial Center, LLC (Lakewood, WA - Foundation Partners)",BERGEN,6,56
+ethan,at_risk,KEEP,5951,First Call Plus of Washington - Kent (Foundation Partners),BERGEN,2,22
+otto,at_risk,KEEP,2217,Mississippi Mortuary Services,MIXED,3,67
+otto,dormant,KEEP,3666,Roberts Funeral Home,NMS,1,7
+stacy,at_risk,KEEP,1939,Florida Funeral Home and Crematory,NMS,1,86
+stacy,dormant,KEEP,12197,Genuine Funeral LLC,IMS,1,10
+abe,one_and_done,STRIKE,17450,Perman Funeral Home,NMS,1,0
+abe,one_and_done,STRIKE,2948,Legacy Heritage Chapel at Angelus,IMS,1,0
+abe,one_and_done,STRIKE,14155,DEBAPTISTE FUNERAL HOME,NMS,1,0
+abe,one_and_done,STRIKE,21209,Legacy Growney Funeral Home,IMS,1,0
+abe,one_and_done,STRIKE,21387,Ziemer Funeral Home,NMS,1,0
+abe,one_and_done,STRIKE,21408,Legacy Funeral Center-Nunnelley Chapel,NMS,1,0
+abe,one_and_done,STRIKE,21484,Casket Emporium Corporation,IMS,1,0
+abe,one_and_done,STRIKE,14492,YURCH FUNERAL HOME,NMS,1,0
+abe,one_and_done,STRIKE,21537,Baker-Hazel & Snider Funeral Home,IMS,1,0
+abe,one_and_done,STRIKE,21558,Wiegel Funeral Home,NMS,1,0
+abe,one_and_done,STRIKE,21605,Dougherty Funeral Home,NMS,1,0
+abe,one_and_done,STRIKE,20685,Optima Funeral Home,NMS,1,0
+abe,one_and_done,STRIKE,12136,DAVIDSON BECKER FUNERAL HOME,NMS,1,0
+abe,one_and_done,STRIKE,15701,HANES-LINEBERRY FUNERAL HOME,IMS,1,0
+abe,one_and_done,STRIKE,21650,Hayes Brothers Funeral Home,NMS,1,0
+otto,at_risk,STRIKE,4821,HOWARD AND JONES FUNERAL HOME,IMS,45,0
+otto,dormant,STRIKE,9816,THOMSON DOUGHERTY FUNERAL HOME,IMS,10,0
+otto,dormant,STRIKE,3025,LABBY MEMORIAL HOME,IMS,12,0
+otto,dormant,STRIKE,4279,HARTFORD TRADE SERVICES,NMS,3,0
+otto,one_and_done,STRIKE,14143,ARNOLD FUNERAL HOMES & CREMATION,NMS,1,0
+otto,one_and_done,STRIKE,16247,WIlson Woodale Funeral Home,NMS,1,0
+otto,one_and_done,STRIKE,16338,HASTINGS FUNERAL HOME,NMS,1,0
+otto,one_and_done,STRIKE,15943,ARNOLD FUNERAL HOME,NMS,1,0
+otto,one_and_done,STRIKE,3080,Dwayne R Spence Funeral Home,IMS,1,0
+otto,one_and_done,STRIKE,11454,BELL PROFESSIONAL MORTUARY SERVICE,IMS,1,0
+otto,one_and_done,STRIKE,16831,Terell Borady Funeral Home,IMS,1,0
+otto,one_and_done,STRIKE,16914,"Willie A. Watkins Funeral Home (Carrollton, GA)",NMS,1,0
+otto,one_and_done,STRIKE,16959,GENE H CORL FUNERAL CHAPEL,NMS,1,0
+otto,one_and_done,STRIKE,13641,LANHAM SCHANHOFER FUNERAL HOME,IMS,1,0
+otto,one_and_done,STRIKE,16801,WHEELAN-PRESSLY FUNERAL HOME,IMS,1,0
+otto,one_and_done,STRIKE,2214,Miller Funeral Home  & Crematory (Minnesota),IMS,1,0
+otto,one_and_done,STRIKE,5273,HALLOWELL & JAMES FUNERAL HOME,IMS,1,0
+otto,one_and_done,STRIKE,17693,Waterbury Funeral Services,NMS,1,0
+otto,one_and_done,STRIKE,17650,"Major H. Winfield Funeral Home, Inc",NMS,1,0
+otto,one_and_done,STRIKE,18301,Rutledge and Bigham Mortuary,NMS,1,0
+otto,one_and_done,STRIKE,16775,Speaks Chapel,IMS,1,0
+otto,one_and_done,STRIKE,8267,Eline Funeral Home,IMS,1,0
+otto,one_and_done,STRIKE,4445,STROWDERS FUNERAL HOME (NMS),NMS,1,0
+otto,one_and_done,STRIKE,16759,J.M. DUNBAR FUNERAL HOME,IMS,1,0
+otto,one_and_done,STRIKE,15762,BEGGS FUNERAL HOME (THL),IMS,1,0
+otto,one_and_done,STRIKE,8059,MARTENSON FUNERAL HOME,NMS,1,0
+otto,one_and_done,STRIKE,19373,Wilson Family Funeral Home,NMS,1,0
+otto,one_and_done,STRIKE,14999,"Newcomer Cremations, Funerals & Receptions, Northeast Chapel Columbus",BERGEN,1,0
+otto,one_and_done,STRIKE,19568,Carters-RIck Funeral Home,NMS,1,0
+otto,one_and_done,STRIKE,19513,Owens Funeral Home,IMS,1,0
+otto,one_and_done,STRIKE,19589,Moody-Connolly FH,IMS,1,0
+otto,one_and_done,STRIKE,19771,Ducro Funeral Services,NMS,1,0
+otto,one_and_done,STRIKE,14733,DEFIORE FUNERAL AND CREMATION,NMS,1,0
+otto,one_and_done,STRIKE,19888,Napier Funeral Home,IMS,1,0
+otto,one_and_done,STRIKE,14265,NORTH AREA FUNERAL HOME,IMS,1,0
+otto,one_and_done,STRIKE,3075,Parkview Funeral Home,NMS,1,0
+otto,one_and_done,STRIKE,20193,Langeland Sterenberg Funeral Home,NMS,1,0
+otto,one_and_done,STRIKE,13602,Stephen M. Brady Funeral Home,NMS,1,0
+renee,one_and_done,STRIKE,20526,Briggs Funeral Home & Crematory,NMS,1,0
+renee,one_and_done,STRIKE,12214,Wilson-Wooddale Funeral Home,NMS,1,0
+renee,one_and_done,STRIKE,20971,Price Funeral Home,IMS,1,0
+renee,one_and_done,STRIKE,21502,Legacy Funeral Home,NMS,1,0
+renee,one_and_done,STRIKE,3417,SHELLHOUSE- RIVERS FUNERAL HOME  (IMS),IMS,1,0
+renee,one_and_done,STRIKE,21542,Adams Funeral Home,NMS,1,0
+renee,one_and_done,STRIKE,21577,United Funeral Home of Loris,NMS,1,0
+renee,one_and_done,STRIKE,21606,Freeman Funeral Home,IMS,1,0
+renee,one_and_done,STRIKE,7793,Macon Funeral Home,IMS,1,0
+renee,one_and_done,STRIKE,11605,Milton Shealy Funeral Home,IMS,1,0
+renee,one_and_done,STRIKE,21619,"Inclusive Funeral Care, LLC",NMS,1,0
+renee,one_and_done,STRIKE,21639,Memorial Funeral Home LLC,NMS,1,0
+stacy,dormant,STRIKE,7559,Sunset Funeral Homes,IMS,8,0
+stacy,dormant,STRIKE,2976,MILE HIGH EMBALMING & SHIPPING,MIXED,4,0
+stacy,one_and_done,STRIKE,13178,ASBURY MORTUARY (GERONIMO),IMS,1,0
+stacy,one_and_done,STRIKE,12647,Bynes-Royall Funeral Home,IMS,1,0
+stacy,one_and_done,STRIKE,17137,Greco-Hertnick Funeral Home,NMS,1,0
+stacy,one_and_done,STRIKE,16240,AGAPE316 LLC,IMS,1,0
+stacy,one_and_done,STRIKE,17266,AFFORDABLE FUNERAL SERVICES,NMS,1,0
+stacy,one_and_done,STRIKE,12003,STEHN FAMILY CHAPELS,NMS,1,0
+stacy,one_and_done,STRIKE,17714,Champion Funeral Contracting Service,NMS,1,0
+stacy,one_and_done,STRIKE,11510,BOWLING FUNERAL HOME,IMS,1,0
+stacy,one_and_done,STRIKE,16619,NEWTON BRACEWELL FUNERAL HOME,IMS,1,0
+stacy,one_and_done,STRIKE,8949,GRAND TETON FUNERAL HOME,IMS,1,0
+stacy,one_and_done,STRIKE,9990,TAYLOR FUNERAL HOME (BNA),NMS,1,0
+stacy,one_and_done,STRIKE,14742,Faith Memorial Chapel,NMS,1,0
+stacy,one_and_done,STRIKE,14875,Jarmusz Cotton Funeral Home,NMS,1,0
+stacy,one_and_done,STRIKE,11754,Bella Vida Funeral Home,IMS,1,0
+stacy,one_and_done,STRIKE,18275,Jenkins-Soffe Funeral Homes & Cremation Center,NMS,1,0
+stacy,one_and_done,STRIKE,4139,BUSE FUNERAL HOME,NMS,1,0
+stacy,one_and_done,STRIKE,6665,CASADA FUNERAL HOME,IMS,1,0
+stacy,one_and_done,STRIKE,9495,James Funeral Home(Huntersville),IMS,1,0
+stacy,one_and_done,STRIKE,1712,All Faiths Funeral Service,IMS,1,0
+susej,one_and_done,STRIKE,20301,All Faiths MORTUARY,IMS,1,0
+susej,one_and_done,STRIKE,10071,RENNER WIKOFF  FUNERAL HOME,NMS,1,0
+susej,one_and_done,STRIKE,21404,Butler and Sons Funeral Home,IMS,1,0
+susej,one_and_done,STRIKE,21436,LIGHTHOUSE FUNERAL AND CREMATION SERVICES,NMS,1,0
+susej,one_and_done,STRIKE,21386,"Marlan Gary Funeral Home, Chapel of Peace",NMS,1,0
+susej,one_and_done,STRIKE,12578,Cornerstone Funeral Services,BERGEN,1,0
+susej,one_and_done,STRIKE,21587,Angel Valley Funeral Home,NMS,1,0
+susej,one_and_done,STRIKE,21497,Brown Funerals- Cremation Society of SC,IMS,1,0
+susej,one_and_done,STRIKE,21598,Michaelson Funeral Home,NMS,1,0
+susej,one_and_done,STRIKE,20291,"Radney's Funeral Home, Inc",NMS,1,0
+susej,one_and_done,STRIKE,21603,Lunn's Colonial Funeral Home,NMS,1,0
+susej,one_and_done,STRIKE,21633,Carter Funeral Home,NMS,1,0
+susej,one_and_done,STRIKE,21647,Roberts Funeral HOme,NMS,1,0
+susej,one_and_done,STRIKE,21643,Spaulding Funeral Home and Crematory,NMS,1,0

@@ -91,7 +91,7 @@ rule is what that convention gives and is what `reports/customer-cohort-analysis
 published. The **wide** rule adds accounts matched independently to SCI's register on location
 code, a register phone unique to one location, or name + ZIP.
 
-| Year | Strict locations | Strict bookings | Wide locations | Wide bookings | Revenue (QuickBooks) |
+| Year | Strict locations | Strict bookings | Wide locations | Wide bookings | Revenue (QuickBooks)¹ |
 |---|---|---|---|---|---|
 | 2022 | 56 | 406 | 62 | 412 | $684,679 |
 | 2023 | 102 | 971 | 108 | 978 | $894,903 |
@@ -99,6 +99,10 @@ code, a register phone unique to one location, or name + ZIP.
 | 2025 | 120 | 1,128 | 127 | 1,136 | $1,047,999 |
 | 2026 to 10 Nov | **123** | **1,038** | **138** | **1,053** | $974,161 |
 | 2026 `[ANN]` | — | **1,198** | — | **1,215** | **~$1,124,474** |
+
+¹ The revenue column is not split by definition: it is the QuickBooks join against all SCI accounts
+(§4). The 15 extra locations the wide rule adds carry 72 bookings and negligible revenue, so the
+same figure serves both columns.
 
 **The strict column reproduces the published 97 / 120 / 123 and 1,044 / 1,128 / 1,038 / 1,198
 exactly**, so this report and the cohort analysis agree to the booking. It is pinned by
@@ -368,8 +372,12 @@ than none.
 The defensible half is the half that needs no claim about EWA's rates:
 
 > **CSI charges no booking fee.** Funeral homes pay the same air rate they would pay the airline
-> direct. On the **3,521 Dignity shipments CSI handled since 2023** — a figure from CSI's own
-> records that CSI can produce location by location — **no booking fee was charged on any of them.**
+> direct. On the **4,181 Dignity shipments CSI handled since 2023** — strict definition, CSI's
+> own records, producible location by location — **no booking fee was charged on any of them.**
+
+(The model in the table above uses a narrower **3,521** because revenue per booking can only be
+measured on the accounts whose QuickBooks revenue joined and that are not partner-billed. The
+no-fee statement needs no revenue figure, so it can rest on all of the volume.)
 
 That is arithmetic on CSI's own data, it survives any challenge, and it invites the only question
 worth having: *"what does your current vendor charge?"* — which SCI can answer and CSI cannot. **Let

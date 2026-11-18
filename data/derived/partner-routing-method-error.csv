@@ -1,0 +1,6 @@
+entity,year,revenue,bookings_under_own_record,ratio_method_implied_routed,measured_routed,error_bookings,error_pct_of_measured
+"ALL PARTNERS (never-invoiced proxy, HOMES not bookings)",2026,,,462,254,208,81.9
+ALL PARTNERS (never-invoiced-in-QuickBooks proxy),2026,,,1039,793,246,31.0
+Bergen Funeral Service (group),2025,1853379.6,1202,175,45,130,288.8
+International Mortuary Shipping,2025,727854.26,10,531,589,-58,-9.9
+National Mortuary Shipping,2025,377027.31,12,268,104,164,157.8

@@ -1,0 +1,29 @@
+{
+  "columns_never_read": [
+    "address",
+    "city",
+    "country",
+    "country_code",
+    "created_by",
+    "created_date",
+    "email",
+    "phone",
+    "updated_by",
+    "zip"
+  ],
+  "git_sha": "72db45d7f998d1be81914a54513a93c474aa15b1",
+  "note": "Each pre-bill-to inference method scored against the measured bill-to count. The never-invoiced proxy's error term is 157 QuickBooks customer names that do not join to any account record, carrying $2,402,134 of $103,312,048 lifetime revenue.",
+  "privacy_note": "Shipment export carries no decedent or family data (four columns). From the OMS account export only funeral_home_id, name, state and duplicate_group_id are read; identifier columns are never loaded, per CLAUDE.md \u00a77.2. No row-level shipment data is written.",
+  "rows_in": 1091,
+  "rows_out": 5,
+  "run_timestamp_utc": "2026-11-18T02:33:08.549294+00:00",
+  "script": "scripts/analyze_partner_routing.py",
+  "script_version": "1.0.0",
+  "source_files": [
+    "config/partner-routing-measured-20261118.json",
+    "data/derived/named-account-trajectory.csv",
+    "data/raw/sales-by-customer-summary-20261110.xlsx",
+    "data/raw/shipments-since-2022-20261110.xlsx",
+    "data/raw/oms-funeral-homes-20261109.csv"
+  ]
+}

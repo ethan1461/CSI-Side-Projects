@@ -1,3 +1,24 @@
+> # 🛑 DO NOT SEND — HELD 2026-11-18 by data-analyst
+>
+> **The attached call sheet contains funeral homes that are not CSI's customers.**
+>
+> Measured on the invoice bill-to field, 535 homes and 3,161 bookings (2022–2026) reach CSI
+> **through** National Mortuary Shipping or International Mortuary Shipping. CSI records the
+> shipment under the originating home's name and invoices the partner. The home never
+> contacted CSI.
+>
+> A rep calling one is calling a partner's customer, on a relationship `CLAUDE.md` §5 names
+> a top priority. That is a partner-relationship incident, not a wasted dial.
+>
+> I am waiting on a per-home manifest to produce the exact exclusion list; it is then one
+> command and I will turn it round the same day. See
+> `handoffs/HANDOFF-partner-routing-sales-lead.md`.
+>
+> **The 48-row at-risk list can go out early** once the 2 rows flagged `is_partner_tier` are
+> struck — those accounts are established, high-volume and self-billed.
+
+---
+
 # DRAFT — to Otto, his call sheet
 
 **Status:** Draft for Ethan. He sends it (`CLAUDE.md §7.1`).

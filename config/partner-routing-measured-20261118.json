@@ -1,0 +1,152 @@
+{
+  "_provenance": {
+    "as_of": "2026-11-18",
+    "measured_by": "production-database session, relayed via pm-orchestrator",
+    "mechanism_identified_by": "Donald (Finance), 2026-11-17",
+    "bill_to_rule_confirmed_by": "Ethan Silvey, 2026-11-18",
+    "source_tables": [
+      "csi_new_shipper_to_invoice (booking_id, shipper_id) -- 11,654 rows, one per booking, 2022-2026",
+      "csi_booking_shipper_information.shipper_funeral_home_id",
+      "csi_invoiced_bookings.qb_customer_id -- 2026 only, cross-check"
+    ],
+    "bill_to_expression": "COALESCE(nsti.shipper_id, csi_booking_shipper_information.shipper_funeral_home_id)",
+    "bill_to_note": "No override row means the booking is billed to the shipping funeral home itself. This is the rule the invoicing code in backend/quickbooks_service.py applies.",
+    "cross_check": "csi_invoiced_bookings.qb_customer_id agrees on 653 of 654 partner invoices in 2026",
+    "unresolvable": "88 bookings are billed to 19 since-deleted funeral home records and cannot be attributed",
+    "status": "MEASURED aggregates only. The per-home manifest has not been delivered; figures derived from these aggregates alone are labelled [ESTIMATE] in reports."
+  },
+  "partner_accounts": {
+    "2239": "National Mortuary Shipping",
+    "2767": "International Mortuary Shipping, LLC",
+    "2734": "Bergen Funeral Service (New Jersey)",
+    "1764": "Bergen Funeral Service (Florida)"
+  },
+  "new_accounts_window": {
+    "_definition": "Homes whose first-ever booking fell on or after 2025-11-17.",
+    "homes": 418,
+    "bookings": 730,
+    "partner_billed_homes": 129,
+    "partner_billed_bookings": 188,
+    "purely_partner_billed_homes": 121,
+    "first_booking_partner_billed_homes": 125,
+    "also_billed_directly_homes": 4,
+    "by_partner_homes": {
+      "NMS": 72,
+      "IMS": 43,
+      "Bergen": 14
+    },
+    "_by_partner_note": "Overlapping: 38 homes used more than one partner across the full history.",
+    "_unreconciled": "121 purely-partner + 4 also-billed-directly = 125 against 129 partner-billed: 4 homes sit in neither subset. Cause not stated in the relayed aggregates; most likely the 19 since-deleted homes carrying 88 unattributable bookings. 4 homes on 418 is 1.0% and moves no corrected figure. Asserted in tests/test_partner_routing.py::test_new_account_subsets_carry_a_known_four_home_gap."
+  },
+  "all_partner_billed_2022_2026": {
+    "homes": 535,
+    "bookings": 3161,
+    "by_partner": {
+      "NMS": {
+        "homes": 266,
+        "bookings": 523
+      },
+      "IMS": {
+        "homes": 257,
+        "bookings": 2514
+      },
+      "Bergen": {
+        "homes": 52,
+        "bookings": 124
+      }
+    },
+    "homes_with_multiple_partners": 38,
+    "homes_also_self_billed": 121,
+    "homes_self_billed_gte_partner_billed": 70,
+    "purely_partner_billed_homes": 414,
+    "_overlap_note": "266 + 257 + 52 = 575 home-slots against 535 distinct homes = 40 of overlap. With 38 multi-partner homes this implies 36 two-partner and 2 three-partner homes."
+  },
+  "by_year_homes_bookings": {
+    "_columns": [
+      "2022",
+      "2023",
+      "2024",
+      "2025",
+      "2026"
+    ],
+    "_note": "Calendar years. Home counts are per-partner and overlap across partners.",
+    "NMS": {
+      "homes": [
+        20,
+        78,
+        72,
+        78,
+        121
+      ],
+      "bookings": [
+        33,
+        103,
+        106,
+        104,
+        177
+      ]
+    },
+    "IMS": {
+      "homes": [
+        45,
+        108,
+        99,
+        114,
+        104
+      ],
+      "bookings": [
+        125,
+        652,
+        579,
+        589,
+        569
+      ]
+    },
+    "Bergen": {
+      "homes": [
+        4,
+        8,
+        9,
+        23,
+        29
+      ],
+      "bookings": [
+        5,
+        12,
+        15,
+        45,
+        47
+      ]
+    }
+  },
+  "partner_own_record_bookings": {
+    "_note": "Bookings recorded under the partner's own funeral_home_id as shipper, in data/raw/shipments-since-2022-20261110.xlsx.",
+    "NMS_2239": 33,
+    "IMS_2767": 54,
+    "Bergen_both": 5150
+  },
+  "published_figures_being_corrected": {
+    "_source": "reports/customer-cohort-analysis.md, 2026-11-12, and data/derived/rolling-window-account-metrics.csv",
+    "rolling_window_as_of": "2026-11-10",
+    "active_accounts": 1091,
+    "new_accounts": 411,
+    "reactivated_accounts": 94,
+    "retained_accounts": 586,
+    "churned_accounts": 318,
+    "churn_rate_count_pct": 35.18,
+    "churn_rate_volume_weighted_pct": 5.58,
+    "bookings_in_window": 10943,
+    "active_accounts_2024": 822,
+    "active_accounts_2025": 904,
+    "base_stopped_accounts": 349,
+    "base_stopped_bookings": 1067,
+    "one_and_done_rows": 302,
+    "at_risk_rows": 48,
+    "dormant_rows": 62,
+    "first_to_second_365d_pct": {
+      "2023": 51.85,
+      "2024": 45.75,
+      "2025": 42.86
+    }
+  }
+}

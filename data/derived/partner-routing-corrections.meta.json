@@ -1,0 +1,25 @@
+{
+  "columns_never_read": [
+    "address",
+    "city",
+    "country",
+    "country_code",
+    "created_by",
+    "created_date",
+    "email",
+    "phone",
+    "updated_by",
+    "zip"
+  ],
+  "git_sha": "72db45d7f998d1be81914a54513a93c474aa15b1",
+  "note": "Published versus corrected cohort figures. Only rows marked basis=MEASURED rest on the bill-to join; everything else in the report that depends on per-home bill-to is labelled [ESTIMATE] and needs the manifest.",
+  "privacy_note": "Shipment export carries no decedent or family data (four columns). From the OMS account export only funeral_home_id, name, state and duplicate_group_id are read; identifier columns are never loaded, per CLAUDE.md \u00a77.2. No row-level shipment data is written.",
+  "rows_in": 18,
+  "rows_out": 3,
+  "run_timestamp_utc": "2026-11-18T02:33:08.546184+00:00",
+  "script": "scripts/analyze_partner_routing.py",
+  "script_version": "1.0.0",
+  "source_files": [
+    "config/partner-routing-measured-20261118.json"
+  ]
+}

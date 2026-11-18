@@ -1,0 +1,36 @@
+state,shipping_locations,bookings_all,bookings_2026,csi_gateway_in_state,csi_pickup_metro_in_state
+FL,49,2657,540,MIA,yes
+HI,3,497,130,,no
+NV,10,458,114,,no
+TX,35,172,31,DFW / IAH,yes
+WA,10,151,36,,no
+NY,15,149,32,JFK,no
+MD,3,77,15,IAD,no
+IL,8,67,13,,no
+CA,31,60,29,LAX / SFO,yes
+MA,7,42,3,BOS,no
+VA,6,40,14,IAD,no
+LA,3,39,35,,no
+DC,2,35,3,IAD,no
+NJ,7,23,4,JFK,no
+GA,8,21,3,,no
+PA,4,19,5,,no
+MO,3,17,2,,no
+OH,3,16,11,,no
+AZ,5,14,2,,no
+OR,5,14,6,,no
+SC,3,13,3,,no
+CT,3,12,3,JFK,no
+NC,5,11,3,,no
+KS,2,5,5,,no
+TN,2,5,0,,no
+CO,3,4,3,,no
+UT,2,4,3,,no
+MI,3,3,1,,no
+AL,2,2,1,,no
+RI,1,2,0,BOS,no
+AR,1,1,0,,no
+IN,1,1,1,,no
+OK,1,1,1,,no
+ON,1,1,0,,no
+PR,1,1,1,,no

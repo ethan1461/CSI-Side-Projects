@@ -1,0 +1,13 @@
+funeral_home_id,funeral_home,state,sci_location_code,main_partner,partner_billed_bookings,self_billed_bookings,other_billed_bookings,partner_share_pct,bookings_in_shipment_export,first_booking_date,last_booking_date
+2773,Borthwick Mortuary (SCI Location #4873),HI,4873,MIXED,486,15,0,97.0,493,2022-06-06,2026-11-18
+2161,Longwood Funeral Home (SCI Location #4473),PA,4473,NMS,7,6,0,53.8,13,2022-06-16,2026-04-15
+9717,M.J EDWARDS FUNERAL HOME,TN,,NMS,4,0,0,100.0,4,2024-01-06,2025-03-12
+2267,Palm Downtown Mortuary & Cemetery (SCI Location #1008),NV,1008,IMS,3,63,5,4.2,70,2022-08-10,2026-11-12
+7542,Lee Funeral Home,SC,,IMS,2,0,0,100.0,2,2023-04-04,2023-06-21
+15701,HANES-LINEBERRY FUNERAL HOME,NC,,IMS,1,0,0,100.0,1,2026-06-25,2026-06-25
+21489,Weed-Corley-Fish Funeral Home (SCI Location #8190),TX,8190,IMS,1,1,0,50.0,2,2026-04-29,2026-06-11
+21668,Gorsline Runciman Funeral Homes  (SCI Location #7225),MI,7225,IMS,1,0,0,100.0,1,2026-07-17,2026-07-17
+21756,Schoedinger Northwest Chapel,OH,,NMS,1,0,0,100.0,1,2026-09-18,2026-09-18
+4074,WHITE AND DAY COLONIAL MORTUARY (BERGEN NJ),CA,,BERGEN,1,0,0,100.0,1,2022-12-22,2022-12-22
+4135,MARSH FUNERAL HOME,IL,,IMS,1,0,0,100.0,1,2023-02-14,2023-02-14
+7454,COREY-KERLIN FUNERAL HOME,FL,,IMS,1,0,0,100.0,1,2024-08-14,2024-08-14

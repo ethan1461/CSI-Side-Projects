@@ -1,0 +1,40 @@
+{
+  "description": "SCI shipping locations and bookings by flight-date year, 2022-2026.",
+  "script": "scripts/sci_relationship_evidence.py",
+  "script_version": "1.0.0",
+  "git_sha": "bece636",
+  "run_timestamp": "2026-11-18T03:36:56.597949+00:00",
+  "sources": [
+    "data/raw/sci-location-report-202606.xlsx",
+    "data/raw/oms-funeral-homes-20261103.csv",
+    "data/raw/shipments-since-2022-20261110.xlsx",
+    "data/raw/sales-by-customer-summary-20261110.xlsx",
+    "data/derived/partner-billed-homes-manifest-20261118.csv"
+  ],
+  "source_row_counts": {
+    "sci-location-report-202606.xlsx": 4439,
+    "oms-funeral-homes-20261103.csv": 18876,
+    "shipments-since-2022-20261110.xlsx": 48715,
+    "sales-by-customer-summary-20261110.xlsx": 1429,
+    "partner-billed-homes-manifest-20261118.csv": 535
+  },
+  "output_row_count": 5,
+  "filters_applied": [
+    "bookings with no shipping funeral home excluded (2183 rows)",
+    "bookings with no flight date excluded (23 rows)",
+    "flight years outside 2022-2026 excluded (27 rows)",
+    "flight dates after the 2026-11-10 data cut excluded (85 rows)",
+    "2022 is not comparable: legacy-system adoption ramp",
+    "2026 is partial to 2026-11-10; annualised by 1.1543"
+  ],
+  "pii_columns_dropped_at_load": [
+    "address",
+    "email",
+    "created_by",
+    "updated_by"
+  ],
+  "join_keys_not_written_to_output": [
+    "phone",
+    "zip"
+  ]
+}

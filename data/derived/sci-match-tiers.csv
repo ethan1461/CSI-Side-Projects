@@ -1,0 +1,9 @@
+labelled_sci_in_oms,register_match_tier,accounts,shipping_accounts,bookings_all_years,counted_as_sci
+yes,T1_location_code,280,208,4585,yes
+no,T4_shared_phone,174,16,26,no
+no,T3_single_signal,243,20,26,yes
+no,T2_name_zip_and_phone,146,17,20,yes
+yes,T0_no_register_match,9,1,1,yes
+yes,T4_shared_phone,4,1,1,yes
+yes,T3_single_signal,5,1,1,yes
+yes,T2_name_zip_and_phone,1,0,0,yes

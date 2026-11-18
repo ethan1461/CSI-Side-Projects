@@ -1,0 +1,31 @@
+{
+  "description": "The '4,439 active SCI locations' figure decomposed into usable denominators.",
+  "script": "scripts/sci_relationship_evidence.py",
+  "script_version": "1.0.0",
+  "git_sha": "bece636",
+  "run_timestamp": "2026-11-18T03:36:56.597949+00:00",
+  "sources": [
+    "data/raw/sci-location-report-202606.xlsx"
+  ],
+  "source_row_counts": {
+    "sci-location-report-202606.xlsx": 4439,
+    "oms-funeral-homes-20261103.csv": 18876,
+    "shipments-since-2022-20261110.xlsx": 48715,
+    "sales-by-customer-summary-20261110.xlsx": 1429,
+    "partner-billed-homes-manifest-20261118.csv": 535
+  },
+  "output_row_count": 6,
+  "filters_applied": [
+    "none -- every register row classified"
+  ],
+  "pii_columns_dropped_at_load": [
+    "address",
+    "email",
+    "created_by",
+    "updated_by"
+  ],
+  "join_keys_not_written_to_output": [
+    "phone",
+    "zip"
+  ]
+}

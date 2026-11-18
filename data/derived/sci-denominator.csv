@@ -1,0 +1,7 @@
+denominator,locations,what_it_is,use_for,pct_of_register
+all_register_rows,4439,"Every row of SCI's active-location register, June 2026","Nothing. Includes accounting and legal structures, not places",100.0
+operating_locations,2961,"Excludes legal-posting, legal-parent, legal and overhead rows","SCI's operating estate, all business lines",66.7
+operating_funeral_business_line,2112,Operating rows on SCI's Funeral business line,Upper bound on locations that could originate a shipment,47.6
+operating_shipping_capable_product_lines,1830,"Operating rows on the funeral home, direct-cremation-provider and personal-care-centre product lines",RECOMMENDED denominator for shipping penetration,41.2
+operating_funeral_home_product_line,1582,Operating rows on the funeral home product line only,Narrowest defensible denominator,35.6
+operating_cemetery_product_line,625,Operating cemeteries,"Context only -- cemeteries receive, they do not ship out",14.1

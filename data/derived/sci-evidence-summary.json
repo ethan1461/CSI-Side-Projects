@@ -1,0 +1,43 @@
+{
+  "annualisation_factor": 1.1543,
+  "booking_row_accounting": {
+    "annualisation_denominator": 27529,
+    "annualisation_numerator": 31776,
+    "flight_after_data_cut": 85,
+    "impossible_year": 27,
+    "no_flight_date": 23,
+    "no_funeral_home": 2183,
+    "rows_counted": 46397,
+    "rows_in": 48715
+  },
+  "git_sha": "bece636",
+  "match_tiers": {
+    "T0_no_register_match": 18023,
+    "T1_location_code": 280,
+    "T2_name_zip_and_phone": 147,
+    "T3_single_signal": 248,
+    "T4_shared_phone": 178,
+    "is_sci": 688
+  },
+  "partner_routed_sci_bookings": 509,
+  "partner_routed_sci_locations": 12,
+  "register_rows": 4439,
+  "revenue_join_coverage": {
+    "quickbooks_names_ambiguous": 0,
+    "quickbooks_names_matched": 244,
+    "quickbooks_sci_named_but_unmatched": 40,
+    "quickbooks_sci_named_but_unmatched_revenue_all_years": 302439.82,
+    "sci_accounts_considered": 688
+  },
+  "run_timestamp": "2026-11-18T03:36:56.597949+00:00",
+  "sci_accounts_ever_shipped": 248,
+  "sci_accounts_ever_shipped_strict_rule": 210,
+  "sci_accounts_identified": 688,
+  "sci_accounts_identified_strict_rule": 292,
+  "sci_bookings_all_years": 4634,
+  "sci_bookings_in_savings_window": 4222,
+  "sci_revenue_in_savings_window": 3874103.42,
+  "sci_shipping_accounts_in_june_2026_register": 246,
+  "sci_shipping_accounts_not_in_june_2026_register": 2,
+  "script_version": "1.0.0"
+}

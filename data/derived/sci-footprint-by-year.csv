@@ -1,0 +1,6 @@
+year,shipping_locations,bookings,bookings_per_location,locations_ever_shipped_by_end_of_year,is_partial_year
+2022,62,412,6.65,62,no
+2023,108,978,9.06,125,no
+2024,106,1055,9.95,157,no
+2025,127,1136,8.94,201,no
+2026,138,1053,7.63,248,yes

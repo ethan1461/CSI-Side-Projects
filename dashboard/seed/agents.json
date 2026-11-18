@@ -1,0 +1,334 @@
+{
+  "_source": "Task ledger, reports/ and git history on branch claude/csi-agent-team-setup-cs9rwk, as of 2026-11-18 03:35 UTC",
+  "hub": {
+    "sessionId": "session_01Wpd24gAWARjTMHn3N6mhwp",
+    "sessionTitle": "CSI agent team setup and assessment",
+    "repo": "ethan1461/CSI-Side-Projects",
+    "branch": "claude/csi-agent-team-setup-cs9rwk"
+  },
+  "agents": [
+    {
+      "id": "pm-orchestrator", "order": 0, "name": "Orchestrator", "title": "Chief of Staff & Project Manager",
+      "front": "Orchestration", "human": "Ethan (CSO)", "model": "opus",
+      "owns": "The task ledger, sequencing, the quality gate and the report to Ethan. The only agent that creates tasks.",
+      "status": "active",
+      "statusNote": "Reviewing today's deliverables before they reach you",
+      "current": { "title": "Quality review: v5 call sheets and the SCI footprint strategy", "startedAt": "2026-11-18T03:33:09Z", "done": 1, "total": 2, "unit": "deliverables reviewed" },
+      "queue": [
+        { "id": "DIGEST", "title": "Next daily digest of decisions that need you", "priority": "HIGH" }
+      ],
+      "okrs": [
+        { "objective": "Every agent's output reaches a decision", "krs": [
+          { "label": "Ledger tasks closed this cycle", "done": 5, "total": 23, "note": "TASK-0003, 0009, 0020, 0021, 0023 closed" },
+          { "label": "Tasks with a named owner", "done": 23, "total": 23 },
+          { "label": "Agents at or under the 5-open-task cap", "done": 14, "total": 14 }
+        ]}
+      ],
+      "artifacts": [
+        { "title": "Daily digest, 11 Nov", "path": "reports/daily/digest-2026-11-11.md", "date": "2026-11-11", "kind": "Digest" },
+        { "title": "Week 45 plan", "path": "reports/weekly/2026-45-plan.md", "date": "2026-11-02", "kind": "Plan" },
+        { "title": "Making this agentic: autonomy proposal", "path": "reports/pending-approval/autonomy-proposal.md", "date": "2026-11-09", "kind": "Awaiting approval" },
+        { "title": "Task ledger", "path": "tasks/INTAKE.md", "date": "2026-11-03", "kind": "Ledger" }
+      ]
+    },
+    {
+      "id": "revops-crm", "order": 1, "name": "RevOps & CRM", "title": "Revenue Operations lead",
+      "front": "Organic growth", "human": "—", "model": "sonnet",
+      "owns": "HubSpot: data quality, account resolution, interaction logging, pipeline hygiene. The only agent that writes to HubSpot.",
+      "status": "active",
+      "statusNote": "41 struck partner-routed homes are still owned by reps in HubSpot",
+      "current": { "title": "Reconcile v5 retention call sheets to HubSpot owners", "startedAt": "2026-11-18T03:27:30Z", "done": 62, "total": 83, "unit": "callable lists reconciled" },
+      "queue": [
+        { "id": "TASK-0013", "title": "Execute the HubSpot cleanup on every class that does not need Ethan", "priority": "CRITICAL" }
+      ],
+      "okrs": [
+        { "objective": "HubSpot becomes a CRM sales can work from", "krs": [
+          { "label": "Account layer live (2,305 companies, 505 associations)", "done": 1, "total": 1 },
+          { "label": "FY27 segments on all 1,063 target companies", "done": 1, "total": 1 },
+          { "label": "Defect baseline measured, then cleanup executed", "done": 1, "total": 2, "note": "Cleanup is TASK-0013, unclaimed" },
+          { "label": "Retention call lists reconciled to owners", "done": 62, "total": 83 }
+        ]}
+      ],
+      "artifacts": [
+        { "title": "Account layer build: OMS to HubSpot", "path": "reports/account-layer-build.md", "date": "2026-11-09", "kind": "Report" },
+        { "title": "HubSpot defect baseline", "path": "reports/hubspot-defect-baseline.md", "date": "2026-11-02", "kind": "Report" },
+        { "title": "FY27 segment lists in HubSpot", "path": "reports/fy27-lists-in-hubspot.md", "date": "2026-11-10", "kind": "Build log" },
+        { "title": "FY27 company owner assignment", "path": "reports/fy27-owner-assignment.md", "date": "2026-11-10", "kind": "Report" },
+        { "title": "NFDA 2026 contacts created", "path": "reports/nfda-2026-contacts-created.md", "date": "2026-11-10", "kind": "Build log" }
+      ]
+    },
+    {
+      "id": "gtm-strategist", "order": 2, "name": "GTM Strategist", "title": "Go-to-market strategist",
+      "front": "Organic growth", "human": "Ethan (CSO)", "model": "opus",
+      "owns": "Where we aim: segmentation, ICP, corridor priority, offers, channel economics, enterprise group strategy.",
+      "status": "active",
+      "statusNote": "Draft is in orchestrator review; needs evidence cuts from Data Analyst",
+      "current": { "title": "SCI / Dignity footprint strategy for December", "startedAt": "2026-11-18T03:34:30Z", "done": 1, "total": 2, "unit": "draft, then review" },
+      "queue": [
+        { "id": "TASK-0011", "title": "Decide what CSI does not do this quarter; name the one volume play worth a test", "priority": "HIGH" }
+      ],
+      "okrs": [
+        { "objective": "Aim the team at the biggest prize: corporate groups", "krs": [
+          { "label": "SCI footprint strategy drafted and accepted", "done": 1, "total": 2, "note": "Draft written; awaiting review" },
+          { "label": "Quarter decline list published", "done": 0, "total": 1, "note": "TASK-0011" }
+        ]}
+      ],
+      "artifacts": [
+        { "title": "SCI footprint strategy (draft, Dec 2026)", "path": null, "date": "2026-11-18", "kind": "Draft, not yet committed" },
+        { "title": "FY27 target lists: four segments", "path": "reports/fy27-target-lists.md", "date": "2026-11-03", "kind": "Report" },
+        { "title": "The $25M gap", "path": "reports/the-25m-gap.md", "date": "2026-11-03", "kind": "Report" }
+      ]
+    },
+    {
+      "id": "sales-lead", "order": 3, "name": "Sales Lead", "title": "Sales strategy & enablement",
+      "front": "Organic growth", "human": "Jeff, Otto, Stacy", "model": "sonnet",
+      "owns": "Pipeline: enterprise groups, independents, playbooks, outreach drafts, new-hire enablement.",
+      "status": "blocked",
+      "statusNote": "Call-sheet notes to Otto and Stacy are staged and need your approval to send",
+      "current": { "title": "Hand the v5 retention call sheets to the reps", "startedAt": "2026-11-13T01:17:11Z", "done": 5, "total": 6, "unit": "call sheets built, then sent" },
+      "queue": [
+        { "id": "TASK-0010", "title": "Route the 12 NFDA leads and stand up the objection taxonomy", "priority": "HIGH" }
+      ],
+      "okrs": [
+        { "objective": "Fill pipeline from the base CSI already has", "krs": [
+          { "label": "Four FY27 target segments live in HubSpot", "done": 4, "total": 4 },
+          { "label": "Rep call sheets built (Abe, Ethan, Otto, Renee, Stacy)", "done": 5, "total": 5 },
+          { "label": "NFDA leads routed and loss taxonomy live", "done": 1, "total": 2, "note": "Routing report done; taxonomy is TASK-0010" }
+        ]}
+      ],
+      "artifacts": [
+        { "title": "Retention call sheets, Nov 2026 (v5)", "path": "reports/rep-call-sheets-2026-11.md", "date": "2026-11-18", "kind": "Report" },
+        { "title": "NFDA 2026 lead routing", "path": "reports/nfda-2026-lead-routing.md", "date": "2026-11-10", "kind": "Report" },
+        { "title": "Note to Otto: his call sheet", "path": "reports/pending-approval/emails-2026-11-13/01-otto-call-sheet.md", "date": "2026-11-18", "kind": "Awaiting approval" },
+        { "title": "Note to Stacy: her call sheet", "path": "reports/pending-approval/emails-2026-11-13/02-stacy-call-sheet.md", "date": "2026-11-18", "kind": "Awaiting approval" },
+        { "title": "20-call diagnostic script", "path": "reports/pending-approval/sales-lead-sample20-call-script.md", "date": "2026-11-03", "kind": "Awaiting approval" }
+      ]
+    },
+    {
+      "id": "marketing-lead", "order": 4, "name": "Marketing Lead", "title": "Marketing & demand generation",
+      "front": "Organic growth", "human": "—", "model": "sonnet",
+      "owns": "Demand: content, brand, campaigns, SEO and AI search, paid media and ROAS. Publishes nothing without approval.",
+      "status": "blocked",
+      "statusNote": "Landing-page review needs the live page text; the 78-lead check needs a named owner",
+      "current": { "title": "TASK-0022: paid-search truth and attribution", "startedAt": "2026-11-03T12:00:00Z", "done": 2, "total": 4, "unit": "parts delivered" },
+      "queue": [
+        { "id": "TASK-0014", "title": "Establish the brand awareness baseline CSI has never measured", "priority": "HIGH" }
+      ],
+      "okrs": [
+        { "objective": "Make paid search measurable before spending more", "krs": [
+          { "label": "Attribution spec: ad click to quote to booking", "done": 1, "total": 1 },
+          { "label": "Negative keyword list delivered", "done": 1, "total": 1 },
+          { "label": "Landing pages pass the tone review", "done": 0, "total": 1, "note": "Partial; blocked on page text" },
+          { "label": "Brand awareness baseline", "done": 0, "total": 1, "note": "TASK-0014" }
+        ]}
+      ],
+      "artifacts": [
+        { "title": "Quote attribution spec", "path": "reports/quote-attribution-spec.md", "date": "2026-11-03", "kind": "Spec" },
+        { "title": "Paid search lead conversion", "path": "reports/paid-search-lead-conversion.md", "date": "2026-11-03", "kind": "Report" },
+        { "title": "Paid search negative keywords", "path": "reports/paid-search-negative-keywords.md", "date": "2026-11-09", "kind": "Report" },
+        { "title": "Landing page tone review", "path": "reports/landing-page-tone-review.md", "date": "2026-11-03", "kind": "Review" },
+        { "title": "Google Ads: should CSI pull back?", "path": "reports/google-ads-should-we-pull-back.md", "date": "2026-11-03", "kind": "Report" }
+      ]
+    },
+    {
+      "id": "pricing-strategist", "order": 5, "name": "Pricing Strategist", "title": "Pricing & route economics",
+      "front": "Pricing power", "human": "Donald (CFO)", "model": "opus",
+      "owns": "Price: lane profitability, rate architecture, willingness to pay, margin capture. Recommends only; never changes a live rate.",
+      "status": "blocked",
+      "statusNote": "Waiting on Vadim's international rate sheets before costing the book",
+      "current": { "title": "TASK-0018: cost the international book from rate sheets", "startedAt": null, "done": 0, "total": 1, "unit": "rate sheets received" },
+      "queue": [
+        { "id": "TASK-0005", "title": "Rank lanes by margin; cost the 133 conflicting-rate lanes", "priority": "HIGH" }
+      ],
+      "okrs": [
+        { "objective": "Capture margin on every lane", "krs": [
+          { "label": "Carrier margin question resolved", "done": 1, "total": 1 },
+          { "label": "Lanes ranked by realized margin", "done": 0, "total": 1, "note": "TASK-0005" },
+          { "label": "International book costed", "done": 0, "total": 1, "note": "Blocked on rate sheets" }
+        ]}
+      ],
+      "artifacts": [
+        { "title": "Carrier selection is an unmanaged margin decision", "path": "reports/carrier-selection-margin-leak.md", "date": "2026-11-02", "kind": "Report" },
+        { "title": "The lane list and what it proves", "path": "reports/carrier-selection-lane-evidence.md", "date": "2026-11-10", "kind": "Report" },
+        { "title": "Carrier margin question: resolved", "path": "reports/carrier-margin-resolved.md", "date": "2026-11-02", "kind": "Report" },
+        { "title": "Vadim's August rate sheet reconciled", "path": "reports/vadim-rate-sheet-reconciliation.md", "date": "2026-11-02", "kind": "Report" },
+        { "title": "The POS quote, corrected", "path": "reports/quote-integrity-iad-pos.md", "date": "2026-11-03", "kind": "Report" }
+      ]
+    },
+    {
+      "id": "legal-risk", "order": 6, "name": "Legal & Risk", "title": "Legal operations & risk",
+      "front": "Inorganic growth", "human": "Ethan, outside counsel", "model": "sonnet",
+      "owns": "Exposure: contract intelligence, risk register, liability, claims substantiation, escalation to counsel. Never gives legal advice.",
+      "status": "blocked",
+      "statusNote": "Counsel can't proceed until the executed FreightFlow agreement is found (you and Donald)",
+      "current": { "title": "FreightFlow agreement: close the gaps with counsel", "startedAt": "2026-11-10T12:00:00Z", "done": 2, "total": 3, "unit": "review, gaps, counsel" },
+      "queue": [
+        { "id": "TASK-0012", "title": "Build the claims substantiation register; clear or hold 202 partner drafts", "priority": "CRITICAL" }
+      ],
+      "okrs": [
+        { "objective": "Know and contain CSI's exposure", "krs": [
+          { "label": "FreightFlow agreement reviewed and gaps scoped", "done": 2, "total": 2 },
+          { "label": "Counsel engaged on FreightFlow", "done": 0, "total": 1, "note": "Note to Matt staged" },
+          { "label": "Claims substantiation register", "done": 0, "total": 1, "note": "TASK-0012" }
+        ]}
+      ],
+      "artifacts": [
+        { "title": "FreightFlow agreement: review", "path": "reports/freightflow-agreement-review.md", "date": "2026-11-02", "kind": "Review" },
+        { "title": "FreightFlow agreement: gaps for counsel", "path": "reports/freightflow-agreement-gaps.md", "date": "2026-11-10", "kind": "Report" },
+        { "title": "Counsel brief: document upload privacy", "path": "reports/pending-approval/counsel-brief-document-upload-privacy.md", "date": "2026-11-03", "kind": "Awaiting approval" },
+        { "title": "Note to Matt on FreightFlow", "path": "reports/pending-approval/emails-2026-11-10/03-matt-freightflow-counsel.md", "date": "2026-11-10", "kind": "Awaiting approval" }
+      ]
+    },
+    {
+      "id": "product", "order": 7, "name": "Product", "title": "Product management, OMS & portal",
+      "front": "Operating leverage", "human": "Kyri, Alex", "model": "sonnet",
+      "owns": "The platform: OMS and portal requirements, roadmap, exports, adoption and the SaaS path. Writes requirements, never ships code.",
+      "status": "blocked",
+      "statusNote": "Week 46 engineering ask to Kyri and Alex is staged for your send",
+      "current": { "title": "Send the weekly engineering ask", "startedAt": "2026-11-10T12:00:00Z", "done": 0, "total": 2, "unit": "weekly asks sent" },
+      "queue": [],
+      "okrs": [
+        { "objective": "Turn operational pain into buildable work", "krs": [
+          { "label": "Booking-level OMS export spec", "done": 1, "total": 1 },
+          { "label": "Weekly engineering asks sent (weeks 45, 46)", "done": 0, "total": 2, "note": "Both staged" },
+          { "label": "HubSpot and OMS sync decision", "done": 0, "total": 1, "note": "Options paper awaiting you" }
+        ]}
+      ],
+      "artifacts": [
+        { "title": "OMS export specification", "path": "reports/oms-export-spec.md", "date": "2026-11-02", "kind": "Spec" },
+        { "title": "Engineering ask, week 45", "path": "reports/pending-approval/engineering-ask-2026-45.md", "date": "2026-11-02", "kind": "Awaiting approval" },
+        { "title": "Engineering ask, week 46", "path": "reports/pending-approval/engineering-ask-2026-46.md", "date": "2026-11-10", "kind": "Awaiting approval" },
+        { "title": "HubSpot and OMS sync options", "path": "reports/pending-approval/hubspot-oms-sync-options.md", "date": "2026-11-03", "kind": "Awaiting approval" }
+      ]
+    },
+    {
+      "id": "data-analyst", "order": 8, "name": "Data Analyst", "title": "Data & analytics",
+      "front": "Enabling", "human": "—", "model": "opus",
+      "owns": "Numerical truth: metric definitions, trend analysis, attribution, and validating any number another agent publishes.",
+      "status": "idle",
+      "statusNote": "Finished the partner-routing correction today; GTM has asked for SCI evidence cuts",
+      "current": null,
+      "queue": [
+        { "id": "TASK-0001", "title": "Audit paid-search measurability, pass or fail per conversion path", "priority": "CRITICAL" },
+        { "id": "TASK-0002", "title": "Is the dynamic-pricing hypothesis testable?", "priority": "HIGH" }
+      ],
+      "okrs": [
+        { "objective": "Decisions run on data, not opinion", "krs": [
+          { "label": "Cohort analysis delivered and corrected for partner routing", "done": 2, "total": 2 },
+          { "label": "Binding metric definitions accepted", "done": 0, "total": 1, "note": "TASK-0016 in review" },
+          { "label": "Paid search and pricing evidence tasks closed", "done": 0, "total": 2 }
+        ]}
+      ],
+      "artifacts": [
+        { "title": "Customer cohort analysis", "path": "reports/customer-cohort-analysis.md", "date": "2026-11-18", "kind": "Report" },
+        { "title": "The 162 missing account IDs, resolved", "path": "reports/orphan-funeral-home-ids-resolved.md", "date": "2026-11-12", "kind": "Report" },
+        { "title": "Metric definitions", "path": "context/metric-definitions.md", "date": "2026-11-04", "kind": "Definitions" },
+        { "title": "Analytics reconciliation", "path": "reports/analytics-reconciliation.md", "date": "2026-09-06", "kind": "Report" }
+      ]
+    },
+    {
+      "id": "finance", "order": 9, "name": "Finance", "title": "FP&A lead",
+      "front": "Pricing power", "human": "Donald (CFO)", "model": "opus",
+      "owns": "The money: P&L, unit economics, cash and working capital, revenue leakage, QuickBooks reconciliation.",
+      "status": "idle",
+      "statusNote": "One critical task queued and unclaimed",
+      "current": null,
+      "queue": [
+        { "id": "TASK-0004", "title": "Is the ~$33/shipment United surcharge billed through?", "priority": "CRITICAL" }
+      ],
+      "okrs": [
+        { "objective": "Find where the money leaks", "krs": [
+          { "label": "United surcharge pass-through confirmed", "done": 0, "total": 1, "note": "TASK-0004" },
+          { "label": "Secondary service margins requested from Donald", "done": 1, "total": 2, "note": "DR-001 drafted, not answered" }
+        ]}
+      ],
+      "artifacts": [
+        { "title": "DR-001: secondary service margins", "path": "reports/pending-approval/data-requests/DR-001-secondary-service-margins.md", "date": "2026-11-01", "kind": "Awaiting approval" },
+        { "title": "Agenda for Donald, 4 Nov", "path": "reports/pending-approval/donald-meeting-agenda-2026-11-04.md", "date": "2026-11-03", "kind": "Agenda" }
+      ]
+    },
+    {
+      "id": "corpdev", "order": 10, "name": "Corporate Development", "title": "Corp dev & capital",
+      "front": "Inorganic growth", "human": "Ethan (CSO)", "model": "opus",
+      "owns": "Valuation, acquisition pipeline, capital strategy. Researches and models only; never contacts a target or investor.",
+      "status": "idle",
+      "statusNote": "Delivered capital routes and the target longlist; valuation is next",
+      "current": null,
+      "queue": [
+        { "id": "TASK-0006", "title": "Value CSI as a range across the margin band", "priority": "CRITICAL" }
+      ],
+      "okrs": [
+        { "objective": "Build the inorganic growth path", "krs": [
+          { "label": "Capital routes mapped", "done": 1, "total": 1 },
+          { "label": "Acquisition target longlist", "done": 1, "total": 1 },
+          { "label": "Valuation range v1", "done": 0, "total": 1, "note": "TASK-0006" }
+        ]}
+      ],
+      "artifacts": [
+        { "title": "Routes to capital", "path": "reports/capital-routes.md", "date": "2026-11-03", "kind": "Report" },
+        { "title": "Acquisition target longlist", "path": "reports/acquisition-target-longlist.md", "date": "2026-11-03", "kind": "Confidential" }
+      ]
+    },
+    {
+      "id": "market-intel", "order": 11, "name": "Market Intelligence", "title": "Market & competitive intelligence",
+      "front": "Organic growth", "human": "—", "model": "sonnet",
+      "owns": "The outside view: competitor teardowns, market sizing, adjacent verticals, corridor watch. Public sources only.",
+      "status": "idle",
+      "statusNote": "Market sizing task queued",
+      "current": null,
+      "queue": [
+        { "id": "TASK-0007", "title": "Size the US human remains shipping market and CSI's share", "priority": "HIGH" }
+      ],
+      "okrs": [
+        { "objective": "Know the market better than Eagle's Wings does", "krs": [
+          { "label": "EWA international expansion assessed", "done": 1, "total": 1 },
+          { "label": "Market size and CSI share estimated", "done": 0, "total": 1, "note": "TASK-0007" }
+        ]}
+      ],
+      "artifacts": [
+        { "title": "Eagle's Wings Air: international expansion", "path": "reports/ewa-international-expansion.md", "date": "2026-11-10", "kind": "Report" }
+      ]
+    },
+    {
+      "id": "operations", "order": 12, "name": "Operations", "title": "Operations & service delivery",
+      "front": "Operating leverage", "human": "Vadim (COO)", "model": "sonnet",
+      "owns": "Operating leverage: cost to serve, capacity, rework, carrier reliability, SLA, OMS adoption.",
+      "status": "idle",
+      "statusNote": "Three tasks queued; cost to serve is the one that unblocks pricing",
+      "current": null,
+      "queue": [
+        { "id": "TASK-0008", "title": "Does cost to serve exist? If not, the cheapest way to find out", "priority": "HIGH" },
+        { "id": "TASK-0017", "title": "Platform SLA vs. what CSI promises customers", "priority": "HIGH" },
+        { "id": "TASK-0019", "title": "Booking desk's standing input channel for the engineering ask", "priority": "HIGH" }
+      ],
+      "okrs": [
+        { "objective": "Make rework visible and cheaper", "krs": [
+          { "label": "Cost to serve measurable", "done": 0, "total": 1, "note": "TASK-0008" },
+          { "label": "SLA gap mapped", "done": 0, "total": 1, "note": "TASK-0017" },
+          { "label": "Booking desk input channel live", "done": 0, "total": 1, "note": "TASK-0019" }
+        ]}
+      ],
+      "artifacts": [
+        { "title": "Note to Vadim: data request", "path": "reports/pending-approval/vadim-data-request.md", "date": "2026-11-02", "kind": "Awaiting approval" },
+        { "title": "Note to Vadim: desk capacity for retention calls", "path": "reports/pending-approval/emails-2026-11-12/03-vadim-desk-capacity-retention-calls.md", "date": "2026-11-12", "kind": "Awaiting approval" }
+      ]
+    },
+    {
+      "id": "compliance", "order": 13, "name": "Compliance", "title": "Regulatory & documentation compliance",
+      "front": "Operating leverage", "human": "Kim, Susej", "model": "sonnet",
+      "owns": "The rules: consular and documentation requirements, customs, TSA and IATA, the country rulebook.",
+      "status": "idle",
+      "statusNote": "Country rulebook queued, starting with the Dominican Republic",
+      "current": null,
+      "queue": [
+        { "id": "TASK-0015", "title": "Start the country rulebook with the Dominican Republic", "priority": "MEDIUM" }
+      ],
+      "okrs": [
+        { "objective": "First-attempt document acceptance on every route", "krs": [
+          { "label": "Country rulebooks published", "done": 0, "total": 1, "note": "Dominican Republic first" }
+        ]}
+      ],
+      "artifacts": []
+    }
+  ]
+}

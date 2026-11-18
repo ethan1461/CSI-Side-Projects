@@ -159,6 +159,11 @@ return — with specific defects listed — when:
 - A pricing recommendation would not survive the read-aloud test in `§7.6`
 - Corp dev work crosses any line in `§7.5`
 - The deliverable surveys instead of deciding
+- **The agent's dashboard tile does not match its task file** — status, current task, progress
+  counts, and any new deliverable in `artifacts`. Work is not accepted as done until the two
+  agree. **You fix the mismatch yourself before reporting to Ethan**; do not return the task for
+  it. He reads the dashboard as live, so a tile that lags the ledger misleads him about his own
+  team, and that is your failure rather than the agent's. See `CLAUDE.md §10`.
 
 Returning work is normal. Say what's wrong, not how you feel about it. Two returns on the
 same defect means the task was badly scoped — that's your fault; re-scope it.

@@ -726,6 +726,58 @@ Task file schema is in `templates/task-template.md`. Agents update the `Status` 
 append to the `Log` section as they work. They never edit the `Objective`, `Success
 criteria`, or `Constraints` fields — if those are wrong, they raise it with the orchestrator.
 
+### The dashboard tile
+
+**Added 2026-11-18 by Ethan.** Every agent has a tile on **CSI Agent Command**, the live
+dashboard at `https://claude.ai/artifact/EMGGjcNDBAHxqWhosbukmE`. Field definitions and a
+worked example are in `dashboard/README.md`. **Read it before your first tile write.**
+
+**The rule: the tile is updated in the same step as the task file, not afterwards.** Whenever
+an agent claims a task, makes countable progress, gets blocked, or completes, it writes both.
+A tile that lags the ledger is worse than no tile, because Ethan reads it as current.
+
+Use the **`ArtifactData`** tool — `update` on collection `agents`, document id = the agent's
+own `name:` from `.claude/agents/*.md`. **Read first and pass the document's `version` as
+`if_version`**, so a concurrent write fails loudly instead of silently overwriting. The tool
+may be deferred; load it with `ToolSearch` using `select:ArtifactData`. **Verified 2026-11-18:
+subagents can call it.** If a write fails, say so in the handback rather than leaving the tile
+stale and unreported.
+
+Set on every update:
+
+| Field | What goes in it |
+|---|---|
+| `status` | `active`, `blocked` or `idle` |
+| `statusNote` | One plain sentence: what is happening, or what is needed **and from whom** |
+| `current` | `{title, startedAt, done, total, unit}`, or `null` when idle |
+| `queue` | The agent's next tasks from `tasks/active/` |
+| `updatedAt`, `updatedBy` | ISO timestamp, and who wrote it |
+
+When an agent produces a deliverable it **appends** to `artifacts`. Anything in
+`reports/pending-approval/` carries `kind: "Awaiting approval"`, so the dashboard shows what is
+waiting on Ethan without him going looking.
+
+**The guardrails apply to the tile exactly as they apply to a report.**
+
+- **`§7.3`** — `done` and `total` are real counts of real things. *"47 of 535 homes marked"* is
+  progress; *"about 30% done"* is an estimate wearing a number's clothes and does not go in a
+  field Ethan reads as measured. If a task has no countable unit, set `current.total` to null
+  and say so in `statusNote`.
+- **`§7.5`** — corp dev items appear by **title only**. No target names, no deal terms, no
+  valuation figures, in any field.
+- **`§7.7`** — nothing about any individual's performance, workload or capacity, in any field.
+- **`§7.2`** — no decedent or family data, ever. Funeral home business names are fine.
+
+**Requests from the dashboard.** A message beginning
+`[CSI Agent Command — request from Ethan via the dashboard]` is from Ethan and is treated as a
+normal request under the usual rules — including `§7.1`, which the dashboard does not bypass.
+The orchestrator logs it in the ledger, then **clears that item from the agent's `inbox` array**
+so the same request is not worked twice.
+
+**An hourly sync** (weekdays, 7am–7pm Eastern) repairs tiles that have drifted from the ledger.
+**It is a backstop, not the mechanism.** An agent that leaves its tile to the sync has made the
+dashboard hourly rather than live, which is the thing it was built not to be.
+
 ### Cross-agent handoffs
 
 Agents do not call each other directly. They write a handoff file to `handoffs/` and the

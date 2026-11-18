@@ -1,0 +1,625 @@
+<title>CSI Agent Command</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky brand bar → command console (the one input) → team pulse → agent tile grid beside the live session rail; agent detail opens as a drawer. */
+:root {
+  --bg: #F3F5F8; --surface: #FFFFFF; --surface-2: #F7F9FB; --ink: #0E1B2C; --muted: #5A677A; --line: #DDE3EA;
+  --brand: #12305A; --brand-ink: #FFFFFF; --accent: #B58533; --accent-soft: #F5ECDC;
+  --ok: #1D8556; --ok-soft: #E3F3EA; --bad: #B9382B; --bad-soft: #FBE9E6; --idle: #5F6F86; --idle-soft: #EBEFF4;
+  --track: #E6EAF0; --shadow: 0 1px 2px rgba(14,27,44,.06), 0 4px 16px rgba(14,27,44,.05);
+  --f-display: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0A111C; --surface: #111A28; --surface-2: #0D1521; --ink: #E7ECF3; --muted: #93A0B3; --line: #223047;
+  --brand: #1C3F72; --brand-ink: #FFFFFF; --accent: #D8AA5A; --accent-soft: #2A2214;
+  --ok: #3DBE83; --ok-soft: #12291F; --bad: #EE6E5E; --bad-soft: #2E1715; --idle: #8B9AB0; --idle-soft: #1A2536;
+  --track: #1E2A3D; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25); color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0A111C; --surface: #111A28; --surface-2: #0D1521; --ink: #E7ECF3; --muted: #93A0B3; --line: #223047;
+  --brand: #1C3F72; --brand-ink: #FFFFFF; --accent: #D8AA5A; --accent-soft: #2A2214;
+  --ok: #3DBE83; --ok-soft: #12291F; --bad: #EE6E5E; --bad-soft: #2E1715; --idle: #8B9AB0; --idle-soft: #1A2536;
+  --track: #1E2A3D; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25); color-scheme: dark }
+
+* { box-sizing: border-box }
+[hidden] { display: none !important }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--brand) }
+button, input, textarea { font: inherit; color: inherit }
+button { cursor: pointer }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px }
+a { color: inherit }
+.wrap { max-width: 1320px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)) }
+.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums }
+.eyebrow { font-size: 11px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); font-weight: 600 }
+
+/* Brand bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--brand); color: var(--brand-ink) }
+.bar .wrap { display: flex; align-items: center; gap: 16px; padding-block: 12px; flex-wrap: wrap }
+.mark { display: flex; align-items: center; gap: 12px; min-width: 0 }
+.logo { width: 38px; height: 38px; border-radius: 9px; background: #FFFFFF; color: #12305A; display: grid; place-items: center; font: 800 15px/1 var(--f-display); letter-spacing: .02em; position: relative; flex: none }
+.logo::after { content: ""; position: absolute; left: 7px; right: 7px; bottom: 7px; height: 2px; background: #B58533; border-radius: 2px }
+.mark h1 { margin: 0; font: 700 17px/1.15 var(--f-display); letter-spacing: -.01em }
+.mark small { display: block; font-size: 11.5px; opacity: .72; letter-spacing: .04em }
+.bar .spacer { flex: 1 }
+.live { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.1); white-space: nowrap }
+.live i { width: 8px; height: 8px; border-radius: 50%; background: #9AA9BD }
+.live.on i { background: #45D190; box-shadow: 0 0 0 0 rgba(69,209,144,.6); animation: ping 2s infinite }
+.clock { font-family: var(--f-mono); font-size: 12.5px; opacity: .8 }
+
+/* Command console */
+.console { background: var(--brand); color: var(--brand-ink); padding-bottom: 28px }
+.console .wrap { display: grid; gap: 14px; padding-top: 10px }
+.console h2 { margin: 0; font: 700 clamp(22px, 3vw, 30px)/1.15 var(--f-display); letter-spacing: -.02em; text-wrap: balance }
+.console p.sub { margin: 0; opacity: .78; max-width: 70ch }
+.cmd { background: var(--surface); color: var(--ink); border-radius: 14px; box-shadow: 0 10px 30px rgba(4,12,26,.28); padding: 10px; display: grid; gap: 8px }
+.cmd textarea { width: 100%; border: 0; resize: none; background: transparent; padding: 10px 12px; font-size: 16px; min-height: 52px; max-height: 180px; outline: none }
+.cmd-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 0 4px 2px }
+.seg { display: inline-flex; background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 3px }
+.seg button { border: 0; background: transparent; padding: 6px 12px; border-radius: 7px; font-size: 13px; font-weight: 500; color: var(--muted) }
+.seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow) }
+.hint { font-size: 12.5px; color: var(--muted); flex: 1; min-width: 160px }
+.btn { border: 0; border-radius: 10px; padding: 9px 16px; font-weight: 600; font-size: 14px; background: var(--brand); color: var(--brand-ink); display: inline-flex; gap: 8px; align-items: center }
+.btn.accent { background: var(--accent); color: #1B1408 }
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line) }
+.btn:disabled { opacity: .5; cursor: default }
+.chips { display: flex; gap: 8px; flex-wrap: wrap }
+.chip { border: 1px solid rgba(255,255,255,.22); background: rgba(255,255,255,.06); color: inherit; border-radius: 999px; padding: 5px 12px; font-size: 12.5px }
+.chip:hover { background: rgba(255,255,255,.14) }
+
+/* Conversation with the orchestrator */
+.convo { display: grid; gap: 10px; max-height: 360px; overflow-y: auto; padding-right: 4px }
+.convo:empty { display: none }
+.msg { display: grid; gap: 4px; max-width: 900px }
+.msg .who { font-size: 11.5px; letter-spacing: .05em; text-transform: uppercase; opacity: .7; display: flex; gap: 8px; align-items: center; flex-wrap: wrap }
+.msg .body { border-radius: 12px; padding: 10px 14px; line-height: 1.55; overflow-wrap: anywhere }
+.msg.you .body { background: rgba(255,255,255,.12) }
+.msg.agent .body, .msg.system .body { background: var(--surface); color: var(--ink) }
+.msg.system .body { background: var(--accent-soft); color: var(--ink); font-size: 13px }
+.body p { margin: 0 0 6px } .body p:last-child { margin: 0 }
+.body ul { margin: 4px 0 6px; padding-left: 20px }
+.body code { font-family: var(--f-mono); font-size: 12.5px; background: var(--surface-2); padding: 1px 5px; border-radius: 4px }
+.route { display: inline-flex; gap: 6px; align-items: center; font-size: 11px; text-transform: none; letter-spacing: 0; background: var(--accent); color: #1B1408; padding: 1px 8px; border-radius: 999px; font-weight: 600; opacity: 1 }
+
+/* Pulse */
+main { padding-block: 22px 48px }
+.pulse { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; margin-bottom: 18px }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 2px; text-align: left; border-left-width: 4px }
+button.stat:hover { border-color: var(--accent) }
+.stat b { font: 700 28px/1.1 var(--f-display) }
+.stat.active { border-left-color: var(--ok) } .stat.blocked { border-left-color: var(--bad) } .stat.idle { border-left-color: var(--idle) } .stat.all { border-left-color: var(--accent) }
+.stat[aria-pressed="true"] { outline: 2px solid var(--accent); outline-offset: -1px }
+
+.layout { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 20px; align-items: start }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; flex-wrap: wrap }
+.sec-head h3 { margin: 0; font: 700 16px/1.2 var(--f-display) }
+
+/* Tiles */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 12px; text-align: left; box-shadow: var(--shadow); transition: transform .15s ease, border-color .15s ease; align-content: start; position: relative; overflow: hidden }
+.tile::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--idle) }
+.tile.active::before { background: var(--ok) } .tile.blocked::before { background: var(--bad) }
+.tile:hover { transform: translateY(-2px); border-color: var(--accent) }
+.t-top { display: flex; gap: 10px; align-items: flex-start; justify-content: space-between }
+.t-name { font: 700 15.5px/1.2 var(--f-display); margin: 0 }
+.t-role { font-size: 12.5px; color: var(--muted) }
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; white-space: nowrap; flex: none }
+.pill i { width: 7px; height: 7px; border-radius: 50% }
+.pill.active { background: var(--ok-soft); color: var(--ok) } .pill.active i { background: var(--ok); animation: ping 2s infinite }
+.pill.blocked { background: var(--bad-soft); color: var(--bad) } .pill.blocked i { background: var(--bad) }
+.pill.idle { background: var(--idle-soft); color: var(--idle) } .pill.idle i { background: var(--idle) }
+.t-task { font-size: 13.5px; font-weight: 500; line-height: 1.4 }
+.t-note { font-size: 12.5px; color: var(--muted); line-height: 1.45 }
+.meter { display: grid; gap: 5px }
+.meter-head { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); gap: 8px }
+.track { height: 7px; background: var(--track); border-radius: 99px; overflow: hidden }
+.fill { height: 100%; border-radius: 99px; background: var(--ok); transition: width .6s ease }
+.fill.blocked { background: var(--bad) } .fill.idle { background: var(--idle) } .fill.okr { background: var(--accent) }
+.t-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 10px; flex-wrap: wrap }
+.t-foot .num { color: var(--ink) }
+.badge { font-size: 11.5px; background: var(--accent-soft); color: var(--ink); border-radius: 6px; padding: 2px 8px; font-weight: 500 }
+
+/* Rail */
+.rail { display: grid; gap: 14px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 78px) }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 10px; min-width: 0 }
+.card h4 { margin: 0; font: 700 14px/1.2 var(--f-display); display: flex; justify-content: space-between; gap: 8px; align-items: center }
+.feed { display: grid; gap: 10px; max-height: 380px; overflow-y: auto }
+.feed-item { font-size: 13px; line-height: 1.5; border-left: 2px solid var(--line); padding-left: 10px; overflow-wrap: anywhere; min-width: 0 }
+.feed-item time { display: block; font-size: 11.5px; color: var(--muted); font-family: var(--f-mono) }
+.needs { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none }
+.needs li { font-size: 13px; display: grid; gap: 2px; padding: 8px 10px; background: var(--bad-soft); border-radius: 8px }
+.needs li button { all: unset; cursor: pointer; font-weight: 600 }
+.needs li span { color: var(--muted); font-size: 12.5px }
+.muted { color: var(--muted) }
+.small { font-size: 12.5px }
+
+/* Drawer */
+.scrim { position: fixed; inset: 0; background: rgba(6,12,22,.5); z-index: 40; backdrop-filter: blur(2px) }
+.drawer { position: fixed; z-index: 41; top: 0; right: 0; bottom: 0; width: min(760px, 100%); background: var(--bg); box-shadow: -10px 0 40px rgba(0,0,0,.25); display: flex; flex-direction: column; animation: slide .22s ease }
+.d-head { background: var(--brand); color: var(--brand-ink); padding: calc(env(safe-area-inset-top, 0px) + 18px) max(20px, env(safe-area-inset-right, 0px)) 16px 20px; display: grid; gap: 10px }
+.d-title { display: flex; gap: 12px; align-items: flex-start; justify-content: space-between }
+.d-title h2 { margin: 0; font: 700 22px/1.15 var(--f-display) }
+.d-title p { margin: 2px 0 0; opacity: .78; font-size: 13px }
+.close { border: 0; background: rgba(255,255,255,.12); color: inherit; border-radius: 8px; width: 34px; height: 34px; font-size: 18px; flex: none }
+.facts { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; opacity: .9 }
+.facts b { font-weight: 600 }
+.tabs { display: flex; gap: 4px; padding: 0 20px; background: var(--brand); overflow-x: auto }
+.tabs button { border: 0; background: transparent; color: rgba(255,255,255,.72); padding: 10px 14px; font-weight: 600; font-size: 13.5px; border-bottom: 3px solid transparent; white-space: nowrap }
+.tabs button[aria-selected="true"] { color: #FFFFFF; border-bottom-color: var(--accent) }
+.d-body { flex: 1; overflow-y: auto; padding: 20px max(20px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 20px) 20px; display: grid; gap: 14px; align-content: start }
+.kr { display: grid; gap: 6px; padding: 12px 0; border-top: 1px solid var(--line) }
+.kr:first-of-type { border-top: 0 }
+.kr .meter-head { color: var(--ink); font-size: 13.5px }
+.kr .note { font-size: 12px; color: var(--muted) }
+.obj-pct { font: 700 30px/1 var(--f-display) }
+.arts { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none }
+.arts li { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 4px 12px; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; align-items: center }
+.arts a { font-weight: 600; text-decoration: none; overflow-wrap: anywhere }
+.arts a:hover { text-decoration: underline; color: var(--accent) }
+.arts .k { font-size: 11.5px }
+.arts .k.wait { color: var(--bad); font-weight: 600 }
+.arts .path { grid-column: 1 / -1; font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); overflow-wrap: anywhere }
+.queue { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none }
+.queue li { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: 10px; align-items: baseline; font-size: 13px }
+.pri { font-size: 10.5px; font-weight: 700; letter-spacing: .05em; color: var(--muted) }
+.pri.CRITICAL { color: var(--bad) }
+.chat { display: grid; gap: 10px }
+.chat .msg.you .body { background: var(--brand); color: var(--brand-ink) }
+.chat .msg .who { color: var(--muted); opacity: 1 }
+.chat .msg.agent .body { border: 1px solid var(--line) }
+.composer { position: sticky; bottom: 0; background: var(--bg); padding-top: 6px; display: grid; gap: 8px }
+.composer textarea { width: 100%; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 12px; min-height: 70px; resize: vertical }
+.composer .row { display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap; align-items: center }
+.empty { padding: 22px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 12px; background: var(--surface) }
+.notice { padding: 10px 14px; border-radius: 10px; background: var(--accent-soft); font-size: 13px }
+.skel { background: linear-gradient(90deg, var(--track), var(--surface-2), var(--track)); background-size: 200% 100%; animation: sh 1.4s infinite; border-radius: 14px; min-height: 172px }
+
+@keyframes ping { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 55%, transparent) } 70% { box-shadow: 0 0 0 6px transparent } 100% { box-shadow: 0 0 0 0 transparent } }
+@keyframes slide { from { transform: translateX(30px); opacity: .4 } to { transform: none; opacity: 1 } }
+@keyframes sh { to { background-position: -200% 0 } }
+@media (prefers-reduced-motion: reduce) { *, *::before { animation: none !important; transition: none !important } }
+
+@media (max-width: 1060px) { .layout { grid-template-columns: minmax(0,1fr) } .rail { position: static } }
+@media (max-width: 640px) {
+  .pulse { grid-template-columns: repeat(2, minmax(0,1fr)) }
+  .clock { display: none }
+  .cmd-row .hint { order: 3; flex-basis: 100% }
+  .d-head { padding-left: max(16px, env(safe-area-inset-left, 0px)) }
+  .d-body { padding-left: max(16px, env(safe-area-inset-left, 0px)) }
+}
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <div class="mark">
+      <div class="logo" aria-hidden="true">CSI</div>
+      <div><h1>Agent Command</h1><small>Cargo Sales International</small></div>
+    </div>
+    <div class="spacer"></div>
+    <span class="live" id="liveState" title="Connection to the live team record"><i></i><span>Connecting…</span></span>
+    <span class="clock num" id="clock"></span>
+  </div>
+</header>
+
+<section class="console" aria-label="Command the team">
+  <div class="wrap">
+    <div>
+      <h2>What should the team work on?</h2>
+      <p class="sub">Ask a question or hand off work. The orchestrator answers it or routes it to the right agent.</p>
+    </div>
+    <form class="cmd" id="cmdForm">
+      <label class="eyebrow" for="cmdInput" style="padding:6px 12px 0">Your request</label>
+      <textarea id="cmdInput" rows="2" placeholder="e.g. Which lanes are losing us money, and who is on it?"></textarea>
+      <div class="cmd-row">
+        <div class="seg" role="group" aria-label="How to handle it">
+          <button type="button" data-mode="auto" aria-pressed="true">Auto</button>
+          <button type="button" data-mode="ask" aria-pressed="false">Ask now</button>
+          <button type="button" data-mode="assign" aria-pressed="false">Assign work</button>
+        </div>
+        <span class="hint" id="cmdHint">Auto: answered now if the team's records cover it, otherwise sent to the orchestrator as work.</span>
+        <button class="btn accent" id="cmdSend" type="submit">Send</button>
+      </div>
+    </form>
+    <div class="chips" id="suggest">
+      <button class="chip" type="button">Who is blocked, and what do they need from me?</button>
+      <button class="chip" type="button">Summarize this week's progress for the exec team</button>
+      <button class="chip" type="button">What is the highest-value unclaimed task?</button>
+    </div>
+    <div class="convo" id="hubConvo" aria-live="polite"></div>
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="pulse" id="pulse">
+    <button class="stat all" data-filter="all" aria-pressed="true"><span class="eyebrow">Agents</span><b class="num" id="cAll">–</b><span class="small muted">on the CSI team</span></button>
+    <button class="stat active" data-filter="active" aria-pressed="false"><span class="eyebrow">Working</span><b class="num" id="cActive">–</b><span class="small muted">active on a task</span></button>
+    <button class="stat blocked" data-filter="blocked" aria-pressed="false"><span class="eyebrow">Blocked</span><b class="num" id="cBlocked">–</b><span class="small muted">waiting on someone</span></button>
+    <button class="stat idle" data-filter="idle" aria-pressed="false"><span class="eyebrow">Awaiting instruction</span><b class="num" id="cIdle">–</b><span class="small muted">ready for work</span></button>
+  </div>
+
+  <div class="layout">
+    <section aria-labelledby="teamH">
+      <div class="sec-head"><h3 id="teamH">The team</h3><span class="small muted" id="asOf"></span></div>
+      <div class="grid" id="grid">
+        <div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div>
+      </div>
+    </section>
+
+    <aside class="rail" aria-label="Live activity">
+      <div class="card">
+        <h4>Needs you <span class="badge num" id="needCount">0</span></h4>
+        <ul class="needs" id="needs"></ul>
+      </div>
+      <div class="card">
+        <h4>Live from the team session <span class="pill idle" id="sessPill"><i></i><span>Checking</span></span></h4>
+        <div class="small muted" id="sessDetail">Connect Claude Code to see what the orchestrator is doing right now.</div>
+        <div class="feed" id="sessFeed"></div>
+        <button class="btn ghost" id="sessConnect" type="button" hidden>Connect Claude Code</button>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-labelledby="dName"></aside>
+
+<script>
+(() => {
+  const HUB_SESSION = "session_01Wpd24gAWARjTMHn3N6mhwp";
+  const REPO_BLOB = "https://github.com/ethan1461/CSI-Side-Projects/blob/claude/csi-agent-team-setup-cs9rwk/";
+  const CCR = "Claude Code Remote";
+  const LABEL = { active: "Working", blocked: "Blocked", idle: "Awaiting instruction" };
+  const CSI_BRIEF = "Cargo Sales International (CSI) is an end-to-end orchestration partner for human remains air shipping: free to funeral directors (published airline rates, no booking fees), 24/7 live agents, 5-6 routing options, deep international paperwork. Mission: become the default repatriation vendor, taking share from Eagle's Wings Air, especially at corporate funeral groups. The team is judged on profitable landed bookings per month and enterprise value. Tone: dignified; this business moves people's loved ones. Never invent numbers; say what is unknown.";
+
+  const $ = (s, r = document) => r.querySelector(s);
+  const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  function md(s) {
+    const lines = esc(s).split(/\n/); let out = "", list = false;
+    const inline = t => t.replace(/`([^`]+)`/g, "<code>$1</code>").replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    for (const raw of lines) {
+      const l = raw.trim();
+      if (/^[-*•]\s+/.test(l)) { if (!list) { out += "<ul>"; list = true; } out += "<li>" + inline(l.replace(/^[-*•]\s+/, "")) + "</li>"; continue; }
+      if (list) { out += "</ul>"; list = false; }
+      if (!l) continue;
+      out += "<p>" + inline(l.replace(/^#+\s*/, "")) + "</p>";
+    }
+    return out + (list ? "</ul>" : "");
+  }
+  const pct = (d, t) => t ? Math.max(0, Math.min(100, Math.round((d / t) * 100))) : 0;
+  function since(iso) {
+    if (!iso) return null; const ms = Date.now() - Date.parse(iso); if (!(ms >= 0)) return null;
+    const m = Math.floor(ms / 60000), h = Math.floor(m / 60), d = Math.floor(h / 24);
+    if (d >= 1) return d + "d " + (h % 24) + "h"; if (h >= 1) return h + "h " + String(m % 60).padStart(2, "0") + "m";
+    return m + "m " + String(Math.floor(ms / 1000) % 60).padStart(2, "0") + "s";
+  }
+  function ago(iso) { const s = since(iso); return s ? s.split(" ")[0] + " ago" : ""; }
+  const fmtTime = ts => new Date(ts).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+  const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
+
+  // ---------- state ----------
+  let agents = [];           // from db
+  let filter = "all";
+  let mode = store.get("csi.mode") || "auto";
+  let db = null, sample = null, mcp = null, user = null, myId = null;
+  let hubMsgs = [];
+  let openId = null, openTab = "okrs", threadUnsub = null, threadMsgs = [];
+  let live = null; // answer being written: {where, agent, text}
+
+  // ---------- clock ----------
+  const tick = () => { $("#clock").textContent = new Date().toLocaleString([], { weekday: "short", hour: "numeric", minute: "2-digit", second: "2-digit" }); document.querySelectorAll("[data-since]").forEach(n => { n.textContent = since(n.dataset.since) || "—"; }); };
+  setInterval(tick, 1000); tick();
+
+  // ---------- rendering ----------
+  function counts() { const c = { active: 0, blocked: 0, idle: 0 }; agents.forEach(a => c[a.status] = (c[a.status] || 0) + 1); return c; }
+  function renderPulse() {
+    const c = counts();
+    $("#cAll").textContent = agents.length; $("#cActive").textContent = c.active; $("#cBlocked").textContent = c.blocked; $("#cIdle").textContent = c.idle;
+    document.querySelectorAll(".stat").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.filter === filter)));
+    const latest = agents.map(a => a.updatedAt).filter(Boolean).sort().pop();
+    $("#asOf").textContent = latest ? "Last update " + fmtTime(latest) : "";
+  }
+  function meter(done, total, unit, cls) {
+    const w = el("div", "meter"); const h = el("div", "meter-head");
+    h.append(el("span", null, unit || "Progress"), el("span", "num", pct(done, total) + "%  ·  " + done + "/" + total));
+    const t = el("div", "track"); t.setAttribute("role", "progressbar"); t.setAttribute("aria-valuenow", pct(done, total)); t.setAttribute("aria-valuemin", 0); t.setAttribute("aria-valuemax", 100);
+    const f = el("div", "fill " + (cls || "")); f.style.width = pct(done, total) + "%"; t.append(f); w.append(h, t); return w;
+  }
+  function okrPct(a) { let d = 0, n = 0; (a.okrs || []).forEach(o => (o.krs || []).forEach(k => { n++; d += pct(k.done, k.total); })); return n ? Math.round(d / n) : 0; }
+  function renderGrid() {
+    const g = $("#grid"); g.textContent = "";
+    const list = agents.filter(a => filter === "all" || a.status === filter);
+    if (!list.length) { g.append(el("div", "empty", agents.length ? "No agents are " + LABEL[filter].toLowerCase() + " right now." : "The team record is empty. Ask Claude to seed it from the task ledger.")); return; }
+    for (const a of list) {
+      const t = el("button", "tile " + a.status); t.type = "button"; t.addEventListener("click", () => openAgent(a.id));
+      t.setAttribute("aria-label", a.name + ", " + LABEL[a.status]);
+      const top = el("div", "t-top"); const nm = el("div"); nm.append(el("p", "t-name", a.name), el("div", "t-role", a.title));
+      const pill = el("span", "pill " + a.status); pill.append(el("i"), el("span", null, LABEL[a.status]));
+      top.append(nm, pill); t.append(top);
+      if (a.current) {
+        t.append(el("div", "t-task", a.current.title));
+        if (a.current.total) t.append(meter(a.current.done, a.current.total, a.current.unit, a.status));
+      } else {
+        const next = (a.queue || [])[0];
+        t.append(el("div", "t-task", next ? "Next up: " + next.title : "No work queued"));
+      }
+      if (a.statusNote) t.append(el("div", "t-note", a.statusNote));
+      const foot = el("div", "t-foot");
+      if (a.status === "active" && a.current?.startedAt) { const s = el("span"); s.append("Working for "); const n = el("span", "num"); n.dataset.since = a.current.startedAt; n.textContent = since(a.current.startedAt); s.append(n); foot.append(s); }
+      else if (a.status === "blocked" && a.current?.startedAt) { const s = el("span"); s.append("Open "); const n = el("span", "num"); n.dataset.since = a.current.startedAt; n.textContent = since(a.current.startedAt); s.append(n); foot.append(s); }
+      else foot.append(el("span", null, (a.queue || []).length + " queued"));
+      const right = el("span"); const inbox = (a.inbox || []).length;
+      if (inbox) right.append(el("span", "badge", inbox + " new request" + (inbox > 1 ? "s" : "")));
+      else { right.append("OKRs "); right.append(el("span", "num", okrPct(a) + "%")); }
+      foot.append(right); t.append(foot); g.append(t);
+    }
+  }
+  function renderNeeds() {
+    const ul = $("#needs"); ul.textContent = "";
+    const blocked = agents.filter(a => a.status === "blocked");
+    $("#needCount").textContent = blocked.length;
+    if (!blocked.length) { ul.append(el("li", "muted", "Nothing is waiting on you.")); ul.lastChild.style.background = "var(--ok-soft)"; return; }
+    for (const a of blocked) { const li = el("li"); const b = el("button", null, a.name); b.type = "button"; b.addEventListener("click", () => openAgent(a.id)); li.append(b, el("span", null, a.statusNote || "Blocked")); ul.append(li); }
+  }
+  function msgNode(m, inDrawer) {
+    const n = el("div", "msg " + (m.role === "you" ? "you" : m.role === "system" ? "system" : "agent"));
+    const who = el("div", "who"); who.append(m.role === "you" ? "You" : m.role === "system" ? "Orchestrator" : (agentName(m.agent) || "Orchestrator"));
+    if (m.route && !inDrawer) who.append(el("span", "route", "→ " + (agentName(m.route) || m.route)));
+    if (m.ts) who.append(el("span", null, fmtTime(m.ts)));
+    const b = el("div", "body"); b.innerHTML = md(m.text || (m.pending ? "Thinking…" : "")); n.append(who, b); return n;
+  }
+  function liveNode(inDrawer) { const n = msgNode({ role: "agent", agent: live.agent, text: live.text, pending: true, route: inDrawer ? null : live.agent }, inDrawer); n.id = "liveMsg"; return n; }
+  const agentName = id => agents.find(a => a.id === id)?.name;
+  function renderHub() {
+    const c = $("#hubConvo"); c.textContent = "";
+    hubMsgs.slice(-12).forEach(m => c.append(msgNode(m)));
+    if (live && live.where === "hub") c.append(liveNode());
+    c.scrollTop = c.scrollHeight;
+  }
+  function renderAll() { renderPulse(); renderGrid(); renderNeeds(); if (openId) renderDrawer(); }
+
+  // ---------- drawer ----------
+  function openAgent(id, tab) { openId = id; if (tab) openTab = tab; try { history.replaceState(null, "", "#agent-" + id); } catch {} subscribeThread(id); renderDrawer(); $("#scrim").hidden = false; $("#drawer").hidden = false; setTimeout(() => $("#drawer .close")?.focus(), 0); }
+  function closeAgent() { openId = null; if (threadUnsub) { threadUnsub(); threadUnsub = null; } threadMsgs = []; $("#scrim").hidden = true; $("#drawer").hidden = true; try { history.replaceState(null, "", location.pathname + location.search); } catch {} }
+  $("#scrim").addEventListener("click", closeAgent);
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && openId) closeAgent(); });
+
+  function renderDrawer() {
+    const a = agents.find(x => x.id === openId); const d = $("#drawer");
+    if (!a) return;
+    const keepDraft = $("#chatInput")?.value || "";
+    d.textContent = "";
+    const head = el("div", "d-head");
+    const tt = el("div", "d-title"); const tl = el("div"); const h = el("h2", null, a.name); h.id = "dName"; tl.append(h, el("p", null, a.title + " · " + a.owns));
+    const x = el("button", "close", "×"); x.type = "button"; x.setAttribute("aria-label", "Close"); x.addEventListener("click", closeAgent);
+    tt.append(tl, x);
+    const facts = el("div", "facts");
+    const pill = el("span", "pill " + a.status); pill.append(el("i"), el("span", null, LABEL[a.status]));
+    facts.append(pill);
+    [["Front", a.front], ["Human counterpart", a.human], ["Model", a.model]].forEach(([k, v]) => { const s = el("span"); s.append(el("b", null, k + ": "), v || "—"); facts.append(s); });
+    head.append(tt, facts);
+    const tabs = el("div", "tabs"); tabs.setAttribute("role", "tablist");
+    [["okrs", "Work & OKRs"], ["artifacts", "Artifacts (" + (a.artifacts || []).length + ")"], ["chat", "Chat"]].forEach(([k, label]) => {
+      const b = el("button", null, label); b.type = "button"; b.setAttribute("role", "tab"); b.setAttribute("aria-selected", String(openTab === k));
+      b.addEventListener("click", () => { openTab = k; renderDrawer(); }); tabs.append(b);
+    });
+    const body = el("div", "d-body");
+    if (openTab === "okrs") drawWork(body, a); else if (openTab === "artifacts") drawArtifacts(body, a); else drawChat(body, a, keepDraft);
+    d.append(head, tabs, body);
+    if (openTab === "chat") { const cl = $(".chat", d); if (cl) body.scrollTop = body.scrollHeight; }
+  }
+  function drawWork(body, a) {
+    const cur = el("div", "card");
+    cur.append(el("h4", null, a.current ? "Current work" : "Current work: none"));
+    if (a.current) {
+      cur.append(el("div", "t-task", a.current.title));
+      if (a.current.total) cur.append(meter(a.current.done, a.current.total, a.current.unit, a.status));
+      if (a.current.startedAt) { const s = el("div", "small muted"); s.append(a.status === "active" ? "Time working: " : "Open for: "); const n = el("span", "num"); n.dataset.since = a.current.startedAt; n.textContent = since(a.current.startedAt); s.append(n); cur.append(s); }
+    }
+    if (a.statusNote) cur.append(el("div", a.status === "blocked" ? "notice" : "t-note", (a.status === "blocked" ? "Blocked: " : "") + a.statusNote));
+    if ((a.inbox || []).length) { const ib = el("div", "notice"); ib.append(el("b", null, "Requests sent from this dashboard: ")); ib.append((a.inbox || []).map(r => "“" + r.text + "”").join("  ·  ")); cur.append(ib); }
+    body.append(cur);
+    for (const o of a.okrs || []) {
+      const c = el("div", "card"); const hd = el("div", "sec-head");
+      const l = el("div"); l.append(el("div", "eyebrow", "Objective"), el("h3", null, o.objective)); l.lastChild.style.cssText = "margin:2px 0 0;font:700 16px/1.25 var(--f-display)";
+      let sum = 0; (o.krs || []).forEach(k => sum += pct(k.done, k.total)); const op = o.krs?.length ? Math.round(sum / o.krs.length) : 0;
+      hd.append(l, el("span", "obj-pct num", op + "%")); c.append(hd);
+      for (const k of o.krs || []) {
+        const r = el("div", "kr"); const m = meter(k.done, k.total, k.label, "okr"); r.append(m); if (k.note) r.append(el("div", "note", k.note)); c.append(r);
+      }
+      body.append(c);
+    }
+    const q = el("div", "card"); q.append(el("h4", null, "Queued tasks"));
+    if ((a.queue || []).length) { const ul = el("ul", "queue"); a.queue.forEach(t => { const li = el("li"); li.append(el("span", "num small muted", t.id), el("span", null, t.title), el("span", "pri " + (t.priority || ""), t.priority || "")); ul.append(li); }); q.append(ul); }
+    else q.append(el("div", "small muted", "Nothing queued."));
+    body.append(q);
+  }
+  function drawArtifacts(body, a) {
+    if (!(a.artifacts || []).length) { body.append(el("div", "empty", a.name + " has not produced a deliverable yet. Ask for one in Chat.")); return; }
+    const ul = el("ul", "arts");
+    [...a.artifacts].sort((x, y) => (y.date || "").localeCompare(x.date || "")).forEach(r => {
+      const li = el("li");
+      const t = r.path ? Object.assign(el("a", null, r.title), { href: REPO_BLOB + r.path, target: "_blank", rel: "noopener" }) : el("span", null, r.title);
+      t.style.fontWeight = "600";
+      li.append(t, el("span", "k " + (/approval/i.test(r.kind) ? "wait" : "muted"), r.kind || ""));
+      li.append(el("span", "path", (r.date ? r.date + "  ·  " : "") + (r.path || "not yet in the repository")));
+      ul.append(li);
+    });
+    body.append(ul);
+  }
+  function drawChat(body, a, draft) {
+    const list = el("div", "chat");
+    if (!threadMsgs.length) list.append(el("div", "empty", "Ask " + a.name + " about its work, or assign it something new. Answers draw on its tasks, OKRs and deliverables."));
+    threadMsgs.forEach(m => list.append(msgNode(m, true)));
+    if (live && live.where === "agent" && live.agent === a.id) list.append(liveNode(true));
+    const comp = el("form", "composer");
+    const ta = el("textarea"); ta.id = "chatInput"; ta.placeholder = "Message " + a.name + "…"; ta.value = draft || ""; ta.setAttribute("aria-label", "Message " + a.name);
+    const row = el("div", "row");
+    row.append(el("span", "small muted", "Ask = answered now. Assign = sent to the team session as work."));
+    const ask = el("button", "btn ghost", "Ask"); ask.type = "submit"; ask.dataset.kind = "ask";
+    const asg = el("button", "btn accent", "Assign"); asg.type = "submit"; asg.dataset.kind = "assign";
+    row.append(ask, asg); comp.append(ta, row);
+    comp.addEventListener("submit", e => { e.preventDefault(); const text = ta.value.trim(); if (!text) return; ta.value = ""; const kind = e.submitter?.dataset.kind || "ask"; kind === "assign" ? assignTo(a.id, text, "agent") : askAgent(a.id, text, "agent"); });
+    ta.addEventListener("keydown", e => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) { e.preventDefault(); comp.requestSubmit(ask); } });
+    body.append(list, comp);
+  }
+
+  // ---------- data ----------
+  function setLive(on, text) { const l = $("#liveState"); l.classList.toggle("on", on); l.lastChild.textContent = text; }
+  async function boot() {
+    const c = window.claude;
+    if (!c?.use) { setLive(false, "Open in Claude to go live"); $("#grid").textContent = ""; $("#grid").append(el("div", "empty", "This hub runs inside Claude. Open it from claude.ai to see the live team.")); return; }
+    [db, sample, mcp, user] = await Promise.all([c.use("db"), c.use("sample"), c.use("mcp"), c.use("user")]);
+    if (user) { try { myId = await user.id(); } catch {} }
+    if (!db) { setLive(false, "Sign in to see the team"); $("#grid").textContent = ""; $("#grid").append(el("div", "empty", "Sign in to claude.ai with your CSI account to see the live team record.")); }
+    else subscribeAgents();
+    if (!sample) { $("#cmdHint").textContent = "Answering is unavailable in this view; requests go to the orchestrator as work."; }
+    if (mcp) watchSession(); else { $("#sessDetail").textContent = "The live session feed opens for signed-in team members in Claude."; }
+  }
+  function subscribeAgents() {
+    const timer = setTimeout(() => setLive(false, "Still connecting…"), 10000);
+    db.collection("agents").orderBy("order").onSnapshot(snap => {
+      clearTimeout(timer);
+      agents = snap.docs.map(d => ({ id: d.id, ...d.data() })).filter(a => a.name);
+      setLive(true, "Live");
+      renderAll();
+      const m = /^#agent-(.+)$/.exec(location.hash); if (m && !openId && agents.some(a => a.id === m[1])) openAgent(m[1]);
+    }, err => { clearTimeout(timer); setLive(false, "Offline"); console.warn(err); });
+    db.collection("threads/hub/messages").orderBy("ts", "desc").limit(30).onSnapshot(snap => { hubMsgs = snap.docs.map(d => ({ id: d.id, ...d.data() })).reverse(); renderHub(); }, () => {});
+  }
+  function subscribeThread(id) {
+    if (threadUnsub) threadUnsub(); threadMsgs = [];
+    if (!db) return;
+    threadUnsub = db.collection("threads/" + id + "/messages").orderBy("ts", "desc").limit(60).onSnapshot(snap => { threadMsgs = snap.docs.map(d => ({ id: d.id, ...d.data() })).reverse(); if (openId === id && openTab === "chat") renderDrawer(); }, () => {});
+  }
+  async function write(path, data) { if (!db) return null; try { const ref = db.collection(path).doc(); await ref.set(data); return ref; } catch (e) { console.warn(e); toastErr(e); return null; } }
+  function toastErr(e) { const c = $("#hubConvo"); const n = msgNode({ role: "system", text: e?.code === "quota_exceeded" ? "The team record is full. Ask Claude to archive old messages." : "That didn't save: " + (e?.message || "you may not have permission to write to this hub.") }); c.append(n); }
+
+  // ---------- Claude: route, answer, assign ----------
+  function teamSnapshot() {
+    return agents.map(a => `- ${a.id} (${a.name}) — ${LABEL[a.status]}. Owns: ${a.owns} ${a.current ? "Current: " + a.current.title + " (" + a.current.done + "/" + a.current.total + " " + (a.current.unit || "") + ")." : ""} ${a.statusNote ? "Note: " + a.statusNote + "." : ""} Queue: ${(a.queue || []).map(q => q.id + " " + q.title).join("; ") || "none"}.`).join("\n");
+  }
+  async function route(text) {
+    if (!sample) return { agent: "pm-orchestrator", mode: "assign", reason: "" };
+    try {
+      const r = await sample.json(`You are the router for CSI's AI agent team. Pick the single best agent for the request and whether it can be ANSWERED NOW from the team's status records (questions about status, progress, blockers, priorities, what exists) or must be ASSIGNED as new work (analysis, drafting, research, building, anything needing files or data not in the records). Questions spanning several agents, or about the team as a whole, go to pm-orchestrator.\n\nTeam:\n${teamSnapshot()}\n\nRequest: """${text}"""\n\nReply with JSON only: {"agent": "<agent id>", "mode": "answer" | "assign", "reason": "<under 15 words>"}`, { modelTier: "quick" });
+      if (!agents.some(a => a.id === r?.agent)) r.agent = "pm-orchestrator";
+      return r;
+    } catch (e) { return { agent: "pm-orchestrator", mode: "assign", reason: "" }; }
+  }
+  async function askAgent(id, text, where) {
+    const a = agents.find(x => x.id === id); if (!a) return;
+    const thread = "threads/" + id + "/messages";
+    const now = new Date().toISOString();
+    if (where === "agent") await write(thread, { role: "you", text, ts: now, by: myId || null });
+    if (!sample) { await write(where === "hub" ? "threads/hub/messages" : thread, { role: "system", text: "Answering isn't available in this view. Use Assign to send it to the team session.", ts: new Date().toISOString() }); return; }
+    live = { where, agent: id, text: "" };
+    if (where === "hub") renderHub(); else if (openId === id) renderDrawer();
+    let history = where === "agent" ? threadMsgs.filter(m => m.role !== "system").slice(-8).map(m => ({ role: m.role === "you" ? "user" : "assistant", content: m.text || "" })).filter(m => m.content) : [];
+    while (history.length && history[0].role !== "user") history.shift();
+    const sys = `${CSI_BRIEF}\n\nYou are the ${a.name} agent (${a.id}) on CSI's AI team, talking with Ethan Silvey (CSO), who runs the team. You own: ${a.owns}\nYour record right now (JSON): ${JSON.stringify({ status: a.status, statusNote: a.statusNote, current: a.current, queue: a.queue, okrs: a.okrs, artifacts: a.artifacts, inbox: a.inbox })}\n${id === "pm-orchestrator" ? "The whole team right now:\n" + teamSnapshot() + "\n" : ""}\nAnswer from these records only. Be brief and specific: lead with the answer, then at most a few bullets. Name task IDs and deliverables. If the records don't contain the answer, say so plainly and suggest assigning it as work. Never invent numbers.`;
+    const turns = history.length && history[history.length - 1].role === "user" ? history : [...history, { role: "user", content: text }];
+    turns[0] = { role: "user", content: sys + "\n\n---\n\n" + turns[0].content };
+    try {
+      const { text: answer } = await sample(turns, { cache: false, onText: ({ text: t }) => { live.text = t; const b = $("#liveMsg .body"); if (b) b.innerHTML = md(t || "Thinking…"); const sc = where === "hub" ? $("#hubConvo") : $(".d-body"); if (sc) sc.scrollTop = 1e9; } });
+      live = null;
+      await write(where === "hub" ? "threads/hub/messages" : thread, { role: "agent", agent: id, text: answer, ts: new Date().toISOString(), route: where === "hub" ? id : null });
+    } catch (e) {
+      live = null; if (where === "hub") renderHub(); else if (openId === id) renderDrawer();
+      await write(where === "hub" ? "threads/hub/messages" : thread, { role: "system", text: e?.code === "not_granted" ? "Answering needs your permission. Allow Claude for this page to get answers here." : e?.code === "rate_limited" ? "Too many questions at once. Try again in a minute." : "No answer came back. Try again, or use Assign.", ts: new Date().toISOString() });
+    }
+  }
+  async function assignTo(id, text, where) {
+    const a = agents.find(x => x.id === id); const now = new Date().toISOString();
+    const thread = "threads/" + id + "/messages";
+    if (where === "agent") await write(thread, { role: "you", text, ts: now, by: myId || null, mode: "assign" });
+    const body = `[CSI Agent Command — request from Ethan via the dashboard]\nRoute to: ${id === "pm-orchestrator" ? "pm-orchestrator (decide who owns it)" : "@" + id + " (via pm-orchestrator)"}\nRequest: ${text}\n\nLog it in the task ledger under the usual rules (CLAUDE.md §7, §10). When you start, finish or get blocked, update this agent's record in the Agent Command hub as described in dashboard/README.md.`;
+    let ok = false, why = "";
+    if (mcp) {
+      try { await mcp.callTool(CCR, "send_message", { session_id: HUB_SESSION, message: body }, { cache: false }); ok = true; }
+      catch (e) { why = e?.code === "not_granted" ? "Allow the Claude Code connector for this page to send work to the team session." : e?.code === "server_not_connected" ? "Claude Code isn't connected for you." : (e?.message || "The team session didn't accept it."); }
+    } else why = "The team session can only be reached by signed-in team members in Claude.";
+    if (ok && db && a) { try { await db.doc("agents/" + id).update({ inbox: [...(a.inbox || []), { text, ts: now }].slice(-5) }); } catch {} }
+    const note = ok ? `Sent to the team session for **${a?.name || id}**. It's logged as a new request; the tile updates when the agent picks it up.` : "Not sent. " + why;
+    await write(where === "hub" ? "threads/hub/messages" : thread, { role: "system", text: note, ts: new Date().toISOString(), route: where === "hub" ? id : null });
+    if (ok) mcp.invalidate?.(CCR).catch(() => {});
+  }
+
+  // command bar
+  const cmd = $("#cmdInput");
+  function setMode(m) { mode = m; store.set("csi.mode", m); document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.mode === m))); $("#cmdHint").textContent = { auto: "Auto: answered now if the team's records cover it, otherwise sent to the orchestrator as work.", ask: "Ask now: the best-placed agent answers from its records.", assign: "Assign work: sent to the team session; the orchestrator logs it and hands it to the right agent." }[m]; }
+  document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => setMode(b.dataset.mode))); setMode(mode);
+  cmd.addEventListener("input", () => { cmd.style.height = "auto"; cmd.style.height = Math.min(180, cmd.scrollHeight) + "px"; });
+  cmd.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); $("#cmdForm").requestSubmit(); } });
+  document.querySelectorAll("#suggest .chip").forEach(c => c.addEventListener("click", () => { cmd.value = c.textContent; cmd.focus(); }));
+  $("#cmdForm").addEventListener("submit", async e => {
+    e.preventDefault(); const text = cmd.value.trim(); if (!text) return;
+    if (!db) { toastErr({ message: "sign in to claude.ai to use the hub." }); return; }
+    cmd.value = ""; cmd.style.height = ""; const btn = $("#cmdSend"); btn.disabled = true; btn.textContent = "Routing…";
+    await write("threads/hub/messages", { role: "you", text, ts: new Date().toISOString(), by: myId || null });
+    try {
+      const r = await route(text);
+      const m = mode === "auto" ? (r.mode === "answer" ? "answer" : "assign") : mode === "ask" ? "answer" : "assign";
+      btn.textContent = m === "answer" ? "Answering…" : "Sending…";
+      if (m === "answer") await askAgent(r.agent, text, "hub"); else await assignTo(r.agent, text, "hub");
+    } finally { btn.disabled = false; btn.textContent = "Send"; }
+  });
+  document.querySelectorAll(".stat").forEach(b => b.addEventListener("click", () => { filter = b.dataset.filter; renderPulse(); renderGrid(); }));
+
+  // ---------- live session (Claude Code connector) ----------
+  function parsePayload(res) {
+    let p = res?.payload;
+    if (typeof p === "string") { const i = p.indexOf("{"), j = p.lastIndexOf("}"); try { p = i >= 0 ? JSON.parse(p.slice(i, j + 1)) : {}; } catch { p = {}; } }
+    return p?.ccr || p || {};
+  }
+  function eventText(ev) {
+    const kind = Object.keys(ev).find(k => k !== "created_at"); const v = ev[kind] || {};
+    const inner = v.internal_anthropic_catchall || v;
+    if (kind === "result") return null;
+    if (kind !== "assistant") return null;
+    const msg = inner.message || {}; const parts = Array.isArray(msg.content) ? msg.content : [];
+    const text = parts.filter(p => p && p.type === "text" && p.text).map(p => p.text).join("\n").trim();
+    const tool = parts.find(p => p && p.type === "tool_use");
+    return { at: ev.created_at, sub: !!inner.agent_id, text, tool: tool ? (tool.input?.description || tool.name) : null };
+  }
+  function watchSession() {
+    const pill = $("#sessPill"), det = $("#sessDetail"), feed = $("#sessFeed");
+    const setPill = (cls, txt) => { pill.className = "pill " + cls; pill.lastChild.textContent = txt; };
+    mcp.watchTool(CCR, "get_session", { session_id: HUB_SESSION }, ev => {
+      if (ev.type === "error") { handleMcpErr(ev.error); return; }
+      $("#sessConnect").hidden = true;
+      const s = parsePayload(ev.result);
+      const bucket = String(s.status_bucket || "").replace("SESSION_STATUS_BUCKET_", "").toLowerCase();
+      const running = /RUNNING/.test(s.session_status || "");
+      if (running || bucket === "working") setPill("active", "Working"); else if (bucket === "blocked" || bucket === "failed") setPill("blocked", bucket === "failed" ? "Errored" : "Needs you"); else setPill("idle", bucket === "review_ready" ? "Ready for review" : "Idle");
+      const d = s.post_turn_summary?.status_detail || s.external_metadata?.post_turn_summary?.status_detail;
+      det.textContent = (s.title ? s.title + ". " : "") + (d ? "Latest: " + d + ". " : "") + (s.updated_at ? "Updated " + ago(s.updated_at) + "." : "");
+    }, { refetchInterval: 30000 });
+    mcp.watchTool(CCR, "list_events", { session_id: HUB_SESSION, limit: 60, kinds: ["assistant"] }, ev => {
+      if (ev.type === "error") { handleMcpErr(ev.error); return; }
+      const data = parsePayload(ev.result).data || [];
+      const items = data.map(eventText).filter(Boolean);
+      feed.textContent = "";
+      const lastSub = items.filter(i => i.sub).pop();
+      if (lastSub && Date.now() - Date.parse(lastSub.at) < 5 * 60000) { const n = el("div", "feed-item"); n.style.borderLeftColor = "var(--ok)"; n.append(el("time", null, fmtTime(lastSub.at)), "A specialist agent is working: " + (lastSub.tool || "reading and writing files")); feed.append(n); }
+      const said = items.filter(i => !i.sub && i.text).slice(-4).reverse();
+      if (!said.length && !feed.childElementCount) feed.append(el("div", "small muted", "No recent messages from the orchestrator."));
+      said.forEach(i => { const n = el("div", "feed-item"); const b = el("div"); b.innerHTML = md(i.text.length > 600 ? i.text.slice(0, 600) + "…" : i.text); n.append(el("time", null, fmtTime(i.at)), b); feed.append(n); });
+    }, { refetchInterval: 30000 });
+  }
+  function handleMcpErr(err) {
+    const det = $("#sessDetail"), btn = $("#sessConnect");
+    if (["not_granted", "server_not_connected", "needs_reauth"].includes(err?.code)) {
+      det.textContent = err.code === "not_granted" ? "Allow the Claude Code connector to see the team session live." : "Connect Claude Code in claude.ai to see the team session live.";
+      $("#sessFeed").textContent = ""; btn.hidden = false;
+    } else if (err?.code === "blocked_by_policy") { det.textContent = "Your organization doesn't allow this page to read Claude Code sessions."; }
+    else det.textContent = "The session feed is temporarily unavailable. Retrying automatically.";
+  }
+  $("#sessConnect").addEventListener("click", async () => { try { await window.claude.use("permissions").then(p => p?.manage?.()); } catch {} });
+
+  boot();
+})();
+</script>

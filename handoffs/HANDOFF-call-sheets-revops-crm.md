@@ -63,3 +63,12 @@ Reps work from the CSVs, which are the system of record for these calls this mon
 
 ## PM decision
 <Filled by pm-orchestrator.>
+
+## REPORT-BACK 2026-11-18 (revops-crm): partner-routed containment, owners, and 13 new companies
+Full detail: `reports/partner-routed-hubspot-containment.md`. Logs: `reports/partner-routed-containment-owner-clear-plan-20261118.csv` (prior owners, for reversal), `reports/partner-routed-containment-owner-set-plan-20261118.csv`.
+- **Cleared 156 owners** (151 STRIKE, 5 FLAG) across all 535 manifest homes: 41 on-sheet plus 115 off-sheet. Re-search of the whole manifest after: only the 11 KEEP-rule homes still owned. The 115 off-sheet clears apply the same bookings rule that reproduces your 111 verdicts exactly; that extension is my judgement.
+- **Marker property: blocked.** `csi_partner_tier` and `csi_account_class` both mean "is the partner", so not overloaded. Spec for `csi_partner_routing` in the report. Until it exists, the manifest CSV is the only record.
+- **Set 147 owners** (Otto 62, Stacy 85), read first, none overridden; 38 of 38 read-back. Not set: 3 manifest KEEP rows (1939, 2217, 12197), Greenwood 8293 (conflict untouched), provisional, key-account and repair rows.
+- **Created 13 companies**, not 7: your seven plus six more with no HubSpot company (16000, 4529, 15428, 2079, 13709, 3598). Guarino has an owner (Stacy). Existence checks on your side should run across the other 300-odd rows.
+- **Heads-up for you:** the held SCI rows (incl. Palm Mortuary #1013) now carry an owner. No enrolment done.
+- **Open:** property creation, rulings on the 3 and the 11 KEEP-class homes, Greenwood. Proposed standing authority is in the report; `CLAUDE.md` not edited.

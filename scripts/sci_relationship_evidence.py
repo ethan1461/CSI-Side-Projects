@@ -468,7 +468,9 @@ def load_oms_accounts(source: Path) -> tuple[dict[str, OmsAccount], int]:
                 phone=normalize_phone(row.get("phone")),
                 zip5=str(row.get("zip") or "").strip()[:5],
                 sci_flagged=group_field == "SCI" or bool(SCI_NAME_MARKER.search(name)),
-                sci_code=normalize_location_code(code_match.group(1)) if code_match else "",
+                sci_code=(
+                    normalize_location_code(code_match.group(1)) if code_match else ""
+                ),
             )
     LOG.info(
         "oms accounts rows in=%d loaded=%d (dropped columns: %s)",
@@ -502,7 +504,9 @@ def load_bookings(source: Path) -> tuple[dict[str, Counter[int]], dict[str, int]
             tally["no_funeral_home"] += 1
             continue
         account_id = (
-            str(int(raw_account)) if isinstance(raw_account, float) else str(raw_account).strip()
+            str(int(raw_account))
+            if isinstance(raw_account, float)
+            else str(raw_account).strip()
         )
         year = parse_year(row[2])
         if year is None:
@@ -579,7 +583,10 @@ def load_revenue(source: Path) -> tuple[dict[str, dict[int, float]], dict[str, i
     header_row = next(
         position
         for position, row in enumerate(rows)
-        if row and any(isinstance(c, str) and re.fullmatch(r"20\d\d", c.strip()) for c in row[1:])
+        if row
+        and any(
+            isinstance(c, str) and re.fullmatch(r"20\d\d", c.strip()) for c in row[1:]
+        )
     )
     header = rows[header_row]
     year_columns = {
@@ -741,7 +748,9 @@ def denominator_rows(locations: list[SciLocation]) -> list[dict[str, object]]:
         },
         {
             "denominator": "operating_shipping_capable_product_lines",
-            "locations": sum(1 for location in operating if location.is_shipping_capable),
+            "locations": sum(
+                1 for location in operating if location.is_shipping_capable
+            ),
             "what_it_is": (
                 "Operating rows on the funeral home, direct-cremation-provider and "
                 "personal-care-centre product lines"
@@ -801,10 +810,13 @@ def match_tier_rows(
                 "accounts": bucket["accounts"],
                 "shipping_accounts": bucket["shipping_accounts"],
                 "bookings_all_years": bucket["bookings"],
-                "counted_as_sci": "yes"
-                if flagged
-                or tier in ("T1_location_code", "T2_name_zip_and_phone", "T3_single_signal")
-                else "no",
+                "counted_as_sci": (
+                    "yes"
+                    if flagged
+                    or tier
+                    in ("T1_location_code", "T2_name_zip_and_phone", "T3_single_signal")
+                    else "no"
+                ),
             }
         )
     return sorted(rows, key=lambda row: -int(row["bookings_all_years"]))
@@ -900,10 +912,15 @@ def trajectory_rows(
                 "main_partner": partner.get("main_partner", ""),
             }
         )
-    return sorted(rows, key=lambda row: (-int(row["bookings_all_years"]), str(row["funeral_home"])))
+    return sorted(
+        rows,
+        key=lambda row: (-int(row["bookings_all_years"]), str(row["funeral_home"])),
+    )
 
 
-def trajectory_summary_rows(trajectories: list[dict[str, object]]) -> list[dict[str, object]]:
+def trajectory_summary_rows(
+    trajectories: list[dict[str, object]],
+) -> list[dict[str, object]]:
     """Counts and 2025->2026 booking movement by trajectory class."""
     buckets: dict[str, dict[str, float]] = defaultdict(
         lambda: {"locations": 0.0, "b2025": 0.0, "b2026_ann": 0.0}
@@ -921,7 +938,9 @@ def trajectory_summary_rows(trajectories: list[dict[str, object]]) -> list[dict[
                 "locations": int(bucket["locations"]),
                 "bookings_2025": int(bucket["b2025"]),
                 "bookings_2026_annualised": round(bucket["b2026_ann"], 1),
-                "booking_delta_annualised": round(bucket["b2026_ann"] - bucket["b2025"], 1),
+                "booking_delta_annualised": round(
+                    bucket["b2026_ann"] - bucket["b2025"], 1
+                ),
             }
         )
     return sorted(rows, key=lambda row: -float(row["booking_delta_annualised"]))
@@ -942,6 +961,7 @@ def definition_reconciliation_rows(
     """
     strict_ids = [a.account_id for a in accounts.values() if a.is_sci_strict]
     wide_ids = [a.account_id for a in accounts.values() if a.is_sci]
+
     def active(ids: list[str], year: int) -> tuple[int, int]:
         live = [i for i in ids if bookings.get(i, Counter()).get(year, 0) > 0]
         return len(live), sum(bookings[i][year] for i in live)
@@ -955,14 +975,18 @@ def definition_reconciliation_rows(
                 "year": year,
                 "strict_shipping_locations": strict_locations,
                 "strict_bookings": strict_bookings,
-                "strict_bookings_annualised": round(strict_bookings * factor, 0)
-                if year == DATA_CUT_YEAR
-                else strict_bookings,
+                "strict_bookings_annualised": (
+                    round(strict_bookings * factor, 0)
+                    if year == DATA_CUT_YEAR
+                    else strict_bookings
+                ),
                 "wide_shipping_locations": wide_locations,
                 "wide_bookings": wide_bookings,
-                "wide_bookings_annualised": round(wide_bookings * factor, 0)
-                if year == DATA_CUT_YEAR
-                else wide_bookings,
+                "wide_bookings_annualised": (
+                    round(wide_bookings * factor, 0)
+                    if year == DATA_CUT_YEAR
+                    else wide_bookings
+                ),
                 "location_delta": wide_locations - strict_locations,
                 "booking_delta": wide_bookings - strict_bookings,
                 "is_partial_year": "yes" if year == DATA_CUT_YEAR else "no",
@@ -996,13 +1020,17 @@ def concentration_rows(
             {
                 "top_n_locations": point,
                 "bookings_in_top_n": sum(booking_totals[:point]),
-                "pct_of_sci_bookings": round(sum(booking_totals[:point]) / booking_sum * 100, 1)
-                if booking_sum
-                else 0.0,
+                "pct_of_sci_bookings": (
+                    round(sum(booking_totals[:point]) / booking_sum * 100, 1)
+                    if booking_sum
+                    else 0.0
+                ),
                 "revenue_in_top_n": round(sum(revenue_totals[:point]), 2),
-                "pct_of_sci_revenue": round(sum(revenue_totals[:point]) / revenue_sum * 100, 1)
-                if revenue_sum
-                else 0.0,
+                "pct_of_sci_revenue": (
+                    round(sum(revenue_totals[:point]) / revenue_sum * 100, 1)
+                    if revenue_sum
+                    else 0.0
+                ),
             }
         )
     return rows
@@ -1069,9 +1097,9 @@ def partner_routed_rows(
                 "partner_billed_bookings": partner_total,
                 "self_billed_bookings": self_total,
                 "other_billed_bookings": entry["other_billed_bookings"],
-                "partner_share_pct": round(partner_total / denominator * 100, 1)
-                if denominator
-                else 0.0,
+                "partner_share_pct": (
+                    round(partner_total / denominator * 100, 1) if denominator else 0.0
+                ),
                 "bookings_in_shipment_export": sum(
                     bookings.get(account.account_id, Counter()).values()
                 ),
@@ -1109,15 +1137,18 @@ def unlabelled_location_rows(
                 "funeral_home": account.name,
                 "state": account.state,
                 "register_match_tier": account.match_tier,
-                "matched_register_location": account.matched_location.name
-                if account.matched_location
-                else "",
+                "matched_register_location": (
+                    account.matched_location.name if account.matched_location else ""
+                ),
                 "bookings_all_years": sum(per_year.values()),
                 "bookings_2025": per_year.get(2025, 0),
                 "bookings_2026_to_cut": per_year.get(2026, 0),
             }
         )
-    return sorted(rows, key=lambda row: (-int(row["bookings_all_years"]), str(row["funeral_home"])))
+    return sorted(
+        rows,
+        key=lambda row: (-int(row["bookings_all_years"]), str(row["funeral_home"])),
+    )
 
 
 def revenue_rows(
@@ -1145,7 +1176,8 @@ def revenue_rows(
 
     years = sorted({year for per_year in revenue.values() for year in per_year})
     all_customer_total = {
-        year: sum(per_year.get(year, 0.0) for per_year in revenue.values()) for year in years
+        year: sum(per_year.get(year, 0.0) for per_year in revenue.values())
+        for year in years
     }
     rows: list[dict[str, object]] = []
     for year in years:
@@ -1157,9 +1189,11 @@ def revenue_rows(
                 "sci_revenue": round(sci_total, 2),
                 "sci_customers_with_revenue": customers,
                 "csi_total_revenue_all_customers": round(all_customer_total[year], 2),
-                "sci_share_of_total_pct": round(sci_total / all_customer_total[year] * 100, 2)
-                if all_customer_total[year]
-                else 0.0,
+                "sci_share_of_total_pct": (
+                    round(sci_total / all_customer_total[year] * 100, 2)
+                    if all_customer_total[year]
+                    else 0.0
+                ),
                 "is_partial_year": "yes" if year == DATA_CUT_YEAR else "no",
             }
         )
@@ -1298,7 +1332,9 @@ def write_meta(
         "pii_columns_dropped_at_load": list(OMS_COLUMNS_DROPPED),
         "join_keys_not_written_to_output": ["phone", "zip"],
     }
-    path.with_suffix(".meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
+    path.with_suffix(".meta.json").write_text(
+        json.dumps(meta, indent=2) + "\n", encoding="utf-8"
+    )
 
 
 def main() -> int:
@@ -1320,7 +1356,8 @@ def main() -> int:
     manifest = load_partner_manifest(PARTNER_MANIFEST)
 
     factor = annualisation_factor(
-        booking_tally["annualisation_numerator"], booking_tally["annualisation_denominator"]
+        booking_tally["annualisation_numerator"],
+        booking_tally["annualisation_denominator"],
     )
     LOG.info(
         "annualisation factor=%.4f (from %d/%d bookings in %s)",
@@ -1395,13 +1432,19 @@ def main() -> int:
         footprint,
         "SCI shipping locations and bookings by flight-date year, 2022-2026.",
         [
-            "bookings with no shipping funeral home excluded "
-            f"({booking_tally['no_funeral_home']} rows)",
+            (
+                "bookings with no shipping funeral home excluded "
+                f"({booking_tally['no_funeral_home']} rows)"
+            ),
             f"bookings with no flight date excluded ({booking_tally['no_flight_date']} rows)",
-            f"flight years outside 2022-{DATA_CUT_YEAR} excluded "
-            f"({booking_tally['impossible_year']} rows)",
-            "flight dates after the 2026-11-10 data cut excluded "
-            f"({booking_tally['flight_after_data_cut']} rows)",
+            (
+                f"flight years outside 2022-{DATA_CUT_YEAR} excluded "
+                f"({booking_tally['impossible_year']} rows)"
+            ),
+            (
+                "flight dates after the 2026-11-10 data cut excluded "
+                f"({booking_tally['flight_after_data_cut']} rows)"
+            ),
             "2022 is not comparable: legacy-system adoption ramp",
             f"2026 is partial to 2026-11-10; annualised by {factor:.4f}",
         ],
@@ -1457,8 +1500,10 @@ def main() -> int:
         "SCI footprint under the strict (CSI-labelled) and wide (register-matched) rules.",
         [
             "strict = funeral_home_group == 'SCI' or name contains 'sci location'",
-            "wide = strict, plus accounts matched to the June 2026 register on "
-            "location code, unique phone, or name+ZIP",
+            (
+                "wide = strict, plus accounts matched to the June 2026 register on "
+                "location code, unique phone, or name+ZIP"
+            ),
             "shared-phone-only matches are in neither rule",
         ],
     )
@@ -1474,8 +1519,10 @@ def main() -> int:
         [
             "the in-list TOTAL row and ALREADY PAID pseudo-customer are excluded",
             "names matching several SCI accounts are left unjoined and counted",
-            f"quickbooks names matched={coverage['quickbooks_names_matched']} "
-            f"ambiguous={coverage['quickbooks_names_ambiguous']}",
+            (
+                f"quickbooks names matched={coverage['quickbooks_names_matched']} "
+                f"ambiguous={coverage['quickbooks_names_ambiguous']}"
+            ),
             "accrued revenue, not cash; 2026 is partial to 2026-11-10",
         ],
     )
@@ -1496,14 +1543,33 @@ def main() -> int:
     # SCI bookings against matched-only revenue would understate revenue per
     # booking and therefore understate the model -- a mismatch worth avoiding even
     # though it would flatter nobody.
-    matched_shipping = [a for a in sci_shipping if a.account_id in revenue_by_account]
+    # Partner-dominant locations are excluded from the yield and the savings
+    # model. CSI's QuickBooks revenue on a partner-billed booking is the partner
+    # rate invoiced to NMS/IMS/Bergen, not the retail price a funeral home pays,
+    # and it is booked under the partner's customer record rather than the home's.
+    # Borthwick is the extreme case: 464 bookings in the window against $5,375 of
+    # revenue under its own name. Leaving it in understates SCI's revenue per
+    # booking by roughly a fifth and would make the savings model look smaller
+    # than the evidence supports.
+    partner_dominant = {
+        account_id
+        for account_id, entry in manifest.items()
+        if entry["partner_bookings"]
+        >= max(1, entry["partner_bookings"] + entry["self_billed_bookings"]) * 0.5
+    }
+    matched_shipping = [
+        a
+        for a in sci_shipping
+        if a.account_id in revenue_by_account and a.account_id not in partner_dominant
+    ]
     window_bookings = sum(
         sum(bookings[a.account_id].get(year, 0) for year in window_years)
         for a in matched_shipping
     )
     window_revenue = sum(revenue_by_account[a.account_id] for a in matched_shipping)
     all_sci_window_bookings = sum(
-        sum(bookings[a.account_id].get(year, 0) for year in window_years) for a in sci_shipping
+        sum(bookings[a.account_id].get(year, 0) for year in window_years)
+        for a in sci_shipping
     )
     LOG.info(
         "savings window: matched accounts=%d bookings=%d (of %d all-SCI) "
@@ -1523,9 +1589,17 @@ def main() -> int:
         ),
         "Booking-fee-avoidance sensitivity grid. Three of five inputs are assumptions.",
         [
-            f"window {window_years[0]}-{window_years[-1]}, SCI bookings={window_bookings} "
-            f"from the {len(matched_shipping)} SCI accounts whose QuickBooks revenue joined "
-            f"(all-SCI window bookings = {all_sci_window_bookings})",
+            (
+                f"window {window_years[0]}-{window_years[-1]}, SCI bookings={window_bookings} "
+                f"from the {len(matched_shipping)} SCI accounts whose QuickBooks revenue "
+                f"joined and that are not partner-dominant "
+                f"(all-SCI window bookings = {all_sci_window_bookings})"
+            ),
+            (
+                "partner-dominant SCI locations excluded: CSI's revenue on a "
+                "partner-billed booking is the partner rate, booked under the "
+                "partner's customer record"
+            ),
             f"SCI revenue in window=${window_revenue:,.0f} (QuickBooks accrued, matched only)",
             "EWA fee rate is [ASSUMPTION] from four observed points (CLAUDE.md 4.2)",
             "air-rate share is [ASSUMPTION]: CSI revenue includes ancillary fees",
@@ -1545,7 +1619,9 @@ def main() -> int:
         ),
         "sci_accounts_ever_shipped": len(sci_shipping),
         "sci_accounts_ever_shipped_strict_rule": sum(
-            1 for a in accounts.values() if a.is_sci_strict and bookings.get(a.account_id)
+            1
+            for a in accounts.values()
+            if a.is_sci_strict and bookings.get(a.account_id)
         ),
         "sci_shipping_accounts_in_june_2026_register": sum(
             1 for a in sci_shipping if a.matched_location is not None
@@ -1559,6 +1635,9 @@ def main() -> int:
         "sci_bookings_in_savings_window": window_bookings,
         "sci_bookings_in_savings_window_all_accounts": all_sci_window_bookings,
         "sci_accounts_in_savings_window": len(matched_shipping),
+        "sci_yield_in_savings_window": round(
+            window_revenue / window_bookings if window_bookings else 0.0, 2
+        ),
         "sci_revenue_in_savings_window": round(window_revenue, 2),
         "match_tiers": {k: v for k, v in sorted(tiers.items())},
         "booking_row_accounting": booking_tally,
@@ -1569,7 +1648,9 @@ def main() -> int:
         ),
     }
     summary_path = DERIVED / "sci-evidence-summary.json"
-    summary_path.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    summary_path.write_text(
+        json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
     LOG.info("wrote %s", summary_path.name)
     return 0
 

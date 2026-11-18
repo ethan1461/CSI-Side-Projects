@@ -19,7 +19,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from scripts.sci_relationship_evidence import (  # noqa: E402
+from scripts.sci_relationship_evidence import (
     OmsAccount,
     SciLocation,
     annualisation_factor,
@@ -51,17 +51,25 @@ from scripts.sci_relationship_evidence import (  # noqa: E402
         ("4356 - KRAEER FUNERAL HOME", True, "kraeer"),
         ("Kraeer Funeral Home (SCI Location #4356)", False, "kraeer"),
         ("Boardman-Smith Funeral Home, Inc.", False, "boardman smith"),
-        ("Star of David Memorial Gardens Cemetery & Funeral Chapel", False, "star david"),
+        (
+            "Star of David Memorial Gardens Cemetery & Funeral Chapel",
+            False,
+            "star david",
+        ),
         ("", False, ""),
     ],
 )
-def test_normalize_join_name_known_answers(raw: str, strip_prefix: bool, expected: str) -> None:
+def test_normalize_join_name_known_answers(
+    raw: str, strip_prefix: bool, expected: str
+) -> None:
     assert normalize_join_name(raw, strip_code_prefix=strip_prefix) == expected
 
 
 def test_normalize_join_name_collapses_the_two_systems_onto_one_key() -> None:
     """The whole cross-system join rests on this pair agreeing."""
-    register = normalize_join_name("3597 - FRED HUNTER'S FUNERAL HOME", strip_code_prefix=True)
+    register = normalize_join_name(
+        "3597 - FRED HUNTER'S FUNERAL HOME", strip_code_prefix=True
+    )
     oms = normalize_join_name("Fred Hunter's Funeral Home (SCI Location #3597)")
     assert register == oms == "fred hunter s"
 
@@ -99,7 +107,13 @@ def test_normalize_location_code_known_answers(raw: object, expected: str) -> No
 
 @pytest.mark.parametrize(
     ("raw", "expected"),
-    [("2024-03-11", 2024), ("2060-02-02", 2060), ("", None), (None, None), ("not a date", None)],
+    [
+        ("2024-03-11", 2024),
+        ("2060-02-02", 2060),
+        ("", None),
+        (None, None),
+        ("not a date", None),
+    ],
 )
 def test_parse_year_known_answers(raw: object, expected: int | None) -> None:
     assert parse_year(raw) == expected
@@ -109,7 +123,9 @@ def test_parse_year_known_answers(raw: object, expected: int | None) -> None:
     ("raw", "expected"),
     [("2026-11-10", (11, 10)), ("2026-11-11", (11, 11)), ("2026", None), (None, None)],
 )
-def test_parse_month_day_known_answers(raw: object, expected: tuple[int, int] | None) -> None:
+def test_parse_month_day_known_answers(
+    raw: object, expected: tuple[int, int] | None
+) -> None:
     assert parse_month_day(raw) == expected
 
 
@@ -171,12 +187,20 @@ def test_denominator_rows_separate_places_from_accounting_structures() -> None:
         _location(location_code="1"),
         _location(location_code="2"),
         _location(
-            location_code="3", location_type="Legal Posting Location", business_line="Cemetery"
+            location_code="3",
+            location_type="Legal Posting Location",
+            business_line="Cemetery",
         ),
         _location(
-            location_code="4", product_line="Cemetery Product Line", business_line="Cemetery"
+            location_code="4",
+            product_line="Cemetery Product Line",
+            business_line="Cemetery",
         ),
-        _location(location_code="5", location_type="Overhead", business_line="Corporate Segment"),
+        _location(
+            location_code="5",
+            location_type="Overhead",
+            business_line="Corporate Segment",
+        ),
     ]
     rows = {str(row["denominator"]): row for row in denominator_rows(locations)}
     assert rows["all_register_rows"]["locations"] == 5
@@ -206,7 +230,9 @@ def test_match_tier_property_ranks_signals_in_order() -> None:
 
 def test_shared_phone_alone_is_never_counted_as_sci() -> None:
     """1,276 register rows carry SCI's Houston head-office number."""
-    account = _account("200", sci_flagged=False, group_field="", name="Smith Funeral Home")
+    account = _account(
+        "200", sci_flagged=False, group_field="", name="Smith Funeral Home"
+    )
     account.match_methods = {"phone_shared"}
     assert account.is_sci is False
     account.match_methods = {"phone_unique"}
@@ -216,7 +242,9 @@ def test_shared_phone_alone_is_never_counted_as_sci() -> None:
 def test_strict_rule_reproduces_the_cohort_report_definition() -> None:
     labelled = _account("300", group_field="", name="Kraeer FH (SCI Location #4356)")
     group_only = _account("301", group_field="SCI", name="Neptune Society")
-    marker_only = _account("302", group_field="", name="Kennedy Roth Funeral Home (SCI)")
+    marker_only = _account(
+        "302", group_field="", name="Kennedy Roth Funeral Home (SCI)"
+    )
     assert labelled.is_sci_strict is True
     assert group_only.is_sci_strict is True
     # The strict rule deliberately misses a bare "(SCI)" with no location code --
@@ -266,11 +294,16 @@ def test_footprint_rows_known_answer() -> None:
 
 def test_definition_reconciliation_shows_the_wide_rule_as_an_addition() -> None:
     strict = _account("1", group_field="SCI")
-    wide_only = _account("2", sci_flagged=False, group_field="", name="Plain Home", sci_code="")
+    wide_only = _account(
+        "2", sci_flagged=False, group_field="", name="Plain Home", sci_code=""
+    )
     wide_only.match_methods = {"name_zip", "phone_unique"}
     accounts = {"1": strict, "2": wide_only}
     bookings = {"1": Counter({2025: 10}), "2": Counter({2025: 3})}
-    rows = {int(row["year"]): row for row in definition_reconciliation_rows(accounts, bookings, 1.0)}
+    rows = {
+        int(row["year"]): row
+        for row in definition_reconciliation_rows(accounts, bookings, 1.0)
+    }
     assert rows[2025]["strict_shipping_locations"] == 1
     assert rows[2025]["strict_bookings"] == 10
     assert rows[2025]["wide_shipping_locations"] == 2
@@ -298,7 +331,10 @@ def test_trajectory_classes_known_answers() -> None:
         "6": Counter({2025: 3, 2026: 4}),  # 2025 cohort, +33%      -> grew
         "7": Counter({2023: 9, 2026: 2}),  # gap through 2025       -> reactivated
     }
-    rows = {str(row["funeral_home_id"]): row for row in trajectory_rows(accounts, bookings, {}, 1.0)}
+    rows = {
+        str(row["funeral_home_id"]): row
+        for row in trajectory_rows(accounts, bookings, {}, 1.0)
+    }
     assert rows["1"]["trajectory"] == "grew"
     assert rows["2"]["trajectory"] == "flat"
     assert rows["3"]["trajectory"] == "declined"
@@ -307,7 +343,9 @@ def test_trajectory_classes_known_answers() -> None:
     assert rows["7"]["trajectory"] == "reactivated"
 
 
-def test_a_2025_cohort_location_is_classified_on_its_movement_not_parked_as_new() -> None:
+def test_a_2025_cohort_location_is_classified_on_its_movement_not_parked_as_new() -> (
+    None
+):
     """Regression: `new_2025` used to pre-empt grew/flat/declined.
 
     A location CSI won in 2025 and grew in 2026 was being reported as "new",
@@ -316,7 +354,10 @@ def test_a_2025_cohort_location_is_classified_on_its_movement_not_parked_as_new(
     """
     accounts = [_account("1"), _account("2")]
     bookings = {"1": Counter({2025: 3, 2026: 9}), "2": Counter({2025: 10, 2026: 2})}
-    rows = {str(row["funeral_home_id"]): row for row in trajectory_rows(accounts, bookings, {}, 1.0)}
+    rows = {
+        str(row["funeral_home_id"]): row
+        for row in trajectory_rows(accounts, bookings, {}, 1.0)
+    }
     assert rows["1"]["trajectory"] == "grew"
     assert rows["1"]["cohort"] == "first_shipped_2025"
     assert rows["2"]["trajectory"] == "declined"
@@ -336,10 +377,14 @@ def test_trajectory_summary_deltas_sum_to_the_net_movement() -> None:
     accounts = [_account("1"), _account("2")]
     bookings = {"1": Counter({2025: 10, 2026: 20}), "2": Counter({2025: 10})}
     trajectories = trajectory_rows(accounts, bookings, {}, 1.0)
-    summary = {str(row["trajectory"]): row for row in trajectory_summary_rows(trajectories)}
+    summary = {
+        str(row["trajectory"]): row for row in trajectory_summary_rows(trajectories)
+    }
     assert summary["grew"]["booking_delta_annualised"] == 10.0
     assert summary["lapsed"]["booking_delta_annualised"] == -10.0
-    assert sum(float(row["booking_delta_annualised"]) for row in summary.values()) == 0.0
+    assert (
+        sum(float(row["booking_delta_annualised"]) for row in summary.values()) == 0.0
+    )
 
 
 # --- geography, concentration, partner routing ------------------------------
@@ -351,7 +396,11 @@ def test_geography_labels_gateway_and_pickup_states() -> None:
         _account("2", state="HI"),
         _account("3", state="TX"),
     ]
-    bookings = {"1": Counter({2026: 5}), "2": Counter({2026: 3}), "3": Counter({2025: 1})}
+    bookings = {
+        "1": Counter({2026: 5}),
+        "2": Counter({2026: 3}),
+        "3": Counter({2025: 1}),
+    }
     rows = {str(row["state"]): row for row in geography_rows(accounts, bookings)}
     assert rows["FL"]["csi_gateway_in_state"] == "MIA"
     assert rows["FL"]["csi_pickup_metro_in_state"] == "yes"
@@ -371,7 +420,10 @@ def test_concentration_known_answer() -> None:
         "4": Counter({2025: 5}),
     }
     revenue = {"1": 500.0, "2": 300.0, "3": 150.0, "4": 50.0}
-    rows = {int(row["top_n_locations"]): row for row in concentration_rows(accounts, bookings, revenue)}
+    rows = {
+        int(row["top_n_locations"]): row
+        for row in concentration_rows(accounts, bookings, revenue)
+    }
     assert rows[1]["bookings_in_top_n"] == 50
     assert rows[1]["pct_of_sci_bookings"] == 50.0
     assert rows[3]["pct_of_sci_bookings"] == 95.0
@@ -414,10 +466,19 @@ def test_unlabelled_locations_require_a_register_match_and_a_booking() -> None:
         "3", sci_flagged=False, group_field="", name="Quiet Home", sci_code=""
     )
     unlabelled_quiet.match_methods = {"name_zip", "phone_unique"}
-    shared_only = _account("4", sci_flagged=False, group_field="", name="Shared", sci_code="")
+    shared_only = _account(
+        "4", sci_flagged=False, group_field="", name="Shared", sci_code=""
+    )
     shared_only.match_methods = {"phone_shared"}
-    accounts = {a.account_id: a for a in (labelled, unlabelled_shipping, unlabelled_quiet, shared_only)}
-    bookings = {"1": Counter({2025: 9}), "2": Counter({2025: 2}), "4": Counter({2025: 7})}
+    accounts = {
+        a.account_id: a
+        for a in (labelled, unlabelled_shipping, unlabelled_quiet, shared_only)
+    }
+    bookings = {
+        "1": Counter({2025: 9}),
+        "2": Counter({2025: 2}),
+        "4": Counter({2025: 7}),
+    }
     rows = unlabelled_location_rows(accounts, bookings)
     assert [row["funeral_home_id"] for row in rows] == ["2"]
 
@@ -466,10 +527,17 @@ def test_savings_model_rejects_a_zero_denominator() -> None:
 
 # --- published-figure guards ------------------------------------------------
 
-_SUMMARY = Path(__file__).resolve().parent.parent / "data" / "derived" / "sci-evidence-summary.json"
+_SUMMARY = (
+    Path(__file__).resolve().parent.parent
+    / "data"
+    / "derived"
+    / "sci-evidence-summary.json"
+)
 
 
-@pytest.mark.skipif(not _SUMMARY.exists(), reason="run scripts/sci_relationship_evidence.py first")
+@pytest.mark.skipif(
+    not _SUMMARY.exists(), reason="run scripts/sci_relationship_evidence.py first"
+)
 def test_published_sci_figures_have_not_moved() -> None:
     """Pins the figures quoted in `reports/sci-relationship-evidence.md`."""
     import json
@@ -485,7 +553,9 @@ def test_published_sci_figures_have_not_moved() -> None:
     assert summary["partner_routed_sci_bookings"] == 509
 
 
-@pytest.mark.skipif(not _SUMMARY.exists(), reason="run scripts/sci_relationship_evidence.py first")
+@pytest.mark.skipif(
+    not _SUMMARY.exists(), reason="run scripts/sci_relationship_evidence.py first"
+)
 def test_strict_rule_still_reproduces_the_published_cohort_figures() -> None:
     """97 / 120 / 123 shipping locations and 1,044 / 1,128 / 1,038 bookings.
 
@@ -496,7 +566,9 @@ def test_strict_rule_still_reproduces_the_published_cohort_figures() -> None:
     import csv
 
     path = _SUMMARY.parent / "sci-definition-reconciliation.csv"
-    rows = {int(row["year"]): row for row in csv.DictReader(path.open(encoding="utf-8"))}
+    rows = {
+        int(row["year"]): row for row in csv.DictReader(path.open(encoding="utf-8"))
+    }
     assert int(rows[2024]["strict_shipping_locations"]) == 97
     assert int(rows[2025]["strict_shipping_locations"]) == 120
     assert int(rows[2026]["strict_shipping_locations"]) == 123
@@ -506,7 +578,9 @@ def test_strict_rule_still_reproduces_the_published_cohort_figures() -> None:
     assert float(rows[2026]["strict_bookings_annualised"]) == 1198.0
 
 
-@pytest.mark.skipif(not _SUMMARY.exists(), reason="run scripts/sci_relationship_evidence.py first")
+@pytest.mark.skipif(
+    not _SUMMARY.exists(), reason="run scripts/sci_relationship_evidence.py first"
+)
 def test_borthwick_is_one_location_not_a_pattern() -> None:
     """The finding the brief asked to be chased, pinned so it cannot drift.
 

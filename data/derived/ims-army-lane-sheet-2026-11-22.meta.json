@@ -1,0 +1,26 @@
+{
+  "script": "scripts/build_ims_army_lane_sheet.py",
+  "script_version": "1.0.0",
+  "generated_at": "2026-11-22T22:14:48.172410+00:00",
+  "asof": "2026-11-22",
+  "window_start": "2026-05-26",
+  "lookback_months": 6,
+  "sources": [
+    "data/raw/shipments-since-2022-20261110.xlsx",
+    "data/raw/oms-funeral-homes-20261109.csv"
+  ],
+  "rate_basis": "PUBLISHED (Ethan, 2026-11-22) - not discount, not contracted",
+  "targets": 10,
+  "targets_matched": 10,
+  "targets_unmatched": [],
+  "csi_records_matched": 12,
+  "shipments_in_window": 190,
+  "columns_not_filled": [
+    "Origin airport",
+    "Destination airport",
+    "Carrier",
+    "Published rate"
+  ],
+  "columns_not_filled_reason": "origin/destination absent from all CSI exports (CLAUDE.md s4.3); fill by Booking ID from the OMS",
+  "pii": "none - booking refs, business names, cities, states and dates only (CLAUDE.md s7.2); contact columns in the funeral home file are not read"
+}

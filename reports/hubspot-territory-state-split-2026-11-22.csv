@@ -1,0 +1,296 @@
+company_id,name,state,oms_funeral_home_id,current_owner,state_rule_owner,action,status
+60900123981,Florida Memorial Gardens (SCI Location #4467),FL,14112,Otto,Stacy,HOLD_SCI_ENTERPRISE,not_changed
+60848661844,Lake Lawn Metairie Funeral Home (SCI Location #9785),LA,13079,Otto,Stacy,HOLD_SCI_ENTERPRISE,not_changed
+60868291926,Hill Crest Memorial Funeral Home (SCI Location #4039),LA,9741,Otto,Stacy,HOLD_SCI_ENTERPRISE,not_changed
+60870928803,Hargrave Funeral Home (SCI Location #7199),LA,10459,Otto,Stacy,HOLD_SCI_ENTERPRISE,not_changed
+60878486658,Rock Funeral Home (SCI Location #1145),MA,9094,Stacy,Otto,HOLD_SCI_ENTERPRISE,not_changed
+60861347919,Funeraria y Cementerio Del Angel Pilar (SCI Location #9540),PR,4632,Stacy,Otto,HOLD_SCI_ENTERPRISE,not_changed
+60883574436,Heights Funeral Home (SCI Location #2091),TX,11458,Otto,Stacy,HOLD_SCI_ENTERPRISE,not_changed
+60863999274,Miller Macari Funeral Home,CT,18567,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60846344595,RIverside Gordon Memorial Chapel (SCI Location #7083),FL,2334,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60855635995,Kraeer Funeral Home and Cremation Center (SCI Location #7097),FL,2120,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60860595457,Plenitud Funeral Homes,FL,2297,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60863516725,Holloway Funeral Home & Cremation Services,FL,2760,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60867982612,Meadowlawn Funeral Home and Memorial Park (SCI Location #4224),FL,21641,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60868737417,Lakeside Memorial Park & Lakeside Funeral Home (SCI Location #1068),FL,2136,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60874025751,Moss Feaster Funeral Home & Cremation Services (Northstar Location #4674),FL,2224,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60874325011,WILLIAM THOMAS FUNERAL HOME,FL,10486,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60876031645,Royal Palm Funeral Home & Memorial Gardens (SCI Location #9794),FL,7974,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60879565888,Baldwin-Fairchild Oaklawn Chapel (SCI Location #9830),FL,21477,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60879860228,Pinello Funeral Home,FL,5691,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60897962574,Memorial Park Funeral Home (St. Petersburg - Northstar Location #4101),FL,2200,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60898421375,Caballero Rivero Westchester (SCI Location #9550),FL,1806,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60900425286,Steele's Family Funeral Services,FL,17037,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+61176499232,Van Orsdel Funeral Home,FL,13709,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60848335442,Carmichael-Hemperley Funeral Home and Crematory (SCI Location #7126),GA,1815,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60856874082,Divine Mortuary,GA,1884,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60869048957,O. L. Hughes And Sons Mortuary,KY,19051,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60853163639,J.S. Waterman Langone Chapel (SCI Location #4643),MA,6163,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60864313218,George F. Doherty & Sons Funeral Home,MA,6875,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60864313219,Solimine Funeral Homes,MA,16119,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60864313217,ROBERT A PUMPHREY FUNERAL HOME,MD,13728,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60879565889,Mississippi Mortuary Services,MS,2217,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60875570182,Weisman Mortuary,NC,4404,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60861810011,McCracken Funeral Home,NJ,5081,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60873231155,Las Americas Funeral Home,NJ,2141,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60879089440,Martinez Memorial LLC (New Jersey),NJ,2184,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60879714086,Jewish Burial Society of New Jersey,NJ,5921,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60845706282,Brooklyn Funeral Home & Cremation Services,NY,1794,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60854242658,Camelot funeral home,NY,16130,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60873709320,Blair-Mazzarella Funeral Home,NY,1774,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60874025750,Parkside Memorial Chapels (SCI Location #8559),NY,8035,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60874158614,WEINSTEIN MEMORIAL CHAPELS (YONKERS),NY,6749,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60876327187,"Leone Funeral Home, Inc.",NY,2150,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60880636163,Demaco-Stone Funeral Home,NY,14443,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+61176499231,"Guarino Funeral Home, Inc.",NY,2021,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+61176622643,Majestic Funeral Home,NY,7188,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60860127389,Amadorez Funeral Home,PA,1721,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60879408531,AUMAN'S INC FUNERAL HOME,PA,18078,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60899038800,"Joseph Levine & Sons, Inc.",PA,2105,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60852992335,Stapleton Family Funeral Home,RI,4381,Stacy,Otto,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60871394716,CAUGHMANI HARMAN FUNERAL HOME,SC,8398,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+61176380962,Roberts Funeral Home,SC,3666,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60848661837,Family First Funeral Home,TX,17824,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60867674703,Earthman Southwest Funeral Home (SCI Location #7471),TX,4699,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60867826851,Carrillo Funeral Home (Dallas),TX,9372,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60868586125,Cook Walden Funeral Home (SCI Location #4884),TX,21203,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60869223511,Rasberry Family Funeral Home,TX,3964,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60873867279,Forest Park - The Woodlands Funeral Home & Cemetery (SCI Location #4922),TX,21433,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60859970425,Mullins and Thompson Funeral Service (SCI Location #7534),VA,2229,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60880938875,Cook Brothers Funeral Directors and Cremations,VA,14241,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60881099891,BEECHER & BENNETT FUNERAL HOME,VA,5630,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60881874329,"ROYSTON FUNERAL HOME (Middleburg, VA)",VA,15301,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60883727437,Randall Funeral Home,VA,4335,Otto,Stacy,HOLD_ON_CALL_SHEET_repoint_after_campaign,not_changed
+60845706294,MOBILE MEMORIAL GARDENS,AL,9124,Otto,Stacy,MOVE,executed_verified
+60859970423,Elkins Funeral Home (IMS),AL,2849,Otto,Stacy,MOVE,executed_verified
+60875570180,Radney Funeral Home,AL,8028,Otto,Stacy,MOVE,executed_verified
+61117714192,"Serenity Funeral Home (Theodore, AL)",AL,,Otto,Stacy,MOVE,executed_verified
+60853623040,Hardy Funeral Home,AR,12211,Otto,Stacy,MOVE,executed_verified
+60859970430,Beard's Funeral Chapel,AR,2811,Otto,Stacy,MOVE,executed_verified
+60876031642,Hot Springs F.H,AR,2795,Otto,Stacy,MOVE,executed_verified
+60898421374,Ozarka Embalming Services,AR,21672,Otto,Stacy,MOVE,executed_verified
+60848817566,Abriola Parkview Funeral Home,CT,21196,Stacy,Otto,MOVE,executed_verified
+60854383030,Nutmeg Trade Services,CT,11320,Stacy,Otto,MOVE,executed_verified
+60856874083,BOUTON FUNERAL HOME,CT,13719,Stacy,Otto,MOVE,executed_verified
+60865523024,WELLER FUNERAL HOME,CT,16246,Stacy,Otto,MOVE,executed_verified
+60877578657,FUNK FUNERAL HOME,CT,8081,Stacy,Otto,MOVE,executed_verified
+60878018462,Abbey Cremation Services,CT,1688,Stacy,Otto,MOVE,executed_verified
+60856874091,Whitney's Life Center,DC,11759,Stacy,Otto,MOVE,executed_verified
+60874776227,John T. Rhines Funeral Home,DC,2099,Stacy,Otto,MOVE,executed_verified
+60878637361,Hunt Funeral Home,DC,11170,Stacy,Otto,MOVE,executed_verified
+60874482695,DOHERTY FUNERAL HOME,DE,12596,Stacy,Otto,MOVE,executed_verified
+60879565884,Bennie Smith Funeral Home,DE,1762,Stacy,Otto,MOVE,executed_verified
+60397908828,A Good Shepherd's Funeral Home,FL,3273,Otto,Stacy,MOVE,executed_verified
+60853932052,DeGusipe Funeral Home,FL,14162,Otto,Stacy,MOVE,executed_verified
+60854091134,FERO FUNERAL HOME,FL,7694,Otto,Stacy,MOVE,executed_verified
+60854383026,Casey Myers-Love And Grace Funeral Cremation,FL,21742,Otto,Stacy,MOVE,executed_verified
+60855152291,ROSE LAWN FUNERAL HOME,FL,7994,Otto,Stacy,MOVE,executed_verified
+60856099210,JOE MORRIS & SON FUNERAL HOME,FL,12362,Otto,Stacy,MOVE,executed_verified
+60859347786,GAIL & WYNN'S MORTUARY,FL,6726,Otto,Stacy,MOVE,executed_verified
+60864758870,Brandon Cremation & Funeral Services,FL,3089,Otto,Stacy,MOVE,executed_verified
+60868737422,"Marvin C Zanders Funeral Home, Inc.",FL,8173,Otto,Stacy,MOVE,executed_verified
+60874482702,Veterans Funeral Care,FL,2470,Otto,Stacy,MOVE,executed_verified
+60875570184,ST FORT FUNERAL HOME,FL,3428,Otto,Stacy,MOVE,executed_verified
+60883109520,FUNERARIA LATINA EMANUEL,FL,17791,Otto,Stacy,MOVE,executed_verified
+60883109524,Postells Mortuary,FL,21749,Otto,Stacy,MOVE,executed_verified
+60883884650,Funeraria San Juan (Orlando - Simpson Rd),FL,21771,Otto,Stacy,MOVE,executed_verified
+60883884654,Hodges Life Celebration,FL,7265,Otto,Stacy,MOVE,executed_verified
+60899811645,Palm Beach National Chapel,FL,2265,Otto,Stacy,MOVE,executed_verified
+60900579158,Family Funeral & Cremation (IMS),FL,3004,Otto,Stacy,MOVE,executed_verified
+60901358982,Lohman Funeral Home (Deltona),FL,8955,Otto,Stacy,MOVE,executed_verified
+60846344582,In Their Honor Funeral and Cremation Providers,GA,21711,Otto,Stacy,MOVE,executed_verified
+60855636003,Owen Funeral Home,GA,3153,Otto,Stacy,MOVE,executed_verified
+60857479296,Willis Funeral Home,GA,21767,Otto,Stacy,MOVE,executed_verified
+60858894689,Matthew H. Lovett And Son's Funeral Home,GA,13256,Otto,Stacy,MOVE,executed_verified
+60865353134,Kinsey and Walton Funeral Home,GA,19915,Otto,Stacy,MOVE,executed_verified
+60867522104,FL Sims Funeral Home,GA,20053,Otto,Stacy,MOVE,executed_verified
+60867674709,INGRAM FUNERAL HOME & CREMATORY,GA,8870,Otto,Stacy,MOVE,executed_verified
+60875570185,WEST COBB FUNERAL HOME,GA,15339,Otto,Stacy,MOVE,executed_verified
+60880938878,GREGORY B. LEVETT & SONS FUNERALS HOME & CREMATORY,GA,5035,Otto,Stacy,MOVE,executed_verified
+60899495700,Guam Memorial Funeral Home,GU,7052,Otto,Stacy,MOVE,executed_verified
+60846807886,MILWARD FUNERAL DIRECTORS,KY,3844,Otto,Stacy,MOVE,executed_verified
+60820884352,Honaker Funeral Home Forest Lawn Cemetery & Crematorium,LA,,Otto,Stacy,MOVE,executed_verified
+60823109514,L.A. Mulheisen & Son Funerals Memorials & Cremation,LA,,Otto,Stacy,MOVE,executed_verified
+60823172458,Church Funeral Services & Crematory,LA,,Otto,Stacy,MOVE,executed_verified
+60853932048,FALGOUT FUNERAL HOMES,LA,17461,Otto,Stacy,MOVE,executed_verified
+60864154122,Riley Smith & Sons Funeral Home,LA,7712,Otto,Stacy,MOVE,executed_verified
+60871697333,Hargrave Funeral Home,LA,5823,Otto,Stacy,MOVE,executed_verified
+60897510454,Tharp-Sontheimer-Tharp Funeral Home,LA,3005,Otto,Stacy,MOVE,executed_verified
+60928031040,Harry McKneely & Son,LA,,Otto,Stacy,MOVE,executed_verified
+60928154150,The Charlet Family Funeral Home & Monument Company,LA,,Otto,Stacy,MOVE,executed_verified
+60928216626,"Bagnell & Son Funeral Home, Crematory & Eternal Rest Cemetery",LA,,Otto,Stacy,MOVE,executed_verified
+60928227463,LN Hughes Funeral Services,LA,,Otto,Stacy,MOVE,executed_verified
+61097659710,Garden of Memories Funeral Home & Cemetery,LA,,Otto,Stacy,MOVE,executed_verified
+61434732057,Dennard First National,LA,,Otto,Stacy,MOVE,executed_verified
+61434734189,EJ Fielding Funeral Home & Cremation Services,LA,,Otto,Stacy,MOVE,executed_verified
+61434746239,Walters Funeral Home,LA,,Otto,Stacy,MOVE,executed_verified
+61434808989,Brandon G. Thompson Funeral Home,LA,,Otto,Stacy,MOVE,executed_verified
+60848509269,ACTON FUNERAL HOME,MA,18195,Stacy,Otto,MOVE,executed_verified
+60853163646,Rice Funeral Home LLC,MA,12163,Stacy,Otto,MOVE,executed_verified
+60856099216,JOSEPH RUSSO FUNERAL HOME,MA,14422,Stacy,Otto,MOVE,executed_verified
+60856570786,Callahan Fay Caswell Funeral Home,MA,11783,Stacy,Otto,MOVE,executed_verified
+60864758874,Dillon Funeral Home,MA,10607,Stacy,Otto,MOVE,executed_verified
+60867364748,Salvatore Rocco & Sons Funeral Home,MA,2368,Stacy,Otto,MOVE,executed_verified
+60875877728,Robert J Lawler & Crosby,MA,19737,Stacy,Otto,MOVE,executed_verified
+60878948683,NICKERSON FUNERAL HOME,MA,2946,Stacy,Otto,MOVE,executed_verified
+60882027415,Keefe Funeral Home (Mass),MA,2111,Stacy,Otto,MOVE,executed_verified
+60883417884,CAMPBELL FUNERAL HOME (MA),MA,16779,Stacy,Otto,MOVE,executed_verified
+60899969161,Joseph A. Russo & Bros Inc Funeral Home,MA,2885,Stacy,Otto,MOVE,executed_verified
+60901358978,Shepherd Funeral Homes,MA,21591,Stacy,Otto,MOVE,executed_verified
+60868119833,CONNELLY CREMATION AND FUNERAL SERVICES (CHARLES ZANNINO FUNERAL),MD,12184,Stacy,Otto,MOVE,executed_verified
+60869223054,Advent Funeral & Cremation Services,MD,1696,Stacy,Otto,MOVE,executed_verified
+60877867522,HEAVEN BOUND MORTUARY SERVICES,MD,10236,Stacy,Otto,MOVE,executed_verified
+60879408532,HICKS HOME FOR FUNERALS,MD,19430,Stacy,Otto,MOVE,executed_verified
+60879714085,MARCH FUNERAL HOME,MD,3324,Stacy,Otto,MOVE,executed_verified
+60863365816,Bibber Memorial Chapel,ME,7736,Stacy,Otto,MOVE,executed_verified
+60877408560,THE JEWISH FUNERAL HOME,ME,3852,Stacy,Otto,MOVE,executed_verified
+60859183635,D. Rollins Funeral Home,MS,21664,Otto,Stacy,MOVE,executed_verified
+60897510444,EE Mcdonald Funeral Home,MS,21585,Otto,Stacy,MOVE,executed_verified
+61041141293,Natchez Trace Funeral Home Memorial Park Cemetery & Crematory,MS,,Otto,Stacy,MOVE,executed_verified
+61088565877,Bradford O'Keefe Funeral Homes,MS,,Otto,Stacy,MOVE,executed_verified
+60383698494,A.E. Grier and Sons Funeral Home,NC,6888,Otto,Stacy,MOVE,executed_verified
+60846169485,Rouse Mortuary Service & Crematory,NC,6586,Otto,Stacy,MOVE,executed_verified
+60854552192,Bass-Smith Funeral Home,NC,11336,Otto,Stacy,MOVE,executed_verified
+60870928806,Tribute and Tallent Funerals and Cremations,NC,5844,Otto,Stacy,MOVE,executed_verified
+60875108751,Life And Legacy Funerals And Cremations,NC,18595,Otto,Stacy,MOVE,executed_verified
+60875731328,Dunn Funeral Home and Cremation Services,NC,21760,Otto,Stacy,MOVE,executed_verified
+60877408556,Gibson Moore Mortuary Service,NC,7622,Otto,Stacy,MOVE,executed_verified
+60877578652,Cumby Family Funeral Service,NC,6927,Otto,Stacy,MOVE,executed_verified
+60878948687,Smoky Mountain Cremations and Funeral Service,NC,21402,Otto,Stacy,MOVE,executed_verified
+60879089433,BOLES FUNERAL HOME,NC,4416,Otto,Stacy,MOVE,executed_verified
+60881099897,PINECREST FUNERAL & CREMATION,NC,4967,Otto,Stacy,MOVE,executed_verified
+60898566716,Apex Funeral Home,NC,13582,Otto,Stacy,MOVE,executed_verified
+61117714527,Wheeler & Woodlief Funeral Home & Cremation Services,NC,,Otto,Stacy,MOVE,executed_verified
+60846496783,BENNETT FUNERAL HOME (CONCORD),NH,7695,Stacy,Otto,MOVE,executed_verified
+60860421815,PURDY FUNERAL HOME,NH,13270,Stacy,Otto,MOVE,executed_verified
+60867522114,Waters Funeral Home,NH,13486,Stacy,Otto,MOVE,executed_verified
+60872013894,Tasker Funeral Home,NH,14874,Stacy,Otto,MOVE,executed_verified
+60875243573,Lambert Funeral Home & Crematory,NH,17349,Stacy,Otto,MOVE,executed_verified
+60846651450,PLATT MEMORIAL CHAPEL,NJ,3502,Stacy,Otto,MOVE,executed_verified
+60847405651,Maliszewski Funeral Home,NJ,21723,Stacy,Otto,MOVE,executed_verified
+60853776569,Gutterman Brothers Funeral Directors,NJ,13615,Stacy,Otto,MOVE,executed_verified
+60855152282,Burroughs Kohr & Dangler Funeral Home,NJ,15824,Stacy,Otto,MOVE,executed_verified
+60858406319,FEENEY FUNEAL HOME,NJ,5228,Stacy,Otto,MOVE,executed_verified
+60862761080,Evergreen Memorial Funeral Home,NJ,1926,Stacy,Otto,MOVE,executed_verified
+60865353139,Clayton & McGirr Funeral Home,NJ,13543,Stacy,Otto,MOVE,executed_verified
+60867191060,Jones Funeral Home,NJ,21685,Stacy,Otto,MOVE,executed_verified
+60873073228,DANGLER LEWIS & CAREY FUNERAL HOME,NJ,18948,Stacy,Otto,MOVE,executed_verified
+60876031641,MOUNT LAUREL HOME FOR FUNERALS,NJ,11431,Stacy,Otto,MOVE,executed_verified
+60877271861,Shook Funeral Home,NJ,4842,Stacy,Otto,MOVE,executed_verified
+60879565887,Frank Patti & Kenneth Mikatarian Funeral Home,NJ,1951,Stacy,Otto,MOVE,executed_verified
+60882491515,WOOLLEY-BOGLIOLI FUNERAL HOME,NJ,6700,Stacy,Otto,MOVE,executed_verified
+60897510440,Asian Indian Funeral Service,NJ,9525,Stacy,Otto,MOVE,executed_verified
+60897510451,Higgins Funeral Home(NJ),NJ,16149,Stacy,Otto,MOVE,executed_verified
+60898730775,"Vander Plaat Funeral Home (Wyckoff, NJ)",NJ,2465,Stacy,Otto,MOVE,executed_verified
+60900123986,Ledford Funeral Home,NJ,2147,Stacy,Otto,MOVE,executed_verified
+60900123988,WALTER J. JOHNSON FUNERAL HOME,NJ,7287,Stacy,Otto,MOVE,executed_verified
+60901358974,GALANTE FUNERAL HOME,NJ,3740,Stacy,Otto,MOVE,executed_verified
+60853472013,FOX FUNERAL HOME,NY,7213,Stacy,Otto,MOVE,executed_verified
+60853623044,TIER 1 FUNERAL SERVICE,NY,21362,Stacy,Otto,MOVE,executed_verified
+60853932053,Jeremiah Edwards Funeral Home,NY,2783,Stacy,Otto,MOVE,executed_verified
+60854552194,Edward F. Lieber Funeral Homes Inc.,NY,1910,Stacy,Otto,MOVE,executed_verified
+60856570787,Glascott Funeral Home,NY,1989,Stacy,Otto,MOVE,executed_verified
+60856570790,"Joseph J. Darrow Funeral Home, Inc.",NY,1865,Stacy,Otto,MOVE,executed_verified
+60857479302,WYMAN-FISHER FUNERAL HOME,NY,5406,Stacy,Otto,MOVE,executed_verified
+60858119689,E. GEORGE FUNERAL HOME,NY,3136,Stacy,Otto,MOVE,executed_verified
+60859662916,International Funeral Service of New York,NY,2075,Stacy,Otto,MOVE,executed_verified
+60861347923,Jurek Park Slope Funeral Home,NY,2108,Stacy,Otto,MOVE,executed_verified
+60864758876,CATRICALA FUNERAL HOME INC,NY,13140,Stacy,Otto,MOVE,executed_verified
+60865819783,LIND FUNERAL HOME,NY,15978,Stacy,Otto,MOVE,executed_verified
+60865819786,Hungerford & Clark Funeral Home,NY,3101,Stacy,Otto,MOVE,executed_verified
+60866274941,HOPLER & ESCHBACH FUNERAL HOME,NY,7819,Stacy,Otto,MOVE,executed_verified
+60869531942,DIPONZIO FUNERAL HOME,NY,11745,Stacy,Otto,MOVE,executed_verified
+60871060353,W J Lyons Funeral Home,NY,12834,Stacy,Otto,MOVE,executed_verified
+60872164900,"T. Carrillo Funeral Service, LLC",NY,2439,Stacy,Otto,MOVE,executed_verified
+60872321674,Paccione Funeral Directors,NY,14539,Stacy,Otto,MOVE,executed_verified
+60872608789,FALVO FUNERAL HOME,NY,17603,Stacy,Otto,MOVE,executed_verified
+60876483160,Dwyer & Michael's Funeral Home,NY,1901,Stacy,Otto,MOVE,executed_verified
+60877867525,Robert M Halgas Funeral Home,NY,3106,Stacy,Otto,MOVE,executed_verified
+60878175339,JOSEPH V. LEAHY FUNERAL HOME,NY,12021,Stacy,Otto,MOVE,executed_verified
+60882491509,DAVID FERGUSON FUNERAL HOME,NY,19991,Stacy,Otto,MOVE,executed_verified
+60883417886,FAMILY FUNERAL SERVICE,NY,3124,Stacy,Otto,MOVE,executed_verified
+60899969158,COOLICAN MCSWEENEY FUNERAL,NY,4849,Stacy,Otto,MOVE,executed_verified
+60900425284,SHALOM MEMORIAL CHAPELS INC,NY,3412,Stacy,Otto,MOVE,executed_verified
+60847266307,OKLAHOMA MORTUARY SERVICE TULSA,OK,21687,Otto,Stacy,MOVE,executed_verified
+60854552199,Ray and Martha's Funeral Home,OK,10841,Otto,Stacy,MOVE,executed_verified
+60883727435,TEMPLE & SONS FUENRAL HOME,OK,14621,Otto,Stacy,MOVE,executed_verified
+60853623047,Huff & Lakjer Funeral Home,PA,2063,Stacy,Otto,MOVE,executed_verified
+60858406328,Porterfield-Schied Funeral Directors & Cremation,PA,2301,Stacy,Otto,MOVE,executed_verified
+60860595384,Donohue Funeral Home - Newtown Square,PA,17685,Stacy,Otto,MOVE,executed_verified
+60861810012,TOMLINSON FUNERAL HOME,PA,11880,Stacy,Otto,MOVE,executed_verified
+60869531952,JEFFERSON MEMORIAL FUNERAL HOME,PA,18029,Stacy,Otto,MOVE,executed_verified
+60870301095,MCCRERY & HARRA FUNERAL HOMES,PA,7938,Stacy,Otto,MOVE,executed_verified
+60871217564,Salandra Funeral Home,PA,17346,Stacy,Otto,MOVE,executed_verified
+60872608796,Gesher HaChaim,PA,4836,Stacy,Otto,MOVE,executed_verified
+60875731329,Care of Bean Funeral Home,PA,20958,Stacy,Otto,MOVE,executed_verified
+60876031647,Thomas L. Niel Funeral Home,PA,15193,Stacy,Otto,MOVE,executed_verified
+60876173424,Jobe Funeral Home,PA,5599,Stacy,Otto,MOVE,executed_verified
+60877578662,LAUREL HILL FUNERAL HOME,PA,6725,Stacy,Otto,MOVE,executed_verified
+60879714084,"Davis-Garr Cremation and Funeral Services, Inc (IMS)",PA,3003,Stacy,Otto,MOVE,executed_verified
+60882491513,ROBINSON- LYTLE- SHOEMAKER FUNERAL HOME,PA,14203,Stacy,Otto,MOVE,executed_verified
+60898730769,CARLUCCI -DESANTIS FUNERAL HOME,PA,5076,Stacy,Otto,MOVE,executed_verified
+60899495702,GOLDSTEIN ROSENBERG RAPHAEL SACKS,PA,19830,Stacy,Otto,MOVE,executed_verified
+60846169478,FUNERARIA Y CAPILLAS MONSERRATE,PR,16355,Stacy,Otto,MOVE,executed_verified
+60846807881,FUNERARIA MARRERO,PR,12938,Stacy,Otto,MOVE,executed_verified
+60847405645,FUNERARIA BORINQUEN MEMORIAL DE CAROLINA,PR,3194,Stacy,Otto,MOVE,executed_verified
+60848335440,Funeraria Martell,PR,4788,Stacy,Otto,MOVE,executed_verified
+60848818261,"FUNERARIA EL BUEN PASTOR (CEIBA, PR)",PR,7275,Stacy,Otto,MOVE,executed_verified
+60854383021,Funeraria Utuado Memorial,PR,20981,Stacy,Otto,MOVE,executed_verified
+60854552196,Funeraria Garcia Memorial,PR,12062,Stacy,Otto,MOVE,executed_verified
+60855152281,FUNERARIA ADAMES MEMORIAL,PR,6120,Stacy,Otto,MOVE,executed_verified
+60856570795,FUNERARIA BONETAS LARES MEMORIAL,PR,3333,Stacy,Otto,MOVE,executed_verified
+60858894687,Funeraria Cardona,PR,9193,Stacy,Otto,MOVE,executed_verified
+60861347921,FUNERARIA MONTALVO,PR,2819,Stacy,Otto,MOVE,executed_verified
+60861674379,FUNERARIA FERMIN RIVERA,PR,5918,Stacy,Otto,MOVE,executed_verified
+60865970314,Maunabo Memorial Inc. by Acevedo Buitrago,PR,12534,Stacy,Otto,MOVE,executed_verified
+60875108749,FUNERARIA VALLE DE PAZ (CIDRA),PR,10932,Stacy,Otto,MOVE,executed_verified
+60880317770,Funeraria E Camposanto Los Sauces,PR,17353,Stacy,Otto,MOVE,executed_verified
+60880317774,FUNERARIA CRUZ (NAGUABO),PR,4796,Stacy,Otto,MOVE,executed_verified
+60880482464,LUQUILLO FUNERAL HOME,PR,3786,Stacy,Otto,MOVE,executed_verified
+60882336612,FUNERARIA BRISAS DE PAZ (SANTA ISABEL),PR,11141,Stacy,Otto,MOVE,executed_verified
+60882491508,FUNERARIA CEMI MEMORIAL,PR,6061,Stacy,Otto,MOVE,executed_verified
+60897962569,FUNERARIA BOULEVARD MEMORIAL,PR,11604,Stacy,Otto,MOVE,executed_verified
+60898421366,Funeraria Shalom Memorial,PR,4866,Stacy,Otto,MOVE,executed_verified
+60898566717,FUNERARIA EL ROBLE(SJU),PR,6092,Stacy,Otto,MOVE,executed_verified
+60900425278,FUNERARIA Y CEMENTERIO LA SANTA CRUZ,PR,15920,Stacy,Otto,MOVE,executed_verified
+60873867278,potvin-quinn funeral home,RI,6721,Stacy,Otto,MOVE,executed_verified
+60876031639,Mount Pleasant Funeral & Cremation Service,RI,3993,Stacy,Otto,MOVE,executed_verified
+60855636008,Thomas McAfee Funeral,SC,7549,Otto,Stacy,MOVE,executed_verified
+60864611848,Woodridge Funeral Home,SC,8831,Otto,Stacy,MOVE,executed_verified
+60873867284,WILDS FUNERL HOME,SC,6171,Otto,Stacy,MOVE,executed_verified
+60874776229,Riley's Funeral Home,SC,15423,Otto,Stacy,MOVE,executed_verified
+60879408539,Hamilton's Funeral Home,SC,8196,Otto,Stacy,MOVE,executed_verified
+60879565885,Bartell's Funeral Home,SC,10395,Otto,Stacy,MOVE,executed_verified
+60897510441,Grand Strand Funeral Home,SC,10943,Otto,Stacy,MOVE,executed_verified
+60898421373,Henryhand Funeral Home,SC,10201,Otto,Stacy,MOVE,executed_verified
+60854090594,Advantage Funeral & Cremation,TN,3497,Otto,Stacy,MOVE,executed_verified
+60856570792,CANALE FUNERAL DIRECTORS,TN,3860,Otto,Stacy,MOVE,executed_verified
+60872013885,Berry Highland West Funeral Home,TN,3932,Otto,Stacy,MOVE,executed_verified
+60872013886,Bridges Funeral Hoe,TN,4978,Otto,Stacy,MOVE,executed_verified
+60878330169,ROSE MORTUARY MANN HERITAGE CHAPEL,TN,2881,Otto,Stacy,MOVE,executed_verified
+60857479291,Galbreaith Pickard Funeral Chapel,TX,15546,Otto,Stacy,MOVE,executed_verified
+60859662918,Juan Palomo Funeral Home,TX,2106,Otto,Stacy,MOVE,executed_verified
+60861347924,Compean Funeral Home,TX,20428,Otto,Stacy,MOVE,executed_verified
+60863516727,La Paz Funeral Home (ELP),TX,11493,Otto,Stacy,MOVE,executed_verified
+60865819784,Pilar Funeral Home,TX,6594,Otto,Stacy,MOVE,executed_verified
+60866881318,Previsiones Pedregales Del Sur,TX,17969,Otto,Stacy,MOVE,executed_verified
+60871060346,Blackwell & Vazquez Woodforest Funeral Home,TX,21370,Otto,Stacy,MOVE,executed_verified
+60871394721,Mision Funeral home,TX,12766,Otto,Stacy,MOVE,executed_verified
+60872164897,Palmer Mortuary,TX,21358,Otto,Stacy,MOVE,executed_verified
+60872164901,Wade Family Funeral Home,TX,14470,Otto,Stacy,MOVE,executed_verified
+60872608797,LHT Consulting Group ( LOC 08405),TX,20911,Otto,Stacy,MOVE,executed_verified
+60879408529,Graceful Memorial Chapel (Brownie Campbell Rd),TX,21721,Otto,Stacy,MOVE,executed_verified
+60881874324,"God Made Clay, LLC",TX,21787,Otto,Stacy,MOVE,executed_verified
+61176559905,Clayton Funeral Home & Crematory,TX,,Otto,Stacy,MOVE,executed_verified
+60856254580,COVENANT FUNERAL SERVICES,VA,4713,Otto,Stacy,MOVE,executed_verified
+60856704018,"Miller Funeral Home and Crematory, Inc. (Virginia)",VA,2216,Otto,Stacy,MOVE,executed_verified
+60858560291,TIBBS FUNERAL HOME,VA,5179,Otto,Stacy,MOVE,executed_verified
+60860421805,BUCKTROUT OF WILLIAMSBURG FUNERAL SERVICES,VA,9451,Otto,Stacy,MOVE,executed_verified
+60870443842,WOODY FUNERAL HOME-PARHAM,VA,19366,Otto,Stacy,MOVE,executed_verified
+60872459441,Loudoun Funeral Chapel,VA,8083,Otto,Stacy,MOVE,executed_verified
+60874949436,OMAN FUNERAL HOME,VA,9675,Otto,Stacy,MOVE,executed_verified
+60875877724,Johnson Funeral Home (Locust Grove),VA,8093,Otto,Stacy,MOVE,executed_verified
+60878330166,AMES FUNERAL HOME,VA,4704,Otto,Stacy,MOVE,executed_verified
+60874325003,James Memorial Funeral Home,VI,3486,Stacy,Otto,MOVE,executed_verified
+60877271858,Pruneau-Polli Funeral Home,VT,15733,Stacy,Otto,MOVE,executed_verified
+60845706293,LANTZ FUNERAL HOME,WV,13176,Otto,Stacy,MOVE,executed_verified

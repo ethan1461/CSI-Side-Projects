@@ -59,3 +59,48 @@ Caveat: the state sets live in the build script, not in CLAUDE.md. Ethan has not
 Executed 2026-11-22. Pilot of 3 (rows 1 to 3), then rows 4 to 6; 6 updated, 0 failed, no credit-limit errors.
 Full read-back of all 6 by record id: 6 of 6 owner values match the "new owner" column (rows 1, 2, 3, 4, 6 Stacy 102528264; row 5 Otto 102528265). `csi_partner_routing` unchanged on rows 4 to 6.
 Post-change: West-state companies owned by Otto = 0; Midwest-state companies owned by Stacy = 0 (counts from the pre-change group-by minus the two moved; not re-queried in full).
+
+---
+
+# Addendum: state split executed (Ethan ruling 2026-11-22)
+
+Ethan ruled: do the state split in HubSpot, leave the call sheets as a grandfathered exception, and explain it to Otto and Stacy. Record-level change file: `reports/hubspot-territory-state-split-2026-11-22.csv` (every record: id, name, state, OMS id, current owner, rule owner, action).
+
+## A1. Rule applied
+
+- Otto: Midwest (IL IN IA KS MI MN MO NE ND OH SD WI) plus Northeast (NY NJ PA MA CT NH RI VT ME MD DE PR VI DC).
+- Stacy: West (CA OR WA AK HI AZ NV UT ID MT WY CO NM) plus every other state or territory (the South, GU).
+- Free-text state "nevada" normalised to NV. One record has no state (owned by Ethan): untouched.
+
+## A2. Sanity check (done before any write)
+
+Rule-implied ownership of the 824 state-bearing company records owned by Otto/Stacy: Otto 408, Stacy 416. Otto: Northeast 309, Midwest 99. Stacy: South 290, West 126. Balanced, contiguous within each rep, no state in an obviously wrong place. One judgement call: GU (Guam, 1 account) falls to Stacy under "everything else". It is a Pacific territory and sits with the West, so I kept it and flag it.
+
+## A3. Counts
+
+| Category | Records | Action |
+|---|---|---|
+| Already match the rule | 529 | none |
+| Rule disagrees with owner, MOVE | 233 | 123 Stacy to Otto, 110 Otto to Stacy |
+| Rule disagrees, on a live call sheet (grandfathered) | 55 | not changed; 33 Otto-owned would go to Stacy, 22 Stacy-owned would go to Otto |
+| Rule disagrees, SCI/Northstar enterprise location | 7 | not changed |
+| Partner-routed hold (`partner_routed_hold`, `mixed_hold`) | 0 in the owned set | none owned; none touched |
+
+Below the 600 pause threshold. Neither a merge nor a deletion.
+
+Call-sheet freeze set: all 190 OMS ids on the two sheets (Otto 83, Stacy 107), which includes the 45 held SCI/Northstar rows; the 145 "live" accounts are the 190 minus those 45 held. Freezing all 190 satisfies both the grandfather rule and the SCI hold. The Abe, Renee, Susej and Ethan sheets share no account with these (overlap 0).
+
+## A4. Grandfathered set, for the single re-point pass after the campaign
+
+The 55 rows with action `HOLD_ON_CALL_SHEET_repoint_after_campaign` in the change file. To re-point, set `hubspot_owner_id` to the `state_rule_owner` column.
+
+## A5. Undo
+
+For each MOVE row, set `hubspot_owner_id` back to `current_owner`.
+
+## A6. Execution and readback (2026-11-22)
+
+- Pilot of 10 first, read back 10 of 10, then 223 more in 23 batches of up to 10. **233 updated, 0 failed**, no credit-limit errors.
+- Full read-back of all 824 state-bearing records owned by Otto or Stacy, compared against this log by script: 529 already aligned (still aligned), 233 moved (233 match the target owner), 55 grandfathered (55 unchanged), 7 SCI enterprise (7 unchanged). Zero unexpected mismatches. Zero hold-marked records carry an owner. No owned record lacks a state.
+- Resulting ownership today (state-bearing, owned): Otto 422, Stacy 402. This is not the rule's balance because 62 records are held by the exceptions. Once the 55 call-sheet accounts are re-pointed after the campaign: Otto 408, Stacy 416 (the 7 SCI/Northstar locations are a separate hold and stay put).
+- Not covered: unowned companies. The split re-points existing owners only; no unowned account was given an owner. Ethan's own record (no state) untouched.

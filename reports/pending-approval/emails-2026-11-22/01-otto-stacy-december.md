@@ -1,7 +1,8 @@
 # DRAFT — to Otto and Stacy: Rowland, December plan, HubSpot, the portal
 
 **Status:** Draft for Ethan. He sends it (`CLAUDE.md §7.1`).
-**Attach:** `data/derived/regional-meeting-template.xlsx`
+**Attach:** `data/derived/regional-meeting-template.docx` (Word — Ethan's call, 2026-11-22,
+over the xlsx, for rep usability. The xlsx remains in `data/derived/` but is superseded.)
 **Suggested CC:** Cheryl, Donald, Vadim — three items land on them (Mexico routes, the
 December plan, the portal question).
 
@@ -92,13 +93,17 @@ specific one.
 
 **3. Regional meetings — there's a template attached**
 
-Four tabs: how to use it, a trip plan, a meetings log, and a readout.
+Three parts: the plan, the meetings themselves, and a short readout.
 
-It's deliberately the same format every time. One trip is a document; twelve trips in the
-same format are a picture of a region. The dropdowns are there for the same reason — typed
-answers can't be counted, picked ones can.
+**Please save a blank copy and leave it blank — that one's your master.** Every week, take a
+fresh copy, rename it with the week and the region, and fill that one in. Don't keep
+overwriting a single running document. The whole point is being able to put twelve weeks side
+by side and see what changed, and that only works if each week is its own file.
 
-The one habit worth keeping: **fill it the same day.** Not Friday. The detail that makes a
+It's deliberately the same format every time. One week is a document; twelve weeks in the
+same format are a picture of a region.
+
+The one habit worth keeping: **fill it in the same day.** Not Friday. The detail that makes a
 note useful is gone by Friday.
 
 ---
@@ -134,9 +139,23 @@ Please focus on the locations that sit in your territory. We've started cleaning
 assignments up — a handful moved this week, and the three homes that had no owner at all now
 have one, including two that are on your call lists.
 
-There's a bigger pass still to come on the Northeast and South, where the current split isn't
-really geographic. I'll tell you before anything moves. In the meantime, **if something in
-your list clearly isn't yours, tell me rather than working it.**
+**And since it's never been written down properly, here's how the split actually works.**
+
+- **Otto has the Midwest and the Northeast.**
+- **Stacy has the West and the South.**
+
+That's it. If a funeral home sits in your states, it's yours.
+
+Up to now the Northeast and South weren't split that way — they were divided by alternating
+down a ranked list, which is why Otto had accounts in Florida and Stacy had accounts in New
+York. That made sense when it was built and doesn't any more, so we're straightening it out.
+**You'll each see accounts move this week.**
+
+**One exception, deliberately.** The homes on the call lists I sent you last week are staying
+with whoever has them, even where the states say otherwise. You're working those now and I'm
+not pulling accounts out from under you mid-campaign. We'll tidy them up when that's done.
+
+If something still looks wrong after the dust settles, **tell me rather than working it.**
 
 ---
 

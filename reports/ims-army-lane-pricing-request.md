@@ -44,7 +44,23 @@ ordinary IMS lane.
 
 ---
 
-## The decision that has to come before the pull
+## DECIDED 2026-11-22 by Ethan
+
+> **Is CSI bidding the same Army vehicle?** — *"No."* So this is ordinary supplier-to-bidder
+> quoting. The `§7.5` concern below is closed.
+>
+> **Which rate?** — *"Lets do it"* on the recommendation: **quote the rates IMS pays today**,
+> flagged as current and subject to carrier confirmation. **Sharpening is a separate exercise
+> Donald prices properly, not a decision made against a Tuesday deadline.**
+
+**Donald still confirms the rate basis before the sheet leaves** — he owns margin, and the
+lanes may have moved. That ask is in `reports/pending-approval/emails-2026-11-22/04-cheryl-donald-asks.md`.
+
+**Steps 1 and 2 of the sequence below are now closed. Alex can fill the rate column.**
+
+---
+
+## The decision that had to come before the pull — retained for the record
 
 Cheryl's concern — *"want to be confident we are using the right rates"* — is the whole
 problem, and **it is not a data question. It is a pricing decision for Ethan, Cheryl and
@@ -128,11 +144,11 @@ unblocks lane profitability for pricing-strategist and finance both.
 
 | # | Step | Owner |
 |---|---|---|
-| 1 | Confirm CSI is not bidding the same vehicle | Ethan |
-| 2 | Decide which rate IMS is quoted | Ethan, Cheryl, Donald |
+| 1 | ~~Confirm CSI is not bidding the same vehicle~~ **DONE — not bidding** | Ethan |
+| 2 | ~~Decide which rate IMS is quoted~~ **DONE — current IMS rates, subject to carrier confirmation** | Ethan |
 | 3 | Pull the lane sheet to the spec above | Alex |
 | 4 | Check the file for decedent/family data before it leaves | legal-risk checkpoint |
 | 5 | Send to Paul | Cheryl |
 
-**Steps 1 and 2 are ten minutes and they gate everything else.** Alex can build the query
-shape now, but should not fill the rate column until step 2 is answered.
+**Steps 1 and 2 are closed.** Alex can build and fill the sheet. Donald's confirmation of
+the rate basis (step 4a) happens before it leaves CSI, alongside the `§7.2` data check.

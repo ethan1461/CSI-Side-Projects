@@ -1,0 +1,20 @@
+{
+  "script": "scripts/build_ims_army_rate_sheet.py",
+  "script_version": "1.0.0",
+  "generated_at": "2026-11-22T23:01:10.031026+00:00",
+  "sources": [
+    "data/raw/ims-army-lanes-ims-billed-20261122.tsv",
+    "data/raw/rates-published-20261102.csv",
+    "data/raw/oms-funeral-homes-20261109.csv"
+  ],
+  "legs": 500,
+  "bookings": 286,
+  "matched_to_published_rate": 0,
+  "unmatched_reasons": {
+    "no published rate for this lane": 283,
+    "multi-carrier routing \u2014 no single lane rate": 3
+  },
+  "rate_basis": "PUBLISHED (Ethan, 2026-11-22)",
+  "billed_to": "International Mortuary Shipping, LLC (funeral_home_id 2767)",
+  "pii": "none - booking refs, business names, airports, dates (CLAUDE.md s7.2)"
+}

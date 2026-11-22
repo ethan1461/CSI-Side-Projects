@@ -104,3 +104,35 @@ For each MOVE row, set `hubspot_owner_id` back to `current_owner`.
 - Full read-back of all 824 state-bearing records owned by Otto or Stacy, compared against this log by script: 529 already aligned (still aligned), 233 moved (233 match the target owner), 55 grandfathered (55 unchanged), 7 SCI enterprise (7 unchanged). Zero unexpected mismatches. Zero hold-marked records carry an owner. No owned record lacks a state.
 - Resulting ownership today (state-bearing, owned): Otto 422, Stacy 402. This is not the rule's balance because 62 records are held by the exceptions. Once the 55 call-sheet accounts are re-pointed after the campaign: Otto 408, Stacy 416 (the 7 SCI/Northstar locations are a separate hold and stay put).
 - Not covered: unowned companies. The split re-points existing owners only; no unowned account was given an owner. Ethan's own record (no state) untouched.
+
+---
+
+# Addendum 2: revised rule, Northeast and South swap (Ethan, 2026-11-22)
+
+Ethan, after seeing the first split: "I would rather give Otto the midwest and South and Stacy the northeast and west." This supersedes addendum A1. Record-level change file: `reports/hubspot-territory-state-split-v2-2026-11-22.csv`. It replaces `hubspot-territory-state-split-2026-11-22.csv` as the source for the post-campaign re-point (the earlier file stays as the record of the first move).
+
+## B1. Rule
+
+- Otto: Midwest (IL IN IA KS MI MN MO NE ND OH SD WI) plus the South (every state or territory not in the Midwest, Northeast or West lists).
+- Stacy: Northeast (NY NJ PA MA CT NH RI VT ME MD DE DC PR VI) plus West (CA OR WA AK HI AZ NV UT ID MT WY CO NM).
+- Guam goes to Stacy (coordinator decision, grouped with the West; one account; flagged, not silent).
+
+## B2. Counts, read live before any write
+
+Rule-implied ownership of the 824 state-bearing owned companies: Otto 388 (Midwest 99, South 289), Stacy 436 (Northeast 309, West 126, Guam 1). Gap 48 (old rule: 408 / 416). Today, after addendum 1: Otto 422, Stacy 402.
+
+| Category | Records | Action |
+|---|---|---|
+| Already match the new rule | 288 | none |
+| MOVE | 453 | 249 Stacy to Otto (South), 204 Otto to Stacy (Northeast, Guam) |
+| Grandfathered: on a live call sheet, owner disagrees with new rule | 80 | not changed; 36 Otto-owned (rule: Stacy), 44 Stacy-owned (rule: Otto) |
+| SCI/Northstar or partner class, owner disagrees with new rule | 3 | not changed |
+| Partner hold (`partner_routed_hold`, `mixed_hold`) among owned | 0 | none |
+
+The exception set was recomputed: the call-sheet freeze set (190 OMS ids) and the SCI/Northstar/partner hold are unchanged in identity, but the disagreements are now 80 plus 3, not 55 plus 7. Total disagreement with the rule is 536 records; 453 move. No data anomaly seen, so no pause.
+
+Expected balance after the 453 moves: Otto 377, Stacy 447 (the 83 exceptions held). After the 80 call-sheet accounts are re-pointed post-campaign, and the 3 enterprise holds resolved: Otto 388, Stacy 436.
+
+## B3. Undo
+
+For each MOVE row, set `hubspot_owner_id` back to `current_owner`.

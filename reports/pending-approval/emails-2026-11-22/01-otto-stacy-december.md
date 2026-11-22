@@ -142,8 +142,8 @@ have one, including two that are on your call lists.
 **And since it's never been written down properly, here's how your territories are drawn.
 They follow the map, by state.**
 
-**Otto** has the **Midwest** — IL, IN, IA, KS, MI, MN, MO, NE, ND, OH, SD, WI — and the
-**South**.
+**Otto** has the **Midwest** — IL, IN, IA, KS, MI, MN, MO, NE, ND, OH, SD, WI and **TX** —
+and the **South**.
 
 **Stacy** has the **Northeast** — NY, NJ, PA, MA, CT, NH, RI, VT, ME, MD, DE, DC, plus Puerto
 Rico and the US Virgin Islands — and the **West** — CA, OR, WA, AK, HI, AZ, NV, UT, ID, MT,

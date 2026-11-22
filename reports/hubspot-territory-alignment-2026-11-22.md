@@ -136,3 +136,17 @@ Expected balance after the 453 moves: Otto 377, Stacy 447 (the 83 exceptions hel
 ## B3. Undo
 
 For each MOVE row, set `hubspot_owner_id` back to `current_owner`.
+
+## B4. Execution and readback, revised rule (2026-11-22)
+
+- Pilot of 10, read back 10 of 10, then 443 more in 45 batches. **453 updated, 0 failed**, no credit-limit errors.
+- Full read-back of all 824 state-bearing owned records against `reports/hubspot-territory-state-split-v2-2026-11-22.csv`, by script: 288 already aligned (still aligned), 453 moved (453 match the target owner and the rule), 80 call-sheet exceptions unchanged, 3 SCI/Northstar/partner exceptions unchanged. Zero unexpected mismatches. No hold-marked record carries an owner. No owned record lacks a state.
+- Ownership now: Otto 377, Stacy 447. Rule balance once the 83 exceptions are re-pointed: Otto 388, Stacy 436 (gap 48).
+
+## B5. Taxonomy correction: Texas is Midwest (Ethan, 2026-11-22)
+
+Texas moves from the South list to the Midwest list for Otto's territory. **No owner changes result.** Otto owns both lists, so all 44 Texas accounts were already ruled to Otto; none was in the move set before or after the relabel (0 Texas moves to Stacy). Stacy still holds 8 Texas accounts, all of them call-sheet exceptions under the freeze. Region labels in the v2 change file now read TX = Midwest.
+
+Rule-implied counts with TX in the Midwest: Midwest 143 (99 + 44 TX), South 245 (289 - 44), Otto total 388. Northeast 309, West 126, Guam 1, Stacy total 436.
+
+Note for data-analyst: `scripts/build_rep_call_sheets.py` and `scripts/fy27_target_lists.py` still define MIDWEST without TX, and the call sheets and FY27 owner plan label TX under "NE/South". Not changed here. `context/metric-definitions.md` has no region definitions.

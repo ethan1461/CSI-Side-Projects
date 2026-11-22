@@ -49,9 +49,22 @@ ordinary IMS lane.
 > **Is CSI bidding the same Army vehicle?** — *"No."* So this is ordinary supplier-to-bidder
 > quoting. The `§7.5` concern below is closed.
 >
-> **Which rate?** — *"Lets do it"* on the recommendation: **quote the rates IMS pays today**,
-> flagged as current and subject to carrier confirmation. **Sharpening is a separate exercise
-> Donald prices properly, not a decision made against a Tuesday deadline.**
+> **Which rate?** — **SUPERSEDED. Ethan, later on 2026-11-22: *"We want to show PUBLISHED
+> rate, not discount."*** The sheet carries rate-card rates, not partner or discount pricing.
+>
+> My earlier recommendation was the rates IMS pays today. Ethan has decided otherwise and
+> that is the instruction. **It is also the more defensible choice on a point I had not
+> weighted properly:** a discount rate written into a federal bid document can circulate
+> well beyond the bid, and partner pricing visible to the market resets expectations across
+> the whole partner tier. Published rate exposes nothing.
+>
+> **The consequence to watch** stands either way: IMS prices this bid off CSI's rate card,
+> which is the highest number CSI quotes. If they lose on price, the 1,172 bookings below
+> are what leaves with them. Worth revisiting deliberately after the bid rather than
+> discovering it in the 2027 numbers.
+>
+> **Scope also clarified:** the ten homes are **origins**. The pull is every shipment
+> *from* those homes over the last six months, not lanes into them.
 
 **Donald still confirms the rate basis before the sheet leaves** — he owns margin, and the
 lanes may have moved. That ask is in `reports/pending-approval/emails-2026-11-22/04-cheryl-donald-asks.md`.
@@ -145,8 +158,8 @@ unblocks lane profitability for pricing-strategist and finance both.
 | # | Step | Owner |
 |---|---|---|
 | 1 | ~~Confirm CSI is not bidding the same vehicle~~ **DONE — not bidding** | Ethan |
-| 2 | ~~Decide which rate IMS is quoted~~ **DONE — current IMS rates, subject to carrier confirmation** | Ethan |
-| 3 | Pull the lane sheet to the spec above | Alex |
+| 2 | ~~Decide which rate IMS is quoted~~ **DONE — PUBLISHED rate** (Ethan, 2026-11-22) | Ethan |
+| 3 | ~~Pull the lane sheet~~ **DONE for shipments** — `scripts/build_ims_army_lane_sheet.py`, 190 shipments from the ten origins since 2026-05-26. Origin/destination/carrier columns still need filling by Booking ID | pm-orchestrator / Alex |
 | 4 | Check the file for decedent/family data before it leaves | legal-risk checkpoint |
 | 5 | Send to Paul | Cheryl |
 

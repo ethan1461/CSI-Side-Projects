@@ -1,6 +1,7 @@
 # DRAFT — to Cheryl and Donald: the specific asks
 
 **Status:** Draft for Ethan. Internal. He sends it.
+**Attach:** `data/derived/ims-army-lane-sheet-2026-11-22.xlsx`
 **Why one email:** four of these are decisions only the two of them can make, and three have
 a Tuesday or end-of-week edge on them.
 
@@ -44,12 +45,17 @@ Short list, and I've put the time-sensitive ones first.
 
 **1. Cheryl — IMS lanes for Paul, by Tuesday**
 
-We've decided what to send. **Quote the rates IMS pays us today**, marked as current and
-subject to carrier re-confirmation — not the published rate, and not a sharpened bid number.
+We've decided what to send: **published rates.** Rate-card pricing, not partner or discount
+pricing, marked as current and subject to carrier re-confirmation.
 
-Alex is pulling a lane-level sheet: one row per origin–destination per funeral home, with
-shipment counts over the last 24 months, so Paul is looking at real traffic rather than an
-estimate.
+I've pulled the shipments. **190 shipments out of those ten homes in the last six months** —
+they're the origins, so this is everything moving out of them. The sheet is attached: a
+summary by home, then every shipment with its booking reference and flight date.
+
+**Three columns are deliberately empty** — origin airport, destination airport and carrier.
+Those aren't in any export we hold; they're in the OMS and have never been pulled. Each row
+carries its booking ID, so Alex can fill them against that, and once the lanes are known the
+published rate attaches to each one.
 
 **Worth knowing before you send it.** I checked Paul's ten homes against our own data. **All
 ten already ship with us, and nine of them come to us through IMS** — 1,172 bookings between
@@ -64,18 +70,18 @@ is ordinary supplier-to-bidder quoting and nothing more complicated.
 
 **2. Donald — can you confirm the rate basis before it goes?**
 
-You own margin, so I'd rather you put eyes on the sheet than have it leave on my say-so.
-Two specific things:
+You own margin, so I'd rather you put eyes on it than have it leave on my say-so. Two things:
 
-- **That the rate we're quoting IMS is the right one**, and that nothing on those lanes has
-  moved recently enough to make it stale.
-- **Whether any of those ten lanes is one where we'd rather sharpen the number** to help IMS
-  win. I don't want that decided against a Tuesday deadline — but if there's an obvious one,
-  say so now rather than after.
+- **That the published rates we attach are current**, and nothing on those lanes has moved
+  recently enough to make them stale.
+- **One thing worth thinking about after the bid, not before it.** Published is the highest
+  number we quote. If IMS prices this contract off our rate card and loses on price, the
+  volume that walks is ours — those ten homes sent us 190 shipments in six months. I'm not
+  suggesting we change anything this week; I am suggesting we look at it deliberately once
+  the bid is in, rather than find it in next year's numbers.
 
-The honest constraint: we still have no cost data for most international carriers, so for a
-lot of lanes we'd be sharpening a price without knowing the floor. That's an argument for
-sending current rates this week and doing the sharpening properly as its own exercise.
+The constraint that makes anything sharper hard: we still have no cost data for most
+international carriers, so we'd be cutting a price without knowing the floor.
 
 ---
 

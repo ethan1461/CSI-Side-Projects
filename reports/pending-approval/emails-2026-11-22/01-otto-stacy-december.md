@@ -139,23 +139,34 @@ Please focus on the locations that sit in your territory. We've started cleaning
 assignments up — a handful moved this week, and the three homes that had no owner at all now
 have one, including two that are on your call lists.
 
-**And since it's never been written down properly, here's how the split actually works.**
+**And since it's never been written down properly, here's how your territories are drawn.
+They follow the map, by state.**
 
-- **Otto has the Midwest and the Northeast.**
-- **Stacy has the West and the South.**
+**Otto** has the **Midwest** — IL, IN, IA, KS, MI, MN, MO, NE, ND, OH, SD, WI — and the
+**Northeast** — NY, NJ, PA, MA, CT, NH, RI, VT, ME, MD, DE, DC, plus Puerto Rico and the US
+Virgin Islands.
 
-That's it. If a funeral home sits in your states, it's yours.
+**Stacy** has the **West** — CA, OR, WA, AK, HI, AZ, NV, UT, ID, MT, WY, CO, NM — and the
+**South**, meaning every other state, plus Guam.
 
-Up to now the Northeast and South weren't split that way — they were divided by alternating
-down a ranked list, which is why Otto had accounts in Florida and Stacy had accounts in New
-York. That made sense when it was built and doesn't any more, so we're straightening it out.
-**You'll each see accounts move this week.**
+That's the whole rule. If a funeral home sits in your states, it's yours. It comes out at
+roughly **408 accounts for Otto and 416 for Stacy**, so neither of you is getting the thin
+end of it.
 
-**One exception, deliberately.** The homes on the call lists I sent you last week are staying
-with whoever has them, even where the states say otherwise. You're working those now and I'm
-not pulling accounts out from under you mid-campaign. We'll tidy them up when that's done.
+**Why it's changing.** Up to now the Northeast and South weren't split by geography at all —
+they were divided by alternating down a ranked list, which is why Otto had accounts in Florida
+and Stacy had accounts in New York. That made sense when it was built and stopped making
+sense once you both had real territories. **It's already been straightened out in HubSpot, so
+have a look at your owner view.**
 
-If something still looks wrong after the dust settles, **tell me rather than working it.**
+**One exception, deliberately.** The call workbooks I sent you on the 18th were built before
+this rule was settled, and **55 of those accounts sit in the other person's state.** They're
+staying with whoever is calling them until the campaign is done. I'm not pulling accounts out
+from under either of you in the middle of a call cycle — we'll move them in one pass at the
+end.
+
+If an account looks wrong, **tell me rather than re-assigning it yourself.** Two people
+quietly fixing the same record is how we ended up needing to do this.
 
 ---
 

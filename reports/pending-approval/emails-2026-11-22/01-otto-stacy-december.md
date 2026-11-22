@@ -143,13 +143,15 @@ have one, including two that are on your call lists.
 They follow the map, by state.**
 
 **Otto** has the **Midwest** — IL, IN, IA, KS, MI, MN, MO, NE, ND, OH, SD, WI and **TX** —
-and the **South**.
+and the **South**: AL, AR, FL, GA, KY, LA, MS, NC, OK, SC, TN, VA, WV.
 
 **Stacy** has the **Northeast** — NY, NJ, PA, MA, CT, NH, RI, VT, ME, MD, DE, DC, plus Puerto
 Rico and the US Virgin Islands — and the **West** — CA, OR, WA, AK, HI, AZ, NV, UT, ID, MT,
 WY, CO, NM, plus Guam.
 
-That's the whole rule. If a funeral home sits in your states, it's yours.
+That's the whole rule, and it's permanent. If a funeral home sits in your states, it's
+yours — so two of us never work the same account and none falls between you. It comes out
+at roughly **388 accounts for Otto and 436 for Stacy**.
 
 **Why it's changing.** Up to now the Northeast and South weren't split by geography at all —
 they were divided by alternating down a ranked list, which is why Otto had accounts in Florida
@@ -158,7 +160,7 @@ sense once you both had real territories. **It's already been straightened out i
 have a look at your owner view.**
 
 **One exception, deliberately.** The call workbooks I sent you on the 18th were built before
-this rule was settled, and some of those accounts sit in the other person's state. They're
+this rule was settled, and **80 of those accounts sit in the other person's states.** They're
 staying with whoever is calling them until the campaign is done. I'm not pulling accounts out
 from under either of you in the middle of a call cycle — we'll move them in one pass at the
 end.

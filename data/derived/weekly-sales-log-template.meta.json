@@ -1,0 +1,25 @@
+{
+  "script": "scripts/build_weekly_sales_log.py",
+  "script_version": "2.0.0",
+  "generated_at": "2026-11-22T22:21:05.185394+00:00",
+  "output": "data/derived/weekly-sales-log-template.docx",
+  "supersedes": "data/derived/regional-meeting-template.docx (per-trip, per-region)",
+  "sections": [
+    "Before you start",
+    "1. The week",
+    "2. Activity log",
+    "3. Conversations worth writing up",
+    "4. The week in five minutes"
+  ],
+  "activity_rows": 28,
+  "detail_blocks": 5,
+  "orientation": "landscape",
+  "contains_data": false,
+  "pii": "none - empty template (CLAUDE.md s7.2)",
+  "notes": [
+    "Weekly and territory-wide, not per-region: Ethan, 2026-11-22.",
+    "Split into a one-line activity table and a few detail blocks, because a week is mostly high-volume actions and a handful of real conversations.",
+    "Word has no dropdowns; pick-lists print above the fields that use them. Vocabularies match scripts/build_rep_workbooks.py so the call campaign and the weekly log aggregate together.",
+    "No quota, target, bonus or performance fields (CLAUDE.md s7.7)."
+  ]
+}

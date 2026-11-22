@@ -1,20 +1,30 @@
 {
   "script": "scripts/build_ims_army_rate_sheet.py",
-  "script_version": "1.0.0",
-  "generated_at": "2026-11-22T23:01:10.031026+00:00",
-  "sources": [
-    "data/raw/ims-army-lanes-ims-billed-20261122.tsv",
-    "data/raw/rates-published-20261102.csv",
-    "data/raw/oms-funeral-homes-20261109.csv"
-  ],
-  "legs": 500,
+  "script_version": "2.0.0",
+  "generated_at": "2026-11-22T23:11:49.196983+00:00",
   "bookings": 286,
-  "matched_to_published_rate": 0,
-  "unmatched_reasons": {
-    "no published rate for this lane": 283,
-    "multi-carrier routing \u2014 no single lane rate": 3
+  "legs": 500,
+  "priced": 179,
+  "unpriced": 107,
+  "unpriced_reasons": {
+    "rate card reads \"varies per city\"": 88,
+    "multi-carrier routing \u2014 no single lane rate": 3,
+    "no published rate for this zone pair": 8,
+    "United Airlines has no zone for SPN": 1,
+    "shipment type not recorded on the booking": 5,
+    "Alaska Airlines publishes no Casket rate": 1,
+    "Southwest Airlines publishes no Combo rate": 1
   },
+  "rate_conflicts": 64,
   "rate_basis": "PUBLISHED (Ethan, 2026-11-22)",
   "billed_to": "International Mortuary Shipping, LLC (funeral_home_id 2767)",
+  "rate_card_asof": "2026-11-02",
+  "known_limits": [
+    "106 airline/route/type combinations have 2+ active rates; no updated_at in the export, so both are shown rather than one picked.",
+    "Southwest has no zone for HNL, ITO, SJU.",
+    "United publishes Casket rates only.",
+    "5 bookings have no shipment type recorded; not priced, not guessed.",
+    "Combo type has no rates on any of the four carriers."
+  ],
   "pii": "none - booking refs, business names, airports, dates (CLAUDE.md s7.2)"
 }

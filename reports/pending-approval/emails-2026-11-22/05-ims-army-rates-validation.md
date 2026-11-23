@@ -1,3 +1,11 @@
+# ✅ SENT — 2026-11-23 by Ethan
+
+Sent to Alex, Kyri, Donald and Cheryl with the rate workbook attached. Nothing goes to Paul at IMS until the population and the duplicate rates are confirmed.
+
+**Do not re-send.**
+
+---
+
 # DRAFT — to Alex, Kyri, Donald and Cheryl: IMS Army rates, for validation
 
 **Status:** Draft for Ethan. He sends it (`CLAUDE.md §7.1`).

@@ -1,3 +1,11 @@
+# ✅ SENT — 2026-11-23 by Ethan
+
+Sent. Six asks: IMS turnaround, Donald on the rate basis, Cheryl briefing the booking desk on Rowland, the Mexican carrier, testimonial names, and the Impact Partners exclusion question.
+
+**Do not re-send.**
+
+---
+
 # DRAFT — to Cheryl and Donald: the specific asks
 
 **Status:** Draft for Ethan. Internal. He sends it.

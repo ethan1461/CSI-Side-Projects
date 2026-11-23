@@ -1,3 +1,11 @@
+# ✅ SENT — 2026-11-23 by Ethan
+
+Sent with the weekly sales log attached. Covers Rowland, the Mexico routes question to Cheryl, the December plan, the territory rule and the portal ownership question.
+
+**Do not re-send.**
+
+---
+
 # DRAFT — to Otto and Stacy: Rowland, December plan, HubSpot, the portal
 
 **Status:** Draft for Ethan. He sends it (`CLAUDE.md §7.1`).

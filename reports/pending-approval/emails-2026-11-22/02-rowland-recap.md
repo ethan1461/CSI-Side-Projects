@@ -1,3 +1,11 @@
+# ✅ SENT — 2026-11-23 by Ethan
+
+Sent to the Rowland Brothers team. Awaiting their pricing sheet, the post-booking process note, and how delivery confirmation would reach CSI.
+
+**Do not re-send.**
+
+---
+
 # DRAFT — recap to the Rowland Brothers team
 
 **Status:** Draft for Ethan. **He sends it** (`CLAUDE.md §7.1` — external, names a partner).

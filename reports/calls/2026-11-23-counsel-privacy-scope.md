@@ -45,11 +45,23 @@ operating certifications.
 These carry decedent identity data and, in many cases, **living family members' names and
 contact details.** That second part is the one that tends to get missed.
 
-**What runs today.** The public website accepts document uploads. Legacy code saves the
-files on the ERP server, records filenames, and **emails them to a shared operational
-mailbox.** We have not confirmed the deployed configuration, who can access stored files,
-or how retention and deletion work across server, email and backups. Our hosting provider
-would need to be involved to establish that.
+**What runs today.** The public website accepts document uploads. The legacy code Alex and
+Kyri reviewed saves the files on the ERP server, records their filenames, and **emails them
+to `bookings@cargosalesintl.com`** — a shared operational mailbox.
+
+We have **not** confirmed the deployed configuration, who can access the stored files, or how
+retention and deletion work across the server, the email system and backups. **Rednodo, who
+built and host the legacy system, would need to confirm all of that** — which makes them a
+third party with access to these documents today.
+
+**Two things in that paragraph are worth saying slowly on the call:**
+
+1. **The documents live in a shared mailbox.** Email retention is effectively indefinite and
+   access is whoever has the mailbox. That is the sharpest exposure we have, and it is
+   running now.
+2. **Rednodo can reach this data.** Is there a data processing agreement or equivalent with
+   them? Nobody has checked. **Neither our memo nor the engineers' raised this, and it is a
+   question for today.**
 
 **What is proposed.** Document upload in the customer portal, stored in **AWS S3**, reachable
 from the portal and the ERP, so agents retrieve documents from the system rather than from
@@ -61,6 +73,9 @@ email.
 
 **Lead with what is already running, not the new feature.** The live exposure is the
 existing path; the portal is the thing we can still hold.
+
+*Questions 1–6 are Alex and Kyri's, almost verbatim — they wrote them and they are good.
+Question 7 and the Rednodo point below are CSI's additions.*
 
 **1. The existing process — does it meet our obligations, and what needs changing now?**
 Interim fixes ahead of any new build.
@@ -79,6 +94,11 @@ works across backups, and what happens if something is accessed or disclosed imp
 
 **6. Cross-border.** Mexico, Dominican Republic, Guatemala, El Salvador, the Caribbean,
 Europe, Africa, Asia. What this adds.
+
+**6a. Rednodo.** They built and host the legacy system and can reach the stored documents.
+Do we need a data processing agreement or equivalent with them, and what should it say?
+**Ask this even if we run short of time** — it is a third party holding sensitive data under
+no instrument anyone has read.
 
 **7. Disclosure to outside parties.** Separate from the feature and increasingly live: our
 operational exports carry decedent and family data by design, so **today we could not hand
@@ -137,8 +157,10 @@ but it is a system of record holding personal data that has changed a lot this m
 
 - Current privacy policy and website terms
 - A representative funeral home customer agreement
-- The technical description of the existing upload path and the proposed S3 design
-  — Alex and Kyri can write this, and it is better coming from them
+- The technical description of the existing upload path and the proposed S3 design.
+  **Alex and Kyri have already written this** — their memo is clear and should go over as
+  it stands rather than be paraphrased
+- Whatever agreement we hold with **Rednodo**, once someone digs it out
 - A **redacted** sample of each document type
 
 ---

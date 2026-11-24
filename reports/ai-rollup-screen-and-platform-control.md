@@ -33,15 +33,35 @@ cannot be scored for CSI itself without measurements nobody has taken.**
 
 ## The answer
 
-**The screen works, the pipeline moves — and then market-intel sized the category and the
-thesis itself does not survive.** `[ESTIMATE, LOW-MEDIUM confidence]` CSI's whole category is
-roughly **$75M of customer spend** against models built for $200bn+ labour markets, and CSI
-already holds about **20%** of it. **Part E.1 is the finding that matters most in this report,
-and it arrived last.** Findings 1–5 below stand as written and remain useful — as an operating
-and diligence discipline, and as a bolt-on pipeline — but they should be read knowing that the
-*re-rating* story they were built to test is the part that fails.
+**The screen works, the pipeline moves — and then two measurements arrived and the thesis does
+not survive either of them.**
 
-Six findings, in order of how much they change what CSI does. **Finding 0 is Part E.1.**
+**Finding 0, and it is the whole answer. CSI fails three of the six published criteria, and two
+of the three were measured during this task:**
+
+- **The category is too small.** `[ESTIMATE, LOW-MEDIUM — market-intel, §E.1]` roughly **$75M of
+  customer spend** at central, against models built for $200bn+ labour markets, with CSI already
+  holding about **20%** of it. market-intel's own instruction: *"Do not apply the AI roll-up
+  labour-pool logic to this category."*
+- **CSI's retention does not clear the bar** (§E.3, from `data/derived/revenue-retention-by-year.csv`,
+  one day old and awaiting `data-analyst`'s report). **NRR below 100% for three consecutive
+  complete years and falling — 98.7%, 96.0%, 95.8% — against logo retention of 71%–79%.** Long
+  Lake's primary screen is *"very high logo retention and net revenue retention above 100%."*
+- **The category is shrinking, not growing faster than GDP** — already in the grounding report,
+  and `§D.4` item 4 shows it undermines the one criterion scored Strong.
+
+**So the recommendation is the grounding report's §4 fallback: run the operating playbook —
+capacity as growth, margin as the lever — without the roll-up narrative attached.** Findings 1–5
+below stand as written and remain useful, as an operating and diligence discipline and as a
+bolt-on pipeline. What fails is the **re-rating** story they were built to test.
+
+**And §E.3 carries a finding that reaches well beyond corpdev**, which is that acquisition appears
+to be masking retention: the cohort count rose from 448 to 644 while NRR fell, which is a
+different diagnosis from `CLAUDE.md` §2's *"working pricing lever."* **That is `data-analyst`'s to
+confirm and §2's to correct.**
+
+Six findings, in order of how much they change what CSI does. **Finding 0 is above, with the
+working in Parts E.1 and E.3.**
 
 **1. Under the AI-roll-up screen, overlap beats complement — which inverts the November
 bias explicitly.** `reports/acquisition-target-longlist.md` §1 states "a deliberate bias
@@ -678,7 +698,10 @@ combined without Donald. TASK-0008.
 
 ## D.2 If CSI's logo retention or NRR come back **below 100%**
 
-This is the harder case and it changes more than D.1.
+**This is no longer a conditional. It was measured during this task and the answer is below 100%
+— see §E.3.** The analysis below was written before the figures existed; it is left as written
+because it states the consequences, and every one of them now applies. This is the harder case
+and it changes more than D.1.
 
 1. **CSI is not a platform candidate. It is a target.** The "trusted, recurring relationships"
    leg is Long Lake's primary screen; failing it on CSI's own numbers means the roll-up story
@@ -689,7 +712,8 @@ This is the harder case and it changes more than D.1.
    would have to become the dominant criterion**, because acquisitions would then be bought
    EBITDA rather than platform fuel — which is precisely `the-25m-gap.md` §6's instruction,
    arrived at from the other direction.
-3. **It would contradict something `CLAUDE.md` §2 currently implies, and that matters.** FY26 is
+3. **It contradicts something `CLAUDE.md` §2 currently implies, and that matters — and §E.3
+   confirms it.** FY26 is
    running revenue **+4.4%** on bookings **+1.3%**: growth is yield, not volume. If NRR were
    below 100%, that combination would mean **price rising on a shrinking installed base**, which
    is a materially worse story than "a working pricing lever nobody has deliberately pulled." It
@@ -816,11 +840,16 @@ and both are raised to `legal-risk` as a handoff rather than settled here.
 
 ---
 
-# Part E — two inputs that arrived during this task, and what they change
+# Part E — three inputs that arrived during this task, and what they change
 
-**Both arrived after Parts A–C were drafted and before this report was frozen. Both are
-material. Neither is folded silently into the sections above; they are set out here with what
-they change, so the sequence is visible.**
+**All three arrived after Parts A–C were drafted and before this report was frozen. All three
+are material, and two of them settle conditionals that Parts A–D could only state as branches.
+None is folded silently into the sections above; they are set out here with what they change, so
+the sequence is visible.**
+
+**Read E.1 and E.3 together. They fail the thesis from two independent directions** — the pool is
+too small, and CSI's own retention does not clear the bar — **and neither was knowable when the
+screen in Part A was built.**
 
 ## E.1 market-intel sized the category, and the answer is small
 
@@ -940,6 +969,87 @@ which half CSI leads with. **This is a question for Ethan's conversation to test
 either of us can settle from the documents.**
 
 
+## E.3 CSI's retention and NRR were computed during this task, and both fail the screen
+
+**Source and status.** `data/derived/revenue-retention-by-year.csv` with its `.meta.json`,
+produced by `scripts/analyze_revenue_retention.py` v1.0.0 at 22:58 UTC on 2026-11-24 from
+`data/raw/sales-by-customer-summary-20261110.xlsx` — **4,707 rows in, 10 out, customer names
+hashed to surrogate keys, no decedent or family data.** **`data-analyst` has not yet published a
+companion report, and its interpretation governs when it does.** What follows is corpdev reading
+a derived file against the screen in Part A; it should be checked against that report and
+corrected if it differs.
+
+**Two things to note before the numbers.** First, this came from **QuickBooks invoiced revenue,
+not the booking-level OMS export** — so the measurement nobody thought was available turned out
+to need a file CSI already had, which is a `§9.6` lesson in itself. Second, the grain differs
+from `CLAUDE.md` §2, though the totals tie closely: the 2023 cohort base of **$14.04M** and the
+2025 base of **$14.23M** sit within about 1% of the OMS revenue figures for those years.
+
+### The numbers, complete years only
+
+| Base → compare | Cohort | NRR | GRR | Logo retention | Expansion gap |
+|---|---|---|---|---|---|
+| 2021 → 2022 | 448 | 107.6% | 83.4% | 71.7% | 24.3pp |
+| 2022 → 2023 | 492 | **98.7%** | 78.9% | 70.7% | 19.8pp |
+| 2023 → 2024 | 532 | **96.0%** | 83.4% | 74.6% | 12.5pp |
+| 2024 → 2025 | 564 | **95.8%** | 83.0% | 79.1% | 12.7pp |
+| 2025 → 2026 *(incomplete)* | 644 | 83.5% | 75.0% | 74.1% | 8.5pp |
+
+The 2026 row is **not comparable** — the year is not closed, and the file's own annualised
+`[ESTIMATE]` column puts it at 100.2%, which is inconclusive either way. **Use the three
+complete years.**
+
+### What this does to the screen
+
+**1. Long Lake's primary screen fails, and it fails on CSI's own numbers rather than on an
+inference.** Fig, via grounding §1: Long Lake screens for *"very high logo retention and net
+revenue retention above 100%."* CSI's NRR has been **below 100% for three consecutive complete
+years and falling** — 98.7%, 96.0%, 95.8% — and logo retention sits at **71%–79%**, which is not
+"very high" by any reading. **GRR of 79%–83% means CSI loses roughly a fifth of cohort revenue
+every year and replaces it.**
+
+**2. It contradicts the grounding report's score, and the contradiction is the point.** Grounding
+§1 scores this criterion **"Strong on retention, unmeasured on NRR"**, reasoning from market
+structure — *"funeral-director stickiness is CSI's market structure"* (`CLAUDE.md` §3.2). **The
+category may well be sticky. CSI's book is not holding at the rate the thesis requires.** The
+criterion moves from Strong-and-unmeasured to **Fails on both halves.** This is the clearest
+example in this report of why `CLAUDE.md` §4.2's distinction matters: an argument about the
+category was standing in for a measurement of the company.
+
+**3. CSI now fails three of the six published criteria, not one.** Category growth (grounding
+§1), retention and NRR (here), and — on market-intel's estimate — category size (§E.1). **With
+`§D.4` item 4's point that the capacity-constraint strength depends on category growth, the
+"five of six" headline in the grounding report does not survive contact with the measurements.**
+
+**4. It confirms the §D.2 cross-check, and this is the finding with the widest reach beyond
+corpdev.** `CLAUDE.md` §2 reads FY26 as revenue **+4.4%** on bookings **+1.3%** and concludes CSI
+has *"a working pricing lever it has not deliberately pulled."* **Against NRR of ~96% and a
+collapsing expansion gap — 24.3pp, 19.8pp, 12.5pp, 12.7pp, 8.5pp — the more complete reading is
+that CSI is producing growth by adding customers and raising price while losing roughly a quarter
+of its logos and a fifth of its cohort revenue each year.** The cohort count rising from 448 to
+644 while NRR falls is the same story from the other side: **acquisition is masking retention.**
+
+That is not the same diagnosis as "a working pricing lever," and it has a different remedy.
+**It is `data-analyst`'s to confirm and `CLAUDE.md` §2's to correct** — a `/brain-propose` item
+once their report lands, not something to settle here.
+
+### What it changes in this report
+
+| | |
+|---|---|
+| **Part A weights** | **S2 must rise and the EBITDA-contribution criterion must become dominant**, exactly as §D.2 predicted. If CSI's own retention is weak, acquiring another weak-retention book compounds the problem instead of fuelling a platform |
+| **Part A, S2's evidence standard** | The screen currently scores S2 on **tenure and customer type**. CSI's own figures show that a long-tenured business in a sticky category can still run at 75% logo retention. **Tenure is a weaker proxy than Part A assumes**, and S2 should be read as a lower-confidence criterion than its 15-point weight suggests |
+| **Part B's ranking** | Unchanged in order, changed in rationale. Targets should be screened on whether their retention is **better than CSI's**, not on whether the category is sticky. That is a post-contact diligence question (§A.1), and it is now the **first** one |
+| **The thesis** | Combined with §E.1, this is decisive rather than suggestive. **The honest conclusion is the grounding report's §4 fallback**, and §D.3 now reads as a finding rather than a branch |
+| **What it does *not* change** | **The operating case gets stronger, not weaker.** A business losing a fifth of its cohort revenue a year has an obvious, large, un-worked lever, and it is the one `reports/the-25m-gap.md` §4 already argued for: margin and retention quality over volume. **Retention work is now a candidate organic lever that nobody has sized**, and it sits outside the $1.7M that report could account for |
+
+**One caution, stated as plainly as the rest.** These figures are one day old, carry no companion
+report, and rest on an invoiced-revenue grain that has not been reconciled to the OMS export
+(`CLAUDE.md` §6: OMS analytics do not tie back to the legacy system). **Nothing here goes outside
+CSI** (`§7.3`, `§7.5`), and a lender or buyer asking for retention should be given
+`data-analyst`'s figures, not corpdev's reading of them.
+
+
 ---
 
 ## Handoffs raised by this report
@@ -949,7 +1059,7 @@ Written to `handoffs/`, for the orchestrator to route.
 | To | Ask | Why |
 |---|---|---|
 | **`market-intel`** | **Is the addressable category large enough to support a platform company?** With what this report would do differently on each answer | Required by the task. Relates to TASK-0007. `§D.4` item 4 raises its value |
-| **`data-analyst`** | **Logo retention and NRR for CSI itself**, plus the §D.2 cross-check against the yield-not-volume reading of `CLAUDE.md` §2 | Required by the task. Long Lake's primary screen; never computed |
+| **`data-analyst`** | **Logo retention and NRR for CSI itself**, plus the §D.2 cross-check against the yield-not-volume reading of `CLAUDE.md` §2. **Substantially answered mid-task** by `data/derived/revenue-retention-by-year.csv`; the standing asks are now (a) publish the companion report so corpdev's reading in §E.3 can be checked or corrected, (b) **run the §2 cross-check explicitly**, and (c) reconcile the invoiced-revenue grain to the OMS export | Required by the task. Long Lake's primary screen. **The figures fail it, and the §2 cross-check is the finding with the widest reach** |
 | **`finance`** | **Reconcile the OMS Portal Revenue Tracking page to CSI's invoices** (Donald). The largest single input to Part C Routes 4 and 6 | Already an open item; nobody has named it as a corp-dev input |
 | **`legal-risk`** | Four things. **(1)** Frame §13.2(d)–(e) and §19.10(b) as **CSI-side leverage**, not only as a protection, and add it to the counsel brief. **(2)** Add a **pre-agreed scope and rate for migration work** to the Route 1 / remedy list. **(3)** Add **K3 (the §9.1 boundary for CSI building its own engineering capability)** to the ranked counsel brief — it gates Part C Route 2. **(4)** Reclassify the **Background Technology licence in the live quote path** and the **absence of a standing export right** from diligence items to operational dependencies (§D.4 item 6) | **No finding in either FreightFlow report is disputed.** (1)–(3) are additions; (4) is a classification difference against the grounding report's summary, raised rather than settled |
 | **`operations`** | November's handoff, re-raised with a new question: **is a same-workflow, same-gateway book cheaper for the desk to absorb than a new corridor?** The screen asserts it; `operations` owns the answer | No target is called integrable in this report and none should be until this returns |
@@ -1006,9 +1116,10 @@ company); the executed agreement and the control inventory (internal); the porta
 reconciliation (Donald); the counsel engagement (drafted, not engaged).
 
 **Review trigger:** **market-intel's category answer has arrived and is in Part E.1 — it is the
-largest single change to this report and it is the one to act on.** Still outstanding and each
-capable of changing the ranking or the thesis: data-analyst's retention figures, the
-automatable-share measurement, **counsel on T4 (§14.3), K3 (§9.1) and N1 (whether CSI's own
+largest single change to this report and it is the one to act on.** **data-analyst's retention figures have
+arrived and are in Part E.3 — with market-intel's number they settle the thesis.** Still
+outstanding and each capable of changing the ranking: `data-analyst`'s companion report, which
+governs over corpdev's reading of its file; the automatable-share measurement; **counsel on T4 (§14.3), K3 (§9.1) and N1 (whether CSI's own
 staff may integrate on code CSI owns)**, the FreightFlow §9.2 extraction, and the booking-desk
 questionnaire. **N1 is the cheapest of them and it decides whether Part C's central dependency
 is legal or merely practical.**

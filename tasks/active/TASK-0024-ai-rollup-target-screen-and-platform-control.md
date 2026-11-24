@@ -4,7 +4,7 @@
 **Created:** 2026-11-24 by pm-orchestrator
 **Due:** 2026-12-01
 **Priority:** HIGH
-**Status:** UNCLAIMED
+**Status:** IN PROGRESS — claimed by corpdev 2026-11-24
 
 ## Objective
 
@@ -135,3 +135,7 @@ about whose margin it was. Flag it wherever structure comes up.
 - 2026-11-24 — created by pm-orchestrator following Ethan's request to develop the
   AI-roll-up thesis and loop in corpdev. Grounding report written first so corpdev does
   not re-derive the sources: `reports/ai-rollup-thesis-grounding.md`.
+- 2026-11-24 — claimed by corpdev. Read the grounding report, the November longlist,
+  `the-25m-gap.md`, `capital-routes.md` Part 0 and both FreightFlow reports. Not
+  re-fetching the four sources and not re-reading the signed PDF (`§11.3`, task
+  constraints). Starting Part A.

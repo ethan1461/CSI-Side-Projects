@@ -58,7 +58,7 @@ MULT: Final[dict[str, float]] = {"million": 1.0, "billion": 1000.0, "trillion": 
 
 def money_to_millions(text: str) -> float | None:
     """Parse '$749.1 million' into 749.1. Returns None if unparseable."""
-    m = re.search(r"\$\s*([\d,]+(?:\.\d+)?)\s*(million|billion|trillion)", text, re.I)
+    m = re.search(r"\$\s*([\d,]+(?:\.\d+)?)\s*(million|billion|trillion)", text, re.IGNORECASE)
     if not m:
         return None
     return round(float(m.group(1).replace(",", "")) * MULT[m.group(2).lower()], 1)
@@ -72,7 +72,7 @@ def first_int(text: str) -> int | None:
 
 def parse_sheet(path: Path) -> dict[str, object] | None:
     """Pull the state block out of one fact sheet. The nationwide block is skipped."""
-    out = subprocess.run(  # noqa: S603 - fixed binary, path passed as an argument
+    out = subprocess.run(
         ["/usr/bin/pdftotext", "-layout", str(path), "-"],
         capture_output=True,
         text=True,
@@ -195,9 +195,11 @@ def main() -> None:
         (nfda_path, "NFDA 2026 state fact sheets, extracted verbatim."),
         (
             pen_path,
-            "NFDA market size joined to CSI origin volume. Ratios compare states "
-            "to each other, not to any external benchmark: CSI volume is all "
-            "history since Sept 2022 while NFDA figures are annual.",
+            (
+                "NFDA market size joined to CSI origin volume. Ratios compare states "
+                "to each other, not to any external benchmark: CSI volume is all "
+                "history since Sept 2022 while NFDA figures are annual."
+            ),
         ),
     ):
         p.with_suffix(".meta.json").write_text(
@@ -207,8 +209,10 @@ def main() -> None:
                     "script_version": SCRIPT_VERSION,
                     "generated_at": datetime.now(UTC).isoformat(),
                     "sources": [
-                        "NFDA 2026 State Fact Sheets (51 PDFs, supplied by Ethan "
-                        "2026-11-24 from NFDA's public filecloud link)",
+                        (
+                            "NFDA 2026 State Fact Sheets (51 PDFs, supplied by Ethan "
+                            "2026-11-24 from NFDA's public filecloud link)"
+                        ),
                         str(SENDING),
                     ],
                     "rows_out": len(rows),
@@ -233,7 +237,7 @@ def main() -> None:
     for j in sorted(joined, key=lambda x: -(x["funeral_homes"] or 0))[:10]:
         b = j["csi_bookings_all_history"]
         print(
-            f"    {str(j['state_name']):<22}{j['funeral_homes'] or 0:>7}"
+            f"    {j['state_name']!s:<22}{j['funeral_homes'] or 0:>7}"
             f"{j['funeral_home_revenue_musd'] or 0:>11.1f}"
             f"{(b if b else 0):>10}"
             f"{(j['csi_bookings_per_funeral_home'] or 0):>10.2f}"

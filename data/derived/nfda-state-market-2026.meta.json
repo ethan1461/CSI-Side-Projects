@@ -1,7 +1,7 @@
 {
   "script": "scripts/build_state_penetration.py",
   "script_version": "1.0.0",
-  "generated_at": "2026-11-24T23:22:38.658533+00:00",
+  "generated_at": "2026-11-24T23:25:15.087450+00:00",
   "sources": [
     "NFDA 2026 State Fact Sheets (51 PDFs, supplied by Ethan 2026-11-24 from NFDA's public filecloud link)",
     "data/raw/geo_1_sending.tsv"

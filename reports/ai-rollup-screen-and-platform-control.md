@@ -16,6 +16,10 @@ bidding anywhere in this report, in any direction.*
 not re-derived here, `§11.3`), `reports/acquisition-target-longlist.md` (the November
 pipeline), `reports/the-25m-gap.md`, `reports/capital-routes.md` Part 0,
 `reports/freightflow-agreement-review.md`, `reports/freightflow-agreement-gaps.md`
+**Incorporates Ethan's correction of 2026-11-24:** **CSI owns the OMS** (§6.1(a)). Part C is
+written as a question of **operational independence, not title.** See `§D.4` item 6 for the two
+places this report would classify differently from the correction's summary, and `§C.5` for the
+line it preserves on how the platform is described to outsiders.
 **Deliberately absent:** any valuation of CSI, any price or multiple for CSI or any target,
 any projection. That is TASK-0006 and it remains gated. Published-market reference points
 are labelled as such.
@@ -29,8 +33,15 @@ cannot be scored for CSI itself without measurements nobody has taken.**
 
 ## The answer
 
-**The thesis survives the screen. The screen moves the opportunity, and it moves it away
-from the pipeline CSI has.** Four findings, in order of how much they change what CSI does.
+**The screen works, the pipeline moves — and then market-intel sized the category and the
+thesis itself does not survive.** `[ESTIMATE, LOW-MEDIUM confidence]` CSI's whole category is
+roughly **$75M of customer spend** against models built for $200bn+ labour markets, and CSI
+already holds about **20%** of it. **Part E.1 is the finding that matters most in this report,
+and it arrived last.** Findings 1–5 below stand as written and remain useful — as an operating
+and diligence discipline, and as a bolt-on pipeline — but they should be read knowing that the
+*re-rating* story they were built to test is the part that fails.
+
+Six findings, in order of how much they change what CSI does. **Finding 0 is Part E.1.**
 
 **1. Under the AI-roll-up screen, overlap beats complement — which inverts the November
 bias explicitly.** `reports/acquisition-target-longlist.md` §1 states "a deliberate bias
@@ -44,12 +55,12 @@ same-paperwork target rides the platform at near-zero marginal build cost, which
 mechanism behind the one hard data point in the four sources (Long Lake's add-ons going
 from a year to days, grounding §1).
 
-**2. Nothing on the longlist carries a platform.** Every entry is a book, a corridor or an
-identity to be established. Not one brings an owned software layer or an engineering team.
-So on the pipeline as it stands, acquisitions buy EBITDA at a multiple — which
-`reports/the-25m-gap.md` says is required and worth doing — but they do not re-rate CSI.
-**The re-rating has to come from the platform CSI does not control.** That is the task's own
-line to the metric, and the answer is no.
+**2. Nothing on the longlist carries a platform or the people to run one.** Every entry is a
+book, a corridor or an identity to be established. Not one brings a software layer or an
+engineering team. So on the pipeline as it stands, acquisitions buy EBITDA at a multiple —
+which `reports/the-25m-gap.md` says is required and worth doing — but they do not re-rate CSI.
+**The re-rating has to come from the platform CSI owns and cannot yet independently operate.**
+That is the task's own line to the metric, and the answer is no.
 
 **3. The highest-scoring entry in Part B is a category with no company in it.** Gateway
 trade services and ship-out preparation centres score highest on the roll-up criteria for a
@@ -66,23 +77,27 @@ just fail one criterion; it partly undermines the one scored Strong. Whether tha
 is market-intel's call (handoff raised), not this report's — but the screen says what
 follows either way.
 
-**On Part C: the platform-control cost is unknown, and this report declines to invent it.**
-Six routes are set out as a decision structure. For each: what it is, what has to be true,
-what is knowable about cost today, and the single fact that would most change it. Four of
-those six facts are held inside CSI or by counsel and **none requires contact with the
-Developer.** Until they are gathered, no route is priceable, and gathering them is the whole
-of the near-term work.
+**5. On Part C, the question is not title — it is operational independence.** **CSI owns the
+OMS** (§6.1(a); Ethan's correction, 2026-11-24; `reports/ai-rollup-thesis-grounding.md` §2 as
+revised). What CSI lacks is the ability to **staff, integrate and scale** the asset it owns
+without a third party's consent, and the ability to survive a change of ownership. Part C
+reframes accordingly: **six dependencies, seven routes, and no route has to buy the asset
+back.** That makes the problem materially more tractable than the brief originally posed it.
 
-**One refinement to the brief, stated plainly as `§8` requires.** The brief and the grounding
-report both treat platform control as *gating* for an acquisition programme. On the text, the
-Change Order requirement is a **mutual** agreement — neither side may classify unilaterally
-(`freightflow-agreement-gaps.md` row 7). So the Developer is not obliged to agree, and CSI is
-not obliged to pay whatever is asked. The practical exposure is **cost and latency per deal,
-not a veto.** That makes platform control *pricing* for a first deal and *gating* for a
-programme, because unbounded per-deal negotiation cannot be underwritten. The distinction
-matters because it changes the order of operations: a pre-agreed scope and rate for migration
-work — one negotiation, not one per deal — is a cheaper answer than ownership and belongs at
-the top of Route 1.
+**The cost of resolving it is unknown and this report declines to invent it.** For each route:
+what it is, what has to be true, what is knowable about cost today, which dependencies it
+addresses, and the single fact that would most change its cost. **Every one of those facts is
+held inside CSI or by counsel, and not one requires contact with the Developer.** Until they
+are gathered, no route is priceable, and gathering them is the whole of the near-term work.
+
+**Two refinements, stated plainly as `§8` requires.** First, the Change Order problem is
+narrower than "gating": §2.4 and §19.5 require **mutual** written agreement, so the Developer
+need not agree **and CSI need not pay whatever is asked** — the exposure is cost and latency
+per deal, which is *pricing* for a first deal and *gating* for a programme. That puts a
+**pre-agreed scope and rate for migration work** at the top of Route 1 as a cheaper answer
+than anything structural. Second, **two of the items the correction files as diligence cleanup
+are present operational dependencies**, and Part C promotes them (D5, D6; reasoning at §D.4
+item 6).
 
 ---
 
@@ -398,6 +413,15 @@ about whose margin it was — in a market small enough that the argument would b
 hardest on the capability acquisitions (La Nacional's rulebook, Cairnstack's product), where the
 value is not a book whose revenue can be measured cleanly.
 
+**And a second structural interaction, raised by `legal-risk` during this task and new to this
+repo** (`HANDOFF-T0024-platform-negotiability-corpdev.md`, judgement 3). **CSI would buy an
+acquired customer's revenue at a multiple, and then share that same revenue with the Developer
+whenever those customers order through the portal** — Ex. C §5.1(c) charges on portal-originated
+invoiced revenue regardless of how CSI came to hold the customer. **So every acquisition carries
+a recurring platform cost as well as a one-off integration cost**, and both belong in a deal
+model. It is quantifiable once Donald's reconciliation exists (§C.4 item 3), and it is a
+candidate item for Route 4 rather than for the deal structure.
+
 **No structure is proposed, drafted or recommended here, and nothing in this report is drafted
 to be sent.** The point is recorded so that it is in front of Ethan and counsel before any
 structure is discussed, not after.
@@ -647,7 +671,7 @@ platform never pays for itself."* If CSI is below it:
 | **Pierson** | **Falls back.** Its rise is built on same-workflow, same-gateway leverage. Without the platform, MIA overlap is a penalty again, exactly as November had it |
 | **G7 and La Nacional** | **Rise back.** New corridors become assets rather than new modules |
 | **Gateway trade services** | **Stays top, for November's original reason** — it extends pickup beyond MIA, IAH and LAX toward the five gateways where CSI has agents but no pickup. The only category whose ranking is robust to this answer |
-| **Part C** | **Platform control drops from gating to hygiene.** Still worth doing for the valuation reason in `freightflow-agreement-gaps.md` §0b, and **still mandatory for a capital raise** because of §14.3 — but no longer a gate on an acquisition programme |
+| **Part C** | **Operational independence drops from gating to hygiene** for the acquisition programme — D1, D2, D3 and D5 stop being load-bearing because there is no platform leverage to protect. **D4 and D6 do not move:** §14.3 remains mandatory for a capital raise regardless of the thesis, and CSI still cannot get its own data out, which blocks ordinary analytics. Routes 1 and 2 stay worth doing for the valuation reason in `freightflow-agreement-gaps.md` §0b; Routes 3a, 5 and 6 fall away |
 
 **Owner: Vadim for hours per booking type; Donald for what an hour costs.** `§9.6` — never
 combined without Donald. TASK-0008.
@@ -681,10 +705,23 @@ capital-raise prerequisite, and **the honest recommendation is the grounding rep
 fallback stated plainly and early.** `CLAUDE.md` §8: *if a strategy is likely to fail, say so
 before building it.* Saying it in November beats discovering it in diligence.
 
+**And a third conditional was answered before this report was frozen, from outside the two
+above. See Part E.1.** market-intel's category estimate reaches the fallback conclusion by a
+different route — not through CSI's automatable share or its retention, but through the size of
+the pool. **On that estimate the fallback is no longer a branch; it is the recommendation.**
+§D.1 and §D.2 remain worth resolving, because they are operating questions regardless of whether
+a roll-up is on the table.
+
 ## D.4 Where this report disagrees with the grounding report
 
-`§8` requires this directly rather than politely. Five items. **None of them changes the
-grounding report's conclusion; three change a decision.**
+`§8` requires this directly rather than politely. Six items, against the grounding report as
+revised on 2026-11-24. **None changes its conclusion; four change a decision.** On the main
+correction itself — that **CSI owns the OMS** and the brief's earlier "CSI does not own its
+platform" was wrong — **this report agrees without reservation.** §6.1(a) says what it says,
+Ethan's statement in the live session is the top of the precedence order, and
+`reports/freightflow-agreement-review.md` §3.3 is guidance on external description, not a
+finding of absent title. Item 6 is the one place the correction looks to have travelled a
+little too far.
 
 **1. "Markets where better service wins share rather than price" is scored *Mixed*, and should
 be *Strong with a caveat*.** The grounding report's reason is that CSI's lead differentiator —
@@ -707,8 +744,11 @@ order of magnitude more aggressive and sits directly on the SaaS path that would
 re-rating. It appears in grounding §2 only by reference. **Decision impact: it changes what
 Route 4 should prioritise.**
 
-**3. "Gating" overstates the Change Order problem for a first deal.** Grounding §2 row 3 and
-the task brief both treat the Developer's ability to decline an integration as gating. The text
+**3. "Gating" overstates the Change Order problem for a first deal.** Grounding §2 row 3 still
+treats the Developer's ability to decline an integration as gating, and the revised §2 keeps
+the conclusion that the thesis *"cannot be underwritten on a platform CSI owns but cannot
+staff, integrate or scale without a third party's agreement."* That conclusion holds for a
+**programme**. For a **first deal** it is stronger than the text supports. The text
 supports the narrower reading: §2.4 and §19.5 require **mutual** written agreement, so neither
 side may classify unilaterally — the Developer need not agree **and CSI need not pay whatever is
 asked** (`freightflow-agreement-gaps.md` row 7 says exactly this). The real exposure is **cost
@@ -733,9 +773,172 @@ and it raises the value of market-intel's answer and of sizing the assistance ch
 
 **5. Grounding §4's table omits the one measurement that prices two of the Part C routes.** The
 portal-revenue reconciliation — Donald's open item from `freightflow-agreement-review.md` §7 —
-is the largest single input to Routes 2 and 4, is cheap, and is not in the "what nobody can
+is the largest single input to Routes 4 and 6, is cheap, and is not in the "what nobody can
 answer yet" table. **It belongs there.** `/brain-propose` is not the right instrument (this is a
 report, not a brain fact); it is raised as a handoff to `finance` instead.
+
+**6. Two of the "residual IP items" are present operational dependencies, not diligence
+cleanup — and this is where the correction reads as slightly overshot.** The revised grounding
+§2 groups seven residual items as *"documents to assemble before diligence, not a hole in the
+asset."* **Five of the seven genuinely are** — the website's absence from Exhibit A, the chain
+of title through the Feb 2026 assignment, the §6.1(b) carve-back's scope, transferability for
+a buyer, and the control inventory. **Two are not, and Part C promotes them to dependencies
+D5 and D6:**
+
+- **The Background Technology licence in the live quote path (D5).** The only identified
+  Background Technology is a Scraping Library which, per Exhibit A, **feeds the quote and
+  facility-hours engine.** CSI's licence to it states no duration or transferability (§7.1) and
+  §14.4(a) and §14.6 point in different directions on survival. That is not a document to
+  assemble; it is **a functional component of live quoting whose rights may not survive the
+  Term**, and it is the single largest cost driver of a parallel build.
+- **Data export during the Term (D6).** The absence of an express data-ownership clause is a
+  diligence item, fairly characterised. **The absence of any standing export right is not** —
+  it is blocking CSI *today*. The only return right is §14.5(c): 40 days, $50/hour, **after**
+  the relationship ends. And CSI cannot get a working bulk export from the admin tools. The
+  booking-level export this report's own conditionals depend on (§D.1, §D.2), plus retention,
+  NRR, corridor mix and account-level revenue, all sit behind it.
+
+**One further precision, offered rather than pressed.** §6.1(b) is not only ambiguous in scope —
+it expressly says its carve-back *"shall supersede any language to the contrary in this
+Agreement and any Exhibit to it."* So the accurate internal statement is: **CSI owns the Work
+Product, and the boundary between Work Product and Background Technology is undefined, at a
+boundary where §6.1(b) overrides §6.1(a).** That is much closer to the correction than to the
+brief's original claim, and it is not "a hole in the asset." But "diligence cleanup" invites a
+flat *"CSI owns the platform"* in a room where the boundary is the thing being discussed — a
+SaaS licence, a transfer to a buyer, a parallel build. **Decision impact: low today, high at
+the moment of a transaction.** It is also why Part C's Route 6 narrows to *"you cannot buy what
+has not been listed"* and why item 6 of the decision sequence asks for the Background
+Technology list as at today.
+
+**No finding in either legal-risk report is disputed anywhere in this report.** Items 3 and 6
+are differences of emphasis and classification against the grounding report's summary of them,
+and both are raised to `legal-risk` as a handoff rather than settled here.
+
+---
+
+# Part E — two inputs that arrived during this task, and what they change
+
+**Both arrived after Parts A–C were drafted and before this report was frozen. Both are
+material. Neither is folded silently into the sections above; they are set out here with what
+they change, so the sequence is visible.**
+
+## E.1 market-intel sized the category, and the answer is small
+
+`HANDOFF-T0007-category-size-corpdev.md`, with the derivation in
+`reports/repatriation-category-size.md`. **Confidence LOW-MEDIUM, by its own statement.**
+
+`[ESTIMATE — market-intel, two-sided method]` US-origin human-remains air transport and
+repatriation, brokered plus airline-direct: **~30,000–90,000 shipments a year, central
+~55,000; ~$35M–$135M of customer spend, central ~$75M.** CSI at roughly $15.0M is therefore
+**~11%–43% of the category, central ~20%.** Category profit pool `[ESTIMATE]` **~$14M** at
+CSI's 19.2% year-to-date EBITDA margin, with a range of ~$7M–$26M.
+
+### What it does to the thesis
+
+**It answers §D.1 and §D.3 from the outside, and the answer is the uncomfortable one.** The
+published models assume $200bn+ labour markets — General Catalyst sizes US services at
+*"$6T+"*, Dewez's ratios run against $220bn of accounting services and $447bn of legal
+(grounding §1). **CSI's entire category is a gross-profit pool of roughly $26M–$30M at
+central.** market-intel states the consequence directly: *"Do not apply the AI roll-up
+labour-pool logic to this category."*
+
+**So this report's conclusion is no longer conditional.** On market-intel's central estimate,
+**CSI's category cannot support a platform company in the sense the four sources mean** — a
+holding company whose value comes from buying labour-intensive delivery and converting a large
+labour budget into software margin. The labour budget is not there.
+
+**That is not the same as saying the operating playbook fails.** The grounding report's §4
+fallback — **capacity as growth, margin as the lever, without the roll-up narrative attached**
+— survives intact and is now the recommended frame. Everything in Part A that measures
+automatable work, retention and data readiness still earns its place as an *operating* and
+*diligence* discipline. What does not survive is the **re-rating story**: the argument that CSI
+should be valued as a platform rather than as a well-run broker. `CLAUDE.md` §8 asks for this
+to be said before it is built rather than after, and this is the place to say it.
+
+### And a second, sharper consequence nobody has drawn: the gap may be larger than the acquirable category
+
+`[ESTIMATE — arithmetic on market-intel's central category estimate and `reports/the-25m-gap.md`
+§§1–2. Published-market multiples are reference points from that report, not a valuation of CSI,
+which remains TASK-0006 and gated.]`
+
+| Step | Central case |
+|---|---|
+| Incremental EBITDA needed to reach the reference-point enterprise value at 10x | **~$2.0M** |
+| …at 6x, the lower end of the published lower-middle-market freight range | **~$5.3M** |
+| Acquired **revenue** that implies, at CSI's 19.2% EBITDA margin | **~$10.4M to ~$27.6M** |
+| As a share of the **whole category** (central ~$75M) | **~14% to ~37%** |
+| CSI's resulting share of the category, on top of its existing ~20% | **~34% to ~57%** |
+| At the **low end** of market-intel's category range (~$35M) | **~30% to ~79%** of the category. Not plausible |
+
+**And the acquirable remainder is much smaller than the category.** National Mortuary Shipping,
+Bergen NJ and FL, International Mortuary Shipping and Las Rosas are **allies and among CSI's
+largest customers** — partner volume, not acquirable share (`CLAUDE.md` §5). The largest single
+competitor block, Eagle's Wings Air and Inman under one ownership group, is **the least
+available entry on the longlist and carries the highest antitrust flag** (§B.2). Strip both out
+and the share CSI would have to buy becomes a larger fraction of a smaller pool.
+
+**The honest statement is therefore:** on these estimates, **an in-category acquisition
+programme of the size `reports/the-25m-gap.md` requires may not be available at any price**, and
+the part of it that is available concentrates CSI in a narrow niche in a way that is a question
+for counsel rather than for this team. **This does not disprove the $25M objective. It relocates
+where the EBITDA would have to come from**, and it is exactly the kind of finding that is worth
+far more in November than in a process.
+
+### Which raises the value of the three additive lanes by a large factor
+
+The three lanes that sit **outside** the category market-intel sized are no longer side notes.
+They are the only places where growth is additive rather than zero-sum:
+
+1. **The assistance and insurance repatriation channel** (§B.4). Contracted, procurement-driven
+   volume, and the demand side of any capacity argument. Already reclassified from an
+   acquisition lane to a partnership lane in November; **its priority should now rise again.**
+2. **Documentation and consular-processing bureaus** (§B.5) — the new category this screen
+   surfaced. Rule-bound work, no 24/7 load, and plausibly a revenue line rather than only a cost
+   base.
+3. **Gateway trade services and ship-out preparation** (§B.4) — still the top-ranked category
+   in Part B, and the one whose ranking is robust to every conditional in Part D.
+
+**Sizing those three is now more valuable than extending the target longlist.** That is a
+handoff to `gtm-strategist` with corpdev on the economics, and it is a change of priority
+rather than a change of plan.
+
+### What does not change
+
+- **Part B's ranking stands**, because it ranks research priority within the pipeline CSI has,
+  and that pipeline is still what an in-category bolt-on programme would run on. §D.1 already
+  states which entries move if the platform logic falls away: Pierson's rise reverses, G7 and
+  La Nacional recover, and gateway trade services stay top for November's original reason.
+- **Part C's D4 and D6 stand regardless of the thesis.** §14.3 gates a capital raise whatever
+  CSI's strategy is, and CSI still cannot export its own operating data. **Those two are not
+  roll-up problems; they are company problems.**
+- **market-intel's own confidence rating stands.** LOW-MEDIUM, with the domestic leg named as
+  the weakest link. **Nothing above should be quoted as a measurement**, and none of it goes
+  outside CSI (`§7.3`, `§7.5`).
+
+## E.2 legal-risk re-weighted the Part C routes, and three of its six judgements change this report
+
+`HANDOFF-T0024-platform-negotiability-corpdev.md`, feeding
+`reports/freightflow-amendment-scope.md`. **Nothing in it contradicts anything sourced here.**
+Three judgements are adopted into Part C, one is adopted with a question attached, and two
+confirm what Part C already said.
+
+| legal-risk judgement | Effect here |
+|---|---|
+| **1 — Integration consent is negotiable and is not the Developer's core economics; a pre-agreed migration scope and rate is the most achievable high-value ask. But the real constraint is capacity, not willingness: a small vendor with a 40-hour monthly bucket cannot promise turnaround for several deals a year, so the ask has two halves — a price and a capacity or turnaround commitment** | **Adopted, and it improves Route 1.** Part C had the price half and not the capacity half. **The capacity half is the one that actually makes an acquisition programme underwritable**: a known price with an unknown queue is still an unbounded schedule risk, and a programme is a calendar before it is a budget. Route 1 item (1) should be read as both halves |
+| **2 — [N1, new counsel item] Whether CSI, which owns the Work Product, may have its own staff or a different developer do an integration on that code is unanswered. If yes, CSI's dependence is practical rather than legal** | **Adopted, and it is the most consequential of the six.** It bears directly on **D2** and on **Route 2**. If the answer is yes, D2 downgrades from a consent dependency to a capacity dependency, Route 2 becomes the primary answer rather than a complement to Route 1, and Route 3b strengthens. **Part C's D2 and C.1a should be read as subject to N1**, and N1 belongs in the decision sequence at §C.4 item 4 alongside T4 and K3 |
+| **3 — The revenue-share schedule is the Developer's core return. Do not treat Route 4 as a cheap early fix. Three sub-items are more tradeable than the rate: how acquired-book revenue is treated, audit mutuality (§5.4), and the 30% subscription share** | **Adopted, and it corrects an ambiguity in Part C's wording.** Route 4 says the cash is modest and it is cheapest to restructure now while the base is small. **Cheap in cash is not cheap in negotiation**, and a reader could take Part C to mean easy. It does not. **And the acquired-book-revenue sub-item is a point nobody in this repo had made:** CSI would buy an acquired customer's revenue at a multiple, and then **share that same revenue with the Developer** whenever those customers order through the portal. That is a direct, quantifiable interaction between the acquisition programme and the platform economics, and it belongs in any deal model |
+| **4 — §9.1 is not a lever to build a route on; a free-hire right is the item to expect most resistance on. The achievable version is a defined mechanism or an event-triggered right, plus documented knowledge transfer and a named qualified backup** | **Consistent with Part C**, which builds Route 2 on hiring people who are *not* Developer Personnel rather than on relief from §9.1. **Adopted as the shape of the Route 1 personnel ask**, replacing the looser "consent arrangements or a carve-out" |
+| **5 — Route 0 is not a stable endpoint, because the agreement ends with no automatic renewal; a programme starting in 2027 meets expiry mid-programme, so a renewal or successor conversation happens regardless** | **Adopted, and it is a better reason than Part C's.** Part C called Route 0 the counterfactual because CSI's own plans contradict it. legal-risk's reason is stronger and does not depend on the plans: **the conversation happens anyway; the only question is whether CSI opens it on its own timetable with the hygiene items on the table** |
+| **6 — Route 6 prices the Developer's core economics, not its hygiene terms, and does not solve N1 or §9.1 unless the people come with it. The §13.2(d)–(e) consent right stands as leverage** | **Confirms Part C** and confirms the §C.2 leverage finding, which legal-risk is adding to the amendment scope |
+
+**One question back, not a correction, raised in `HANDOFF-T0024-legal-risk-reply.md`.**
+legal-risk judges the **capacity** half of the migration ask harder than the **price** half. The
+opposite may be true: §2.4 expects Change Orders to *"include further financial renumeration,"*
+so a standing rate card **caps the Developer's upside on work it knows CSI must have**, whereas
+a capacity commitment is paid work it can staff for. If so the ordering reverses, and it changes
+which half CSI leads with. **This is a question for Ethan's conversation to test, not something
+either of us can settle from the documents.**
+
 
 ---
 
@@ -747,10 +950,12 @@ Written to `handoffs/`, for the orchestrator to route.
 |---|---|---|
 | **`market-intel`** | **Is the addressable category large enough to support a platform company?** With what this report would do differently on each answer | Required by the task. Relates to TASK-0007. `§D.4` item 4 raises its value |
 | **`data-analyst`** | **Logo retention and NRR for CSI itself**, plus the §D.2 cross-check against the yield-not-volume reading of `CLAUDE.md` §2 | Required by the task. Long Lake's primary screen; never computed |
-| **`finance`** | **Reconcile the OMS Portal Revenue Tracking page to CSI's invoices** (Donald). The largest single input to Part C Routes 2 and 4 | Already an open item; nobody has named it as a corp-dev input |
-| **`legal-risk`** | Two things. **(1)** Frame §13.2(d)–(e) and §19.10(b) as **CSI-side leverage**, not only as a protection, and add it to the counsel brief. **(2)** Add a **pre-agreed migration scope and rate** to the Route 1 remedy list | Neither appears in either FreightFlow report. **No disagreement with their findings** — both reports hold |
+| **`finance`** | **Reconcile the OMS Portal Revenue Tracking page to CSI's invoices** (Donald). The largest single input to Part C Routes 4 and 6 | Already an open item; nobody has named it as a corp-dev input |
+| **`legal-risk`** | Four things. **(1)** Frame §13.2(d)–(e) and §19.10(b) as **CSI-side leverage**, not only as a protection, and add it to the counsel brief. **(2)** Add a **pre-agreed scope and rate for migration work** to the Route 1 / remedy list. **(3)** Add **K3 (the §9.1 boundary for CSI building its own engineering capability)** to the ranked counsel brief — it gates Part C Route 2. **(4)** Reclassify the **Background Technology licence in the live quote path** and the **absence of a standing export right** from diligence items to operational dependencies (§D.4 item 6) | **No finding in either FreightFlow report is disputed.** (1)–(3) are additions; (4) is a classification difference against the grounding report's summary, raised rather than settled |
 | **`operations`** | November's handoff, re-raised with a new question: **is a same-workflow, same-gateway book cheaper for the desk to absorb than a new corridor?** The screen asserts it; `operations` owns the answer | No target is called integrable in this report and none should be until this returns |
 | **`product`** | Does Cairnstack / MorTrack encode any of the rule-bound work CSI's desk actually does? **Public product documentation only — no contact, no demo, no trial** | Part C Route 5's pricing fact |
+| **`gtm-strategist`**, with corpdev on economics | **Size the three additive lanes** — the assistance and insurance channel, documentation and consular-processing bureaus, and gateway trade services. **This is now more valuable than extending the target longlist** | Part E.1: in-category growth is zero-sum and the pool is small. These three sit outside the sized category |
+| **`legal-risk`** (reply) | Agreement with five of its six judgements, adoption of three into Part C, and **one question back on whether the capacity half of the migration ask is really harder than the price half** | `HANDOFF-T0024-legal-risk-reply.md`. **N1 is adopted as the most consequential of the six** |
 
 ---
 
@@ -764,7 +969,9 @@ operational coordination with any target. No communication to a competitor about
 customers, territories or bidding, and nothing usable as one. No acquisition or equity framing
 involving National Mortuary Shipping, Bergen, International Mortuary Shipping, Las Rosas or
 Rowland Brothers — **those are Ethan's conversations alone** (`CLAUDE.md` §5). The platform is
-not described as "owned" and Kyri is not described as CSI's CTO. Target names stay in this repo.
+asserted as CSI's **internally**, per §6.1(a) and Ethan's correction, while `review` §3.3's
+guidance against describing it as "owned" **to outsiders** pending counsel on I1–I8 is
+preserved. Kyri is not described as CSI's CTO. Target names stay in this repo.
 
 ---
 
@@ -777,11 +984,16 @@ sources are quoted there and were **not** re-fetched, `§11.3`);
 `reports/carrier-margin-resolved.md`; `reports/google-ads-should-we-pull-back.md` (impression
 share); `CLAUDE.md` §§0, 1, 2, 3, 4.1–4.3, 5, 7.1–7.5, 8, 9.6, 11.3;
 `context/brain/initiatives/acquisitions.md`; `context/brain/initiatives/international-partners.md`.
+**Ethan's correction of 2026-11-24**, relayed by pm-orchestrator mid-task: **CSI owns the OMS**
+per §6.1(a), and the question is operational independence rather than title. Part C was written
+against the corrected position; `reports/ai-rollup-thesis-grounding.md` §2 as revised is the
+controlling statement of it.
 **The FreightFlow PDF was not re-read** (task constraint); every contract fact is taken from the
 two legal-risk reports, and no finding of theirs is disputed.
 
 **Confidence.** **High** on the framework in Part A, on the overlap/complement inversion, on the
-finding that no longlist entry carries a platform, and on every FreightFlow fact. **Medium** on
+finding that no longlist entry carries a platform or the people to run one, on CSI's title to
+the OMS, and on every FreightFlow fact as reported by legal-risk. **Medium** on
 Pierson, La Nacional and G7 — the scores state their own evidence split, and 35–45% of each
 rests on category assumption. **None** on the two unidentified domains and International
 Logistics Services. **Low** on anything in Part C that touches cost, which is why Part C prices
@@ -793,6 +1005,10 @@ source CSI owns); registry verification that Pierson still exists (one lookup, t
 company); the executed agreement and the control inventory (internal); the portal-revenue
 reconciliation (Donald); the counsel engagement (drafted, not engaged).
 
-**Review trigger:** any of market-intel's category answer, data-analyst's retention figures,
-the automatable-share measurement, counsel's §14.3 answer, the §9.2 extraction, or the
-booking-desk questionnaire. **Any one of them changes the ranking or the thesis.**
+**Review trigger:** **market-intel's category answer has arrived and is in Part E.1 — it is the
+largest single change to this report and it is the one to act on.** Still outstanding and each
+capable of changing the ranking or the thesis: data-analyst's retention figures, the
+automatable-share measurement, **counsel on T4 (§14.3), K3 (§9.1) and N1 (whether CSI's own
+staff may integrate on code CSI owns)**, the FreightFlow §9.2 extraction, and the booking-desk
+questionnaire. **N1 is the cheapest of them and it decides whether Part C's central dependency
+is legal or merely practical.**

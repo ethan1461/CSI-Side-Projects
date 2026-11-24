@@ -47,25 +47,35 @@ Being the **platform** is a second test, and Fig states it as two conditions, no
 > "The platform company must **own** what is built on it **and be able to run it after the
 > partner leaves**."
 
-**CSI passes the first condition and is not yet independent on the second.** It owns the OMS
-and the source sits in a repository under its control. What it cannot do unilaterally is
-employ the people who built the system (§9.1 bars hiring Kyri, Alex or other Developer
-Personnel for the Term plus 24 months without written consent), integrate an acquired book
-onto it (a new integration needs a Change Order the Developer is not obliged to agree to), or
-move volume onto it without paying a rising share for doing so (Ex. C §5.1(c), 1.5% to 3.5%
-marginal, on portal-originated revenue). A sale of CSI auto-terminates the build relationship
-outright (§14.3).
+**CSI largely meets the first condition and is not yet independent on the second.** It owns
+the Work Product on the text, and the source sits in a repository under its control — with
+the verification gaps in §2. On independence: §9.1 bars CSI from hiring Kyri, Alex or other
+Developer Personnel for the Term plus 24 months, so CSI cannot employ **the people who know
+the system** — which is not the same as being unable to staff it, and is mitigable by
+documentation, escrow and a second developer. Moving volume onto the platform costs a rising
+share (Ex. C §5.1(c), 1.5% to 3.5% marginal, portal-originated only — legal-risk sizes this
+at roughly $45K a year at $2M of portal revenue, a valuation drag rather than a blocker). A
+sale of CSI auto-terminates the build relationship (§14.3). And the agreement **expires
+around 1 March 2029 with no auto-renewal**, mid-programme, so a renewal conversation happens
+whatever CSI does.
 
-**So the gating item in this thesis is not buying a platform CSI already owns. It is
-converting an owned asset into an independently operated one** — and the clause that bears
-hardest on an acquisition programme is integration consent, because it means a third party
-can decline each deal's integration. Nobody has priced the renegotiation, and it has the
-longest lead time of anything here because it needs counsel and a counterparty's agreement.
+**So the gating item is not buying a platform CSI already owns. It is converting an owned
+asset into an independently operated one** — and the item that bears hardest on an
+acquisition programme is the integration framework for acquired books.
+
+**One correction to an earlier draft of this report, from legal-risk, and it lowers the
+severity.** I wrote that a third party can decline each deal's integration. That overstates
+it. The Change Order test governs work **the Developer performs**. Whether CSI, as owner of
+the code, may have its own staff or another developer do the integration is **unanswered** —
+it turns on the Background Technology licence (I2), §8 confidentiality and §9.1, and is now
+counsel question **N1**. That question decides whether integration consent is **a veto or
+merely a queue**, and it is the single cheapest thing to resolve in this whole thesis.
 
 **This is not an argument against the thesis.** It is an argument about order. Three of the
 four sources independently say prove the platform on the operating company before buying
-anything — and CSI has a reason of its own, which none of them had: a third party can decline
-to let CSI integrate an acquired book at all.
+anything — and CSI has a reason of its own, which none of them had: until counsel answers
+N1, CSI does not know whether it can integrate an acquired book without the Developer's
+agreement.
 
 ---
 
@@ -135,8 +145,11 @@ one and the platform is what makes the second cheap. Build the platform first.
 new integration, which falls outside FreightFlow's included support hours and requires a
 signed Change Order *that the Developer is not obliged to agree to*
 (`reports/freightflow-agreement-review.md` §1.2, test 4). An acquisition programme cannot be
-run through a platform whose owner can decline each integration. On CSI's facts the
-sequencing question answers itself.
+run on integration terms nobody has established. **Note the correction in "The answer"
+above:** the Change Order test binds work the Developer performs, and whether CSI may have
+others integrate on its own code is counsel question N1, unanswered. If N1 comes back
+favourably this is a queue to manage rather than a veto to negotiate around, and the
+sequencing argument rests on the remaining three constraints instead.
 
 ### The screens these investors use
 
@@ -230,7 +243,7 @@ requires.
 
 | What the thesis requires | CSI's actual position | Where |
 |---|---|---|
-| The acquirer owns the platform layer outright | **Satisfied.** CSI "is and will be the sole and exclusive owner of all right, title, and interest" in the OMS and portal code, as work made for hire, with a backup assignment and a waiver of moral rights. Source is delivered in both object and source form to a repository under CSI's control. Residual items are diligence cleanup rather than a defect in title — see below the table. | §6.1(a), §§4.3(b), 2.2(b) |
+| The acquirer owns the platform layer outright | **Met on the text, not yet verifiable.** CSI "is and will be the sole and exclusive owner of all right, title, and interest" in the OMS and portal code, as work made for hire, with a backup assignment and a waiver of moral rights. **But** that text is subject to the §6.1(b) carve-back, which overrides contrary language; the reports it is read from were written against an **unsigned copy with a blank Effective Date**; and four items are open — the Background Technology licence has no stated term or transferability (I2), no clause says CSI owns the OMS data (I5), the chain of title is unverified (I6), and the website is outside Exhibit A (I7). A buyer tests against those documents, not §6.1(a) alone. | §§6.1(a), 6.1(b); I2, I5–I7 |
 | A team inside the company that can run and extend it after the builders leave | **CSI cannot hire Kyri, Alex or other Developer Personnel for the Term plus 24 months without FreightFlow's written consent.** | §9.1 |
 | Each add-on integrates at falling marginal cost | Migrating an acquired book is a new integration, outside included support hours, needing a Change Order **the Developer is not obliged to agree to** | Review §1.2, test 4 |
 | Platform economics improve as volume moves onto it | Revenue share on "Shipment Revenue" — revenue from services *"initiated directly by the customer through the Frontend System"* — on a **rising marginal schedule: 1.5% on the first $500,000 up to 3.5% above $2,000,000.** Developer, not CSI, holds the audit right. | Ex. C §§5.1(c), 5.4 |
@@ -333,3 +346,100 @@ all four are public pages.
    *The most operationally detailed, and a vendor pitch whose conclusion is to buy the
    vendor's platform and engineers. The platform-ownership conditions are credible and are
    the reason §2 of this report exists.*
+
+---
+
+## 6. Post-publication findings — 2026-11-24, same day
+
+Two agents reported after this report was written. Both change it, and the first changes
+the conclusion.
+
+### 6.1 market-intel: the category cannot support the multiple this thesis needs
+
+`reports/repatriation-category-size.md`. **This was commissioned as a falsifier and it
+fired.** Every figure is `[ESTIMATE]` at low-to-medium confidence, because no published
+count of US remains shipments exists.
+
+- **Category size: ~55,000 shipments a year (range 30,000–90,000), ~$74M of customer spend
+  (range $35M–$135M).** Built two ways — a demographic build from CDC deaths and
+  foreign-born death share, and a competitor-volume build — overlapping at 30,000–90,000.
+  The two are not independent of each other's assumptions.
+- **The weakest input has no public source at all:** the domestic air share, taken as
+  0.5–2% of deaths. That is a fourfold range on the largest single driver, which is why
+  §6.3 recommends buying the data.
+- **CSI's share: ~20% at the centre** (11%–43%). A roll-up here moves share between owners
+  rather than entering new market.
+- **The whole category earns ~$14M of EBITDA** at CSI's 19.2% margin (range $7M–$26M).
+  Reaching ~$4.9M — the $49M-at-10x requirement — means **~34% of all category profit**,
+  73% at the low end, 19% at the high end.
+- **No precedent found for a ~$15M-revenue niche broker at 17x.** Lower-middle-market
+  broker comps run 3–8x; SCI trades around 12x and reportedly buys independents at 8–10x.
+  **A dominant niche operator at 8–10x is plausible — and that outcome comes from share and
+  margin, not from AI.**
+- **The labour pool the AI is supposed to transform is ~$26–30M of gross profit in total.**
+  US accounting services spend is roughly 3,000 times larger. General Catalyst's "$6T+" is
+  roughly 80,000 times larger. **My §1 said three to four orders of magnitude; it is nearly
+  five.** That correction is market-intel's and it is against my own arithmetic.
+
+**What this kills, and what survives.** It kills the framing in "The answer" above — that
+the AI layer is how CSI earns a multiple above broker comps. On this evidence the multiple
+ceiling is 8–10x and it is earned by share and margin. **It does not kill the acquisition
+programme**, which `reports/the-25m-gap.md` shows is arithmetically required regardless,
+and it does not kill operational automation, which stands on its own merits for a
+capacity-constrained desk. See §6.3.
+
+**Where the verdict could be wrong**, in market-intel's own words: a large airline-direct
+domestic flow it cannot see, or a strategic buyer who values CSI's funeral-home access
+rather than category size. Neither is in evidence. **The second deserves attention anyway**
+— SCI reportedly buys at 8–10x and is already CSI's largest enterprise relationship.
+
+### 6.2 legal-risk: three corrections to §2, all reducing the severity
+
+`reports/freightflow-amendment-scope.md`. Applied above; recorded here so the change is
+visible.
+
+1. **"Satisfied" on ownership was too strong.** CSI owns the Work Product *on the text of
+   an unsigned, undated copy*, subject to the §6.1(b) carve-back, with I2, I5, I6 and I7
+   open. Not absent, not satisfied.
+2. **"A third party can decline each deal's integration" overstates it.** The Change Order
+   test binds work the *Developer* performs. Whether CSI may have its own staff or another
+   developer integrate on code CSI owns is **unanswered — new counsel question N1.** It
+   decides whether integration consent is a veto or a queue.
+3. **§9.1 blocks hiring the people who know the system, not staffing.** Mitigable by
+   documentation, escrow, a second developer and a defined transition. It ranks 8th of 9 in
+   legal-risk's list, not near the top.
+
+Also material: **the revenue share is ~$45K a year at $2M of portal revenue** — a valuation
+drag, not a blocker, and ninth of nine on askability. And **the agreement expires around
+1 March 2029 with no auto-renewal**, mid-programme, so running to expiry is not a stable
+endpoint and a renewal conversation happens regardless.
+
+**Net effect: the platform problem is materially smaller than §2 originally claimed**, and
+the cheapest thing in the whole thesis is now getting counsel to answer N1.
+
+### 6.3 Where this leaves the thesis
+
+**The honest restatement, replacing the one in "The answer":**
+
+> Acquisitions are the arithmetic requirement. **Consolidating share and raising margin is
+> how CSI earns 8–10x — the top of the plausible range for a dominant niche operator.** AI
+> is how a nine-person desk absorbs acquired volume without proportional hiring, which
+> protects the margin. It is an operating lever, not a re-rating mechanism, and it should
+> not be sold to anyone as one.
+
+That is a narrower claim than the one this report opened with, and it is the one the
+evidence supports. It also reorders the work: if the exit is strategic rather than a
+financial re-rating, what a buyer pays for is the funeral-home channel and the operating
+margin, not a platform narrative.
+
+**Three decisions now with Ethan**, raised 2026-11-24:
+
+1. Re-run the equity story at 8–10x rather than 17x, and state the category as ~$75M with
+   its range. Touches Cheryl's number, so it is Ethan's alone.
+2. **~$175 and one day** to buy NFDA's state-level report and run the NCHS nativity files
+   — replacing the two weakest estimates with counts. Spending money is `§7.1`-gated. Given
+   the fourfold range on the domestic air share, this is the highest-value $175 on the
+   board.
+3. Whether to ask a partner what share of their volume they book direct with airlines. That
+   closes the largest unknown in the category number, and it is `§7.1`-gated external
+   contact.

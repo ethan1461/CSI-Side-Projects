@@ -4,7 +4,7 @@
 **Created:** 2026-11-24 by pm-orchestrator
 **Due:** 2026-12-01
 **Priority:** HIGH
-**Status:** IN PROGRESS — claimed by corpdev 2026-11-24
+**Status:** COMPLETE — corpdev 2026-11-24. Deliverable: `reports/ai-rollup-screen-and-platform-control.md`
 
 ## Objective
 
@@ -139,3 +139,27 @@ about whose margin it was. Flag it wherever structure comes up.
   `the-25m-gap.md`, `capital-routes.md` Part 0 and both FreightFlow reports. Not
   re-fetching the four sources and not re-reading the signed PDF (`§11.3`, task
   constraints). Starting Part A.
+- 2026-11-24 — **delivered** `reports/ai-rollup-screen-and-platform-control.md`, Parts A–C as
+  specified, plus Part D (the conditionals and the disagreements with the grounding report) and
+  Part E (two inputs that arrived mid-task).
+- 2026-11-24 — **Part C rewritten after Ethan's correction** relayed mid-task: CSI **owns** the
+  OMS (§6.1(a)); the question is operational independence, not title. Part C now runs on **six
+  dependencies and seven routes**, with two dependencies (D5, the Background Technology licence
+  in the live quote path; D6, no standing export right during the Term) promoted from the
+  correction's "diligence cleanup" list, with reasoning at §D.4 item 6.
+- 2026-11-24 — **market-intel's category estimate arrived** (`HANDOFF-T0007-category-size-corpdev.md`)
+  and is the largest single change to the report. `[ESTIMATE, LOW-MEDIUM]` ~$75M category, CSI
+  ~20%. **On that estimate the thesis does not survive and the grounding report's §4 fallback
+  becomes the recommendation rather than a branch.** Part E.1 also derives a consequence nobody
+  had drawn: the in-category acquisition programme the $25M objective requires is ~14–37% of the
+  whole category at central, and the largest block of it is not for sale.
+- 2026-11-24 — **legal-risk's six negotiability judgements adopted** into Part C (§E.2); three
+  changed the report, notably **N1** (whether CSI's own staff may integrate on code CSI owns),
+  which decides whether the central dependency is legal or merely practical. One question
+  returned on the ordering of the migration ask: `handoffs/HANDOFF-T0024-legal-risk-reply.md`.
+- 2026-11-24 — handoffs raised: `market-intel` (closed by its own early answer, reply recorded),
+  `data-analyst` (retention and NRR, plus a cross-check against the `CLAUDE.md` §2 yield reading),
+  `finance` (portal-revenue reconciliation — the largest input to Part C Routes 4 and 6),
+  `legal-risk` (reply), plus `operations`, `product` and `gtm-strategist` items recorded in the
+  report's handoff table. **No contact with any target, Developer, investor, lender or banker.
+  No valuation of CSI. `§7.5` observed throughout.**

@@ -17,10 +17,24 @@ numbers CSI has not measured, and those are named rather than guessed.
 
 ---
 
+> **Correction, 2026-11-24.** The first version of this report stated that CSI does not own
+> its platform. **That was wrong, and Ethan corrected it.** CSI does own the OMS: §6.1(a) of
+> the executed agreement makes CSI "the sole and exclusive owner of all right, title, and
+> interest," as work made for hire with a backup assignment, with source delivered to a
+> repository under CSI's control. The error was conflating ownership with operational
+> control, and in doing so promoting a diligence caution — `freightflow-agreement-review.md`
+> §3.3's advice not to describe the platform as "owned" *outside CSI* while counsel
+> questions I1–I8 are open — into a claim that ownership was absent. It is not.
+>
+> §2 and this section are rewritten. The four operating constraints they describe are
+> unchanged, because none of them was ever an ownership question. corpdev was notified
+> mid-task.
+
 ## The answer
 
-**The thesis fits CSI's business unusually well and collides head-on with one fact: CSI
-does not own its platform.**
+**The thesis fits CSI's business unusually well. The place it strains is not ownership — CSI
+owns its platform — but operational independence: CSI cannot today staff, integrate or scale
+that platform without a third party's agreement.**
 
 On the published industry screens — the ones General Catalyst, Long Lake and Fig actually
 use — CSI scores well on five of six criteria. Rule-bound document work, high retention,
@@ -28,25 +42,25 @@ mission-critical delivery, fragmented ownership facing succession, and a capacit
 workforce are the exact profile these investors look for. CSI is close to a textbook target
 for someone *else's* roll-up.
 
-Being the **platform** is a different test, and it is the one CSI currently fails. Every one
-of the four sources locates the entire value of the model in a platform the acquirer owns and
-can run itself. Fig states the condition twice and in terms that read like a description of
-CSI's position in the negative:
+Being the **platform** is a second test, and Fig states it as two conditions, not one:
 
-> "The platform company must own what is built on it and be able to run it after the partner
-> leaves."
+> "The platform company must **own** what is built on it **and be able to run it after the
+> partner leaves**."
 
-> "An owned layer. The objects, rules, precedent, evaluations and integrations belong to the
-> platform company, not to a vendor or to the sponsor. … A platform built this way is an
-> asset the buyer pays for. One built as a collection of sponsor-owned tools and departing
-> engineers is a liability the buyer discounts."
+**CSI passes the first condition and is not yet independent on the second.** It owns the OMS
+and the source sits in a repository under its control. What it cannot do unilaterally is
+employ the people who built the system (§9.1 bars hiring Kyri, Alex or other Developer
+Personnel for the Term plus 24 months without written consent), integrate an acquired book
+onto it (a new integration needs a Change Order the Developer is not obliged to agree to), or
+move volume onto it without paying a rising share for doing so (Ex. C §5.1(c), 1.5% to 3.5%
+marginal, on portal-originated revenue). A sale of CSI auto-terminates the build relationship
+outright (§14.3).
 
-Against the executed FreightFlow agreement, CSI today has: an IP position with a hole nobody
-has measured, a prohibition on hiring the engineers who built the system, a revenue share that
-rises precisely as the platform succeeds, and auto-termination on a sale.
-
-**So the first transaction in this thesis is not an acquisition. It is getting control of the
-platform.** Nobody has priced that, and it is the gating item for everything else.
+**So the gating item in this thesis is not buying a platform CSI already owns. It is
+converting an owned asset into an independently operated one** — and the clause that bears
+hardest on an acquisition programme is integration consent, because it means a third party
+can decline each deal's integration. Nobody has priced the renegotiation, and it has the
+longest lead time of anything here because it needs counsel and a counterparty's agreement.
 
 **This is not an argument against the thesis.** It is an argument about order. Three of the
 four sources independently say prove the platform on the operating company before buying
@@ -208,7 +222,7 @@ your own.
 
 ---
 
-## 2. The collision: CSI does not control its platform
+## 2. CSI owns the platform; it does not yet independently operate it
 
 Each row is quoted from the executed agreement via
 `reports/freightflow-agreement-review.md` and `-gaps.md`, set against what the thesis
@@ -216,7 +230,7 @@ requires.
 
 | What the thesis requires | CSI's actual position | Where |
 |---|---|---|
-| The acquirer owns the platform layer outright | CSI owns "Work Product" as work-for-hire, but Developer owns "Background Technology," which is *"deemed to include any general or industry know-how."* No statement covers derivatives of Background Technology built for CSI. The chain of title from the individual to Developer is not in the repo. Assessed as *"a hole whose size nobody can measure. A buyer or investor will ask."* | §§6.1, 6.3, 1.2, 18.3 |
+| The acquirer owns the platform layer outright | **Satisfied.** CSI "is and will be the sole and exclusive owner of all right, title, and interest" in the OMS and portal code, as work made for hire, with a backup assignment and a waiver of moral rights. Source is delivered in both object and source form to a repository under CSI's control. Residual items are diligence cleanup rather than a defect in title — see below the table. | §6.1(a), §§4.3(b), 2.2(b) |
 | A team inside the company that can run and extend it after the builders leave | **CSI cannot hire Kyri, Alex or other Developer Personnel for the Term plus 24 months without FreightFlow's written consent.** | §9.1 |
 | Each add-on integrates at falling marginal cost | Migrating an acquired book is a new integration, outside included support hours, needing a Change Order **the Developer is not obliged to agree to** | Review §1.2, test 4 |
 | Platform economics improve as volume moves onto it | Revenue share on "Shipment Revenue" — revenue from services *"initiated directly by the customer through the Frontend System"* — on a **rising marginal schedule: 1.5% on the first $500,000 up to 3.5% above $2,000,000.** Developer, not CSI, holds the audit right. | Ex. C §§5.1(c), 5.4 |
@@ -229,12 +243,26 @@ company, the more it pays a third party for the privilege, at a rising rate.** T
 reason to stop; it is a term to renegotiate before the volume arrives, while it is still
 cheap to renegotiate.
 
+**On the residual IP items, proportionately.** CSI's title to the OMS is clear. What is
+open is narrower, and `legal-risk` framed it as what a buyer or lender will ask for rather
+than as a doubt about ownership: the scope of the §6.1(b) carve-back; whether Background
+Technology reaches derivatives of the identified Scraping Library; the §7.1 license's
+silence on duration and transferability, which matters for a SaaS path or a transfer to a
+buyer; the absence of any clause expressly stating CSI owns all data entered into or
+generated by the OMS; the website not appearing in Exhibit A; the chain of title from Kyri
+Chen through FreightFlow; and who controls hosting, the domain, the GitHub organisation and
+the production database. These are documents to assemble before diligence, not a hole in
+the asset. `reports/freightflow-agreement-review.md` §3.3 separately advises against
+describing the platform as "owned" **to outsiders** until counsel has cleared I1–I8 — that
+is guidance on external description while questions are open, not a finding that ownership
+is absent.
+
 **Nothing here says the FreightFlow relationship is adversarial.** The agreement is also
 the reason CSI has an OMS at all, Ethan's standing read is that Kyri and Alex are *"loose
 about what counts as a Change Order versus what they will simply enable"* (`§9.6`), and the
 counsel items are unresolved questions rather than findings against anyone. The point is
 narrower and it is about sequence: **a roll-up thesis cannot be underwritten on a platform
-whose ownership, staffing and integration consent sit with someone else.** That is a
+CSI owns but cannot staff, integrate or scale without a third party's agreement.** That is a
 negotiation to open deliberately and early, with counsel, not a problem to discover in
 diligence.
 
@@ -254,9 +282,11 @@ diligence.
   are different: automatable share of work, retention and NRR, data readiness, systems
   maturity, owner receptiveness to fundamental change. A target that scores well on one set
   can score badly on the other. That is TASK-0024.
-- **`reports/capital-routes.md` Part 0 gains a fourth readiness item.** Platform control now
-  sits alongside the three financial-hygiene blockers, and it is the one with the longest
-  lead time because it needs counsel and a counterparty's agreement.
+- **`reports/capital-routes.md` Part 0 gains a fourth readiness item.** Not platform
+  *ownership*, which CSI has, but **operational independence** — the ability to staff,
+  integrate and scale the OMS, and to survive a change of control, without a third party's
+  agreement. It sits alongside the three financial-hygiene blockers and has the longest lead
+  time of the four, because it needs counsel and a counterparty's agreement.
 
 ---
 

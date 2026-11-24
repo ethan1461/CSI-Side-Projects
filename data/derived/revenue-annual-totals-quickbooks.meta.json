@@ -1,17 +1,20 @@
 {
   "filters_applied": [
-    "report header rows 0-4 dropped",
-    "rows with no customer label dropped",
-    "grand-total row(s) dropped",
+    "QuickBooks 'TOTAL' row excluded -- it is the report's own grand total and including it doubles every annual figure",
+    "'ALREADY PAID' pseudo-customer excluded",
+    "Bergen FL+NJ combined and Donald's five Ortiz homes combined per his instruction 2026-11-10",
+    "duplicate QuickBooks customers with the same normalized name merged",
     "customers with no revenue in any year dropped",
-    "zero-revenue customer-year cells treated as absent"
+    "zero-revenue customer-year cells treated as absent",
+    "2026 is partial (10 months): NRR for the 2025->2026 pair is understated by construction and is labelled incomplete in the output"
   ],
-  "git_sha": "e2cda751abb075157e753b58f7c7f170ed381c3c",
-  "note": "Invoiced revenue by calendar year from the accounting system. 2026 covers 10 months and is flagged complete_year=False.",
+  "git_sha": "c8a25ebb7f1c0aec2cadea8e08141a06effadbb2",
+  "grouping_source": "scripts/analyze_customer_cohorts.py load_revenue + group_revenue, reused rather than reimplemented so Donald's 2026-11-10 instructions cannot be silently dropped",
+  "note": "Invoiced revenue by calendar year from the accounting system, on grouped customers. 2026 covers 10 months and is flagged complete_year=False.",
   "privacy_note": "Customer business names are hashed to a 12-char surrogate key; no name is written to any output. Source contains no decedent or family data.",
-  "rows_in": 4707,
+  "rows_in": 4647,
   "rows_out": 11,
-  "run_timestamp_utc": "2026-11-24T22:58:34.483119+00:00",
+  "run_timestamp_utc": "2026-11-24T23:08:02.137625+00:00",
   "script": "scripts/analyze_revenue_retention.py",
   "script_version": "1.0.0",
   "source_files": [

@@ -733,6 +733,433 @@ the yield denominator by design.
 
 ---
 
+---
+
+## H. The platform screens — retention, NRR, revenue per head, cost to serve by type
+
+**Added 2026-11-24.** These four exist because `reports/ai-rollup-thesis-grounding.md`
+concludes the prize in the AI-roll-up thesis is **multiple expansion**, and a re-rating
+has to be *demonstrated*. Long Lake's primary screen, per that report, is *"very high
+logo retention and net revenue retention above 100%."*
+
+**The definitional problem, stated once and inherited by M-25 to M-28.** NRR and logo
+retention are SaaS metrics resting on a subscription with a renewal date. **CSI has no
+contracts and no renewals.** A funeral home that shipped four times in 2024 and twice in
+2025 has not churned and has not renewed — it has done less business. Every definition
+below is a deliberate translation, and each states the objection a hostile buyer's
+analyst would raise and how the definition answers it. **That test is the bar here, and
+it is higher than internal reporting:** a definition that survives internal use but not
+a quality-of-earnings review is worth nothing in this programme.
+
+### The two grains, and why both are published
+
+**This is the most important rule in section H. Getting it wrong is how a retention
+number becomes indefensible.** CSI has two legitimate customer keys and they disagree:
+
+| Grain | Key | What it is | Where it lives |
+|---|---|---|---|
+| **Shipping funeral home** | OMS `shipping_funeral_home_id` / `csi_booking_shipper_information.shipper_funeral_home_id` | The home that **tendered** the shipment. The unit of demand, and the unit of acquisition | `data/raw/shipments-since-2022-20261110.xlsx`; the grain of M-12–M-17 |
+| **Invoiced customer / bill-to** | `COALESCE(csi_new_shipper_to_invoice.shipper_id, shipper_funeral_home_id)`; in the accounting system, the QuickBooks customer | Who **pays**. The unit of revenue and of commercial relationship | `data/raw/sales-by-customer-summary-20261110.xlsx` |
+
+They diverge on **partner-routed volume**. In 2026, **254 homes (upper bound) and 793
+bookings** arrived through National Mortuary Shipping, International Mortuary Shipping or
+Bergen (`data/derived/partner-routing-by-year.csv`); 156 of the 535 manifest homes have
+**no CSI-invoiced booking at all** (`reports/partner-routed-hubspot-containment.md`).
+Under the bill-to grain those ~254 logos collapse into **four payers**. Under the
+shipping grain they are 254 accounts that churn like small accounts.
+
+**Binding:**
+
+1. **Logo retention (M-25) is primary on the shipping-funeral-home grain.** It is the
+   unit of demand and of acquisition, it is the grain of every published account metric
+   (M-12–M-17, 1,091 active / 411 new / 318 churned as at 2026-11-10), and switching
+   now would silently replace a published series.
+2. **NRR and GRR (M-26) are primary on the invoiced-customer grain.** NRR is a dollar
+   question and the dollars arrive from the payer. It also ties to the accounting
+   system, which is what a QoE review reconciles to.
+3. **Both metrics are published at both grains** — a 2×2, four numbers. The grain that
+   is *not* primary is shown anyway, every time. **A grain chosen and not disclosed is
+   indistinguishable from a grain chosen for its answer**, and the bill-to grain
+   mechanically flatters logo retention. Showing both forecloses the objection; showing
+   one invites it.
+4. **Partner-routed volume is a disclosed segment, never a silent inclusion or
+   exclusion.** A home that moves from NMS to Bergen looks like CSI churn while nothing
+   happened to CSI; a home CSI never billed is not CSI's logo to retain. Report the
+   headline with partner-routed volume **in**, and the direct-only book as a second line.
+   State the count and the volume both times.
+
+**Analyst objection to the whole structure:** *"You have two customer counts. Which is
+it?"* **Answer:** CSI is a broker with a partner channel, so it has a demand base and a
+payer base and they are different sizes. The 2×2 is the disclosure, the partner manifest
+is the bridge, and the difference is quantified rather than reconciled away.
+
+---
+
+### M-25 — Logo retention (transactional)
+
+**Plain English.** Of the funeral homes that were customers, what share are still
+customers — where "still a customer" has to be inferred from behaviour, because nothing
+is ever cancelled.
+
+**Formula.** Logo retention is the complement of count churn (M-15) and reuses its
+machinery exactly, so there is one definition of activity in this file and not two:
+
+```
+logo_retention_12m(t) = |active(W0) ∩ active(W1)| / |active(W1)|
+                      = 1 − churn_rate_count(t)
+logo_retention_24m(t) = |{a ∈ active(W2) : a ∈ active(W1) ∪ active(W0)}| / |active(W2)|
+```
+with `W0 = (t−365, t]`, `W1 = (t−730, t−365]`, `W2 = (t−1095, t−730]`, half-open on the
+left, and `active` as defined in M-12. **N = 365 remains binding** (section D) — M-25
+adds a second *horizon*, not a second window length. `src/metrics.py::classify_accounts`
+is authoritative for the classification.
+
+**Report four numbers, always together.** Any one of them alone misleads:
+
+| | What it answers |
+|---|---|
+| **12-month, by count** | The SaaS-comparable number. The one an analyst asks for first |
+| **24-month, by count** | Whether a 12-month gap was loss or low frequency |
+| **24-month, revenue-weighted** | Whether the logos that left carried any money |
+| **Split by frequency band** (≥4 shipments in the prior window vs fewer) | Which company the headline is describing |
+
+**Measured values.**
+
+*Invoiced-customer grain* (`data/derived/revenue-retention-by-year.csv`,
+`scripts/analyze_revenue_retention.py`, 11 years of accounting history, **on grouped
+customers** — Donald's 2026-11-10 groupings applied, see the note below):
+
+| Base year | 1-year, count | 2-year, count | 2-year, revenue-weighted |
+|---|---|---|---|
+| 2021 | 71.4% | 76.1% | 97.4% |
+| 2022 | 70.7% | 76.0% | 95.4% |
+| 2023 | 74.5% | 80.4% | 97.7% |
+| 2024 | **78.9%** | **83.9%** | **97.8%** |
+
+**Customer grouping is binding on every figure here.** Bergen FL and NJ are one
+customer, Donald's five Ortiz homes are one customer, same-normalised-name QuickBooks
+duplicates are merged, and the `TOTAL` and `ALREADY PAID` pseudo-customers are excluded
+— per Donald's instruction of 2026-11-10, implemented in
+`scripts/analyze_customer_cohorts.py::group_revenue` and **reused**, never
+reimplemented. **Effect on the headline, published so it is not taken on trust**
+(`data/derived/revenue-retention-grain-sensitivity.csv`): logo retention moves by
+**−0.6 to +0.1pp** and NRR is unchanged to two decimals in seven of ten year pairs. The
+one material move is 2021→2022, where NRR rises **+7.3pp** (108.1% → 115.4%) because
+ungrouped, one grouped entity's revenue reads as a churn plus a new customer rather than
+as the same customer. GRR rises **+0.5 to +4.3pp** throughout, for the same reason.
+**No conclusion in this section depends on the grouping.**
+
+*Shipping-funeral-home grain* (`data/derived/rolling-window-account-metrics.csv`,
+365-day rolling): **61.1%** (2024-11-10), **67.0%** (2025-11-10), **64.8%** (2026-11-10).
+Frequency split at 2026-11-10: **90.5%** for accounts with ≥4 shipments in the prior
+window (380 accounts), **46.2%** below it (524 accounts).
+
+**Status: COMPUTABLE** at both grains. Not blocked, and not waiting on the OMS pull.
+
+**The honest reading, which must travel with the number.** Count-based logo retention is
+**62–79%** depending on grain, and that is genuinely below what a SaaS screen wants. But
+**97.8% of the 2024 revenue base sat with logos that returned within two years** — and
+that figure has sat between 95.4% and 98.3% for eight consecutive cohorts. The
+logos that leave are small ones, and a large share of them are not leaving at all — they
+are homes with one case every couple of years. Both facts are true and neither may be
+published without the other.
+
+**What a hostile analyst objects to, and the answer:**
+
+| Objection | Answer |
+|---|---|
+| *"Churn inferred from silence is not churn. You have no cancellation event."* | **Conceded, and it is a property of the business, not of the metric.** This is why the 24-month horizon and the revenue weighting are published beside the 12-month count, and why the metric is never called "churn" without the word *inferred* nearby. |
+| *"A home that ships every 18 months is counted as churned and then as reactivated. You are double-counting your own customers."* | M-14 keeps reactivation separate from acquisition and they are never summed; M-15 makes an account silent beyond two windows **dormant, not churned**, so it cannot churn twice. The 24-month horizon removes the artefact for the cohort it affects: the 2024 cohort moves from 78.9% to 83.9%. |
+| *"You picked a 365-day window because it gives the best answer."* | N = 365 was fixed on 2026-11-02, **before this screen existed**, and justified on seasonality (Jan indexes 115, Jun 92) and on per-account frequency. The section-D commitment not to change it quietly is the audit trail. |
+| *"You excluded one-and-done customers."* | **Not excluded.** First-timers who never return sit in the churn numerator, and the first-to-second conversion rate is published separately (`data/derived/cohort-first-to-second.csv`, shipping grain: 57.2% of the 2024 cohort ever placed a second booking, 47.5% of 2025). An "established logo" variant restricted to accounts with ≥2 lifetime bookings may be shown as a **second** line, never as the headline. |
+| *"Your account IDs may have been renumbered, so your churn is a migration artefact."* | Quantified, not waved away: 162 shipping IDs covering 863 lifetime bookings are absent from the account dimension, at most **15%** of the measured decay (section D). Resolving it is one query to Rednodo. |
+| *"Which of your two customer counts is this?"* | Both, published as a 2×2. See the grain rule above. |
+
+**Owner:** data-analyst. **Do not re-derive** — re-run
+`scripts/analyze_revenue_retention.py` and `scripts/analyze_customer_cohorts.py`.
+
+---
+
+### M-26 — Net revenue retention (NRR) and gross revenue retention (GRR)
+
+**Plain English.** Of the dollars CSI earned from a set of customers last year, how many
+did it earn from **those same customers** this year. NRR counts growth and shrinkage
+together; GRR counts only the shrinkage, so the gap between them is expansion.
+
+**Formula.** Over the cohort `C = {customers with revenue in the base period}`:
+
+```
+NRR = Σ_{a∈C} rev_a(compare) / Σ_{a∈C} rev_a(base)
+GRR = Σ_{a∈C} min(rev_a(compare), rev_a(base)) / Σ_{a∈C} rev_a(base)
+expansion gap (pp) = NRR − GRR
+```
+
+**Customers acquired in the compare period are excluded from both the numerator and the
+denominator. That exclusion is the whole metric** — without it this is revenue growth
+wearing NRR's name, and it is the single most common way an NRR figure is faked.
+Churned customers contribute 0 to the numerator and stay in the denominator.
+`scripts/analyze_revenue_retention.py::retention_pairs`, known-answer tests in
+`tests/test_revenue_retention.py` (5 tests, passing 2026-11-24).
+
+**Source.** `data/raw/sales-by-customer-summary-20261110.xlsx` — the QuickBooks *Sales by
+Customer Summary*, customer × calendar year, 2016 to 2026-11-01, 1,410 customers.
+**The accounting system, deliberately, not the OMS.** A QoE review reconciles to the
+books; and this source carries eleven years where the OMS carries four.
+
+**Which revenue.** M-06: gross revenue invoiced to the customer, the air rate plus
+secondary service fees combined, **not net of carrier cost and not splittable by
+stream**. So M-26 is gross-revenue-weighted, never margin-weighted. Booked-versus-
+collected is still unconfirmed (M-06).
+
+**Binding on the source, because the question will be asked repeatedly: QuickBooks is
+primary and permanent for NRR. The booking-level export, when it lands, is additive and
+does not supersede it.**
+
+- NRR is a dollar metric and a quality-of-earnings review reconciles to the books. The
+  accounting system is the authority on revenue.
+- QuickBooks gives **eleven years**; the OMS gives four. Series length is what
+  substitutes for contractual commitment in answering *"a transactional customer has
+  committed to nothing"* — and a four-year series cannot do that job.
+- **But the QuickBooks grain is the payer, and that must be stated every time.** For
+  partner-routed volume the QuickBooks customer is National Mortuary Shipping,
+  International Mortuary Shipping or Bergen — not the ~254 shipping homes behind them
+  (see the grain rule above). **So M-26 as published answers "are the dollars still
+  coming from the same payers?" It does not answer "are the same funeral homes still
+  sending work?"** The second question is M-25 on the shipping grain.
+- **What only booking-level revenue can add:** NRR on the shipping-funeral-home grain;
+  NRR on a 365-day rolling window rather than calendar years (a December shipper and a
+  January shipper land in different years for no behavioural reason); and the volume
+  versus yield decomposition of NRR directly rather than by inference. All three are the
+  revenue-column ask to Kyri and Alex in the table below.
+
+**Status: COMPUTABLE on complete calendar years, at the payer grain. LIMITED on 2026**
+(ten months; a part-year numerator against a full-year denominator understates NRR by
+construction). **BLOCKED at the shipping-funeral-home grain** pending that revenue
+column.
+
+**Measured values** (`data/derived/revenue-retention-by-year.csv`):
+
+| Pair | NRR | GRR | Expansion gap | Retained-cohort revenue change |
+|---|---|---|---|---|
+| 2019→2020 | 124.4% | 85.2% | 39.2pp | +24.4% |
+| 2020→2021 | 129.4% | 87.9% | 41.5pp | +29.4% |
+| 2021→2022 | 115.4% | 86.4% | 29.0pp | +15.4% |
+| 2022→2023 | 99.0% | 83.3% | 15.7pp | −1.0% |
+| 2023→2024 | **95.4%** | 84.3% | 11.1pp | −4.6% |
+| 2024→2025 | **95.0%** | 83.8% | 11.3pp | −5.0% |
+| 2025→2026 | 83.1% *(10 months)* | 74.9% | 8.2pp | — |
+
+**Binding reading, and it is a correction to the screen rather than a pass or a fail.**
+
+1. **The measured facts.** NRR has been **below 100% for four consecutive years**
+   (99.0, 95.4, 95.0, and a partial 83.1) and the expansion gap has compressed from
+   41.5pp to 11.3pp. Nobody may describe CSI's NRR as above 100% or as "strong," and
+   `reports/ai-rollup-thesis-grounding.md`'s row *"Strong on retention, unmeasured on
+   NRR"* is now measured and is **not strong**. The 2025→2026 figure is **not** a
+   collapse — it is ten months against twelve; scaled ×1.2 it is ≈**100%**
+   `[ESTIMATE — crude annualisation that ignores seasonality; the real figure needs the
+   closed year]`.
+
+2. **But the >100% threshold does not transfer to this category, and CSI should say so
+   rather than fail a test it was never eligible for.** NRR above 100% is normal in SaaS
+   because a subscription has expansion mechanics inside the account: more seats, more
+   usage, contractual escalators. **A funeral home has none of these.** Its shipping
+   volume is its own case volume times the share it gives CSI. Case volume follows a
+   local death rate that is flat to declining — cremation substitution reduces
+   long-distance transport (`CLAUDE.md §3.5`) — and once CSI has all of a home's
+   outbound work there is nowhere left to expand. **For a mature, fully-penetrated
+   transactional book in a flat-volume category, ~100% is the structural ceiling, not
+   the floor.** Applying a SaaS threshold to it is a category error.
+
+3. **The metric is right; the threshold is wrong. So the binding screen for CSI is a
+   different pair:**
+   - **GRR against its own history** — 83–88% for the last five pairs, and inside a
+     78–88% band for nine. That band's tightness is the structural fact about the book.
+   - **NRR read against 100%, not against 100%+.** A flat retained base scores 100%.
+     **CSI scores 95%.** So roughly **five points of the base leaks every year**, and
+     acquisition of ~$0.8M a year is spending itself covering that leak rather than
+     compounding on top of it.
+   - **NRR decomposed into a volume term and a yield term**, always. In 2025 yield was
+     roughly flat (+0.5%, `CLAUDE.md §2`) against a retained-cohort revenue change of
+     −5.0%, so **the leak is volume, not price** — retained homes are shipping less, not
+     paying less. `data/derived/base-decay-by-size-band.csv` reaches the same conclusion
+     from booking counts independently: the 2023 base of 777 accounts is down **12.5%**
+     in bookings by annualised 2026, and **every size band is negative.**
+
+4. **What this does not license.** "NRR is the wrong screen" is not a reason to stop
+   measuring it or to soften the finding. The number is reporting something real: the
+   existing customer base has shrunk in dollars for three consecutive years. The
+   correction is to the benchmark, not to the diagnosis.
+
+**What a hostile analyst objects to, and the answer:**
+
+| Objection | Answer |
+|---|---|
+| *"Per-event revenue means your NRR tracks death rates and seasonality, not loyalty."* | Calendar-year and 365-day windows both neutralise seasonality by construction. Mortality exposure is real, disclosed, and not controllable; the mitigation is the **series**, not a point — nine consecutive pairs with a visible trend is evidence, one pair is not. |
+| *"With no contract, a retained customer has committed to nothing, so your NRR has no forward-looking content."* | **Conceded.** The substitute for contractual commitment is the length and stability of the series: 2016–2026 from the accounting system, with GRR in a 78–87% band for nine straight years. That band's tightness is the evidence. |
+| *"Your growth is price, not expansion."* | **Largely true and stated first.** 2026 is +4.4% revenue on +1.3% bookings, i.e. +3.2% yield (`CLAUDE.md §2`). Any NRR above 100% must be decomposed into a volume term and a yield term before it is quoted, because a buyer paying a platform multiple for expansion and finding a carrier-rate pass-through will re-trade. |
+| *"Four payers carry your partner volume, so your NRR is four relationships."* | Publish NRR with and without the partner tier and publish concentration beside it. Measured: top-1 **11.1%**, top-5 **27.3%**, top-10 **35.9%**, top-50 **62.5%** of 2026 revenue, and all four have **fallen** steadily since 2016 (top-10 was 49.4%). Concentration risk is decreasing. |
+| *"Revenue-weighted retention overweights your cheapest dollars."* | Correct: NMS prices at ~22.3% against a ~35% book (M-07), so partner revenue carries structurally thinner margin and a revenue-weighted number flatters. **Contribution-weighted retention is the right metric and is BLOCKED** on M-09. Flag it; do not approximate it. |
+| *"Does this tie to your other system?"* | Yes, and the check is published: grouped QuickBooks against the OMS analytics export is **+0.16% (2023), −0.68% (2024), −1.24% (2025)**. Two independently built systems within ~1.25% on revenue is a strong reconciliation, and notably stronger than the OMS-versus-legacy discrepancy that `CLAUDE.md §6` warns about. **2026 does not yet tie — QuickBooks runs roughly 7% per month above the OMS export, against under 1.3% in every closed year — and the exact QuickBooks cutoff date is needed before any 2026 figure is quoted.** |
+
+**Owner:** data-analyst, with finance on the revenue definition.
+
+---
+
+### M-27 — Revenue per operating head (and the two metrics that are better)
+
+**Plain English.** Whether capacity released by automation is being taken as **growth**
+rather than as cost — Fig's distinction, and the one `grounding` §1 says decides whether
+the model compounds or erodes.
+
+**Report three, in this order. The ordering is binding.**
+
+```
+M-27a  landed bookings per operating FTE      ← the capacity metric. Unit-pure.
+M-27b  gross profit per operating FTE         ← the economic metric. Primary once computable.
+M-27c  revenue per operating FTE              ← secondary only. Inflates with carrier rates.
+```
+
+**Why revenue per head is third and not first — the objection that must be answered
+before the metric is used at all.** *"CSI is a broker. Its revenue is largely a
+pass-through of the air rate. If carriers raise rates 10% and CSI passes them through,
+revenue per head rises 10% and nothing has improved."* **That objection is correct**, and
+a QoE review will make it. So the headline capacity claim is **bookings per operating
+FTE**, which no rate change can move, and the economic claim is **gross profit per
+operating FTE** (revenue − carrier cost). Revenue per head is published only beside them.
+
+**The denominator, which is where this metric is usually broken.**
+
+- **Average FTE, not headcount, and not a body count at period end.** 24/7/365 cover
+  means part-time, on-call and overtime hours. `FTE = total paid productive hours ÷ 2,080`
+  (2,080 is a stated convention, not a measurement). Period-end headcount flatters a
+  growing company; use the mean of month-end FTE across the window.
+- **Who is an operating head: people who touch a booking.** The bookings desk — agents
+  and bookings directors. **Excluded and stated:** sales, executive, finance, and the
+  FreightFlow engineering team, who are a **vendor**, not employees.
+- **Contractors and offshore support are in or out explicitly**, never by omission.
+- **§7.7 is a hard boundary.** This metric is reported in aggregate only. **It is never
+  split by named individual and never used to compare people.** A per-person
+  revenue-per-head series is a performance assessment, which no agent produces.
+
+**The companion figure that is not optional.** Platform fee per booking. Under the
+FreightFlow agreement Ex. C §5.1(c), portal-originated revenue carries a **rising**
+marginal revenue share, 1.5% to 3.5% (`grounding` §2). If capacity gain is bought with a
+third-party fee that scales with success, **revenue per head improves while unit
+economics do not.** Any M-27 figure quoted in a platform or valuation context carries
+platform fee per booking beside it, or it overstates operating leverage.
+
+**Status: BLOCKED on the denominator only.** Every numerator exists or nearly does —
+bookings (M-03, 10,985 in 2025), revenue (M-06), gross profit (M-08, thin coverage). The
+FTE denominator does not exist in this repo in any form.
+
+**Route out (`§9.6`). Both halves go to Donald, because both touch labour cost.**
+- **Donald:** average FTE by month for the booking desk cost centre, 2023 to date, and
+  the basis (paid hours ÷ 2,080, or a headcount convention he prefers); plus which roles
+  he counts as desk. *Smallest version:* one number per year for three years, desk only.
+- **Not Vadim, and not Kim or Susej.** Headcount and cost are Donald's by Ethan's rule of
+  2026-11-02. Vadim's half is M-28.
+- **Unblocks:** M-27a immediately, the operating-leverage half of the platform story, the
+  capacity claim in any valuation, and the "capacity as growth, not cost" test.
+
+**One more objection, answered honestly.** *"Revenue per head rises if you simply hire
+more slowly than you grow, which is not a platform."* True. The metric is evidence of
+operating leverage only when published as a **series alongside volume** — rising
+bookings per FTE with flat or rising service levels (M-20 accuracy, M-21 turnaround) is
+leverage; rising bookings per FTE with falling accuracy is understaffing. **Never publish
+M-27 without M-20 beside it.**
+
+---
+
+### M-28 — Cost to serve per booking type
+
+**Plain English.** What it costs CSI in agent labour to deliver one booking, **by type of
+booking** — because the mean is wrong for every type.
+
+**M-28 extends M-10; it does not replace it.** M-10 defines the quantity and its binding
+three-way ownership split. M-28 fixes the **typology**, which has to be agreed *before*
+the sample is collected or the sample cannot be stratified and is wasted.
+
+**DO NOT COMPUTE OR ESTIMATE THIS.** `§9.6` and M-10: Vadim owns hours per booking type,
+Donald owns what an hour costs, and **the two are never combined without Donald**. No
+agent multiplies a duration estimate by an hourly cost. This entry defines the metric and
+specifies exactly what each man supplies. It produces no number.
+
+**Formula.** Per type *k*: `cost_to_serve(k) = agent_minutes(k) × loaded_cost_per_agent_minute`.
+Report the **distribution** per type — median and 90th percentile — never a blended mean
+across types. The complex-international tail is the entire point of the exercise and a
+mean hides it.
+
+**The typology, binding. Six cells.** The natural axes give 48 cells, which no feasible
+sample fills, so four axes are collapsed to six cells and the collapse is stated:
+
+| # | Cell | Why it is separate |
+|---|---|---|
+| 1 | Domestic, clean | The baseline |
+| 2 | Domestic, reworked | Rebooked after carrier cancellation. CSI absorbs the cost ~99% of the time (M-22) and nobody has sized the volume, so the exception path cannot sit inside cell 1 |
+| 3 | International export, no consular requirement | |
+| 4 | International export, consular / apostille required | **The automation-relevant cell.** The most rule-bound, highest-volume paperwork in the business |
+| 5 | Inbound onward leg | A different workflow: a customs partner clears, CSI runs the domestic leg (`CLAUDE.md §1`). Physical handling is export-only |
+| 6 | Cremated remains, any destination | The structurally growing segment (`§3.5`), and the one whose unit cost most needs to be known |
+
+**Axes deliberately collapsed:** shipment type is folded into cell 6 for cremated remains
+and otherwise ignored (casket / infant / empty casket are treated alike, which is an
+assumption to revisit); and rework is separated only on the domestic side, because an
+international rework is rare enough that the sample will not reach it.
+
+**Binding classification note.** Cells 1 and 3–5 turn on whether a shipment is domestic
+or international, and **that classification is not yet settled in CSI's data.** Puerto
+Rico, Guam, USVI and other US territories are domestic for US documentation purposes but
+may carry their own `country_name` in `csi_airport_metadata_new`. **Any
+domestic/international split must state its treatment of US territories explicitly**, and
+a classification by final destination alone is wrong: an inbound repatriation whose last
+leg is US→US has the *most* international paperwork and would be labelled domestic.
+Classify on the **pair** (first-leg country, last-leg country), never on one leg.
+
+**What each person supplies. Ask each for their half; never one for the other's.**
+
+| Who | What, exactly | Smallest version |
+|---|---|---|
+| **Vadim** (with Kim Soto, Susej Roffe) | Per cell: **agent-minutes**, not elapsed time — median and 90th percentile, split into pre-confirmation (request received → airline confirmed) and post-confirmation (documents, consignee coordination, tracking, invoice queries); the number of distinct agent touches; and the share of bookings falling in each cell | A two-week tally sheet on ~50 bookings stratified across the six cells, start and finish timestamps per touch. **No OMS build.** Bundle with TASK-0019's desk questions so one message goes out |
+| **Donald** | **Fully-loaded cost per productive agent hour** — wages, payroll taxes, benefits, on-call and overtime premium — divided by *productive* hours, not paid hours; for the booking-desk cost centre only; separately for the bookings-director tier if their touches are counted. Plus the average FTE for M-27 | One blended desk rate and one director rate, current year. DR-001 agenda item |
+| **Kyri / Alex** | Whether the OMS records a request-received timestamp distinct from airline-submitted, and whether any per-booking agent activity is captured at all | Confirmation that the timestamps exist. Already ranked in this file's engineering asks (items 2 and 4) |
+
+**The reconciliation that makes the estimate defensible, and it costs one number.**
+Self-reported time is biased upward. Multiply total agent-minutes implied by Vadim's
+tally by annual booking volume and compare to **total paid productive desk hours from
+Donald**. If the tally implies 14,000 hours and payroll says 9,000, the tally is inflated
+~55% and is scaled before use, with the scaling disclosed. **Without this check the
+figure is a self-report; with it, it is a self-report bounded by payroll.** An analyst
+will accept the second and not the first.
+
+**What a hostile analyst objects to, and the answer:**
+
+| Objection | Answer |
+|---|---|
+| *"A cost to serve from a two-week self-reported tally is not auditable."* | **Conceded.** It is labelled `[ESTIMATE]` with its method, bounded by the payroll reconciliation above, and it is the **baseline**, not the evidence. The audit-grade version needs OMS timestamping, which is the engineering ask. Fig's own rule is *"baseline before close"* — a rough baseline taken before anything changes beats a precise one taken after. |
+| *"You are claiming capacity gains against a baseline you built after you started automating."* | **This is the reason M-28 is urgent and not a nice-to-have.** Once an automation pilot ships without a baseline, the capacity claim is **permanently unprovable** — there is no way to reconstruct the before. Every impact claim in the thesis depends on a measurement taken first. |
+| *"Which overheads are in?"* | M-09's allocation rule, unchanged: agent labour **in** as cost to serve; corporate overhead, sales compensation and marketing **out**, above contribution in the P&L. |
+| *"Your six cells are arbitrary."* | They are a stated collapse of four axes, with the collapsed axes named, driven by the sample size the desk can supply. Arbitrary and disclosed beats unstated. |
+
+**Unblocks.** M-04, M-05, M-09, M-10, M-27b, lane profitability (TASK-0005), the
+30–70% automatable-share screen, and every capacity claim in the roll-up thesis.
+
+### Engineering and colleague asks arising from section H
+
+Added to this file's ranked list (above). Nothing dropped for being probably chargeable
+(`§9.6`).
+
+| Ask | To | Unblocks |
+|---|---|---|
+| Average desk FTE by month, 2023 to date, and the basis | **Donald** | M-27a, the whole operating-leverage claim |
+| Loaded cost per productive agent hour, desk and director tiers | **Donald** | M-28, M-09, M-10 |
+| Two-week stratified touch-time tally across the six cells of M-28 | **Vadim**, with Kim and Susej | M-28, the automatable-share screen |
+| Exact end date of the QuickBooks *Sales by Customer Summary* ("November 1" vs the 2026-11-10 export date) | **Donald** | Whether any 2026 NRR figure may be quoted, and the 2026 OMS/QuickBooks gap |
+| Account merge / rename log for shipping funeral home IDs | **Rednodo (Claudio/Lucas)** | Removes the ≤15% migration caveat from every churn and retention figure |
+| Revenue column on the booking-level export, at both the shipping-FH and bill-to keys | **Kyri / Alex** | Revenue-weighted churn (M-15), NRR on a 365-day rolling window rather than calendar years, contribution-weighted retention once M-09 lands |
+
+---
+
 ## What this file says we cannot do this week
 
 So that no report has to discover it independently:

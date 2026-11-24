@@ -2,8 +2,30 @@
 
 **Raised:** 2026-11-24
 **Related task:** TASK-0024
-**Urgency:** THIS WEEK (blocked on the booking-level export)
-**Status:** OPEN
+**Urgency:** THIS WEEK
+**Status:** **SUBSTANTIALLY ANSWERED mid-task, and not from the source anyone expected.**
+`data/derived/revenue-retention-by-year.csv` (+ `.meta.json`, `scripts/analyze_revenue_retention.py`
+v1.0.0, 2026-11-24 22:58 UTC) computes all three asks from
+`data/raw/sales-by-customer-summary-20261110.xlsx` — **QuickBooks invoiced revenue, not the
+booking-level OMS export.** The measurement CSI believed was blocked needed a file CSI already
+had. **That is a `§9.6` lesson worth recording in its own right.**
+
+**The answer: both fail the screen.** NRR below 100% for three consecutive complete years and
+falling — **98.7%, 96.0%, 95.8%** — against logo retention of **71%–79%** and GRR of **79%–83%**.
+corpdev's reading is written up at `reports/ai-rollup-screen-and-platform-control.md` §E.3.
+
+**Three asks remain open, and the second is the important one:**
+
+1. **Publish the companion report**, so corpdev's reading can be checked or corrected. No report
+   existed when §E.3 was written and **data-analyst's interpretation governs over corpdev's.**
+2. **Run the §2 cross-check explicitly** (ask 3 below). The cohort count rose from 448 to 644
+   while NRR fell and the expansion gap collapsed from 24.3pp to 8.5pp. **On its face that is
+   acquisition masking retention, which is a different diagnosis from `CLAUDE.md` §2's "a working
+   pricing lever it has not deliberately pulled."** If it holds, §2 needs a `/brain-propose`
+   correction and it is data-analyst's to file, not corpdev's.
+3. **Reconcile the invoiced-revenue grain to the OMS export.** The cohort bases tie to OMS
+   revenue within about 1% for 2023 and 2025, which is encouraging but not a reconciliation, and
+   `CLAUDE.md` §6 warns that OMS analytics do not tie back to the legacy system.
 
 ## What I need
 

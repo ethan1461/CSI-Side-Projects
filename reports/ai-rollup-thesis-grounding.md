@@ -443,3 +443,96 @@ margin, not a platform narrative.
 3. Whether to ask a partner what share of their volume they book direct with airlines. That
    closes the largest unknown in the category number, and it is `§7.1`-gated external
    contact.
+
+### 6.4 corpdev, on handback: the in-category path does not close either
+
+`reports/ai-rollup-screen-and-platform-control.md`. Two consequences nobody had drawn, and
+the first is the most consequential finding of the whole exercise.
+
+**1. The acquisition programme may be larger than the acquirable category.**
+`[ESTIMATE — corpdev's arithmetic on market-intel's central figure and `the-25m-gap.md`
+§§1–2]` The incremental EBITDA needed implies **$10.4M–$27.6M of acquired revenue — 14% to
+37% of the entire category**, taking CSI to **34%–57% of it**. At the low end of
+market-intel's range that becomes 30%–79%, which is not plausible on any reading. And the
+acquirable remainder is much smaller than the category, because the partner tier is not
+acquirable at all and EWA+Inman carry the highest antitrust flag.
+
+**This weakens the fallback in §6.3, not only the original thesis.** In-category
+consolidation cannot deliver Cheryl's number. The EBITDA has to come from the three lanes
+*outside* the sized category — the assistance and insurance channel, documentation and
+consular bureaus, and gateway trade services. **Sizing those three is now worth more than
+extending the target longlist.** Raised to gtm-strategist.
+
+**2. Acquisition appears to be masking retention, and this reaches past corpdev.** Customer
+count rose 448 → 644 while NRR fell and the expansion gap collapsed from 24.3pp to 8.5pp.
+`CLAUDE.md` §2 reads FY26's +4.4% revenue on +1.3% bookings as *"a working pricing lever
+nobody has deliberately pulled."* **The fuller reading is price rising on a leaking base** —
+a different diagnosis with a different remedy. §2 may need a `/brain-propose` correction;
+that is data-analyst's to file and verify, not corpdev's and not mine.
+
+### 6.5 Two corrections I accept from corpdev, plus one precision
+
+I asked corpdev whether my correction had overcorrected. Its answer: right on the main
+point, "about two inches too far" on two items I filed as diligence cleanup. It is right.
+
+1. **The Background Technology licence sits in the live quote path.** The only identified
+   Background Technology is the Scraping Library, which per Exhibit A **feeds the quote and
+   facility-hours engine**. CSI's licence states no duration and no transferability (§7.1),
+   and §14.4(a) and §14.6 point different ways on survival. That is not a document to
+   assemble — it is **a functional component of live quoting whose rights may not survive
+   the Term**, and it is the largest single cost driver of any parallel build.
+2. **The absent standing export right is blocking CSI today**, as distinct from the absent
+   data-ownership clause, which is fairly a diligence item. The only return right is
+   §14.5(c): 40 days at $50/hour, *after* the relationship ends. Retention, NRR, corridor
+   mix and account-level revenue all sat behind it. **Though note the lesson:** the
+   retention figures in §6.1 arrived from a QuickBooks file already in the repo, not the
+   OMS. The blocker was narrower than everyone assumed, which is `§9.6` in action.
+3. **The §6.1(b) precision.** The carve-back does not merely have ambiguous scope — it
+   *"shall supersede any language to the contrary in this Agreement and any Exhibit to
+   it."* So the accurate internal statement is: **CSI owns the Work Product, and the
+   boundary between Work Product and Background Technology is undefined, at a boundary
+   where §6.1(b) overrides §6.1(a).** Much closer to my correction than to the original
+   claim — but "diligence cleanup" invites a flat *"CSI owns the platform"* in exactly the
+   rooms where that boundary is the subject: a SaaS licence, a transfer to a buyer, a
+   parallel build.
+
+### 6.6 Corrections to §1's scoring, from corpdev
+
+- **My "five of six" does not survive.** It was **four of six with one Strong conditional**
+  even before the measurements, because the capacity-constraint row **depends on** the
+  growth row rather than standing beside it. Capacity taken as growth only compounds if
+  there is demand to absorb it; in a shrinking category it has nowhere to go but contested
+  share or unsized adjacent lines. My line that *"the capacity release has somewhere obvious
+  to go"* is not obvious, and was the weakest sentence in §1.
+- **"Gating" overstated the Change Order problem for a first deal.** §2.4 and §19.5 require
+  mutual written agreement — the Developer need not agree, and CSI need not pay whatever is
+  asked. **Pricing for one deal; gating for a programme.** Hence a pre-agreed scope and rate
+  for migration work — one negotiation, not one per deal — is a cheaper answer than anything
+  structural.
+- **"No booking fee" should be Strong-with-caveat, not Mixed.** Funeral homes pay the same
+  air rate as direct; the axis is whether a brokerage fee exists at all (EWA ~10%). That is
+  a packaging claim, not price competition.
+- **The 30% subscription share is under-weighted in §2**, where it appears only by
+  reference. It is an order of magnitude more aggressive than the shipment revenue share and
+  sits directly on any SaaS story.
+- **A structural interaction that belongs in every deal model:** CSI would buy an acquired
+  customer's revenue at a multiple, then **share that same revenue with the Developer**
+  whenever those customers order through the portal. A recurring per-acquisition platform
+  cost, not a one-off integration cost.
+
+### 6.7 What the screen itself concluded
+
+- **Under these criteria, overlap beats complement** — inverting November's bias explicitly.
+  Platform leverage comes from more of the *same* rule-bound work on a system that already
+  encodes its rules; a new corridor needs a new rulebook, a new module, a Change Order. So
+  Pierson's MIA overlap flips from penalty to neutral-positive, and G7's Latin-American
+  complementarity flips from chief virtue to cost.
+- **The two unidentified domains fell from 1st and 2nd to unscoreable** — 0% evidence
+  coverage, every criterion Unknown. Impression share scores nothing here. They remain the
+  **#1 research priority and the #0 acquisition candidate, which are different things.**
+  Their hosts have now been allowlisted so they can finally be identified.
+- **No target on the longlist carries a platform or the people to run one.** That was the
+  task's own line to the metric and the answer is no. One platform-layer candidate rose in
+  relevance and corpdev deliberately left it unscored rather than fabricate a number.
+- **A category the criteria surface and the longlist lacks: documentation and
+  consular-processing bureaus.** Named, not built out. Bergen fails the partner gate.

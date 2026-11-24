@@ -112,11 +112,31 @@ def test_annual_totals_sum_and_count_customers_not_rows() -> None:
     assert bool(out.loc[2026, "complete_year"]) is False, "2026 is the partial year"
 
 
-def test_concentration_shares_are_bounded_and_monotone() -> None:
-    """top1 <= top5 <= top10 <= top50, and top50 is 100% when there are fewer than 50."""
-    df = pd.DataFrame(
-        [{"customer_key": f"c{i}", "year": 2025, "revenue": float(i + 1)} for i in range(12)]
+def test_grain_sensitivity_reports_both_and_their_delta() -> None:
+    """Grouping two logos into one must leave the dollars alone and raise logo retention.
+
+    Ungrouped: a (100 -> 100) and b (100 -> 0). NRR 50%, logo retention 50%.
+    Grouped as one customer g: 200 -> 100. NRR still 50%, but the single logo is
+    retained, so logo retention is 100%. The delta columns must show +50pp on logo
+    retention and 0 on NRR.
+    """
+    ungrouped = pd.DataFrame(
+        [
+            {"customer_key": "a", "year": 2024, "revenue": 100.0},
+            {"customer_key": "a", "year": 2025, "revenue": 100.0},
+            {"customer_key": "b", "year": 2024, "revenue": 100.0},
+        ]
     )
-    row = arr.concentration(df).iloc[0]
-    assert row["top1_share_pct"] <= row["top5_share_pct"] <= row["top10_share_pct"]
-    assert row["top50_share_pct"] == pytest.approx(100.0)
+    grouped = pd.DataFrame(
+        [
+            {"customer_key": "g", "year": 2024, "revenue": 200.0},
+            {"customer_key": "g", "year": 2025, "revenue": 100.0},
+        ]
+    )
+    row = arr.grain_sensitivity(grouped, ungrouped).iloc[0]
+    assert row["nrr_pct_ungrouped"] == pytest.approx(50.0)
+    assert row["nrr_pct_grouped"] == pytest.approx(50.0)
+    assert row["nrr_pct_delta"] == pytest.approx(0.0)
+    assert row["logo_retention_pct_ungrouped"] == pytest.approx(50.0)
+    assert row["logo_retention_pct_grouped"] == pytest.approx(100.0)
+    assert row["logo_retention_pct_delta"] == pytest.approx(50.0)

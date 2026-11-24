@@ -163,3 +163,15 @@ about whose margin it was. Flag it wherever structure comes up.
   `legal-risk` (reply), plus `operations`, `product` and `gtm-strategist` items recorded in the
   report's handoff table. **No contact with any target, Developer, investor, lender or banker.
   No valuation of CSI. `§7.5` observed throughout.**
+- 2026-11-24 — **data-analyst computed CSI's retention and NRR mid-task** and both fail the
+  screen: NRR **98.7% / 96.0% / 95.8%** across the three complete years, logo retention
+  **71%–79%**, GRR **79%–83%** (`data/derived/revenue-retention-by-year.csv`). Written up at
+  §E.3. **It came from a QuickBooks sales-by-customer file CSI already had, not the
+  booking-level OMS export** — the measurement everyone believed was blocked was not.
+  §D.2 therefore moves from conditional to finding. **Companion report from data-analyst is
+  pending and governs over corpdev's reading.**
+- 2026-11-24 — **net position: CSI fails three of the six published criteria** (category size,
+  retention and NRR, category growth), with `§D.4` item 4 showing the fourth — capacity
+  constraint — depends on the third. **The grounding report's "five of six" does not survive
+  the measurements, and the §4 fallback is the recommendation.** Said in November rather than
+  found in diligence (`CLAUDE.md` §8).

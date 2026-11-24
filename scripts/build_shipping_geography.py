@@ -265,6 +265,11 @@ def main() -> None:
         if b:
             b_year[(b, yr)] += int(r["bookings"])
 
+    pol_year: dict[str, int] = defaultdict(int)
+    for r in by_year:
+        if r["yr"].isdigit() and r["yr"] != "0000" and clean(r)[0] == "Poland":
+            pol_year[r["yr"]] += int(r["bookings"])
+
     yrs = sorted(years)
     full_years = [y for y in yrs if y not in ("2022", "2026")]
 
@@ -501,12 +506,24 @@ def main() -> None:
                 ),
             ),
             (False, ""),
-            (True, "On Ukraine"),
+            (True, "On Ukraine \u2014 please read this one"),
             (
                 False,
                 (
-                    "We have moved no one into Ukraine in the period covered by our records. The "
-                    "figure is zero, not unavailable."
+                    "The direct figure is zero, and that is accurate, but it is not the whole "
+                    "answer. We cannot fly into Ukraine at present. Ukraine-bound shipments go "
+                    "into Poland and are driven across the border from there. The volume "
+                    "exists; it simply arrives as Poland in our records."
+                ),
+            ),
+            (
+                False,
+                (
+                    "Poland took 43 arrivals across our full history \u2014 6 in 2022, 7 in "
+                    "2023, 9 in 2024, 8 in 2025 and 13 so far in 2026. We cannot tell you what "
+                    "share of those continued into Ukraine rather than staying in Poland, "
+                    "because the onward road leg is not in our system. Treat the Polish figure "
+                    "as the ceiling, not as the Ukraine number."
                 ),
             ),
         ],
@@ -530,13 +547,34 @@ def main() -> None:
     )
     style(ws, tuple(cols))
     for i, b in enumerate(order, start=2):
-        ws.cell(row=i, column=1, value=b)
+        label = "Ukraine \u2014 direct arrivals" if b == "Ukraine" else b
+        ws.cell(row=i, column=1, value=label)
         for j, y in enumerate(yrs, start=2):
             ws.cell(row=i, column=j, value=b_year.get((b, y), 0))
         ws.cell(row=i, column=len(yrs) + 2, value=avg.get(b, 0))
         ws.cell(row=i, column=len(yrs) + 3, value=b_total.get(b, 0))
+
+    # Poland carries the Ukraine-bound traffic, so it is broken out here. It is already
+    # inside "Europe (excluding UK)" above, and the row says so, to stop anyone adding
+    # it to the seven regions and double-counting.
     r = len(order) + 3
+    pol = {y: pol_year.get(y, 0) for y in yrs}
+    pol_avg = round(sum(pol[y] for y in full_years) / len(full_years))
+    cell = ws.cell(row=r, column=1, value="Of which \u2014 Poland, our route into Ukraine")
+    cell.font = Font(bold=True, color=NAVY)
+    for j, y in enumerate(yrs, start=2):
+        ws.cell(row=r, column=j, value=pol[y])
+    ws.cell(row=r, column=len(yrs) + 2, value=pol_avg)
+    ws.cell(row=r, column=len(yrs) + 3, value=sum(pol.values()))
+    r += 2
     footnotes = (
+        (
+            "The Poland row is already counted inside Europe (excluding UK). It is shown "
+            "separately because we cannot fly into Ukraine and route that traffic overland "
+            "from Poland instead. An unknown share of it continued into Ukraine; the onward "
+            "road leg is not recorded in our system. Please do not add this row to the seven "
+            "regions above."
+        ),
         (
             "2022 is partial — our system history begins September 2022. "
             f"2026 runs to {asof.strftime('%-d %B')}."
@@ -602,7 +640,8 @@ def main() -> None:
             "bookings_with_destination": total_recv,
             "bookings_with_origin": total_send,
             "complete_years_used_for_average": full_years,
-            "ukraine_destinations": b_total.get("Ukraine", 0),
+            "ukraine_direct_destinations": b_total.get("Ukraine", 0),
+            "poland_arrivals_carrying_ukraine_bound_traffic": sum(pol_year.values()),
             "unmapped_airport_bookings": recv_country.get("Unmapped airport", 0),
             "pii": "none - aggregate geography counts only (CLAUDE.md s7.2)",
             **extra,

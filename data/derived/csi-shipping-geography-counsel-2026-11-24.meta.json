@@ -1,7 +1,7 @@
 {
   "script": "scripts/build_shipping_geography.py",
   "script_version": "1.0.0",
-  "generated_at": "2026-11-24T15:35:43.199468+00:00",
+  "generated_at": "2026-11-24T16:16:39.903587+00:00",
   "sources": [
     "data/raw/geo_1_sending.tsv",
     "data/raw/geo_2_receiving.tsv",
@@ -15,7 +15,8 @@
     "2024",
     "2025"
   ],
-  "ukraine_destinations": 0,
+  "ukraine_direct_destinations": 0,
+  "poland_arrivals_carrying_ukraine_bound_traffic": 43,
   "unmapped_airport_bookings": 58,
   "pii": "none - aggregate geography counts only (CLAUDE.md s7.2)",
   "audience": "counsel"

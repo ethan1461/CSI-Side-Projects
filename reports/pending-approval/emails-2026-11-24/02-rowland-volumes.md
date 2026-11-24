@@ -54,3 +54,42 @@ Figures are the annual average across 2023–2025, our three complete years.
 - **`§7.3`** — the 52-shipment gap between the year columns and the all-years total is
   disclosed in the workbook with its cause. The UK row, the one they will price on,
   reconciles exactly at 334.
+
+---
+
+# UPDATE 2026-11-24 — Ukraine corrected, and the table keeps getting stripped
+
+**Ethan, 2026-11-24:** *"Ukraine comes back as zero because we've been sending bodies to
+Ukraine via Poland and driving it across the border. Can't get into Ukraine directly right
+now."*
+
+This changes the answer to the single question Joe flagged as his priority ("Ukraine
+specifically – conflict zones"). Zero was literally true and substantively misleading.
+
+**What changed:**
+
+- **Workbook rebuilt.** The read-me's Ukraine section now explains the overland route. The
+  region table relabels the row "Ukraine — direct arrivals" and adds a marked breakout row
+  for Poland, with a footnote that it is already inside Europe-excluding-UK so nobody adds
+  it twice.
+- **Poland by year is now disclosed:** 6 / 7 / 9 / 8 / 13 for 2022–2026, 43 all-time,
+  rising. The workbook states plainly that the share continuing into Ukraine is unknown
+  because the road leg is not recorded, and that 43 is a ceiling rather than the Ukraine
+  figure (`§7.3` — no estimate where there is no basis for one).
+- **A paste block** for the draft is in `ROWLAND-paste-block.md`. The draft body was not
+  rewritten: Ethan had already edited it, and updating a reply draft would also destroy
+  the quoted thread and his signature.
+
+**Operational note worth remembering.** Outlook has now stripped an HTML table from three
+consecutive drafts. Use plain paragraphs or lists for anything drafted into Outlook.
+
+**Follow-up sent to the desk.** The sent Cheryl/Susej email lost the Ukraine question in
+editing, so a reply-all draft on that thread asks the one question only the desk can
+answer: roughly what share of the 43 Poland arrivals was Ukraine-bound. It also asks
+whether Romania (85) and Moldova (11) are doing the same job for somewhere else.
+
+**This is also a data-first finding** (`§9.1`). CSI is running a cross-border overland leg
+on an active conflict corridor and recording none of it. The destination the customer
+cares about is not the destination the system holds. That belongs in the Monday
+engineering ask as a field on the booking — final delivery country, distinct from arrival
+airport — and it is worth raising independently of Rowland.

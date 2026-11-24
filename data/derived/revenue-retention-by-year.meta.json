@@ -1,0 +1,20 @@
+{
+  "filters_applied": [
+    "report header rows 0-4 dropped",
+    "rows with no customer label dropped",
+    "grand-total row(s) dropped",
+    "customers with no revenue in any year dropped",
+    "zero-revenue customer-year cells treated as absent"
+  ],
+  "git_sha": "e2cda751abb075157e753b58f7c7f170ed381c3c",
+  "note": "NRR, GRR and logo retention per consecutive year pair, on the invoiced-customer grain. Cohort = customers with revenue in base_year; customers acquired in the compare year are excluded. GRR caps each numerator at its own base revenue.",
+  "privacy_note": "Customer business names are hashed to a 12-char surrogate key; no name is written to any output. Source contains no decedent or family data.",
+  "rows_in": 4707,
+  "rows_out": 10,
+  "run_timestamp_utc": "2026-11-24T22:58:34.485720+00:00",
+  "script": "scripts/analyze_revenue_retention.py",
+  "script_version": "1.0.0",
+  "source_files": [
+    "data/raw/sales-by-customer-summary-20261110.xlsx"
+  ]
+}

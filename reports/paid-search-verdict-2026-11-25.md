@@ -148,3 +148,66 @@ potential customers.**
    question becomes whether to instrument properly or reduce — and that is a cheaper
    question to answer once rather than to keep asking.
 6. **Exclude funeral_home_id 8652 by default everywhere.** Second occurrence in two days.
+
+---
+
+## 8. Decision taken 2026-11-25 by Ethan: $70/day → $100/day, re-evaluate 15 December
+
+**His call, recorded here so the 15 December evaluation has a baseline rather than a
+memory.** This is at the ceiling of the envelope set on 3 November — *"$70/day, to $85/day
+only if cost per conversion holds in the $30s… do not go past ~$100/day"* — not beyond it.
+
+### The baseline, frozen today
+
+| | At 2026-11-25 |
+|---|---|
+| Spend to date | $4,117.45 (30 Aug – 2 Nov basis) |
+| Daily budget | **$100** (from $70) |
+| New accounts attributed | **1** (Weddle, 16654) |
+| New-account bookings | 2 |
+| Leads with any business identity | 7 of 21 identified, of 78 conversions |
+| Matched leads that were already customers | **3 of 4** |
+| Phone leads unmeasured | 15 |
+
+**Additional spend to 15 December:** roughly **$2,000** over 20 days — about half of
+everything spent since launch, in a third of the time. At $34 a lead that is roughly 58
+more leads.
+
+### What has to change for 15 December to mean anything
+
+**The budget increase on its own will not make the test readable, and may make it less so.**
+Three of four matched leads were existing customers. Scaling spend 43% without changing the
+targeting buys more clicks from people who already ship with CSI, which inflates the
+conversion count with volume CSI already had.
+
+In priority order, and none of these needs engineering:
+
+1. **Exclude existing customers as an audience** (§2). Without this, the extra $2,000 is
+   partly spent re-buying the current book, and the 15 December number will overstate.
+2. **Apply the Tier A negative keywords** from `reports/paid-search-negative-keywords.md`.
+   Fourteen of 21 identified leads were families. At $100/day that leak scales too.
+3. **Export the Google Ads call details.** 15 phone leads are already unmeasured; another
+   20 days at a higher budget adds more. Only Ethan can pull it.
+
+### What 20 days can and cannot settle
+
+**It cannot settle the conversion rate.** `paid-search-lead-conversion.md` §4 is explicit:
+at roughly 35 leads a month against a 1-in-14 bar, break-even is about 2.5 bookings a
+month, and *"one checking round cannot separate a 1-in-14 rate from 1-in-40 … a clear read
+needs three to four months of attributed data."* Twenty days at a higher budget produces
+roughly 58 leads — a sample that cannot distinguish a working channel from a failing one.
+
+**What it can settle** is narrower and still worth having:
+
+- Whether cost per lead holds near $34 as budget rises, or inflates as Google reaches for
+  less qualified traffic. **This is the one thing 20 days answers cleanly**, and a sharp
+  rise is itself a verdict.
+- Whether the share of leads with a business identity moves off 1 in 3 once families are
+  filtered out.
+- Whether any *new* account appears at all, as a floor rather than a rate.
+
+**So the honest frame for 15 December: it is a checkpoint on lead quality, not a verdict on
+ROAS.** The ROAS verdict needs the three to four months §4 asked for, and it needs DNI. If
+cost per lead holds and business-identity share improves, that argues for running to
+February on the fuller test. If cost per lead climbs and the leads stay families, that is
+an answer in 20 days and a cheap one.

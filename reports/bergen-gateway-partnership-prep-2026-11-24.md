@@ -44,10 +44,17 @@ the airline handover, and on the inbound side customs clearance and onward dispa
 
 **Why it is the strongest lane on the evidence:**
 
-- **CSI already buys this capability in rather than owning it.** CSI's physical handling is
-  **export-only**; for inbound, a licensed customs partner clears at the arrival gateway and
-  CSI runs the domestic onward leg (`CLAUDE.md` §1). The capability gap is structural and
-  permanent, not a staffing shortfall.
+- **CSI cannot serve the inbound flow at all today — and that, not recaptured spend, is
+  the case.** `gtm-strategist` corrected an earlier draft of this document, which said CSI
+  "already buys this capability in," implying there is spend to recapture. **The data does
+  not support that.** Only **150 of 47,881 bookings — 0.3%, about 35 a year — have a
+  non-US origin.** So either inbound volume really is a rounding error, in which case
+  insourcing it saves $7K–$14K a year `[ESTIMATE]` and is not worth a conversation, **or
+  CSI cannot see its own inbound volume at all** because onward legs are booked from the
+  arrival gateway. There is no field marking a booking inbound, so CSI cannot tell which.
+  Either way the honest framing is stronger: CSI is locked out of a flow, and **inbound
+  assistance work is that flow.** Bergen's inbound capability would open a market CSI
+  cannot reach, which is a better thing to want than a saving.
 - **It converts a cost line into a margin line.** CSI's margin today is the spread between
   the published rate and the contracted carrier rate, plus secondary service fees
   (`CLAUDE.md` §1). Gateway handling sits outside both. Margin is the lever that matters
@@ -62,8 +69,23 @@ the airline handover, and on the inbound side customs clearance and onward dispa
   and the delivery confirmation CSI cannot offer at the European end today — which is
   exactly what the Rowland conversation is about.
 
-**Honest caveat:** nobody has sized this lane. `gtm-strategist` has been tasked with it.
-**Do not put a number on it in this conversation.**
+**Honest caveat, and it is now measured rather than pending.** `gtm-strategist` has sized
+the lane (`reports/adjacent-lane-sizing.md`) and the finding cuts two ways.
+
+**The pool is large and almost all of it is out of reach, for a reason that matters here.**
+Public FTC-mandated price lists put ship-out preparation at **$3,000–$6,600 per case** —
+two to five times CSI's ~$1,346 average yield, and roughly **$165M–$360M across the
+category, entirely outside the $74M core**. But **that is the sending funeral home's own
+revenue, and the sending funeral home is CSI's customer.** CSI cannot sell into it without
+competing with the people it sells to. The part CSI could sell without that conflict is
+third-party handling at $150–$400 a shipment — central case **$63K of EBITDA a year**, and
+it needs a facility and licensed staff.
+
+**So judge this conversation on capability, not on near-term earnings.** On an EBITDA test
+it will look like a failure, and that would be the wrong conclusion: the value is reaching
+a flow CSI is locked out of, and learning how the work actually runs from the person who
+does it best. **Still do not put a number on it in the room** — not the pool, not the
+$63K, not the $7K–$14K.
 
 ---
 

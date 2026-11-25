@@ -1,0 +1,44 @@
+{
+  "script": "scripts/size_adjacent_lanes.py",
+  "script_version": "1.0.0",
+  "run_at": "2026-11-24T23:29:04.431196+00:00",
+  "owner": "gtm-strategist",
+  "source_files": [
+    "data/raw/geo_1_sending.tsv",
+    "data/raw/geo_2_receiving.tsv"
+  ],
+  "source_reports": [
+    "reports/repatriation-category-size.md",
+    "reports/the-25m-gap.md",
+    "reports/ai-rollup-screen-and-platform-control.md",
+    "reports/bergen-gateway-partnership-prep-2026-11-24.md"
+  ],
+  "rows_out": 6,
+  "geography_counts": {
+    "sending_total": 47881,
+    "sending_us_origin": 47731,
+    "sending_foreign_origin": 150,
+    "receiving_total": 47876,
+    "receiving_us_domestic": 23280,
+    "receiving_foreign": 24596
+  },
+  "csi_international_annual": 5651,
+  "ebitda_target": 2000000,
+  "new_ebitda_low_central_high": [
+    24650,
+    324015,
+    2370476
+  ],
+  "excluded_ebitda_low_central_high": [
+    423825,
+    621610,
+    847650
+  ],
+  "ceiling_at_full_capture_low_central_high": [
+    752342,
+    5129756,
+    18821814
+  ],
+  "columns_dropped_for_privacy": "none required: both inputs are country/state-level aggregates with no decedent, family or funeral-home identifiers",
+  "caveat": "Every lane figure is [ESTIMATE] or [ASSUMPTION]. The category inputs are market-intel's, at low-to-medium confidence. Nothing here is a measurement and nothing here goes outside CSI (CLAUDE.md \u00a7\u00a77.3, 7.5)."
+}
